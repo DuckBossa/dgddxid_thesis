@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour {
         
         bool onTop = coll.transform.position.y > transform.position.y;
         if (!onTop){
-            Debug.Log("RESET");
             currjumps = GAME.jumps;
         }
             
