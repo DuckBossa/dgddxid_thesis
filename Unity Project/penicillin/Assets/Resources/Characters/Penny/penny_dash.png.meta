@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 guid: fd516c2cc0f63483594295c28550e9be
-timeCreated: 1473900889
+timeCreated: 1474186132
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: penny_dash_0
+    21300002: penny_dash_1
+    21300004: penny_dash_2
+    21300006: penny_dash_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +42,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +55,59 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: penny_dash_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 48
+        height: 50
+      alignment: 9
+      pivot: {x: 0.31187534, y: 0.48194003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: penny_dash_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 0
+        width: 77
+        height: 49
+      alignment: 9
+      pivot: {x: 0.21854588, y: 0.4877143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: penny_dash_2
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 0
+        width: 87
+        height: 49
+      alignment: 9
+      pivot: {x: 0.17478223, y: 0.48157147}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: penny_dash_3
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 3
+        width: 35
+        height: 47
+      alignment: 9
+      pivot: {x: 0.46559885, y: 0.44876605}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
