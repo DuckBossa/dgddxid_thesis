@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour {
     bool isAttacking;
     bool isDashing;
     bool isJumping;
-    float jumptime;
+    bool isFalling;
     void Start(){
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -22,48 +22,43 @@ public class PlayerMovement : MonoBehaviour {
         isAttacking = false;
         isDashing = false;
         isJumping = false;
-        jumptime = 0f;
+        isDashing = false;
     }
 
-    void Update(){
+    void FixedUpdate() {
         dir = Input.GetAxisRaw("Horizontal");
         bool jumping = Input.GetKeyDown(KeyCode.W);
-        bool dashing = Input.GetKeyDown(KeyCode.Z);
+        isDashing = Input.GetKeyDown(KeyCode.Z);
         isWalking = Mathf.Abs(dir) > 0;
-
-        if (isJumping){
-            jumptime += Time.deltaTime;
-            if(jumptime > GAME.jump_anim_loop){
-                anim.SetTime(GAME.jump_anim_loop);
-                jumptime = 0.9f;
-            }
-        }
-
-        if (jumping && currjumps > 0){
+        if (jumping && currjumps > 0) {
             Jump();
             isJumping = true;
         }
-
-
-        
-
+        if(rb.velocity.y < 0) {
+            isFalling = true;
+        }
+        else {
+            isFalling = false;
+        }
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isJumping", isJumping);
-        if (isWalking){
+        anim.SetBool("isDashing", isDashing);
+        anim.SetBool("isFalling", isFalling);
+        if (isWalking) {
             anim.SetFloat("Direction", dir);
-            Vector3 movement = new Vector3(dir * GAME.player_velocity * Time.deltaTime, 0, 0);
-            transform.Translate(movement);
+            rb.velocity = new Vector2(dir * GAME.player_velocity, rb.velocity.y);
         }
-
-
+        else {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
     }
+
     void OnCollisionEnter2D(Collision2D coll){
         
         bool onTop = coll.transform.position.y > transform.position.y;
         if (!onTop){
             currjumps = GAME.jumps;
             isJumping = false;
-            jumptime = 0;
         }
             
     }
