@@ -13,8 +13,10 @@ public class EventHandler : MonoBehaviour {
 
 	public bool isDev = true;
 
-	// Use this for initialization
-	void Start () {
+    public float hInput = 0;
+    public bool jump = false;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -22,11 +24,17 @@ public class EventHandler : MonoBehaviour {
 	void Update () {
 		if (isDev) {
 			if (Move != null) {
-				Move(Input.GetAxisRaw("Horizontal"));
-			}
+                //Move(Input.GetAxisRaw("Horizontal"));
+                Move(hInput);
+            }
             if (Jump != null) {
-                if (Input.GetKeyDown(KeyCode.Space)) {
+                //if (Input.GetButtonDown("Jump")) {
+                //    Jump();
+                //}
+                if (jump)
+                {
                     Jump();
+                    jump = false;
                 }
             }
             if (UseItem != null) {
@@ -39,8 +47,17 @@ public class EventHandler : MonoBehaviour {
                 }
             }
             */
-
         }
 
+    }
+
+    public void StartMoving(float horizontalInput)
+    {
+        hInput = horizontalInput;
+    }
+
+    public void StartJumping(bool jumping)
+    {
+        jump = jumping;
     }
 }

@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
 
     Transform trans, groundCheck;
     public LayerMask playerMask;
+    float hInput = 0;
     void Start(){
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -90,7 +91,7 @@ public class PlayerMovement : MonoBehaviour {
         if(!isJumping) rb.velocity += GAME.jump_velocity * Vector2.up;
     }
 
-    public void Move(float horizontalInput) {
+    void Move(float horizontalInput) {
         //if (isJumping) return;
         dir = horizontalInput;
         isWalking = Mathf.Abs(dir) > 0;
