@@ -12,8 +12,11 @@ public class PlayerMovement : MonoBehaviour {
     bool isWalking;
     bool isAttacking;
     bool isDashing;
-    bool isJumping;
+    public bool isJumping;
     bool isFalling;
+
+    Transform trans, groundCheck;
+    public LayerMask playerMask;
     void Start(){
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +30,8 @@ public class PlayerMovement : MonoBehaviour {
         isJumping = false;
         isDashing = false;
 
+        trans = this.transform;
+        groundCheck = GameObject.Find(this.name + "/GroundCheck").transform;
     }
 
 	void Update(){
@@ -41,33 +46,38 @@ public class PlayerMovement : MonoBehaviour {
 
 
     void FixedUpdate() {
+        //move
         dir = Input.GetAxisRaw("Horizontal");
-        bool jumping = Input.GetKeyDown(KeyCode.W);
-		if(Input.GetKeyDown(KeyCode.Z) && !isDashing){
-			isDashing = true;
-			Dash ();
-		}
-        isDashing = Input.GetKeyDown(KeyCode.Z);
-        isWalking = Mathf.Abs(dir) > 0;
-        if (jumping && currjumps > 0) {
+        Move(dir);
+
+        //jump (spacebar now)
+        isJumping = !(Physics2D.Linecast(trans.position, groundCheck.position, playerMask));
+        if(!isJumping) currjumps = GAME.jumps;
+        if (Input.GetButtonDown("Jump") && currjumps > 0)
+        {
             Jump();
-            isJumping = true;
+            currjumps--;
         }
-		if(rb.velocity.y < 0) {
+
+        //fall
+        if (rb.velocity.y < 0)
+        {
             isFalling = true;
         }
-        else {
+        else
+        {
             isFalling = false;
         }
 
-		if (isWalking && !isDashing) {
-			rb.velocity = new Vector2 (dir * GAME.player_velocity, rb.velocity.y);
-		} 
-		else if (!isDashing) {
-			rb.velocity = new Vector2(0, rb.velocity.y);
-		}
+        //dash
+        if (Input.GetKeyDown(KeyCode.Z) && !isDashing)
+        {
+            isDashing = true;
+            Dash();
+        }
 
-
+        isDashing = Input.GetKeyDown(KeyCode.Z);
+        isWalking = Mathf.Abs(dir) > 0;
 
 		anim.SetFloat("Direction", dir);
 		anim.SetBool("isWalking", isWalking);
@@ -76,27 +86,23 @@ public class PlayerMovement : MonoBehaviour {
 		anim.SetBool("isFalling", isFalling);
     }
 
-    void OnCollisionEnter2D(Collision2D coll){
-        
-        bool onTop = coll.transform.position.y > transform.position.y;
-        if (!onTop){
-            currjumps = GAME.jumps;
-            isJumping = false;
-        }
-            
+    public void Jump() {
+        if(!isJumping) rb.velocity += GAME.jump_velocity * Vector2.up;
     }
 
-    void Jump() {
-		rb.AddForce(Vector2.up * GAME.jump_force);
-        currjumps--;
+    public void Move(float horizontalInput) {
+        //if (isJumping) return;
+
+        Vector2 myVel = rb.velocity;
+        myVel.x = horizontalInput * GAME.player_velocity;
+        rb.velocity = myVel;
     }
 
-	void Dash(){
+	public void Dash(){
 		if (currdash > 0) {
 			rb.AddForce (new Vector2 (dir * GAME.dash_force, 0), ForceMode2D.Impulse);
 			currdash--;
 		}
-
 	}
 
 	void stopDash(){

@@ -24,8 +24,6 @@ public class EventHandler : MonoBehaviour {
 			if (Move != null) {
 				Move(Input.GetAxisRaw("Horizontal"));
 			}
-
-			if 
 		}
 
 	}
