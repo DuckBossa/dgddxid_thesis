@@ -34,7 +34,18 @@ public class PlayerMovement : MonoBehaviour {
         groundCheck = GameObject.Find(this.name + "/GroundCheck").transform;
     }
 
-	void Update(){
+    void OnEnable() {
+        EventHandler.Move += Move;
+        EventHandler.Jump += Jump;
+       // EventHandler.Dash += Dash;
+    }
+
+    void OnDisable() {
+        EventHandler.Move -= Move;
+        EventHandler.Jump -= Jump;
+        // EventHandler.Dash -= Dash;
+    }
+    void Update(){
 		if (currdash < GAME.dashes) {
 			dashTimer += Time.deltaTime;
 		}
@@ -44,20 +55,10 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-
     void FixedUpdate() {
-        //move
-        dir = Input.GetAxisRaw("Horizontal");
-        Move(dir);
-
         //jump (spacebar now)
         isJumping = !(Physics2D.Linecast(trans.position, groundCheck.position, playerMask));
         if(!isJumping) currjumps = GAME.jumps;
-        if (Input.GetButtonDown("Jump") && currjumps > 0)
-        {
-            Jump();
-            currjumps--;
-        }
 
         //fall
         if (rb.velocity.y < 0)
@@ -70,16 +71,15 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         //dash
+        /*
         if (Input.GetKeyDown(KeyCode.Z) && !isDashing)
         {
             isDashing = true;
             Dash();
-        }
-
-        isDashing = Input.GetKeyDown(KeyCode.Z);
+        }*/
         isWalking = Mathf.Abs(dir) > 0;
 
-		anim.SetFloat("Direction", dir);
+        anim.SetFloat("Direction", dir);
 		anim.SetBool("isWalking", isWalking);
 		anim.SetBool("isJumping", isJumping);
 		anim.SetBool("isDashing", isDashing);
@@ -92,7 +92,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Move(float horizontalInput) {
         //if (isJumping) return;
-
+        dir = horizontalInput;
+        isWalking = Mathf.Abs(dir) > 0;
         Vector2 myVel = rb.velocity;
         myVel.x = horizontalInput * GAME.player_velocity;
         rb.velocity = myVel;

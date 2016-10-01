@@ -13,7 +13,7 @@ namespace GLOBAL{
         public const float dash_cooldown = 2f;
         public const float jump_force = 250f;
         public const float jump_anim_loop = 1.05f;
-
+        public const float acid_dot_timer = 2f;
         public const float jump_velocity = 5;
     }
 

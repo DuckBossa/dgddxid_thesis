@@ -783,6 +783,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 463637469}
   - 212: {fileID: 463637470}
+  - 95: {fileID: 463637471}
   m_Layer: 0
   m_Name: acidback
   m_TagString: Untagged
@@ -797,7 +798,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 463637468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9.8, z: 0}
+  m_LocalPosition: {x: 0, y: -6.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -836,6 +837,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &463637471
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 463637468}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30bdaf46c65b0534db74956274917286, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &468014880 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010305930488, guid: e265780281c908b469e82b47e4e3d36d,
@@ -1247,6 +1265,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 675768904}
+  - 114: {fileID: 675768905}
   m_Layer: 8
   m_Name: Managers
   m_TagString: Untagged
@@ -1267,6 +1286,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &675768905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675768903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62385b43c2964531b9f91b3705d36a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDev: 1
 --- !u!1001 &681376989
 Prefab:
   m_ObjectHideFlags: 0
@@ -3443,6 +3474,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2095711937}
   - 212: {fileID: 2095711938}
+  - 95: {fileID: 2095711939}
   m_Layer: 0
   m_Name: acidfront
   m_TagString: Untagged
@@ -3457,7 +3489,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2095711936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9.8, z: 0}
+  m_LocalPosition: {x: 0, y: -6.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -3496,3 +3528,20 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &2095711939
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095711936}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96aee1220df782948a20bcbb0c33c3ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1

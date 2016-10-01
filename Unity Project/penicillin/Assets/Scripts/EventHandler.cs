@@ -24,7 +24,23 @@ public class EventHandler : MonoBehaviour {
 			if (Move != null) {
 				Move(Input.GetAxisRaw("Horizontal"));
 			}
-		}
+            if (Jump != null) {
+                if (Input.GetKeyDown(KeyCode.Space)) {
+                    Jump();
+                }
+            }
+            if (UseItem != null) {
+                
+            }
+            /*
+            if (Dash != null) {
+                if (Input.GetKeyDown(KeyCode.Z)){
+                    Dash();
+                }
+            }
+            */
 
-	}
+        }
+
+    }
 }
