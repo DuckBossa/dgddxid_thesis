@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour {
     public LayerMask playerMask;
     float hInput = 0;
 
+
+
     void Start(){
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();

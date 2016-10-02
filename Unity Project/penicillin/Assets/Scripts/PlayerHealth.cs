@@ -9,9 +9,8 @@ public class PlayerHealth : MonoBehaviour {
     public int currHealth;
     public bool isInvulnerable;
     float currTime;
-    
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         currHealth = GAME.max_health;
         isInvulnerable = false;
     }
@@ -30,6 +29,7 @@ public class PlayerHealth : MonoBehaviour {
             currHealth--;
             if (currHealth <= 0) {
                 Debug.Log("Call the you lose event");
+                //Application.LoadLevel("End");
             }
             isInvulnerable = true;
         }
