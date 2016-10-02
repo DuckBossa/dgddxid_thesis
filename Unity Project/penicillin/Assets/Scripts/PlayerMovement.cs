@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GLOBAL;
+
 public class PlayerMovement : MonoBehaviour {
   
     float dir;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     Transform trans, groundCheck;
     public LayerMask playerMask;
     float hInput = 0;
+
     void Start(){
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -35,17 +37,6 @@ public class PlayerMovement : MonoBehaviour {
         groundCheck = GameObject.Find(this.name + "/GroundCheck").transform;
     }
 
-    void OnEnable() {
-        EventHandler.Move += Move;
-        EventHandler.Jump += Jump;
-       // EventHandler.Dash += Dash;
-    }
-
-    void OnDisable() {
-        EventHandler.Move -= Move;
-        EventHandler.Jump -= Jump;
-        // EventHandler.Dash -= Dash;
-    }
     void Update(){
 		if (currdash < GAME.dashes) {
 			dashTimer += Time.deltaTime;
@@ -57,29 +48,16 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
     void FixedUpdate() {
+        //move
+        Move(hInput);
+
         //jump (spacebar now)
         isJumping = !(Physics2D.Linecast(trans.position, groundCheck.position, playerMask));
         if(!isJumping) currjumps = GAME.jumps;
 
         //fall
-        if (rb.velocity.y < 0)
-        {
-            isFalling = true;
-        }
-        else
-        {
-            isFalling = false;
-        }
-
-        //dash
-        /*
-        if (Input.GetKeyDown(KeyCode.Z) && !isDashing)
-        {
-            isDashing = true;
-            Dash();
-        }*/
+        isFalling = rb.velocity.y < 0 ? true : false;
         isWalking = Mathf.Abs(dir) > 0;
-
         anim.SetFloat("Direction", dir);
 		anim.SetBool("isWalking", isWalking);
 		anim.SetBool("isJumping", isJumping);
@@ -100,14 +78,24 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity = myVel;
     }
 
+    public void MoveStart(float horizontalInput)
+    {
+        hInput = horizontalInput;
+    }
+
 	public void Dash(){
 		if (currdash > 0) {
 			rb.AddForce (new Vector2 (dir * GAME.dash_force, 0), ForceMode2D.Impulse);
 			currdash--;
 		}
+        
 	}
 
 	void stopDash(){
 		isDashing = true;
 	}
+
+    public void Attack() {
+        
+    }
 }
