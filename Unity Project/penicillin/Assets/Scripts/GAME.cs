@@ -12,7 +12,7 @@ namespace GLOBAL{
         public const int tile_size = 64;
 
         public const float invulnerable_timer = 2f;
-        public const float player_velocity = 4f;
+        public const float player_velocity = 3f;
 		public const float dash_force = 250f;
         public const float dash_timer = 0.5f;
         public const float dash_cooldown = 2f;
