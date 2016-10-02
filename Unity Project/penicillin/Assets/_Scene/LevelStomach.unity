@@ -784,7 +784,7 @@ GameObject:
   - 4: {fileID: 463637469}
   - 212: {fileID: 463637470}
   - 95: {fileID: 463637471}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: acidback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1480,6 +1480,7 @@ GameObject:
   - 114: {fileID: 702421053}
   - 61: {fileID: 702421055}
   - 50: {fileID: 702421054}
+  - 114: {fileID: 702421056}
   m_Layer: 8
   m_Name: Penny
   m_TagString: Untagged
@@ -1598,6 +1599,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.23, y: 0.59}
+--- !u!114 &702421056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 702421049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea95cc8942b82342b0dbd26aa99ae2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currHealth: 0
+  isInvulnerable: 0
 --- !u!1 &717247553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3903,7 +3917,9 @@ GameObject:
   - 4: {fileID: 2095711937}
   - 212: {fileID: 2095711938}
   - 95: {fileID: 2095711939}
-  m_Layer: 0
+  - 61: {fileID: 2095711940}
+  - 114: {fileID: 2095711941}
+  m_Layer: 11
   m_Name: acidfront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3973,6 +3989,32 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!61 &2095711940
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095711936}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -0.41}
+  serializedVersion: 2
+  m_Size: {x: 28.8, y: 4.81}
+--- !u!114 &2095711941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095711936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44945a396451bfa49a19dcf485213907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ph: {fileID: 702421056}
 --- !u!1 &2111295449
 GameObject:
   m_ObjectHideFlags: 0
