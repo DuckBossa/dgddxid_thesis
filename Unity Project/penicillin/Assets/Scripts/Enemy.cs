@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour {
             myTrans.eulerAngles = currRot;
         }
         if (!isAggro) {
+            myAnim.SetBool("withinRange", false);
             Vector2 myVel = myBody.velocity;
             myVel.x = -myTrans.right.x * speed;
             myBody.velocity = myVel;
