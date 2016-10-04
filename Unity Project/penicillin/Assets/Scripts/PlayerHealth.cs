@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour {
     public Slider healthSlider;
 
     float currTime;
+<<<<<<< HEAD
     Animator anim;
     PlayerMovement playerMovement;
 
@@ -24,6 +25,11 @@ public class PlayerHealth : MonoBehaviour {
     void Start() {
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
+=======
+    // Use this for initialization
+    void Start () {
+        currTime = 0;
+>>>>>>> origin/master
         currHealth = GAME.max_health;
         isInvulnerable = false;
         healthSlider.value = currHealth;
@@ -33,6 +39,7 @@ public class PlayerHealth : MonoBehaviour {
         if (isInvulnerable) {
             currTime += Time.deltaTime;
             if (currTime > GAME.invulnerable_timer) {
+                currTime = 0;
                 isInvulnerable = false;
             }
         }
