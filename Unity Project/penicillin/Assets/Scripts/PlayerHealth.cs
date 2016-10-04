@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour {
     float currTime;
     // Use this for initialization
     void Start () {
+        currTime = 0;
         currHealth = GAME.max_health;
         isInvulnerable = false;
     }
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour {
         if (isInvulnerable) {
             currTime += Time.deltaTime;
             if (currTime > GAME.invulnerable_timer) {
+                currTime = 0;
                 isInvulnerable = false;
             }
         }
