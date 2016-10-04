@@ -3,48 +3,34 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
     public LayerMask enemyMask;
-    public float speed, timeBetweenAttacks;
-
-    SpriteRenderer psprite;
-    Animator myAnim;
-    GameObject player;
-    PlayerHealth playerHealth;
+    public float speed;
     Rigidbody2D myBody;
     Transform myTrans, penny;
-    bool withinRange, isAggro;
-    float atkRange, aggressionDistance, myWidth, myHeight, timer;
+    float myWidth, myHeight;
+    public float aggressionDistance;
+    public bool isAggro;
+    bool withinRange;
+    public float atkRange;
+    SpriteRenderer psprite;
+    Animator myAnim;
 
 
     void Start() {
-        //player-related
-        player = GameObject.Find("Penny");
-        playerHealth = player.GetComponent<PlayerHealth>();
-        penny = player.transform;
-        psprite = player.GetComponent<SpriteRenderer>();
-
-        //enemy-related
         myTrans = this.transform;
         myBody = this.GetComponent<Rigidbody2D>();
         SpriteRenderer mySprite = this.GetComponent<SpriteRenderer>();
         myWidth = mySprite.bounds.extents.x;
         myHeight = mySprite.bounds.extents.y;
-        myAnim = GetComponent<Animator>();
-        timeBetweenAttacks = 0.5f;
+
+        GameObject p = GameObject.Find("Penny");
+        penny = p.transform;
+        psprite = p.GetComponent<SpriteRenderer>();
         aggressionDistance = 2f;
         atkRange = .25f;
         speed = .5f;
         isAggro = false;
         withinRange = false;
-    }
-
-    void Update() {
-        timer += Time.deltaTime;
-        /*
-        // check if player is dead, set trigger to animate death
-        if (playerHealth.currHealth <= 0) {
-            
-        }
-        */
+        myAnim = GetComponent<Animator>();
     }
 
     void FixedUpdate() {
@@ -56,7 +42,7 @@ public class Enemy : MonoBehaviour {
             currRot.y += 180;
             myTrans.eulerAngles = currRot;
         }
-        if (!isAggro) { //patrolling
+        if (!isAggro) {
             myAnim.SetBool("withinRange", false);
             Vector2 myVel = myBody.velocity;
             myVel.x = -myTrans.right.x * speed;
@@ -70,7 +56,7 @@ public class Enemy : MonoBehaviour {
         else {
             float dist = Mathf.Abs(penny.position.x - myTrans.position.x); //distance between penny and enemy
             withinRange = dist < atkRange ? true : false; //am I gonna play the attack animation or not?
-            myAnim.SetBool("withinRange", withinRange); //inform the animator to play the attack animation
+            myAnim.SetBool("withinRange", withinRange); //let the animator know that it's attack time
             if (dist > aggressionDistance || Mathf.Abs(myTrans.position.y - penny.position.y) > 0.4f) {
                 isAggro = false; 
                 myAnim.SetBool("isAggro", isAggro); //to change animation, go back to idle/roam
@@ -107,7 +93,7 @@ public class Enemy : MonoBehaviour {
 
             //penny left
             else {
-                if (!withinRange) { //chasing after penny (aggressive but not in range yet)
+                if (!withinRange) {
                     Vector2 myVel = myBody.velocity;
                     myVel.x = myTrans.right.x * speed * 2;
                     //if the bacteria is moving towards penny
@@ -115,21 +101,17 @@ public class Enemy : MonoBehaviour {
                         myVel.x *= -1;
                     }
                     else {
-                        //if the bacteris was facing away from penny when she entered aggresionDistance
                         Vector3 currRot = myTrans.eulerAngles;
                         currRot.y += 180;
                         myTrans.eulerAngles = currRot;
                     }
                     myBody.velocity = myVel;
                 }
-                else { //in attack range
-                    //stop moving and attack
+                else {
                     Vector2 myVel = myBody.velocity;
                     myVel.x = 0;
                     myBody.velocity = myVel;
 
-                    Attack();
-                    //rotate the sprite to the proper orientation
                     Vector3 currRot = myTrans.eulerAngles;
                     currRot.y += 180;
                     myTrans.eulerAngles = currRot;
@@ -140,10 +122,5 @@ public class Enemy : MonoBehaviour {
 
     Vector2 toVector2(Vector3 vec3) {
         return new Vector2(vec3.x, vec3.y);
-    }
-
-    void Attack() {
-        timer = 0f;
-        if (playerHealth.currHealth > 0 && timer > timeBetweenAttacks) playerHealth.TakeDamage();
     }
 }
