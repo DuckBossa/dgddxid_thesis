@@ -22,11 +22,13 @@ public class PlayerHealth : MonoBehaviour {
     bool damaged;
 
     void Start() {
+        currTime = 0;
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         currHealth = GAME.max_health;
         isInvulnerable = false;
         healthSlider.value = currHealth;
+        currTime = 0;
     }
 
     void Update() {
@@ -50,6 +52,7 @@ public class PlayerHealth : MonoBehaviour {
         damaged = true;
         if (!isInvulnerable) {
             currHealth--;
+            currTime = 0;
             healthSlider.value = currHealth;
             if (currHealth <= 0) {
                 Death();
