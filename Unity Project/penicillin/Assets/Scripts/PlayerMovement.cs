@@ -12,9 +12,9 @@ public class PlayerMovement : MonoBehaviour {
     int currjumps, currdash;
     bool isWalking, isAttacking, isDashing, isFalling, faceRight;
     Transform trans, groundCheck;
-    float dir, dashCDTimer, dashTimer;
+    float dir, dashCDTimer, dashTimer, attackTimer;
     float hInput = 0;
-    float timer, attackAnimationLength;
+    float timer;
 
 
     void Start(){
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 		dir = 0;
 		dashCDTimer = 0;
         dashTimer = 0;
+        
 		isWalking = false;
         isAttacking = false;
         isDashing = false;
@@ -38,7 +39,6 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update(){
         timer += Time.deltaTime;
-        //if (isAttacking && attackAnimationLength > Time.deltaTime) isAttacking = false;
 		if (currdash < GAME.dashes) {
 			dashCDTimer += Time.deltaTime;
 		}
@@ -52,9 +52,9 @@ public class PlayerMovement : MonoBehaviour {
             if(dashTimer > GAME.dash_timer) {
                 stopDash();
                 dashTimer = 0;
-                Debug.Log("Reset");
             }
         }
+
     }
 
     void FixedUpdate() {
@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour {
 		anim.SetBool("isJumping", isJumping);
 		anim.SetBool("isDashing", isDashing);
 		anim.SetBool("isFalling", isFalling);
+        anim.SetBool("isAttacking", isAttacking);
     }
 
     public void Jump() {
@@ -85,7 +86,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Move(float horizontalInput) {
         //if (isJumping) return;
-        if (!isDashing) {
+        if (!isDashing && !isAttacking) {
             dir = horizontalInput;
             isWalking = Mathf.Abs(dir) > 0;
             Vector2 myVel = rb.velocity;
@@ -102,7 +103,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
 	public void Dash(){
-        if (!isDashing) {
+        if (!isDashing && !isAttacking) {
             if (currdash > 0) {
                 rb.AddForce(new Vector2((faceRight ? 1 : -1) * GAME.dash_force, 0), ForceMode2D.Impulse);
                 currdash--;
@@ -112,6 +113,10 @@ public class PlayerMovement : MonoBehaviour {
 	
 	}
 
+    void endAttack() {
+        isAttacking = false;
+    }
+
 	void stopDash(){
 		isDashing = false;
         anim.SetBool("isDashing", isDashing);
@@ -119,15 +124,14 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
     public void Attack() {
-        if (timer > GAME.timeBetweenAttacks && !isDashing && !isFalling && !isJumping) {
-            //isAttacking = true;
-            //anim.SetBool("isAttacking", isAttacking);
+        if (!isDashing && !isFalling && !isJumping && !isAttacking) {
+            isAttacking = true;
             RaycastHit2D hit;
             if (faceRight) hit = Physics2D.Raycast(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange);
             else hit = Physics2D.Raycast(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
             if (hit.collider != null) {
                 timer = 0;
-                //Debug.Log(hit.collider.gameObject.name);
+                Debug.Log(hit.collider.gameObject.name);
                 hit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage();
             }
         }
