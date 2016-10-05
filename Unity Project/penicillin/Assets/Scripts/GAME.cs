@@ -8,7 +8,7 @@ namespace GLOBAL{
 
         public const int jumps = 1;
         public const int dashes = 3;
-        public const int max_health = 3;
+        public const int max_health = 10;
         public const int tile_size = 64;
 
         public const float invulnerable_timer = 2f;
