@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour {
         //fall
         isFalling = rb.velocity.y < 0 ? true : false;
         isWalking = Mathf.Abs(dir) > 0;
-        anim.SetFloat("Direction", dir);
+        anim.SetFloat("Direction", faceRight ? 1f : 0f);
 		anim.SetBool("isWalking", isWalking);
 		anim.SetBool("isJumping", isJumping);
 		anim.SetBool("isDashing", isDashing);
