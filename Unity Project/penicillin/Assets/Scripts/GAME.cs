@@ -5,7 +5,7 @@ namespace GLOBAL{
     
     public class GAME : MonoBehaviour {
         public const float range = .5f;
-        public const float timeBetweenAttacks = 1f;
+        public const float timeBetweenAttacks = .75f;
         public const int max_health = 3;
 
         public const float invulnerable_timer = 2f;
