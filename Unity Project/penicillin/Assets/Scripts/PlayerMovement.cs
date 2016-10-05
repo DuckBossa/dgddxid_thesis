@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     Animator anim;
     Rigidbody2D rb;
     int currjumps, currdash;
-    bool isWalking, isAttacking, isDashing, isFalling;
+    bool isWalking, isAttacking, isDashing, isFalling, faceRight;
     public bool isJumping, canAttack;
 
     Transform trans, groundCheck;
@@ -79,6 +79,8 @@ public class PlayerMovement : MonoBehaviour {
         isWalking = Mathf.Abs(dir) > 0;
         Vector2 myVel = rb.velocity;
         myVel.x = horizontalInput * GAME.player_velocity;
+        if (myVel.x > 0 || myVel.x < 0) faceRight = myVel.x > 0;
+        Debug.Log(faceRight);
         rb.velocity = myVel;
     }
 
