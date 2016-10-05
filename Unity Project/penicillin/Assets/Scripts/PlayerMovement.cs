@@ -3,19 +3,19 @@ using System.Collections;
 using GLOBAL;
 
 public class PlayerMovement : MonoBehaviour {
-  
-    float dir, dashTimer;
+    public bool isJumping, canAttack;
+    public LayerMask playerMask;
+    public Enemy enemy;
+
     Animator anim;
     Rigidbody2D rb;
     int currjumps, currdash;
     bool isWalking, isAttacking, isDashing, isFalling, faceRight;
-    public bool isJumping, canAttack;
-
     Transform trans, groundCheck;
-    public LayerMask playerMask;
+    float dir, dashCDTimer, dashTimer;
     float hInput = 0;
     float timer, attackAnimationLength;
-    public Enemy enemy;
+
 
     void Start(){
         anim = GetComponent<Animator>();
@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour {
         currjumps = GAME.jumps;
 		currdash = GAME.dashes;
 		dir = 0;
-		dashTimer = 0;
+		dashCDTimer = 0;
+        dashTimer = 0;
 		isWalking = false;
         isAttacking = false;
         isDashing = false;
@@ -39,28 +40,38 @@ public class PlayerMovement : MonoBehaviour {
         timer += Time.deltaTime;
         //if (isAttacking && attackAnimationLength > Time.deltaTime) isAttacking = false;
 		if (currdash < GAME.dashes) {
-			dashTimer += Time.deltaTime;
+			dashCDTimer += Time.deltaTime;
 		}
-		if (dashTimer > GAME.dash_cooldown && currdash < GAME.dashes) {
-			dashTimer = 0;
+		if (dashCDTimer > GAME.dash_cooldown && currdash < GAME.dashes) {
+			dashCDTimer = 0;
 			currdash++; 
 		}
-	}
+
+        if (isDashing) {
+            dashTimer += Time.deltaTime;
+            if(dashTimer > GAME.dash_timer) {
+                stopDash();
+                dashTimer = 0;
+                Debug.Log("Reset");
+            }
+        }
+    }
 
     void FixedUpdate() {
         //attack
-        if (canAttack) Attack();
+        if (canAttack && !isDashing) Attack();
 
         //move
         Move(hInput);
 
-        //jump (spacebar now)
+        //jump
         isJumping = !(Physics2D.Linecast(trans.position, groundCheck.position, playerMask));
         if(!isJumping) currjumps = GAME.jumps;
 
+
         //fall
         isFalling = rb.velocity.y < 0 ? true : false;
-        isWalking = Mathf.Abs(dir) > 0;
+        isWalking = Mathf.Abs(dir) > 0 && !isDashing;
         anim.SetFloat("Direction", faceRight ? 1f : 0f);
 		anim.SetBool("isWalking", isWalking);
 		anim.SetBool("isJumping", isJumping);
@@ -74,12 +85,15 @@ public class PlayerMovement : MonoBehaviour {
 
     void Move(float horizontalInput) {
         //if (isJumping) return;
-        dir = horizontalInput;
-        isWalking = Mathf.Abs(dir) > 0;
-        Vector2 myVel = rb.velocity;
-        myVel.x = horizontalInput * GAME.player_velocity;
-        if (myVel.x > 0 || myVel.x < 0) faceRight = myVel.x > 0;
-        rb.velocity = myVel;
+        if (!isDashing) {
+            dir = horizontalInput;
+            isWalking = Mathf.Abs(dir) > 0;
+            Vector2 myVel = rb.velocity;
+            myVel.x = horizontalInput * GAME.player_velocity;
+            if (myVel.x > 0 || myVel.x < 0) faceRight = myVel.x > 0;
+            rb.velocity = myVel;
+        }
+
     }
 
     public void MoveStart(float horizontalInput)
@@ -88,18 +102,24 @@ public class PlayerMovement : MonoBehaviour {
     }
 
 	public void Dash(){
-		if (currdash > 0) {
-			rb.AddForce (new Vector2 (dir * GAME.dash_force, 0), ForceMode2D.Impulse);
-			currdash--;
-		}
+        if (!isDashing) {
+            if (currdash > 0) {
+                rb.AddForce(new Vector2((faceRight ? 1 : -1) * GAME.dash_force, 0), ForceMode2D.Impulse);
+                currdash--;
+                isDashing = true;
+            }
+        }
+	
 	}
 
 	void stopDash(){
-		isDashing = true;
+		isDashing = false;
+        anim.SetBool("isDashing", isDashing);
+        rb.velocity = new Vector2(0, rb.velocity.y);
 	}
 
     public void Attack() {
-        if (timer > GAME.timeBetweenAttacks) {
+        if (timer > GAME.timeBetweenAttacks && !isDashing && !isFalling && !isJumping) {
             //isAttacking = true;
             //anim.SetBool("isAttacking", isAttacking);
             RaycastHit2D hit;
