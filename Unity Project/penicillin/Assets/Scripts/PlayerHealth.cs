@@ -35,6 +35,7 @@ public class PlayerHealth : MonoBehaviour {
         if (isInvulnerable) {
             currTime += Time.deltaTime;
             if (currTime > GAME.invulnerable_timer) {
+                Debug.Log("Not invul anymore");
                 isInvulnerable = false;
             }
         }
@@ -57,6 +58,7 @@ public class PlayerHealth : MonoBehaviour {
             if (currHealth <= 0) {
                 Death();
             }
+            Debug.Log("I'm invulnerable");
             isInvulnerable = true;
         }
     }
