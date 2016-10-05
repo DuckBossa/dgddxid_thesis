@@ -4,21 +4,18 @@ using GLOBAL;
 
 public class PlayerMovement : MonoBehaviour {
   
-    float dir;
-	float dashTimer;
+    float dir, dashTimer;
     Animator anim;
     Rigidbody2D rb;
-    int currjumps;
-    int currdash;
-    bool isWalking;
-    bool isAttacking;
-    bool isDashing;
-    public bool isJumping;
-    bool isFalling;
+    int currjumps, currdash;
+    bool isWalking, isAttacking, isDashing, isFalling;
+    public bool isJumping, canAttack;
 
     Transform trans, groundCheck;
     public LayerMask playerMask;
     float hInput = 0;
+    float timer;
+    public Enemy enemy;
 
 
 
@@ -34,12 +31,14 @@ public class PlayerMovement : MonoBehaviour {
         isDashing = false;
         isJumping = false;
         isDashing = false;
+        canAttack = false;
 
         trans = this.transform;
         groundCheck = GameObject.Find(this.name + "/GroundCheck").transform;
     }
 
     void Update(){
+        timer += Time.deltaTime;
 		if (currdash < GAME.dashes) {
 			dashTimer += Time.deltaTime;
 		}
@@ -50,6 +49,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
     void FixedUpdate() {
+        //attack
+        if (canAttack) Attack();
+
         //move
         Move(hInput);
 
@@ -90,7 +92,6 @@ public class PlayerMovement : MonoBehaviour {
 			rb.AddForce (new Vector2 (dir * GAME.dash_force, 0), ForceMode2D.Impulse);
 			currdash--;
 		}
-        
 	}
 
 	void stopDash(){
@@ -98,6 +99,16 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
     public void Attack() {
-        
+        //anim.SetTrigger for attack animation
+        //enemyHealth = ??? get the enemy in front of you?? don't know how yet
+        if (timer > GAME.timeBetweenAttacks) {
+            Debug.Log("I'm attacking");
+            timer = 0;
+            enemy.GetComponent<EnemyHealth>().TakeDamage();
+        }
+    }
+
+    public void SetAttack(bool a) {
+        canAttack = a;
     }
 }
