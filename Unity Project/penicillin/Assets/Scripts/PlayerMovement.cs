@@ -14,10 +14,8 @@ public class PlayerMovement : MonoBehaviour {
     Transform trans, groundCheck;
     public LayerMask playerMask;
     float hInput = 0;
-    float timer;
+    float timer, attackAnimationLength;
     public Enemy enemy;
-
-
 
     void Start(){
         anim = GetComponent<Animator>();
@@ -39,6 +37,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update(){
         timer += Time.deltaTime;
+        //if (isAttacking && attackAnimationLength > Time.deltaTime) isAttacking = false;
 		if (currdash < GAME.dashes) {
 			dashTimer += Time.deltaTime;
 		}
@@ -80,7 +79,6 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 myVel = rb.velocity;
         myVel.x = horizontalInput * GAME.player_velocity;
         if (myVel.x > 0 || myVel.x < 0) faceRight = myVel.x > 0;
-        Debug.Log(faceRight);
         rb.velocity = myVel;
     }
 
@@ -101,12 +99,17 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
     public void Attack() {
-        //anim.SetTrigger for attack animation
-        //enemyHealth = ??? get the enemy in front of you?? don't know how yet
         if (timer > GAME.timeBetweenAttacks) {
-            Debug.Log("I'm attacking");
-            timer = 0;
-            enemy.GetComponent<EnemyHealth>().TakeDamage();
+            //isAttacking = true;
+            //anim.SetBool("isAttacking", isAttacking);
+            RaycastHit2D hit;
+            if (faceRight) hit = Physics2D.Raycast(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange);
+            else hit = Physics2D.Raycast(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
+            if (hit.collider != null) {
+                timer = 0;
+                //Debug.Log(hit.collider.gameObject.name);
+                hit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage();
+            }
         }
     }
 
