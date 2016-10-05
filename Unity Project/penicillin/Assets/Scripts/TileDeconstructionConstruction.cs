@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class TileDeconstructionConstruction : MonoBehaviour {
-
-    public int numTileToGenerate = 5;
-    public List<GameObject> tiles = new List<GameObject>();
-    public List<GameObject> spawn_points = new List<GameObject>();
-    public GameObject parent_dynamic_tile;
-	// Use this for initialization
+	public List<GameObject> sets = new List<GameObject>();
 	void Start () {
-	
+		reconstruct ();
 	}
 
     public void reconstruct() {
+		foreach (GameObject set in sets) {
+			set.SetActive (false);
+		}
+		int rnglul = Random.Range (0, sets.Count);
+		sets [rnglul].SetActive (true);
 
-            
-    }
+	}
 }
