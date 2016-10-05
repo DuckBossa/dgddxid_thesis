@@ -8,10 +8,11 @@ public class Enemy : MonoBehaviour {
     Animator myAnim;
     GameObject player;
     PlayerHealth playerHealth;
-    Rigidbody2D myBody;
+    Rigidbody2D myBody, playerBody;
     Transform myTrans, penny;
     bool withinRange, isAggro;
     float atkRange, aggressionDistance, myWidth, myHeight, timer, speed, timeBetweenAttacks;
+    EnemyHealth enemyHealth;
 
 
     void Start() {
@@ -20,8 +21,10 @@ public class Enemy : MonoBehaviour {
         playerHealth = player.GetComponent<PlayerHealth>();
         penny = player.transform;
         psprite = player.GetComponent<SpriteRenderer>();
+        playerBody = player.GetComponent<Rigidbody2D>();
 
         //enemy-related
+        enemyHealth = GetComponent<EnemyHealth>();
         myTrans = this.transform;
         myBody = this.GetComponent<Rigidbody2D>();
         SpriteRenderer mySprite = this.GetComponent<SpriteRenderer>();
@@ -128,7 +131,7 @@ public class Enemy : MonoBehaviour {
                     Vector2 myVel = myBody.velocity;
                     myVel.x = 0.0f;
                     myBody.velocity = myVel;
-                    if(timer > timeBetweenAttacks) Attack();
+                    if(timer > timeBetweenAttacks && enemyHealth.currHealth > 0) Attack();
                     //rotate the sprite to the proper orientation
                     Vector3 currRot = myTrans.eulerAngles;
                     currRot.y += 180;
@@ -145,6 +148,9 @@ public class Enemy : MonoBehaviour {
     void Attack() {
         timer = 0f;
         if (playerHealth.currHealth > 0 ) {
+            //knockback
+            //playerBody.AddForce(Vector2.up * 50f);
+            //playerBody.AddForce(Vector2.right * 1000f);
             playerHealth.TakeDamage();
         }
     }
