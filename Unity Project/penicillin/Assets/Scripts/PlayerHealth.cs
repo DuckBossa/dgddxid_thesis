@@ -8,9 +8,9 @@ using GLOBAL;
 public class PlayerHealth : MonoBehaviour {
 
     public int currHealth;
-    public bool isInvulnerable;
+    public static bool isInvulnerable;
     public float flashSpeed = 5f;
-    public Image damageImage;
+    public Image damageImage, fill;
     public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
     public Slider healthSlider;
 
@@ -20,22 +20,27 @@ public class PlayerHealth : MonoBehaviour {
 
     bool isDead;
     bool damaged;
+    Color deadColor, aliveColor;
+
 
     void Start() {
         currTime = 0;
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         currHealth = GAME.max_health;
+        healthSlider.maxValue = GAME.max_health;
         isInvulnerable = false;
         healthSlider.value = currHealth;
         currTime = 0;
+        deadColor = new Color(1f, 0f, 0f, 1f);
+        aliveColor = new Color(0f, 1f, 0f, 1f);
+        fill.color = aliveColor;
     }
 
     void Update() {
         if (isInvulnerable) {
             currTime += Time.deltaTime;
             if (currTime > GAME.invulnerable_timer) {
-                Debug.Log("Not invul anymore");
                 isInvulnerable = false;
             }
         }
@@ -50,15 +55,15 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     public void TakeDamage() {
-        damaged = true;
         if (!isInvulnerable) {
+            damaged = true;
+            fill.color = Color.Lerp(deadColor, aliveColor, currHealth/GAME.max_health);
             currHealth--;
             currTime = 0;
             healthSlider.value = currHealth;
             if (currHealth <= 0) {
                 Death();
             }
-            Debug.Log("I'm invulnerable");
             isInvulnerable = true;
         }
     }

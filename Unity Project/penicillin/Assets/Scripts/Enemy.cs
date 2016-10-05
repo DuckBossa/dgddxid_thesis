@@ -143,7 +143,6 @@ public class Enemy : MonoBehaviour {
     }
 
     void Attack() {
-        Debug.Log("enemy attack");
         timer = 0f;
         if (playerHealth.currHealth > 0 ) {
             playerHealth.TakeDamage();
