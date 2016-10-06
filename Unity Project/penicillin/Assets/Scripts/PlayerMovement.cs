@@ -125,6 +125,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Attack() {
         if (!isDashing && !isFalling && !isJumping && !isAttacking) {
+			rb.velocity = new Vector2 (0, rb.velocity.y);
             isAttacking = true;
             RaycastHit2D hit;
             if (faceRight) hit = Physics2D.Raycast(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange);

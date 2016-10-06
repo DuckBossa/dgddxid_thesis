@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: 1f5abc2c79b9fda4f93375eb97afad67
-timeCreated: 1475512190
+timeCreated: 1475737726
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: 1
+    21300002: 2
+    21300004: 3
+    21300006: 4
+    21300008: 5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +43,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +56,72 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 2
+        width: 60
+        height: 62
+      alignment: 9
+      pivot: {x: 0.59306186, y: 0.45012376}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 2
+        width: 51
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5295099, y: 0.4867981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 3
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 2
+        width: 70
+        height: 62
+      alignment: 9
+      pivot: {x: 0.6773747, y: 0.4471929}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 2
+        width: 83
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5906626, y: 0.529861}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 5
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 2
+        width: 80
+        height: 62
+      alignment: 9
+      pivot: {x: 0.2131096, y: 0.529861}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
