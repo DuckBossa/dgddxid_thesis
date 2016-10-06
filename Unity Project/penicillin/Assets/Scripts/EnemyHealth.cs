@@ -11,19 +11,24 @@ public class EnemyHealth : MonoBehaviour {
 
     Animator anim;
     bool isDead;
+    float stunDuration;
     BoxCollider2D collider;
+    Enemy enemy;
 
 	void Start () {
         collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
         player = GameObject.Find("Penny");
+        stunDuration = .5f;
+        enemy = GetComponent<Enemy>();
     }
 
     public void TakeDamage() {
         if (isDead) return;
         currHealth --;
         if (currHealth <= 0) Death();
+        enemy.isStunned = true;
     }
 
     void Death() {

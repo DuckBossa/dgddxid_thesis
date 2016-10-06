@@ -9,7 +9,7 @@ namespace GLOBAL{
 
         public const float invulnerable_timer = 2f;
         public const float player_velocity = 3f;
-        public const float player_atkRange = .5f;
+        public const float player_atkRange = .25f;
 
         public const int dashes = 3;
         public const float dash_force = 10f;

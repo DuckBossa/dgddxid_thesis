@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
     public LayerMask enemyMask;
+    public bool isStunned;
 
     SpriteRenderer psprite;
     Animator myAnim;
@@ -11,7 +12,7 @@ public class Enemy : MonoBehaviour {
     Rigidbody2D myBody, playerBody;
     Transform myTrans, penny;
     bool withinRange, isAggro;
-    float atkRange, aggressionDistance, myWidth, myHeight, timer, speed, timeBetweenAttacks;
+    float atkRange, aggressionDistance, myWidth, myHeight, timer, speed, timeBetweenAttacks, stunDuration, stunTimer;
     EnemyHealth enemyHealth;
 
 
@@ -37,16 +38,24 @@ public class Enemy : MonoBehaviour {
         speed = .5f;
         isAggro = false;
         withinRange = false;
+        stunDuration = .5f;
+        isStunned = false;
     }
 
     void Update() {
         timer += Time.deltaTime;
+        if (isStunned) stunTimer += Time.deltaTime;
+        if (stunTimer > stunDuration) isStunned = false;
         /*
         // check if player is dead, set trigger to animate death
         if (playerHealth.currHealth <= 0) {
             
         }
         */
+    }
+
+    public void Stun() {
+
     }
 
     void FixedUpdate() {
@@ -137,6 +146,12 @@ public class Enemy : MonoBehaviour {
                     currRot.y += 180;
                     myTrans.eulerAngles = currRot;
                 }
+            }
+
+            if(isStunned) {
+                Vector2 myVel = myBody.velocity;
+                myVel.x = 0f;
+                myBody.velocity = myVel;
             }
         }
     }

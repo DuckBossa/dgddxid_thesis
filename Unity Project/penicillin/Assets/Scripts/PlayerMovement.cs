@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     float hInput = 0;
     float timer;
     int weapon_switch;
+
     void Start(){
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
