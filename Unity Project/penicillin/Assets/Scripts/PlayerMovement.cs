@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     float dir, dashCDTimer, dashTimer, attackTimer;
     float hInput = 0;
     float timer;
+    public int researchPoints;
 
 
     void Start(){
@@ -86,6 +87,10 @@ public class PlayerMovement : MonoBehaviour {
         anim.SetBool("isAttacking", isAttacking);
     }
 
+    public void AddPoints(int amount) {
+        researchPoints += amount;
+    }
+
     public void Jump() {
         if(!isJumping) rb.velocity += GAME.jump_velocity * Vector2.up;
     }
@@ -139,7 +144,6 @@ public class PlayerMovement : MonoBehaviour {
             else hit = Physics2D.Raycast(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
             if (hit.collider != null) {
                 timer = 0;
-                Debug.Log(hit.collider.gameObject.name);
                 hit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage();
             }
         }

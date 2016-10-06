@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour {
     public int currHealth;
     public int researchPoints = 10;//temporary value
     public float sinkSpeed = 2.5f;
+    GameObject player;
 
     Animator anim;
     bool isDead;
@@ -16,7 +17,8 @@ public class EnemyHealth : MonoBehaviour {
         collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
-	}
+        player = GameObject.Find("Penny");
+    }
 
     public void TakeDamage() {
         if (isDead) return;
@@ -28,6 +30,7 @@ public class EnemyHealth : MonoBehaviour {
         isDead = true;
         anim.SetBool("isDead", true);
         Destroy(gameObject, .75f);
+        player.GetComponent<PlayerMovement>().AddPoints(researchPoints);
         GetComponent<Enemy>().enabled = false;
         // collider.isTrigger = true; //they don't collide so this isn't necessary
     }
