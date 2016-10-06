@@ -6,20 +6,21 @@ public class EnemyHealth : MonoBehaviour {
     public int maxHealth;
     public int currHealth;
     public int researchPoints = 10;//temporary value
-    public float sinkSpeed = 2.5f;
-    GameObject player;
 
+    GameObject player;
     Animator anim;
     bool isDead;
     float stunDuration;
     BoxCollider2D collider;
     Enemy enemy;
+    EnemyManager manager;
 
 	void Start () {
         collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
         player = GameObject.Find("Penny");
+        manager = GameObject.Find("SpawnControllers").GetComponent<EnemyManager>();
         stunDuration = .5f;
         enemy = GetComponent<Enemy>();
     }
@@ -34,6 +35,7 @@ public class EnemyHealth : MonoBehaviour {
     void Death() {
         isDead = true;
         anim.SetBool("isDead", true);
+        manager.currEnemies--;
         Destroy(gameObject, .75f);
         ScoreManager.researchPoints += researchPoints;
         GetComponent<Enemy>().enabled = false;

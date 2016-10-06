@@ -7,14 +7,13 @@ public class EnemyManager : MonoBehaviour {
     public float spawnTime = 3f;            // How long between each spawn.
     public float maxEnemies;                // Max number of enemies that can spawn in the map at a time.
     public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
-    float currEnemies;
+    public float currEnemies;
 
 
     void Start() {
         // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
         InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
-
 
     void Spawn() {
         /*
