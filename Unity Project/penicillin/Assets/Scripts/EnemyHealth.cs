@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour {
         isDead = true;
         anim.SetBool("isDead", true);
         Destroy(gameObject, .75f);
-        player.GetComponent<PlayerMovement>().AddPoints(researchPoints);
+        ScoreManager.researchPoints += researchPoints;
         GetComponent<Enemy>().enabled = false;
         // collider.isTrigger = true; //they don't collide so this isn't necessary
     }

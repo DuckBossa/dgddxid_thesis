@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour {
     float dir, dashCDTimer, dashTimer, attackTimer;
     float hInput = 0;
     float timer;
-    public int researchPoints;
 
 
     void Start(){
@@ -85,10 +84,6 @@ public class PlayerMovement : MonoBehaviour {
 		anim.SetBool("isDashing", isDashing);
 		anim.SetBool("isFalling", isFalling);
         anim.SetBool("isAttacking", isAttacking);
-    }
-
-    public void AddPoints(int amount) {
-        researchPoints += amount;
     }
 
     public void Jump() {
