@@ -29,8 +29,8 @@ public class PlayerHealth : MonoBehaviour {
         playerMovement = GetComponent<PlayerMovement>();
         currHealth = GAME.max_health;
         healthSlider.maxValue = GAME.max_health;
-        isInvulnerable = false;
         healthSlider.value = currHealth;
+        isInvulnerable = false;
         currTime = 0;
         deadColor = new Color(1f, 0f, 0f, 1f);
         aliveColor = new Color(0f, 1f, 0f, 1f);

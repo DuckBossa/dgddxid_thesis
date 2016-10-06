@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GLOBAL;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
     public bool isJumping, canAttack;
     public LayerMask playerMask;
     public Enemy enemy;
+    public Slider dashSlider;
 
     Animator anim;
     Rigidbody2D rb;
@@ -25,8 +27,11 @@ public class PlayerMovement : MonoBehaviour {
 		dir = 0;
 		dashCDTimer = 0;
         dashTimer = 0;
-        
-		isWalking = false;
+
+        dashSlider.maxValue = GAME.dashes;
+        dashSlider.value = GAME.dashes;
+
+        isWalking = false;
         isAttacking = false;
         isDashing = false;
         isJumping = false;
@@ -44,7 +49,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		if (dashCDTimer > GAME.dash_cooldown && currdash < GAME.dashes) {
 			dashCDTimer = 0;
-			currdash++; 
+			currdash++;
+            dashSlider.value = currdash;
 		}
 
         if (isDashing) {
@@ -107,6 +113,7 @@ public class PlayerMovement : MonoBehaviour {
             if (currdash > 0) {
                 rb.AddForce(new Vector2((faceRight ? 1 : -1) * GAME.dash_force, 0), ForceMode2D.Impulse);
                 currdash--;
+                dashSlider.value = currdash;
                 isDashing = true;
             }
         }
