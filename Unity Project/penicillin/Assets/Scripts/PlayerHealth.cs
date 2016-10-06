@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour {
     bool isDead;
     bool damaged;
     Color deadColor, aliveColor;
-
+    
 
     void Start() {
         currTime = 0;
@@ -54,8 +54,10 @@ public class PlayerHealth : MonoBehaviour {
         damaged = false;
     }
 
+
+
     public void TakeDamage() {
-        if (!isInvulnerable) {
+        if (!isInvulnerable && !playerMovement.amDashing()) {
             damaged = true;
             fill.color = Color.Lerp(deadColor, aliveColor, currHealth/GAME.max_health);
             currHealth--;

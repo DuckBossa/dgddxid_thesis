@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour {
     float hInput = 0;
     float timer;
 
-
     void Start(){
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -90,6 +89,10 @@ public class PlayerMovement : MonoBehaviour {
         if(!isJumping) rb.velocity += GAME.jump_velocity * Vector2.up;
     }
 
+    public bool amDashing() {
+        return isDashing;
+    }
+
     void Move(float horizontalInput) {
         //if (isJumping) return;
         if (!isDashing && !isAttacking) {
@@ -115,6 +118,7 @@ public class PlayerMovement : MonoBehaviour {
                 currdash--;
                 dashSlider.value = currdash;
                 isDashing = true;
+                
             }
         }
 	
