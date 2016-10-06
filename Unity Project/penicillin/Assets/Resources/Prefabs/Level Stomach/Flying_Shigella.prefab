@@ -56,6 +56,7 @@ GameObject:
   - 61: {fileID: 61000012780614380}
   - 114: {fileID: 114000010206765042}
   - 114: {fileID: 114000012290406632}
+  - 50: {fileID: 50000011149273610}
   m_Layer: 9
   m_Name: Flying_Shigella
   m_TagString: Untagged
@@ -83,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014221098054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2691894, y: -1.4734325, z: 0}
+  m_LocalPosition: {x: -11.415, y: 3.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -104,6 +105,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011729199064}
   m_RootOrder: 0
+--- !u!50 &50000011149273610
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014221098054}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58000010763703986
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -161,7 +179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1000011040828680, guid: a71db6619d0788d429c2353d7e4c6f9a, type: 2}
-  projectile_parent: {fileID: 0}
   fireposition: {fileID: 4000010872884536}
 --- !u!114 &114000012290406632
 MonoBehaviour:

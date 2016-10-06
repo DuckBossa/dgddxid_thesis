@@ -22,6 +22,5 @@ public class MoveDir : MonoBehaviour {
 	}
     public void setDir(Vector2 val) {
         dir = val;
-
     }
 }

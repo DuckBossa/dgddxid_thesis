@@ -4,9 +4,11 @@ using System.Collections;
 public class EnemyManager : MonoBehaviour {
     public PlayerHealth playerHealth;       // Reference to the player's heatlh.
     public GameObject enemy;                // The enemy prefab to be spawned.
+    public GameObject parents_enemy;
     public float spawnTime = 3f;            // How long between each spawn.
     public float maxEnemies;                // Max number of enemies that can spawn in the map at a time.
     public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
+ 
     public float currEnemies;
 
 
