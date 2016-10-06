@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour {
     public bool isJumping, canAttack;
     public LayerMask playerMask;
-    public Enemy enemy;
     public Slider dashSlider;
 
     Animator anim;
@@ -39,6 +38,7 @@ public class PlayerMovement : MonoBehaviour {
         isJumping = false;
         isDashing = false;
         canAttack = false;
+        faceRight = true;
 
         trans = this.transform;
         groundCheck = GameObject.Find(this.name + "/GroundCheck").transform;
