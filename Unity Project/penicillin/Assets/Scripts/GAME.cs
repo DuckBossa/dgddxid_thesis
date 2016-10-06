@@ -15,7 +15,7 @@ namespace GLOBAL{
         public const float dash_force = 10f;
         public const float dash_timer = 0.25f;
         public const float dash_cooldown = 2f;
-
+        
         public const int jumps = 1;
         public const float jump_force = 250f;
         public const float jump_velocity = 5;
@@ -42,6 +42,12 @@ namespace GLOBAL{
         public const string character_weapons_sword_6 = "penny_sword_slash_YELLOW";
         */
 
+
+        public const float FlyingShigella_aspd = 1f;
+        public const float FlyingShigella_mvspd = 1f;
+        public const float FlyingShigella_patrolDist = 2f;
+        public const float FlyingShigella_projlife = 4f;
+        public const float FlyingShigella_projspeed = 2f;
     }
 
 }

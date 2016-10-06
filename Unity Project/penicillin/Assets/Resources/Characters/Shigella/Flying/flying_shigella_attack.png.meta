@@ -1,9 +1,18 @@
 fileFormatVersion: 2
 guid: f935e50687ec7114a9fed0c651a50641
-timeCreated: 1475766310
+timeCreated: 1475774814
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: flying_shigella_attack_0
+    21300002: flying_shigella_attack_1
+    21300004: flying_shigella_attack_2
+    21300006: flying_shigella_attack_3
+    21300008: flying_shigella_attack_4
+    21300010: flying_shigella_attack_5
+    21300012: flying_shigella_attack_6
+    21300014: flying_shigella_attack_7
+    21300016: flying_shigella_attack_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +39,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +47,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +60,124 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: flying_shigella_attack_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 4
+        width: 94
+        height: 54
+      alignment: 9
+      pivot: {x: 0.49311578, y: 0.30826205}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_shigella_attack_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 4
+        width: 86
+        height: 48
+      alignment: 9
+      pivot: {x: 0.42475393, y: 0.3651843}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_shigella_attack_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2
+        width: 80
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_shigella_attack_3
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 2
+        width: 91
+        height: 54
+      alignment: 9
+      pivot: {x: 0.41466546, y: 0.39214745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_shigella_attack_4
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 3
+        width: 110
+        height: 57
+      alignment: 9
+      pivot: {x: 0.42940563, y: 0.39782372}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_shigella_attack_5
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 3
+        width: 117
+        height: 60
+      alignment: 9
+      pivot: {x: 0.40597457, y: 0.33822113}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_shigella_attack_6
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 3
+        width: 114
+        height: 58
+      alignment: 9
+      pivot: {x: 0.4035002, y: 0.3549569}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_shigella_attack_7
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 4
+        width: 117
+        height: 60
+      alignment: 9
+      pivot: {x: 0.38385114, y: 0.31665057}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_shigella_attack_8
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 3
+        width: 114
+        height: 58
+      alignment: 9
+      pivot: {x: 0.4035002, y: 0.3549569}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

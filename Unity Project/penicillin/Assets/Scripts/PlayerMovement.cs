@@ -20,13 +20,13 @@ public class PlayerMovement : MonoBehaviour {
     float timer;
     int weapon_switch;
 
-    void Start(){
+    void Start() {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currjumps = GAME.jumps;
-		currdash = GAME.dashes;
-		dir = 0;
-		dashCDTimer = 0;
+        currdash = GAME.dashes;
+        dir = 0;
+        dashCDTimer = 0;
         dashTimer = 0;
         weapon_switch = 0;
         dashSlider.maxValue = GAME.dashes;
@@ -44,20 +44,20 @@ public class PlayerMovement : MonoBehaviour {
         groundCheck = GameObject.Find(this.name + "/GroundCheck").transform;
     }
 
-    void Update(){
+    void Update() {
         timer += Time.deltaTime;
-		if (currdash < GAME.dashes) {
-			dashCDTimer += Time.deltaTime;
-		}
-		if (dashCDTimer > GAME.dash_cooldown && currdash < GAME.dashes) {
-			dashCDTimer = 0;
-			currdash++;
+        if (currdash < GAME.dashes) {
+            dashCDTimer += Time.deltaTime;
+        }
+        if (dashCDTimer > GAME.dash_cooldown && currdash < GAME.dashes) {
+            dashCDTimer = 0;
+            currdash++;
             dashSlider.value = currdash;
-		}
+        }
 
         if (isDashing) {
             dashTimer += Time.deltaTime;
-            if(dashTimer > GAME.dash_timer) {
+            if (dashTimer > GAME.dash_timer) {
                 stopDash();
                 dashTimer = 0;
             }
@@ -74,22 +74,22 @@ public class PlayerMovement : MonoBehaviour {
 
         //jump
         isJumping = !(Physics2D.Linecast(trans.position, groundCheck.position, playerMask));
-        if(!isJumping) currjumps = GAME.jumps;
+        if (!isJumping) currjumps = GAME.jumps;
 
 
         //fall
         isFalling = rb.velocity.y < 0 ? true : false;
         isWalking = Mathf.Abs(dir) > 0 && !isDashing;
         anim.SetFloat("Direction", faceRight ? 1f : 0f);
-		anim.SetBool("isWalking", isWalking);
-		anim.SetBool("isJumping", isJumping);
-		anim.SetBool("isDashing", isDashing);
-		anim.SetBool("isFalling", isFalling);
+        anim.SetBool("isWalking", isWalking);
+        anim.SetBool("isJumping", isJumping);
+        anim.SetBool("isDashing", isDashing);
+        anim.SetBool("isFalling", isFalling);
         anim.SetBool("isAttacking", isAttacking);
     }
 
     public void Jump() {
-        if(!isJumping) rb.velocity += GAME.jump_velocity * Vector2.up;
+        if (!isJumping) rb.velocity += GAME.jump_velocity * Vector2.up;
     }
 
     public bool amDashing() {
@@ -113,28 +113,28 @@ public class PlayerMovement : MonoBehaviour {
         hInput = horizontalInput;
     }
 
-	public void Dash(){
+    public void Dash() {
         if (!isDashing && !isAttacking) {
             if (currdash > 0) {
                 rb.AddForce(new Vector2((faceRight ? 1 : -1) * GAME.dash_force, 0), ForceMode2D.Impulse);
                 currdash--;
                 dashSlider.value = currdash;
                 isDashing = true;
-                
+
             }
         }
-	
-	}
+
+    }
 
     void endAttack() {
         isAttacking = false;
     }
 
-	void stopDash(){
-		isDashing = false;
+    void stopDash() {
+        isDashing = false;
         anim.SetBool("isDashing", isDashing);
         rb.velocity = new Vector2(0, rb.velocity.y);
-	}
+    }
 
     void LateUpdate() {
         if (isAttacking) {
@@ -151,10 +151,10 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Attack() {
         if (!isDashing && !isFalling && !isJumping && !isAttacking) {
-			rb.velocity = new Vector2 (0, rb.velocity.y);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             isAttacking = true;
             RaycastHit2D hit;
-            if (faceRight) hit = Physics2D.Raycast(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange);
+            if (faceRight) hit = Physics2D.Raycast(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange, LayerMask.NameToLayer("Enemy"));
             else hit = Physics2D.Raycast(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
             if (hit.collider != null) {
                 timer = 0;
