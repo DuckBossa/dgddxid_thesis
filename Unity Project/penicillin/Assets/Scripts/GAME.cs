@@ -23,10 +23,26 @@ namespace GLOBAL{
         public const float acid_dot_timer = 2f;
         public const int tile_size = 64;
     
-	
-		public const string character_weapons_folder = " ";
-	
-	}
+	    
+		public const string character_weapons_folder = "Characters/Penny/";
+
+        public static readonly string[] character_weapon_swords =  { "penny_sword_slash",
+                                                              "penny_sword_slash_EVIL LOOKIGN SWORD HOSHIT",
+                                                              "penny_sword_slash_BLUE",
+                                                              "penny_sword_slash_GREEN",
+                                                              "penny_sword_slash_PINK",
+                                                             "penny_sword_slash_YELLOW"};
+
+        /*
+        public const string character_weapons_sword_1 = "penny_sword_slash";
+        public const string character_weapons_sword_2 = "penny_sword_slash_EVIL LOOKIGN SWORD HOSHIT";
+        public const string character_weapons_sword_3 = "penny_sword_slash_BLUE";
+        public const string character_weapons_sword_4 = "penny_sword_slash_GREEN";
+        public const string character_weapons_sword_5 = "penny_sword_slash_PINK";
+        public const string character_weapons_sword_6 = "penny_sword_slash_YELLOW";
+        */
+
+    }
 
 }
 

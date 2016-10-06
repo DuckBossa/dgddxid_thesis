@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 using GLOBAL;
 using UnityEngine.UI;
 
@@ -17,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     float dir, dashCDTimer, dashTimer, attackTimer;
     float hInput = 0;
     float timer;
-
+    int weapon_switch;
     void Start(){
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -26,7 +28,7 @@ public class PlayerMovement : MonoBehaviour {
 		dir = 0;
 		dashCDTimer = 0;
         dashTimer = 0;
-
+        weapon_switch = 0;
         dashSlider.maxValue = GAME.dashes;
         dashSlider.value = GAME.dashes;
 
@@ -106,8 +108,7 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
-    public void MoveStart(float horizontalInput)
-    {
+    public void MoveStart(float horizontalInput) {
         hInput = horizontalInput;
     }
 
@@ -134,6 +135,19 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity = new Vector2(0, rb.velocity.y);
 	}
 
+    void LateUpdate() {
+        if (isAttacking) {
+            var subSprites = Resources.LoadAll<Sprite>(GAME.character_weapons_folder + GAME.character_weapon_swords[weapon_switch]);
+            foreach (var renderer in GetComponentsInChildren<SpriteRenderer>()) {
+                string spriteName = renderer.sprite.name;
+                var newSprite = Array.Find(subSprites, item => item.name == spriteName);
+                if (newSprite)
+                    renderer.sprite = newSprite;
+            }
+        }
+
+    }
+
     public void Attack() {
         if (!isDashing && !isFalling && !isJumping && !isAttacking) {
 			rb.velocity = new Vector2 (0, rb.velocity.y);
@@ -147,6 +161,13 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
     }
+
+    public void SwitchWeapon() {
+        if (!isAttacking) {
+            weapon_switch = (weapon_switch + 1) % GAME.character_weapon_swords.Length;
+        }
+    }
+
 
     public void SetAttack(bool a) {
         canAttack = a;
