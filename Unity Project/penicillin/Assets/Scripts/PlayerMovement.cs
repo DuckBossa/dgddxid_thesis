@@ -160,24 +160,20 @@ public class PlayerMovement : MonoBehaviour {
             rb.velocity = new Vector2(0, rb.velocity.y);
             isAttacking = true;
 
-            RaycastHit2D hit;
+            RaycastHit2D[] hit;
             if (faceRight) {
-                hit = Physics2D.Raycast(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange);
-
-                Debug.DrawLine(new Vector2(trans.position.x + .2f, trans.position.y - .1f), new Vector2(trans.position.x + .2f + GAME.player_atkRange, trans.position.y - .1f));
-                Debug.Log("attack right");
+                hit = Physics2D.RaycastAll(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange);
             }
             else {
-                hit = Physics2D.Raycast(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
-
-                Debug.DrawLine(new Vector2(trans.position.x - .2f, trans.position.y - .1f), new Vector2(trans.position.x - .2f - GAME.player_atkRange, trans.position.y - .1f));
-                Debug.Log("attack left");
+                hit = Physics2D.RaycastAll(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
             }
 
-            if (hit.collider != null) {
-                timer = 0;
-                Debug.Log(hit.collider.gameObject.name);
-                hit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage();
+            foreach (RaycastHit2D h in hit) {
+                if (h.collider != null) {
+                    timer = 0;
+                    Debug.Log(h.collider.gameObject.name);
+                    h.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage();
+                }
             }
         }
     }
