@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     Rigidbody2D rb;
     int currjumps, currdash;
     bool isWalking, isAttacking, isDashing, isFalling, faceRight;
-    Transform trans, groundCheck;
+    Transform trans, groundCheckL, groundCheckR;
     float dir, dashCDTimer, dashTimer, attackTimer;
     float hInput = 0;
     float timer;
@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviour {
         faceRight = true;
 
         trans = this.transform;
-        groundCheck = GameObject.Find(this.name + "/GroundCheck").transform;
+        groundCheckL = GameObject.Find(this.name + "/GroundCheckLeft").transform;
+        groundCheckR = GameObject.Find(this.name + "/GroundCheckRight").transform;
     }
 
     void Update() {
@@ -73,7 +74,10 @@ public class PlayerMovement : MonoBehaviour {
         Move(hInput);
 
         //jump
-        isJumping = !(Physics2D.Linecast(trans.position, groundCheck.position, playerMask));
+        isJumping = !(Physics2D.Linecast(new Vector3(groundCheckL.position.x, groundCheckL.position.y + .1f, groundCheckL.position.z), groundCheckL.position, playerMask) || 
+                      Physics2D.Linecast(new Vector3(groundCheckR.position.x, groundCheckR.position.y + .1f, groundCheckR.position.z), groundCheckR.position, playerMask));
+        Debug.DrawLine(new Vector3(groundCheckL.position.x, groundCheckL.position.y + .1f, groundCheckL.position.z), groundCheckL.position);
+        Debug.DrawLine(new Vector3(groundCheckR.position.x, groundCheckR.position.y + .1f, groundCheckR.position.z), groundCheckR.position);
         if (!isJumping) currjumps = GAME.jumps;
 
 
@@ -105,6 +109,8 @@ public class PlayerMovement : MonoBehaviour {
             myVel.x = horizontalInput * GAME.player_velocity;
             if (myVel.x > 0 || myVel.x < 0) faceRight = myVel.x > 0;
             rb.velocity = myVel;
+            if(faceRight) Debug.DrawLine(new Vector2(trans.position.x + .2f, trans.position.y - .1f), new Vector2(trans.position.x + .2f + GAME.player_atkRange, trans.position.y - .1f));
+            else Debug.DrawLine(new Vector2(trans.position.x - .2f, trans.position.y - .1f), new Vector2(trans.position.x - .2f - GAME.player_atkRange, trans.position.y - .1f));
         }
 
     }
@@ -154,10 +160,20 @@ public class PlayerMovement : MonoBehaviour {
             rb.velocity = new Vector2(0, rb.velocity.y);
             isAttacking = true;
             RaycastHit2D hit;
-            if (faceRight) hit = Physics2D.Raycast(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange, LayerMask.NameToLayer("Enemy"));
-            else hit = Physics2D.Raycast(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
+            if (faceRight) {
+                hit = Physics2D.Raycast(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange, LayerMask.NameToLayer("Enemy"));
+                Debug.DrawLine(new Vector2(trans.position.x + .2f, trans.position.y - .1f), new Vector2(trans.position.x + .2f + GAME.player_atkRange, trans.position.y - .1f));
+                Debug.Log("attack right");
+            }
+            else {
+                hit = Physics2D.Raycast(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
+                Debug.DrawLine(new Vector2(trans.position.x - .2f, trans.position.y - .1f), new Vector2(trans.position.x - .2f - GAME.player_atkRange, trans.position.y - .1f));
+                Debug.Log("attack left");
+            }
+
             if (hit.collider != null) {
                 timer = 0;
+                Debug.Log(hit.collider.gameObject.name);
                 hit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage();
             }
         }

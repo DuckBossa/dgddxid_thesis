@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public int currHealth;
     public static bool isInvulnerable;
-    public float flashSpeed = 5f;
+    public float flashSpeed = .5f;
     public Image damageImage, fill;
     public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
     public Slider healthSlider;
