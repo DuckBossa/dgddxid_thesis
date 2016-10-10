@@ -10,18 +10,16 @@ public class PauseHandler : MonoBehaviour {
     public Transform quitPrompt;
     public Transform pauseMenu;
     public Transform restartPrompt;
+    public Transform mainMenuPrompt;
     bool soundOn = true;
 	
 	void Start () {
         pauseCanvas.gameObject.SetActive(false);
         quitPrompt.gameObject.SetActive(false);
         restartPrompt.gameObject.SetActive(false);
-	}
+        mainMenuPrompt.gameObject.SetActive(false);
+    }
 	
-	void Update () {
-	    
-	}
-
     public void PauseButton() {
         pauseCanvas.gameObject.SetActive(pauseCanvas.gameObject.activeInHierarchy ? false : true);
         Time.timeScale = pauseCanvas.gameObject.activeInHierarchy ? 0 : 1;
@@ -37,6 +35,10 @@ public class PauseHandler : MonoBehaviour {
         pauseMenu.gameObject.SetActive(pauseMenu.gameObject.activeInHierarchy ? false : true);
     }
 
+    public void ExitApplication() {
+        Application.Quit();
+    }
+
     public void RestartPrompt() {
         restartPrompt.gameObject.SetActive(restartPrompt.gameObject.activeInHierarchy ? false : true);
         pauseMenu.gameObject.SetActive(pauseMenu.gameObject.activeInHierarchy ? false : true);
@@ -47,7 +49,12 @@ public class PauseHandler : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void ExitApplication() {
-        Application.Quit();
+    public void MainMenuPrompt() {
+        mainMenuPrompt.gameObject.SetActive(mainMenuPrompt.gameObject.activeInHierarchy ? false : true);
+        pauseMenu.gameObject.SetActive(pauseMenu.gameObject.activeInHierarchy ? false : true);
+    }
+
+    public void GoToMainMenu() {
+        SceneManager.LoadScene("MainMenu");
     }
 }
