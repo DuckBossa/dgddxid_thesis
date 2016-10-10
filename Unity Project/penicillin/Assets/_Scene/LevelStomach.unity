@@ -6227,8 +6227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 702421056}
   enemy: {fileID: 1000010284134586, guid: 461e3723f8630714383caf58c5266106, type: 2}
-  parents_enemy: {fileID: 1975746775}
-  spawnTime: 3
+  parents_enemy: {fileID: 0}
+  spawnTime: 8
   maxEnemies: 12
   spawnPoints:
   - {fileID: 859902954}
@@ -6273,8 +6273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 702421056}
   enemy: {fileID: 1000014221098054, guid: 4c92e0e833dd36d46865493d8a175bac, type: 2}
-  parents_enemy: {fileID: 1975746775}
-  spawnTime: 3
+  parents_enemy: {fileID: 0}
+  spawnTime: 15
   maxEnemies: 4
   spawnPoints:
   - {fileID: 584212079}
@@ -14822,34 +14822,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013310217056, guid: 40f30b2ef51c01a419e1b4dc4000512c,
     type: 2}
   m_PrefabInternal: {fileID: 1958194497}
---- !u!1 &1975746775
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1975746776}
-  m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1975746776
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1975746775}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.807997, y: 0.8863485, z: 1.8300781}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
 --- !u!1 &1987723062
 GameObject:
   m_ObjectHideFlags: 0
@@ -14971,34 +14943,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1636437151}
   m_RootOrder: 1
---- !u!1 &1993842711
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1993842712}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1993842712
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1993842711}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.830505, y: -1.9438175, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
 --- !u!1 &2037723502
 GameObject:
   m_ObjectHideFlags: 0
