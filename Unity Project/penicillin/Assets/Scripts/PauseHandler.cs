@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseHandler : MonoBehaviour {
-
     public Transform pauseCanvas;
     public Transform audioToggle;
     public Transform quitPrompt;

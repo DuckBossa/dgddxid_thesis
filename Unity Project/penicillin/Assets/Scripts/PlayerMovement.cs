@@ -184,7 +184,6 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-
     public void SetAttack(bool a) {
         canAttack = a;
     }
