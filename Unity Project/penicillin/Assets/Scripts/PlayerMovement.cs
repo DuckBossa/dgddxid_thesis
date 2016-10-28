@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using GLOBAL;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour {
     public bool isJumping, canAttack;
@@ -70,8 +71,9 @@ public class PlayerMovement : MonoBehaviour {
         //attack
         if (canAttack && !isDashing) Attack();
 
-        //move
-        Move(hInput);
+
+
+        Move(CrossPlatformInputManager.GetAxisRaw("Horizontal"));
 
         //jump
         isJumping = !(Physics2D.Linecast(new Vector3(groundCheckL.position.x, groundCheckL.position.y + .1f, groundCheckL.position.z), groundCheckL.position, playerMask) || 
@@ -109,10 +111,7 @@ public class PlayerMovement : MonoBehaviour {
             myVel.x = horizontalInput * GAME.player_velocity;
             if (myVel.x > 0 || myVel.x < 0) faceRight = myVel.x > 0;
             rb.velocity = myVel;
-            if(faceRight) Debug.DrawLine(new Vector2(trans.position.x + .2f, trans.position.y - .1f), new Vector2(trans.position.x + .2f + GAME.player_atkRange, trans.position.y - .1f));
-            else Debug.DrawLine(new Vector2(trans.position.x - .2f, trans.position.y - .1f), new Vector2(trans.position.x - .2f - GAME.player_atkRange, trans.position.y - .1f));
         }
-
     }
 
     public void MoveStart(float horizontalInput) {

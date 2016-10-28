@@ -5,7 +5,6 @@ using System.Collections;
 public class InitializationSceneHandler : MonoBehaviour {
 
     static AudioSource audio;
-    public AudioClip buttonSound;
 
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
@@ -14,7 +13,6 @@ public class InitializationSceneHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         audio = GetComponent<AudioSource>();
-        audio.clip = buttonSound;
         SceneManager.LoadScene(1);
     }
 }
