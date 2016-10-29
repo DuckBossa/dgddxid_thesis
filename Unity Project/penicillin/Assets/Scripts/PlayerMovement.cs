@@ -66,9 +66,6 @@ public class PlayerMovement : MonoBehaviour {
     void FixedUpdate() {
         //attack
         if (canAttack && !isDashing) Attack();
-
-
-
         Move(CrossPlatformInputManager.GetAxisRaw("Horizontal"));
 
         //jump
