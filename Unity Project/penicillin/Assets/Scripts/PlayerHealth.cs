@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour {
     public Slider healthSlider;
 
     float currTime;
-    Animator anim;
+    //Animator anim;
     PlayerMovement playerMovement;
 
     bool isDead;
@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void Start() {
         currTime = 0;
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         currHealth = GAME.max_health;
         healthSlider.maxValue = GAME.max_health;

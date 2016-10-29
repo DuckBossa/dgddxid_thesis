@@ -7,21 +7,21 @@ public class EnemyHealth : MonoBehaviour {
     public int currHealth;
     public int researchPoints = 10;//temporary value
 
-    GameObject player;
+    //GameObject player;
     Animator anim;
     bool isDead;
-    float stunDuration;
-    BoxCollider2D collider;
+    //float stunDuration;
+    //BoxCollider2D collider;
     Enemy enemy;
     EnemyManager manager;
 
 	void Start () {
-        collider = GetComponent<BoxCollider2D>();
+        //collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
-        player = GameObject.Find("Penny");
+        //player = GameObject.Find("Penny");
         manager = GameObject.Find("SpawnControllers").GetComponent<EnemyManager>();
-        stunDuration = .5f;
+        //stunDuration = .5f;
         enemy = GetComponent<Enemy>();
     }
 

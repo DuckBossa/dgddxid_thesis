@@ -13,11 +13,9 @@ public class PauseHandler : MonoBehaviour {
     public AudioClip buttonPress;
     AudioSource audio;
     bool soundOn = true;
-    bool coroutineCalled;
 
 	void Start () {
         audio = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
-        //Debug.Log(GameObject.Find("ButtonAudio").name);
         pauseCanvas.gameObject.SetActive(false);
         quitPrompt.gameObject.SetActive(false);
         restartPrompt.gameObject.SetActive(false);

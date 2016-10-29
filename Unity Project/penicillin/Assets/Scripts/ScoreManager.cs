@@ -11,9 +11,7 @@ public class ScoreManager : MonoBehaviour {
         researchPoints = 0;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         text.text = researchPoints.ToString("D8");
-        //text.text = ""+researchPoints;
     }
 }

@@ -8,8 +8,8 @@ public class FlyingShigella : MonoBehaviour {
     GameObject projectile_parent;
     Animator anim;
     bool isAttacking;
-    float dir;
-    float timerShoot;
+    //float dir;
+    //float timerShoot;
     float currDist;
     Vector2 patrolDir;
     Vector2 attackDir;
@@ -20,9 +20,9 @@ public class FlyingShigella : MonoBehaviour {
         anim = GetComponentInParent<Animator>();
         projectile_parent = GameObject.Find("Projectile Parent");
         //parent = GetComponentInParent<Transform>();
-        dir = 0;
+        //dir = 0;
         currDist = 0;
-        timerShoot = 0;
+        //timerShoot = 0;
         isAttacking = false;
         patrolDir = Random.insideUnitCircle;
 	}

@@ -5,11 +5,12 @@ public class Enemy : MonoBehaviour {
     public LayerMask enemyMask;
     public bool isStunned;
 
-    SpriteRenderer psprite;
+    //SpriteRenderer psprite;
     Animator myAnim;
     GameObject player;
     PlayerHealth playerHealth;
-    Rigidbody2D myBody, playerBody;
+    Rigidbody2D myBody;
+    //Rigidbody2D playerBody;
     Transform myTrans, penny;
     bool withinRange, isAggro;
     float atkRange, aggressionDistance, myWidth, myHeight, timer, speed, timeBetweenAttacks, stunDuration, stunTimer;
@@ -21,8 +22,8 @@ public class Enemy : MonoBehaviour {
         player = GameObject.Find("Penny");
         playerHealth = player.GetComponent<PlayerHealth>();
         penny = player.transform;
-        psprite = player.GetComponent<SpriteRenderer>();
-        playerBody = player.GetComponent<Rigidbody2D>();
+        //psprite = player.GetComponent<SpriteRenderer>();
+        //playerBody = player.GetComponent<Rigidbody2D>();
 
         //enemy-related
         enemyHealth = GetComponent<EnemyHealth>();
@@ -89,7 +90,7 @@ public class Enemy : MonoBehaviour {
             }
 
             //penny right
-            bool facingRight = false;
+            //bool facingRight = false;
             if (penny.position.x - myTrans.position.x > 0) {
                 if (!withinRange) { //chasing after penny (aggressive but not in range yet)
                     Vector2 myVel = myBody.velocity;
