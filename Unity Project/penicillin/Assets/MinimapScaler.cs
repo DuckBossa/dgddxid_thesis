@@ -16,7 +16,7 @@ public class MinimapScaler : MonoBehaviour {
         width = Screen.width / 3.9f;
         height = (width / 24.15f) * 9f;
         float ratio = (float)Screen.width / (float)Screen.height;
-        cam.pixelRect = new Rect(Screen.width - (width + 15), Screen.height - (height + 45f * ratio), width, height);
+        cam.pixelRect = new Rect(Screen.width - (width + 20), Screen.height - (height + 65f * ratio), width, height);
         cam.orthographicSize = 5.38f;
     }
 }
