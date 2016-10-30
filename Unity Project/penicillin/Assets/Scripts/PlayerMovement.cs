@@ -9,6 +9,8 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerMovement : MonoBehaviour {
     public bool isJumping, canAttack;
     public LayerMask playerMask;
+    public Sprite dash_empty, dash_one, dash_two, dash_three;
+    public Image dashImage;
 
     Animator anim;
     Rigidbody2D rb;
@@ -51,6 +53,9 @@ public class PlayerMovement : MonoBehaviour {
         if (dashCDTimer > GAME.dash_cooldown && currdash < GAME.dashes) {
             dashCDTimer = 0;
             currdash++;
+            if (currdash == 1) dashImage.sprite = dash_one;
+            else if (currdash == 2) dashImage.sprite = dash_two;
+            else if (currdash == 3) dashImage.sprite = dash_three;
         }
 
         if (isDashing) {
@@ -116,8 +121,10 @@ public class PlayerMovement : MonoBehaviour {
             if (currdash > 0) {
                 rb.AddForce(new Vector2((faceRight ? 1 : -1) * GAME.dash_force, 0), ForceMode2D.Impulse);
                 currdash--;
+                if (currdash == 1) dashImage.sprite = dash_one;
+                else if (currdash == 2) dashImage.sprite = dash_two;
+                else if (currdash == 0) dashImage.sprite = dash_empty;
                 isDashing = true;
-
             }
         }
 

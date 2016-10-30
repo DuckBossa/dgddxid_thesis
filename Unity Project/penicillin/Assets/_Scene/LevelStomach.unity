@@ -8133,6 +8133,35 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010507275846, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: dash_three
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d0fc9802c3f544479f0892b24e975fd,
+        type: 3}
+    - target: {fileID: 114000010507275846, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: dash_two
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c9651f89c8a36c46a317d35c172cf7d,
+        type: 3}
+    - target: {fileID: 114000010507275846, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: dash_one
+      value: 
+      objectReference: {fileID: 21300000, guid: dfb29c9749575d44591edd826ba05f46,
+        type: 3}
+    - target: {fileID: 114000010507275846, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: dash_empty
+      value: 
+      objectReference: {fileID: 21300000, guid: a43287db6e1a59f43a4d8ec82c45851c,
+        type: 3}
+    - target: {fileID: 114000010507275846, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: dashImage
+      value: 
+      objectReference: {fileID: 396864703}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
   m_IsPrefabParent: 0
