@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool isJumping, canAttack;
     public LayerMask playerMask;
     public Sprite dash_empty, dash_one, dash_two, dash_three;
-    public Image dashImage;
+    public Image dashImage, dashCooldown;
 
     Animator anim;
     Rigidbody2D rb;
@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour {
         timer += Time.deltaTime;
         if (currdash < GAME.dashes) {
             dashCDTimer += Time.deltaTime;
+            dashCooldown.fillAmount = 1f - (dashCDTimer / (float)GAME.dash_cooldown);
         }
         if (dashCDTimer > GAME.dash_cooldown && currdash < GAME.dashes) {
             dashCDTimer = 0;
