@@ -3073,7 +3073,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 380773723}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e49db43bd4d324c408bb4e49c7dba99f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 5.49}
@@ -3087,7 +3087,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 380773723}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e49db43bd4d324c408bb4e49c7dba99f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 14.55, y: 0}
@@ -3101,7 +3101,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 380773723}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e49db43bd4d324c408bb4e49c7dba99f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: -14.35, y: -0.38}
@@ -14884,9 +14884,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
-  mapminx: -11
-  mapmaxx: 10.99
-  mapminy: -3.12
+  mapminx: -9.88
+  mapmaxx: 9.876
+  mapminy: -2.69
   mapmaxy: 3.13
   mapleft: 0
   target: {fileID: 1923575163}

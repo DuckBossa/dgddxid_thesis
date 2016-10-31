@@ -6,7 +6,7 @@ public class SmoothCameraFollow : MonoBehaviour {
 	// copy pastarina from http://answers.unity3d.com/questions/29183/2d-camera-smooth-follow.html
 
 	public float speed = 0.15f;
-    public float mapminx, mapmaxx, mapminy, mapmaxy, mapleft;
+    public float mapminx, mapmaxx, mapminy, mapmaxy;
 	public Transform target;
 	Camera camera;
 
