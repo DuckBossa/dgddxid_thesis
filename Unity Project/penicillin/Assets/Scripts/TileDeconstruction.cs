@@ -16,6 +16,7 @@ public class TileDeconstruction : MonoBehaviour {
 			if (bounderinos.bounds.max.y > tiles [i].bounds.max.y) {
 				tiles [i].gameObject.SetActive (false);
 				tiles.RemoveAt (i);
+              
 			}
 		}
 	}
