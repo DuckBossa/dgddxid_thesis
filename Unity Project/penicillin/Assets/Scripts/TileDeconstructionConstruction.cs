@@ -4,22 +4,21 @@ using System.Collections.Generic;
 
 public class TileDeconstructionConstruction : MonoBehaviour {
 	public List<GameObject> sets = new List<GameObject>();
-	void Start () {}
+	int rnglul;
+	void Start () {
+		rnglul = Random.Range (0, sets.Count);
+	}
 
     public void reconstruct() {
 		foreach (GameObject set in sets) {
 		    set.SetActive (false);
 		}
-		int rnglul = Random.Range (0, sets.Count);
+		rnglul = Random.Range (0, sets.Count);
 		sets [rnglul].SetActive (true);
         foreach (Transform set in sets[rnglul].transform) {
-            set.gameObject.SetActive(true);
-            set.gameObject.GetComponentInChildren<Transform>().gameObject.SetActive(false);
-            BoxCollider2D temp = set.GetComponent<BoxCollider2D>();
-            temp.isTrigger = true;
-            temp.enabled = true;
+			set.gameObject.SetActive(true);
         }
-        DisableDeconstruction();
+		DisableDeconstruction();
 	}
 
     public void EnableDeconstruction() {
@@ -28,6 +27,7 @@ public class TileDeconstructionConstruction : MonoBehaviour {
     }
     public void DisableDeconstruction() {
         gameObject.GetComponent<TileConstruction>().enabled = true;
+		gameObject.GetComponent<TileConstruction> ().setColliders (sets [rnglul].GetComponentsInChildren<BoxCollider2D>());
         gameObject.GetComponent<TileDeconstruction>().enabled = false;
     }
 }

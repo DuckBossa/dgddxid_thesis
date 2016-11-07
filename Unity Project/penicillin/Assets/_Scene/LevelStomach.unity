@@ -315,9 +315,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 33124098}
   - 61: {fileID: 33124099}
+  - 50: {fileID: 33124100}
   m_Layer: 10
   m_Name: smalltile_b (2)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,6 +357,23 @@ BoxCollider2D:
   m_Offset: {x: 0.65, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.25}
+--- !u!50 &33124100
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 33124097}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &68827707 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012017356856, guid: 08d0db9eec90cef46998a0c00f0c6025,
@@ -1823,9 +1841,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 218961270}
   - 61: {fileID: 218961271}
+  - 50: {fileID: 218961272}
   m_Layer: 10
   m_Name: smalltile_b
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1864,6 +1883,23 @@ BoxCollider2D:
   m_Offset: {x: 0.65, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.25}
+--- !u!50 &218961272
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218961269}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &220884481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,9 +2499,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 317219411}
   - 61: {fileID: 317219412}
+  - 50: {fileID: 317219413}
   m_Layer: 10
   m_Name: smalltile_b (6)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2504,6 +2541,23 @@ BoxCollider2D:
   m_Offset: {x: 0.65, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.25}
+--- !u!50 &317219413
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 317219410}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &325651694
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,9 +4112,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 454150470}
   - 61: {fileID: 454150471}
+  - 50: {fileID: 454150472}
   m_Layer: 10
   m_Name: largetile_b (3)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4105,6 +4160,23 @@ BoxCollider2D:
   m_Offset: {x: 2.56, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 6.16, y: 0.25}
+--- !u!50 &454150472
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 454150469}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &463637468
 GameObject:
   m_ObjectHideFlags: 0
@@ -6418,9 +6490,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 751724398}
   - 61: {fileID: 751724399}
+  - 50: {fileID: 751724400}
   m_Layer: 10
   m_Name: smalltile_b (1)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6459,6 +6532,23 @@ BoxCollider2D:
   m_Offset: {x: 0.65, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.25}
+--- !u!50 &751724400
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 751724397}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &757221760 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010029928700, guid: 90e3649bf20c6f441a70d9baf16e81d6,
@@ -7961,9 +8051,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 916665496}
   - 61: {fileID: 916665497}
+  - 50: {fileID: 916665498}
   m_Layer: 10
   m_Name: smalltile_b (3)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8002,6 +8093,23 @@ BoxCollider2D:
   m_Offset: {x: 0.65, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.25}
+--- !u!50 &916665498
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 916665495}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &916840631
 GameObject:
   m_ObjectHideFlags: 0
@@ -8151,9 +8259,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 920207740}
   - 61: {fileID: 920207741}
+  - 50: {fileID: 920207742}
   m_Layer: 10
   m_Name: mediumtile_b (1)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8196,6 +8305,23 @@ BoxCollider2D:
   m_Offset: {x: 1.92, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 4.91, y: 0.25}
+--- !u!50 &920207742
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920207739}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &922170392
 GameObject:
   m_ObjectHideFlags: 0
@@ -8271,9 +8397,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 933922677}
   - 61: {fileID: 933922678}
+  - 50: {fileID: 933922679}
   m_Layer: 10
   m_Name: largetile_b (2)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8318,6 +8445,23 @@ BoxCollider2D:
   m_Offset: {x: 2.56, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 6.16, y: 0.25}
+--- !u!50 &933922679
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 933922676}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &947024514
 GameObject:
   m_ObjectHideFlags: 0
@@ -10044,7 +10188,9 @@ GameObject:
   - 95: {fileID: 1157546203}
   - 61: {fileID: 1157546206}
   - 114: {fileID: 1157546205}
+  - 114: {fileID: 1157546208}
   - 114: {fileID: 1157546207}
+  - 114: {fileID: 1157546209}
   m_Layer: 11
   m_Name: acid_front
   m_TagString: Untagged
@@ -10142,6 +10288,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 44.550003, y: 4.48}
 --- !u!114 &1157546207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1157546201}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d159b726d6b46389f7e1aba38ac6c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1157546208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1157546201}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27691f3666199984a9c60d8a235472d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1157546209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -12185,9 +12353,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1508783616}
   - 61: {fileID: 1508783617}
+  - 50: {fileID: 1508783618}
   m_Layer: 10
   m_Name: smalltile_b (5)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12226,6 +12395,23 @@ BoxCollider2D:
   m_Offset: {x: 0.65, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.25}
+--- !u!50 &1508783618
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1508783615}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1526054588
 GameObject:
   m_ObjectHideFlags: 0
@@ -13577,9 +13763,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1729776136}
   - 61: {fileID: 1729776137}
+  - 50: {fileID: 1729776138}
   m_Layer: 10
   m_Name: smalltile_b (4)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13618,6 +13805,23 @@ BoxCollider2D:
   m_Offset: {x: 0.65, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.25}
+--- !u!50 &1729776138
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1729776135}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1730184720
 Prefab:
   m_ObjectHideFlags: 0
@@ -14888,7 +15092,6 @@ MonoBehaviour:
   mapmaxx: 9.876
   mapminy: -2.69
   mapmaxy: 3.13
-  mapleft: 0
   target: {fileID: 1923575163}
 --- !u!81 &1802061639
 AudioListener:
@@ -15434,9 +15637,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1893641161}
   - 61: {fileID: 1893641162}
+  - 50: {fileID: 1893641163}
   m_Layer: 10
   m_Name: largetile_b (4)
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15481,6 +15685,23 @@ BoxCollider2D:
   m_Offset: {x: 2.56, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 6.16, y: 0.25}
+--- !u!50 &1893641163
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893641160}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1908017531
 GameObject:
   m_ObjectHideFlags: 0
@@ -15799,9 +16020,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1954625524}
   - 61: {fileID: 1954625525}
+  - 50: {fileID: 1954625526}
   m_Layer: 10
   m_Name: mediumtile_b
-  m_TagString: Untagged
+  m_TagString: Tiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15844,6 +16066,23 @@ BoxCollider2D:
   m_Offset: {x: 1.92, y: 0.15}
   serializedVersion: 2
   m_Size: {x: 4.91, y: 0.25}
+--- !u!50 &1954625526
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954625523}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1956300357
 GameObject:
   m_ObjectHideFlags: 0
