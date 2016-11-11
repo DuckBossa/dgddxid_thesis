@@ -56,7 +56,15 @@ public class StomachLevel_Global : MonoBehaviour {
             localTime = 0;
             timeLimitInSeconds = 60 * GAME.waveTimeInMins;
             screenTimer.color = defaultColor;
-
+            Loadout.SetActive(false);
         }
 	}
+
+    public void Reset() {
+        Time.timeScale = 1;
+        timeLimitInSeconds = 60 * GAME.waveTimeInMins;
+        localTime = 0;
+        Loadout.SetActive(false);
+        screenTimer.color = defaultColor;
+    }
 }
