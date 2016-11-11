@@ -22,7 +22,9 @@ namespace GLOBAL{
 
         public const float acid_dot_timer = 2f;
         public const int tile_size = 64;
-    
+
+        public const float loadoutLifetime = 10;
+        public const float waveTimeInMins = 3;
 	    
 		public const string character_weapons_folder = "Characters/Penny/";
 
