@@ -25,7 +25,6 @@ public class TileConstruction : MonoBehaviour {
     void FixedUpdate() {
         for (int i = tiles.Count - 1; i >= 0; i--) {
 			if (bounderinos.bounds.max.y <  tiles[i].bounds.min.y) {
-				Debug.Log ("Add");
 				tiles [i].gameObject.SetActive (true);
                 tiles.RemoveAt(i);
             }

@@ -158,22 +158,6 @@ public class PlayerMovement : MonoBehaviour {
         if (!isDashing && !isFalling && !isJumping && !isAttacking) {
             rb.velocity = new Vector2(0, rb.velocity.y);
             isAttacking = true;
-
-            RaycastHit2D[] hit;
-            if (faceRight) {
-                hit = Physics2D.RaycastAll(new Vector2(trans.position.x + .2f, trans.position.y - .1f), Vector2.right, GAME.player_atkRange);
-            }
-            else {
-                hit = Physics2D.RaycastAll(new Vector2(trans.position.x - .2f, trans.position.y - .1f), Vector2.left, GAME.player_atkRange);
-            }
-
-            foreach (RaycastHit2D h in hit) {
-                if (h.collider != null) {
-                    timer = 0;
-                    Debug.Log(h.collider.gameObject.name);
-                    h.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage();
-                }
-            }
         }
     }
 

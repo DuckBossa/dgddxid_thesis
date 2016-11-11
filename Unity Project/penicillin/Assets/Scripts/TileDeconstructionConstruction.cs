@@ -14,7 +14,7 @@ public class TileDeconstructionConstruction : MonoBehaviour {
 		    set.SetActive (false);
 		}
 		rnglul = Random.Range (0, sets.Count);
-		sets [rnglul].SetActive (true);
+		sets [rnglul].SetActive (true); 
         foreach (Transform set in sets[rnglul].transform) {
 			set.gameObject.SetActive(true);
         }

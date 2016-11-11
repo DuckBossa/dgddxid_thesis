@@ -15,7 +15,6 @@ public class AcidDotPlayer : MonoBehaviour {
     
     void OnTriggerEnter2D(Collider2D other){
         //player take damage;
-        Debug.Log("d");
         ph.TakeDamage();
         currTime = 0;
     }

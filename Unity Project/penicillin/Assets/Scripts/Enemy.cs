@@ -164,7 +164,6 @@ public class Enemy : MonoBehaviour {
     void Attack() {
         timer = 0f;
         if (playerHealth.currHealth > 0 ) {
-            Debug.Log("b");
             //knockback
             //playerBody.AddForce(Vector2.up * 50f);
             //playerBody.AddForce(Vector2.right * 1000f);
