@@ -6,22 +6,29 @@ using System.Collections;
 public class StomachLevel_Global : MonoBehaviour {
     // Use this for initialization
     public Text screenTimer;
+    public Slider timeSlider;
     public float globalTime;
     public Transform[] loadouts;
     public Transform player;
     public GameObject Loadout;
 
-    private float timeLimitInSeconds, localTime;
+    private float timeLimitInSeconds, localTime, levelTime;
     private Color defaultColor;
 	void Start () {
         Time.timeScale = 1;
-        //timeLimitInSeconds = 60*GAME.waveTimeInMins;
-        timeLimitInSeconds = 1;
+        timeLimitInSeconds = 60*GAME.waveTimeInMins;
+        //timeLimitInSeconds = 1;
         defaultColor = screenTimer.color;
         Loadout.SetActive(false);
+        levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
+        timeSlider.value = globalTime / levelTime;
 	}
 	
 	// Update is called once per frame
+    void FixedUpdate() {
+        timeSlider.value = globalTime / levelTime;
+    }
+
 	void Update () {
         globalTime += Time.deltaTime; //time in seconds
         localTime += Time.deltaTime; //time used to calculate the time to display on screen; separate from globalTime; should not be used for anything else 

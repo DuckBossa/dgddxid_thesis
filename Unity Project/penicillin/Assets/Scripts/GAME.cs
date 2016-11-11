@@ -25,6 +25,7 @@ namespace GLOBAL{
 
         public const float loadoutLifetime = 10;
         public const float waveTimeInMins = 3;
+        public const float num_waves = 4;
 	    
 		public const string character_weapons_folder = "Characters/Penny/";
 
