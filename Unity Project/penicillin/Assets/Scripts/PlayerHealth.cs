@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour {
     public Slider healthSlider;
 
     float currTime;
-    //Animator anim;
+    Animator anim;
     PlayerMovement playerMovement;
 
     bool isDead;
@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void Start() {
         currTime = 0;
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         currHealth = GAME.max_health;
         healthSlider.maxValue = GAME.max_health;
@@ -58,6 +58,8 @@ public class PlayerHealth : MonoBehaviour {
 
     public void TakeDamage() {
         if (!isInvulnerable && !playerMovement.amDashing()) {
+			Debug.Log ("rip");
+			anim.SetBool ("isOuchie", true);
             damaged = true;
             fill.color = Color.Lerp(deadColor, aliveColor, currHealth/GAME.max_health);
             currHealth--;
@@ -76,6 +78,10 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
+
+	public void NotOuchie(){
+		anim.SetBool ("isOuchie", false);
+	}
     void Death() {
         isDead = true;
         //Debug.Log("player dead");

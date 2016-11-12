@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: a95c775f1413d47468259af795c3357f
-timeCreated: 1473900889
+timeCreated: 1478870136
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: penny_ouchie_0
+    21300002: penny_ouchie_1
+    21300004: penny_ouchie_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +41,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +54,46 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: penny_ouchie_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1
+        width: 23
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: penny_ouchie_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 2
+        width: 40
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: penny_ouchie_2
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1
+        width: 41
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
