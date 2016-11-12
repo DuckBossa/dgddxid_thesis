@@ -24,8 +24,9 @@ namespace GLOBAL{
         public const int tile_size = 64;
 
         public const float loadoutLifetime = 10;
-        public const float waveTimeInMins = 3;
-        public const float num_waves = 4;
+        public const float waveTimeInMins = 2;
+        public const float num_waves = 3;
+        public const float loadoutIndicatorDecaySpeed = .03f;
 	    
 		public const string character_weapons_folder = "Characters/Penny/";
 
