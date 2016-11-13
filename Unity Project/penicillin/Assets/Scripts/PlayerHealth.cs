@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour {
     public void TakeDamage() {
         if (!isInvulnerable && !playerMovement.amDashing()) {
 			Debug.Log ("rip");
-			anim.SetBool ("isOuchie", true);
+            anim.SetTrigger("isOuchie");
             damaged = true;
             fill.color = Color.Lerp(deadColor, aliveColor, currHealth/GAME.max_health);
             currHealth--;
