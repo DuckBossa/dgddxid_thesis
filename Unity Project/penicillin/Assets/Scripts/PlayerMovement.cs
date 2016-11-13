@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour {
 
     Animator anim;
     Rigidbody2D rb;
+    PlayerAttack pa;
     int currjumps, currdash;
     bool isWalking, isAttacking, isDashing, isFalling, faceRight;
     Transform trans, groundCheckL, groundCheckR;
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     void Start() {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        pa = GetComponent<PlayerAttack>();
         currjumps = GAME.jumps;
         currdash = GAME.dashes;
         dir = 0;
@@ -39,7 +41,6 @@ public class PlayerMovement : MonoBehaviour {
         isDashing = false;
         canAttack = false;
         faceRight = true;
-
         trans = this.transform;
         groundCheckL = GameObject.Find(this.name + "/GroundCheckLeft").transform;
         groundCheckR = GameObject.Find(this.name + "/GroundCheckRight").transform;
@@ -90,7 +91,6 @@ public class PlayerMovement : MonoBehaviour {
         anim.SetBool("isJumping", isJumping);
         anim.SetBool("isDashing", isDashing);
         anim.SetBool("isFalling", isFalling);
-        anim.SetBool("isAttacking", isAttacking);
     }
 
     public void Jump() {
@@ -160,7 +160,6 @@ public class PlayerMovement : MonoBehaviour {
             isAttacking = true;
         }
     }
-
     public void SwitchWeapon() {
         if (!isAttacking) {
             weapon_switch = (weapon_switch + 1) % GAME.character_weapon_swords.Length;

@@ -30,6 +30,8 @@ namespace GLOBAL{
 	    
 		public const string character_weapons_folder = "Characters/Penny/";
 
+
+        public const int sword_max_lvl = 3;
         public static readonly string[] character_weapon_swords =  { "penny_sword_slash",
                                                               "penny_sword_slash_EVIL LOOKIGN SWORD HOSHIT",
                                                               "penny_sword_slash_BLUE",
