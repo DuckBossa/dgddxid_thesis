@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour {
     public Image damageImage, fill;
     public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
     public Slider healthSlider;
+    public Canvas hud, pause, loadout, gameover, controls;
 
     float currTime;
     Animator anim;
@@ -84,6 +85,13 @@ public class PlayerHealth : MonoBehaviour {
 	}
     void Death() {
         isDead = true;
+        Time.timeScale = 0;
+        hud.gameObject.SetActive(false);
+        pause.gameObject.SetActive(false);
+        loadout.gameObject.SetActive(false);
+        controls.gameObject.SetActive(false);
+        gameover.gameObject.SetActive(true);
+        GameOverScreenHandler.displayStats();
         //Debug.Log("player dead");
         //anim.SetTrigger("Die");
         //playerMovement.enabled = false;

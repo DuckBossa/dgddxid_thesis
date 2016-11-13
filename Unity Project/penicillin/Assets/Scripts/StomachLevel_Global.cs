@@ -7,7 +7,7 @@ public class StomachLevel_Global : MonoBehaviour {
     // Use this for initialization
     public Text screenTimer;
     public Slider timeSlider;
-    public float globalTime;
+    public static float globalTime;
     public Transform[] loadouts;
     public Transform player;
     public GameObject Loadout, loadoutIndicator;
@@ -18,8 +18,8 @@ public class StomachLevel_Global : MonoBehaviour {
     private Vector3 defaultScale;
 	void Start () {
         Time.timeScale = 1;
-        timeLimitInSeconds = 60*GAME.waveTimeInMins;
-        //timeLimitInSeconds = 1;
+        //timeLimitInSeconds = 60*GAME.waveTimeInMins;
+        timeLimitInSeconds = 1;
         defaultColor = screenTimer.color;
         Loadout.SetActive(false);
         loadoutIndicator.SetActive(false);
@@ -27,6 +27,7 @@ public class StomachLevel_Global : MonoBehaviour {
         timeSlider.value = globalTime / levelTime;
         wasLoadout = false;
         defaultScale = loadoutIndicator.transform.localScale;
+        screenTimer.text = "";
     }
 	
 	// Update is called once per frame
@@ -39,9 +40,7 @@ public class StomachLevel_Global : MonoBehaviour {
         localTime += Time.deltaTime; //time used to calculate the time to display on screen; separate from globalTime; should not be used for anything else 
 
         int timeRemaining = (int)timeLimitInSeconds - (int)localTime;
-        string min = Mathf.Floor(timeRemaining / 60).ToString("00");
-        string sec = (timeRemaining % 60).ToString("00");
-        screenTimer.text = min + ":" + sec;
+        
 
         //spawn loadout section if it's not yet there
         if(timeRemaining == -1 && !Loadout.activeInHierarchy) {
@@ -65,6 +64,7 @@ public class StomachLevel_Global : MonoBehaviour {
         }
         //player didn't reach loadoutsection in time, go straight to 2nd wave
         else if(timeRemaining == -1 && Loadout.activeInHierarchy) {
+            screenTimer.text = "";
             localTime = 0;
             timeLimitInSeconds = 60 * GAME.waveTimeInMins;
             screenTimer.color = defaultColor;
@@ -75,8 +75,12 @@ public class StomachLevel_Global : MonoBehaviour {
             loadoutIndicator.SetActive(true);
             loadoutIndicator.transform.position = Loadout.transform.position;
             if(loadoutIndicator.transform.localScale.x >= 0) loadoutIndicator.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
+            string min = Mathf.Floor(timeRemaining / 60).ToString("00");
+            string sec = (timeRemaining % 60).ToString("00");
+            screenTimer.text = min + ":" + sec;
         }
         else if(!Loadout.activeInHierarchy && wasLoadout) {
+            screenTimer.text = "";
             loadoutIndicator.SetActive(false);
             loadoutIndicator.transform.localScale = defaultScale;
         }

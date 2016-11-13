@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using GLOBAL;
 
 public class GameOverScreenHandler : MonoBehaviour {
+
+    public static Text timePlayed, researchPoints;
+    public Text tp, rp;
 
     public void RestartLevel() {
         Time.timeScale = 1;
@@ -11,5 +16,20 @@ public class GameOverScreenHandler : MonoBehaviour {
 
     public void GoToMainMenu() {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void Start() {
+        gameObject.SetActive(false);
+        timePlayed = tp;
+        researchPoints = rp;
+    }
+
+    public static void displayStats() {
+        float totalTime = StomachLevel_Global.globalTime;
+        string min = Mathf.Floor(totalTime / 60).ToString("00");
+        string sec = (totalTime % 60).ToString("00");
+        timePlayed.text = "Time Played: " + min + ":" + sec;
+
+        researchPoints.text = "Total Research Points: " + ScoreManager.totalResearchPoints;
     }
 }
