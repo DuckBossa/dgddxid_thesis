@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Attack() {
-        if (!isDashing && !isFalling && !isJumping && !isAttacking) {
+        if (!isDashing && !isAttacking) {
             rb.velocity = new Vector2(0, rb.velocity.y);
             isAttacking = true;
         }
