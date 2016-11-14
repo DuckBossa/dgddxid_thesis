@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-		other.gameObject.GetComponent<EnemyHealth>().TakeDamage(weapon_level[weapon_switch]);
+		other.gameObject.GetComponent<EnemyHealth>().TakeDamage(weapon_level[weapon_switch] + 1);
     }
 
     void FixedUpdate() {
