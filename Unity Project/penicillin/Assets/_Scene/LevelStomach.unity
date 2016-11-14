@@ -2110,7 +2110,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 702421053}
+        - m_Target: {fileID: 1924780871}
           m_MethodName: SwitchWeapon
           m_Mode: 1
           m_Arguments:
@@ -11732,7 +11732,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 702421053}
+        - m_Target: {fileID: 1924780871}
           m_MethodName: SetAttack
           m_Mode: 6
           m_Arguments:
@@ -11749,7 +11749,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 702421053}
+        - m_Target: {fileID: 1924780871}
           m_MethodName: SetAttack
           m_Mode: 6
           m_Arguments:
@@ -15811,7 +15811,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010412385610, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.03
+      value: -11.139
       objectReference: {fileID: 0}
     - target: {fileID: 4000010412385610, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
       propertyPath: m_LocalPosition.y
@@ -15866,14 +15866,6 @@ Prefab:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 337894727}
-    - target: {fileID: 1000014031088176, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000014031088176, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114000010157573716, guid: fd63a716ba13f794db82e52bf4755ada,
         type: 2}
       propertyPath: hud
@@ -15899,9 +15891,19 @@ Prefab:
       propertyPath: controls
       value: 
       objectReference: {fileID: 1276661168}
+    - target: {fileID: 1000012032498276, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1924780871 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+    type: 2}
+  m_PrefabInternal: {fileID: 1924780870}
+  m_Script: {fileID: 11500000, guid: b426733a11b508840a04c3059e219987, type: 3}
 --- !u!1 &1930416062
 GameObject:
   m_ObjectHideFlags: 0

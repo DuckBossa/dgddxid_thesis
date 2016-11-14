@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c9afe88e80c2dba4ab58ca249b651c26
-timeCreated: 1479104429
+guid: 12111bb4027de1946b44a4a77f940ca2
+timeCreated: 1479104607
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: 1
-    21300002: 2
+    21300002: midair_attack_b2_1
     21300004: 3
     21300006: 4
   serializedVersion: 2
@@ -65,12 +65,12 @@ TextureImporter:
         width: 66
         height: 63
       alignment: 9
-      pivot: {x: 0.7421215, y: 0.48926613}
+      pivot: {x: 0.7421215, y: 0.4892661}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: 2
+      name: midair_attack_b2_1
       rect:
         serializedVersion: 2
         x: 159
@@ -78,7 +78,7 @@ TextureImporter:
         width: 58
         height: 64
       alignment: 9
-      pivot: {x: 0.6776636, y: 0.47853228}
+      pivot: {x: 0.6776636, y: 0.4785323}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -91,7 +91,7 @@ TextureImporter:
         width: 76
         height: 64
       alignment: 9
-      pivot: {x: 0.7621319, y: 0.47584882}
+      pivot: {x: 0.7621319, y: 0.4758488}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -104,7 +104,7 @@ TextureImporter:
         width: 94
         height: 64
       alignment: 9
-      pivot: {x: 0.54567605, y: 0.4919496}
+      pivot: {x: 0.5456761, y: 0.4919496}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

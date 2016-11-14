@@ -1,28 +1,28 @@
 fileFormatVersion: 2
 guid: b02719dcf802f4284890ce1eadbde5b4
-timeCreated: 1474186820
+timeCreated: 1479143166
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PENNY_jumping_0
-    21300002: PENNY_jumping_1
-    21300004: PENNY_jumping_2
-    21300006: PENNY_jumping_3
-    21300008: PENNY_jumping_4
-    21300010: PENNY_jumping_5
-    21300012: PENNY_jumping_6
-    21300014: PENNY_jumping_7
-    21300016: PENNY_jumping_8
-    21300018: PENNY_jumping_9
-    21300020: PENNY_jumping_10
-    21300022: PENNY_jumping_11
-    21300024: PENNY_jumping_12
-    21300026: PENNY_jumping_13
-    21300028: PENNY_jumping_14
-    21300030: PENNY_jumping_15
-    21300032: PENNY_jumping_16
+    21300000: 1
+    21300002: 2
+    21300004: 3
+    21300006: 4
+    21300008: 5
+    21300010: 6
+    21300012: 7
+    21300014: 8
+    21300016: 9
+    21300018: 10
+    21300020: 11
+    21300022: 12
+    21300024: 13
+    21300026: 14
+    21300028: 15
+    21300030: 16
+    21300032: 17
     21300034: PENNY_jumping_17
-    21300036: PENNY_jumping_18
+    21300036: 18
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -72,7 +72,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PENNY_jumping_0
+      name: 1
       rect:
         serializedVersion: 2
         x: 20
@@ -85,7 +85,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_1
+      name: 2
       rect:
         serializedVersion: 2
         x: 70
@@ -98,7 +98,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_2
+      name: 3
       rect:
         serializedVersion: 2
         x: 140
@@ -111,7 +111,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_3
+      name: 4
       rect:
         serializedVersion: 2
         x: 202
@@ -124,7 +124,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_4
+      name: 5
       rect:
         serializedVersion: 2
         x: 264
@@ -137,7 +137,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_5
+      name: 6
       rect:
         serializedVersion: 2
         x: 331
@@ -150,7 +150,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_6
+      name: 7
       rect:
         serializedVersion: 2
         x: 395
@@ -163,7 +163,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_7
+      name: 8
       rect:
         serializedVersion: 2
         x: 459
@@ -176,7 +176,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_8
+      name: 9
       rect:
         serializedVersion: 2
         x: 523
@@ -189,7 +189,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_9
+      name: 10
       rect:
         serializedVersion: 2
         x: 587
@@ -202,7 +202,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_10
+      name: 11
       rect:
         serializedVersion: 2
         x: 651
@@ -215,7 +215,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_11
+      name: 12
       rect:
         serializedVersion: 2
         x: 713
@@ -228,7 +228,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_12
+      name: 13
       rect:
         serializedVersion: 2
         x: 777
@@ -241,7 +241,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_13
+      name: 14
       rect:
         serializedVersion: 2
         x: 844
@@ -254,7 +254,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_14
+      name: 15
       rect:
         serializedVersion: 2
         x: 902
@@ -267,7 +267,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_15
+      name: 16
       rect:
         serializedVersion: 2
         x: 968
@@ -280,7 +280,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_16
+      name: 17
       rect:
         serializedVersion: 2
         x: 1030
@@ -301,12 +301,12 @@ TextureImporter:
         width: 7
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_jumping_18
+      name: 18
       rect:
         serializedVersion: 2
         x: 1108

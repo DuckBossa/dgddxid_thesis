@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e518cf413384ea84aa7b6383ed7f37ff
-timeCreated: 1479105458
+guid: e200040673deb4e6c85b61198b0c87d8
+timeCreated: 1475738156
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: 2
     21300004: 3
     21300006: 4
+    21300008: 5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -61,11 +62,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 1
-        width: 66
-        height: 63
+        y: 2
+        width: 60
+        height: 62
       alignment: 9
-      pivot: {x: 0.730267, y: 0.4882444}
+      pivot: {x: 0.5250833, y: 0.4561042}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -73,12 +74,12 @@ TextureImporter:
       name: 2
       rect:
         serializedVersion: 2
-        x: 152
-        y: 0
-        width: 65
-        height: 64
+        x: 159
+        y: 2
+        width: 51
+        height: 62
       alignment: 9
-      pivot: {x: 0.7338097, y: 0.4741378}
+      pivot: {x: 0.5295099, y: 0.4867981}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -86,12 +87,12 @@ TextureImporter:
       name: 3
       rect:
         serializedVersion: 2
-        x: 260
-        y: 0
-        width: 85
-        height: 64
+        x: 268
+        y: 2
+        width: 70
+        height: 62
       alignment: 9
-      pivot: {x: 0.7956324, y: 0.4717866}
+      pivot: {x: 0.6773747, y: 0.4471929}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -99,12 +100,25 @@ TextureImporter:
       name: 4
       rect:
         serializedVersion: 2
-        x: 385
-        y: 0
-        width: 109
-        height: 64
+        x: 395
+        y: 2
+        width: 83
+        height: 62
       alignment: 9
-      pivot: {x: 0.5773066, y: 0.4952978}
+      pivot: {x: 0.5906626, y: 0.529861}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 5
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 2
+        width: 80
+        height: 62
+      alignment: 9
+      pivot: {x: 0.2131096, y: 0.529861}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

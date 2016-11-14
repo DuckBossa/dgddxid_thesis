@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: a08c5afa465b7ca4fa0d3d636acf4c00
-timeCreated: 1479091181
+guid: c9afe88e80c2dba4ab58ca249b651c26
+timeCreated: 1479104429
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: final_sword3_0
-    21300002: final_sword3_1
-    21300004: final_sword3_2
-    21300006: final_sword3_3
-    21300008: final_sword3_4
+    21300000: 1
+    21300002: 2
+    21300004: 3
+    21300006: 4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,67 +57,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: final_sword3_0
+      name: 1
       rect:
         serializedVersion: 2
-        x: 9
-        y: 2
-        width: 64
-        height: 62
+        x: 22
+        y: 1
+        width: 66
+        height: 63
       alignment: 9
-      pivot: {x: 0.784665, y: 0.4236759}
+      pivot: {x: 0.7421215, y: 0.48926613}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: final_sword3_1
+      name: 2
       rect:
         serializedVersion: 2
-        x: 138
-        y: 2
-        width: 63
-        height: 62
+        x: 159
+        y: 0
+        width: 58
+        height: 64
       alignment: 9
-      pivot: {x: 0.7868527, y: 0.445567}
+      pivot: {x: 0.6776636, y: 0.47853228}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: final_sword3_2
+      name: 3
       rect:
         serializedVersion: 2
-        x: 247
-        y: 2
-        width: 83
-        height: 62
+        x: 269
+        y: 0
+        width: 76
+        height: 64
       alignment: 9
-      pivot: {x: 0.8222439, y: 0.4314365}
+      pivot: {x: 0.7621319, y: 0.47584882}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: final_sword3_3
+      name: 4
       rect:
         serializedVersion: 2
-        x: 382
-        y: 2
-        width: 109
-        height: 62
+        x: 397
+        y: 0
+        width: 94
+        height: 64
       alignment: 9
-      pivot: {x: 0.5747633, y: 0.513481}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: final_sword3_4
-      rect:
-        serializedVersion: 2
-        x: 553
-        y: 2
-        width: 84
-        height: 62
-      alignment: 9
-      pivot: {x: 0.2258946, y: 0.5391789}
+      pivot: {x: 0.54567605, y: 0.4919496}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

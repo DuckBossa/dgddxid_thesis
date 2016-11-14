@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 45b72d982192fd84c9f5017987d0606a
-timeCreated: 1479103885
+guid: ce6fa09deacb92f4ca2d0fd69f812dd2
+timeCreated: 1479091312
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -61,12 +61,12 @@ TextureImporter:
       name: 1
       rect:
         serializedVersion: 2
-        x: 10
+        x: 9
         y: 2
-        width: 73
+        width: 62
         height: 62
       alignment: 9
-      pivot: {x: 0.7857336, y: 0.4364012}
+      pivot: {x: 0.784665, y: 0.4236759}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -74,12 +74,12 @@ TextureImporter:
       name: 2
       rect:
         serializedVersion: 2
-        x: 147
+        x: 138
         y: 2
-        width: 54
+        width: 63
         height: 62
       alignment: 9
-      pivot: {x: 0.7589004, y: 0.4185716}
+      pivot: {x: 0.7868527, y: 0.445567}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -87,12 +87,12 @@ TextureImporter:
       name: 3
       rect:
         serializedVersion: 2
-        x: 257
+        x: 247
         y: 2
-        width: 73
+        width: 83
         height: 62
       alignment: 9
-      pivot: {x: 0.8112124, y: 0.4373627}
+      pivot: {x: 0.8222439, y: 0.4314365}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -100,12 +100,12 @@ TextureImporter:
       name: 4
       rect:
         serializedVersion: 2
-        x: 392
+        x: 382
         y: 2
-        width: 94
+        width: 109
         height: 62
       alignment: 9
-      pivot: {x: 0.5572304, y: 0.5333739}
+      pivot: {x: 0.5747633, y: 0.513481}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -115,10 +115,10 @@ TextureImporter:
         serializedVersion: 2
         x: 553
         y: 2
-        width: 86
+        width: 84
         height: 61
       alignment: 9
-      pivot: {x: 0.2143169, y: 0.5424758}
+      pivot: {x: 0.2258946, y: 0.5391789}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

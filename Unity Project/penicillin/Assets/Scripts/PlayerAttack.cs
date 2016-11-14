@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour {
 		attackCalled = false;
 		weapon_switch = 0;
 		for (int i = 0; i < weapon_level.Length; i++) {
-			weapon_level [i] = 1;
+			weapon_level [i] = 0;
 		}
 		anim = GetComponent<Animator>();
         isAttacking = false;
@@ -31,19 +31,17 @@ public class PlayerAttack : MonoBehaviour {
 		if (attackCalled && !pm.isDash ())
 			Attack ();
         anim.SetBool("isAttacking", isAttacking);
+
     }
 
     void LateUpdate() {
         if (isAttacking) {
-			if (pm.isFall () || pm.isJump ()) {
-				
-			} 
-			else {
-			
-			}
-            var subSprites = Resources.LoadAll<Sprite>(GAME.character_weapons_folder + GAME.character_weapon_swords[weapon_switch]);
+            int trueSwitch = pm.isFall() || pm.isJump() ? weapon_level[weapon_switch] + GAME.num_swords : weapon_level[weapon_switch];
+            string weap = GAME.character_weapons_folder + GAME.character_weapon_swords[trueSwitch] + weapon_switch;
+            var subSprites = Resources.LoadAll<Sprite>(weap);
             foreach (var renderer in GetComponentsInChildren<SpriteRenderer>()) {
                 string spriteName = renderer.sprite.name;
+                Debug.Log(spriteName);
                 var newSprite = Array.Find(subSprites, item => item.name == spriteName);
                 if (newSprite)
                     renderer.sprite = newSprite;
@@ -69,8 +67,8 @@ public class PlayerAttack : MonoBehaviour {
 	}
 	public void SwitchWeapon() {
 		if (!isAttacking) {
-			weapon_switch = (weapon_switch + 1) % GAME.character_weapon_swords.Length/2;
-		}
+            weapon_switch = (weapon_switch + 1) % GAME.num_swords;
+        }
 	}
 
 	public void SetAttack(bool a) {
