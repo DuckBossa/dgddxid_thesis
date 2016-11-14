@@ -6,7 +6,7 @@ using GLOBAL;
 public class PlayerAttack : MonoBehaviour {
     int weapon_switch;
 	int[] weapon_level;
-    bool isAttacking;
+    bool isAttacking,attackCalled;
     Animator anim;
 	PlayerMovement pm;
 	Rigidbody2D rb;
@@ -14,9 +14,10 @@ public class PlayerAttack : MonoBehaviour {
 		pm = GetComponent<PlayerMovement> ();
 		rb = GetComponent<Rigidbody2D> ();
 		weapon_level = new int[GAME.num_swords];
+		attackCalled = false;
 		weapon_switch = 0;
-		foreach (int sword in weapon_level) {
-			sword = 1;
+		for (int i = 0; i < weapon_level.Length; i++) {
+			weapon_level [i] = 1;
 		}
 		anim = GetComponent<Animator>();
         isAttacking = false;
@@ -27,12 +28,19 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     void FixedUpdate() {
+		if (attackCalled && !pm.isDash ())
+			Attack ();
         anim.SetBool("isAttacking", isAttacking);
     }
 
     void LateUpdate() {
         if (isAttacking) {
+			if (pm.isFall () || pm.isJump ()) {
+				
+			} 
+			else {
 			
+			}
             var subSprites = Resources.LoadAll<Sprite>(GAME.character_weapons_folder + GAME.character_weapon_swords[weapon_switch]);
             foreach (var renderer in GetComponentsInChildren<SpriteRenderer>()) {
                 string spriteName = renderer.sprite.name;
@@ -44,7 +52,7 @@ public class PlayerAttack : MonoBehaviour {
 
     }
 
-    bool isAttack() {
+    public bool isAttack() {
         return isAttacking;
     }
 
@@ -54,7 +62,7 @@ public class PlayerAttack : MonoBehaviour {
 
 
 	public void Attack() {
-		if (!isDashing && !isAttacking) {
+		if ( !pm.isDash() && !isAttacking) {
 			rb.velocity = new Vector2(0, rb.velocity.y);
 			isAttacking = true;
 		}
@@ -66,10 +74,7 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 	public void SetAttack(bool a) {
-		canAttack = a;
+		attackCalled = a;
 	}
-
-
-
 
 }
