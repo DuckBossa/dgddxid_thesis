@@ -17,9 +17,11 @@ public class LoadoutController : MonoBehaviour {
 	}
 
     void OnCollisionEnter2D(Collision2D col) {
-        Debug.Log("sfd");
-        Time.timeScale = 0;
-        loadoutCanvas.gameObject.SetActive(true);
+        if (col.gameObject.name == "Penny") {
+            Debug.Log("sfd");
+            Time.timeScale = 0;
+            loadoutCanvas.gameObject.SetActive(true);
+        }
     }
 
     public void DisableCanvas() {
