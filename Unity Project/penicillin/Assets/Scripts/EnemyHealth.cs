@@ -25,9 +25,9 @@ public class EnemyHealth : MonoBehaviour {
         enemy = GetComponent<Enemy>();
     }
 
-    public void TakeDamage() {
+	public void TakeDamage(int damage) {
         if (isDead) return;
-        currHealth --;
+		currHealth -= damage;
         if (currHealth <= 0) Death();
         enemy.isStunned = true;
     }

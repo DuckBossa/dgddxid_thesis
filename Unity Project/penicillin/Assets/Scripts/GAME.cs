@@ -31,23 +31,15 @@ namespace GLOBAL{
 		public const string character_weapons_folder = "Characters/Penny/";
 
 
-        public const int sword_max_lvl = 3;
-        public static readonly string[] character_weapon_swords =  { "penny_sword_slash",
-                                                              "penny_sword_slash_EVIL LOOKIGN SWORD HOSHIT",
-                                                              "penny_sword_slash_BLUE",
-                                                              "penny_sword_slash_GREEN",
-                                                              "penny_sword_slash_PINK",
-                                                             "penny_sword_slash_YELLOW"};
-
-        /*
-        public const string character_weapons_sword_1 = "penny_sword_slash";
-        public const string character_weapons_sword_2 = "penny_sword_slash_EVIL LOOKIGN SWORD HOSHIT";
-        public const string character_weapons_sword_3 = "penny_sword_slash_BLUE";
-        public const string character_weapons_sword_4 = "penny_sword_slash_GREEN";
-        public const string character_weapons_sword_5 = "penny_sword_slash_PINK";
-        public const string character_weapons_sword_6 = "penny_sword_slash_YELLOW";
-        */
-
+        
+        public static readonly string[] character_weapon_swords =  {"basic_sword",
+																	"upgraded_sword",
+																	"final_sword",
+																	"midair_atack_basic",
+																	"midair_attack_upgraded",
+																	"midair_attack_final"};
+		public const int num_swords = 3;
+		public const int sword_max_lvl = 3;
 
         public const float FlyingShigella_aspd = 1f;
         public const float FlyingShigella_mvspd = 1f;
