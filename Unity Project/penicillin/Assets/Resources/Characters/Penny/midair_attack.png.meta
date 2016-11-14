@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: 207021e12669b3e4892357f626fafaa1
-timeCreated: 1479023958
+timeCreated: 1479102659
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: midair_attack_0
-    21300002: midair_attack_1
-    21300004: midair_attack_2
-    21300006: midair_attack_3
+    21300000: 1
+    21300002: 2
+    21300004: 3
+    21300006: 4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,7 +57,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: midair_attack_0
+      name: 1
       rect:
         serializedVersion: 2
         x: 34
@@ -70,7 +70,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: midair_attack_1
+      name: 2
       rect:
         serializedVersion: 2
         x: 171
@@ -83,7 +83,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: midair_attack_2
+      name: 3
       rect:
         serializedVersion: 2
         x: 280
@@ -96,7 +96,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: midair_attack_3
+      name: 4
       rect:
         serializedVersion: 2
         x: 399
