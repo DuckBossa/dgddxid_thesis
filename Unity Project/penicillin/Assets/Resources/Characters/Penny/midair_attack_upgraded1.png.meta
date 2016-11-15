@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 12111bb4027de1946b44a4a77f940ca2
-timeCreated: 1479104607
+timeCreated: 1479204012
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: 1
-    21300002: midair_attack_b2_1
+    21300002: 2
     21300004: 3
     21300006: 4
   serializedVersion: 2
@@ -70,7 +70,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: midair_attack_b2_1
+      name: 2
       rect:
         serializedVersion: 2
         x: 159

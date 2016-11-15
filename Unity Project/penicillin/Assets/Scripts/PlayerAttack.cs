@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour {
 		attackCalled = false;
 		whichWeapon = 0;
 		for (int i = 0; i < weapLevel.Length; i++) {
-			weapLevel [i] = 0;
+			weapLevel [i] = i;
 		}
 		anim = GetComponent<Animator>();
         isAttacking = false;
