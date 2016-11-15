@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: d84c255563a424e739c0f3b79d79eb2b
-timeCreated: 1473067088
+timeCreated: 1479175932
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PENNY_IDLE_0
-    21300002: PENNY_IDLE_1
+    21300000: 1
+    21300002: 2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,7 +55,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PENNY_IDLE_0
+      name: 1
       rect:
         serializedVersion: 2
         x: 20
@@ -68,7 +68,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PENNY_IDLE_1
+      name: 2
       rect:
         serializedVersion: 2
         x: 84

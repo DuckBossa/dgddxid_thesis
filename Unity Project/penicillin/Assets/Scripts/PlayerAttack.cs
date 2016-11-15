@@ -4,8 +4,8 @@ using System;
 using GLOBAL;
 
 public class PlayerAttack : MonoBehaviour {
-    int weapon_switch;
-	int[] weapon_level;
+    int whichWeapon;
+	int[] weapLevel;
     bool isAttacking,attackCalled;
     Animator anim;
 	PlayerMovement pm;
@@ -13,41 +13,26 @@ public class PlayerAttack : MonoBehaviour {
     void Start() {
 		pm = GetComponent<PlayerMovement> ();
 		rb = GetComponent<Rigidbody2D> ();
-		weapon_level = new int[GAME.num_swords];
+		weapLevel = new int[GAME.num_swords];
 		attackCalled = false;
-		weapon_switch = 0;
-		for (int i = 0; i < weapon_level.Length; i++) {
-			weapon_level [i] = 0;
+		whichWeapon = 0;
+		for (int i = 0; i < weapLevel.Length; i++) {
+			weapLevel [i] = 0;
 		}
 		anim = GetComponent<Animator>();
         isAttacking = false;
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-		other.gameObject.GetComponent<EnemyHealth>().TakeDamage(weapon_level[weapon_switch] + 1);
+		other.gameObject.GetComponent<EnemyHealth>().TakeDamage(weapLevel[whichWeapon] + 1);
     }
 
     void FixedUpdate() {
 		if (attackCalled && !pm.isDash ())
 			Attack ();
+        anim.SetInteger("whichWeapon", whichWeapon);
+        anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
         anim.SetBool("isAttacking", isAttacking);
-
-    }
-
-    void LateUpdate() {
-        if (isAttacking) {
-            int trueSwitch = pm.isFall() || pm.isJump() ? weapon_level[weapon_switch] + GAME.num_swords : weapon_level[weapon_switch];
-            string weap = GAME.character_weapons_folder + GAME.character_weapon_swords[trueSwitch] + weapon_switch;
-            var subSprites = Resources.LoadAll<Sprite>(weap);
-            foreach (var renderer in GetComponentsInChildren<SpriteRenderer>()) {
-                string spriteName = renderer.sprite.name;
-                Debug.Log(spriteName);
-                var newSprite = Array.Find(subSprites, item => item.name == spriteName);
-                if (newSprite)
-                    renderer.sprite = newSprite;
-            }
-        }
-
     }
 
     public bool isAttack() {
@@ -67,7 +52,7 @@ public class PlayerAttack : MonoBehaviour {
 	}
 	public void SwitchWeapon() {
 		if (!isAttacking) {
-            weapon_switch = (weapon_switch + 1) % GAME.num_swords;
+            whichWeapon = (whichWeapon + 1) % GAME.num_swords;
         }
 	}
 
