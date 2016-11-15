@@ -1,0 +1,15 @@
+hello fams
+
+off white: #fcf3e2
+
+brown: #643d46
+
+green: #20a563
+
+red: #cf584b
+
+For the pause menu: Idle buttons are brown, then the font is off-white and in Roboto Light. When clicked the button turns green and the the font is still off-white but in Roboto Black.
+
+For the prompt: the color is reversed, so the idle buttons are off-white and the font is brown and in Roboto Light. When clicked the button turns green and the font is off-white and in Roboto Black (same as above hehe)
+
+thank u fams!!
