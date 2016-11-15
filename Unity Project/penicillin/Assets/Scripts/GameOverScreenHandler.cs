@@ -28,8 +28,8 @@ public class GameOverScreenHandler : MonoBehaviour {
         float totalTime = StomachLevel_Global.globalTime;
         string min = Mathf.Floor(totalTime / 60).ToString("00");
         string sec = (totalTime % 60).ToString("00");
-        timePlayed.text = "Time Played: " + min + ":" + sec;
+        timePlayed.text = "TIME PLAYED: " + min + ":" + sec;
 
-        researchPoints.text = "Total Research Points: " + ScoreManager.totalResearchPoints;
+        researchPoints.text = "TOTAL RESEARCH POINTS: " + ScoreManager.totalResearchPoints;
     }
 }
