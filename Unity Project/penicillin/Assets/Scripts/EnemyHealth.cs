@@ -34,7 +34,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void Death() {
         isDead = true;
-        anim.SetBool("isDead", true);
+        //anim.SetBool("isDead", true);
         manager.currEnemies--;
         Destroy(gameObject, .75f);
         ScoreManager.researchPoints += researchPoints;
