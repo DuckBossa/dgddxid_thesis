@@ -37,8 +37,10 @@ namespace GLOBAL{
         public const float FlyingShigella_projlife = 4f;
         public const float FlyingShigella_projspeed = 2f;
 
-        public const float Shigellang_mvspd = 1.5f;
+        public const float Shigellang_mvspd = 1.25f;
+        public const float Shigellang_walkdist = 2f;
         public const float Shigellang_LeapCD = 2f;
+        public const float Shigellang_TimeIdleRange = 3f;
         public const float Shigellang_LeapAttackCD = 5f;
         public const float Shigellang_ProjectileCD = 4f;
         public const float Shigellang_ProjectileLife = 5f;
