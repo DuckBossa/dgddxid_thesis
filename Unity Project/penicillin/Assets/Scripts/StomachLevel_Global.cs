@@ -21,6 +21,7 @@ public class StomachLevel_Global : MonoBehaviour {
         //timeLimitInSeconds = 60*GAME.waveTimeInMins;
         timeLimitInSeconds = 1;
         defaultColor = screenTimer.color;
+        globalTime = 0;
         Loadout.SetActive(false);
         loadoutIndicator.SetActive(false);
         levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
@@ -44,18 +45,8 @@ public class StomachLevel_Global : MonoBehaviour {
 
         //spawn loadout section if it's not yet there
         if(timeRemaining == -1 && !Loadout.activeInHierarchy) {
-            //retrieve furthest
-            float maxDist = Mathf.NegativeInfinity;
-            int furthest = -1;
-            for(int i = 0; i < loadouts.Length; i++) {
-                float tempdist = (loadouts[i].transform.position - player.transform.position).sqrMagnitude;
-                if ( tempdist > maxDist) {
-                    maxDist = tempdist;
-                    furthest = i;
-                }
-            }
             //enable loadout gameobject
-            Loadout.transform.position = loadouts[furthest].transform.position;
+            Loadout.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position;
             Loadout.SetActive(true);
             screenTimer.color = Color.red;
             localTime = 0;
