@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using GLOBAL;
 public class ShigellangController : MonoBehaviour {
 
 	// Use this for initialization

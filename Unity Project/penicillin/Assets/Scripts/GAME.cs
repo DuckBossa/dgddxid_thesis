@@ -12,7 +12,7 @@ namespace GLOBAL{
         public const float player_atkRange = .25f;
 
         public const int dashes = 3;
-        public const float dash_force = 10f;
+        public const float dash_force = 7f;
         public const float dash_timer = 0.25f;
         public const float dash_cooldown = 2f;
         
@@ -27,17 +27,7 @@ namespace GLOBAL{
         public const float waveTimeInMins = 2;
         public const float num_waves = 3;
         public const float loadoutIndicatorDecaySpeed = .03f;
-	    
-		public const string character_weapons_folder = "Characters/Penny/";
 
-
-        
-        public static readonly string[] character_weapon_swords =  {"basic_sword",
-																	"upgraded_sword",
-																	"final_sword",
-																	"midair_atack_basic",
-																	"midair_attack_upgraded",
-																	"midair_attack_final"};
 		public const int num_swords = 3;
 		public const int sword_max_lvl = 3;
 
@@ -46,6 +36,13 @@ namespace GLOBAL{
         public const float FlyingShigella_patrolDist = 2f;
         public const float FlyingShigella_projlife = 4f;
         public const float FlyingShigella_projspeed = 2f;
+
+        public const float Shigellang_mvspd = 1.5f;
+        public const float Shigellang_LeapCD = 2f;
+        public const float Shigellang_LeapAttackCD = 5f;
+        public const float Shigellang_ProjectileCD = 4f;
+        public const float Shigellang_ProjectileLife = 5f;
+        public const float Shigellang_ProjectileSpeed = 1.5f;
     }
 
 }
