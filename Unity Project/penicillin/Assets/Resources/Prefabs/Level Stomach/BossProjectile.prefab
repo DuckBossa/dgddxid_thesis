@@ -26,7 +26,7 @@ GameObject:
   - 58: {fileID: 58000010924583168}
   - 50: {fileID: 50000011370533064}
   m_Layer: 14
-  m_Name: ShigellaFlyingProjectile 1
+  m_Name: BossProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
