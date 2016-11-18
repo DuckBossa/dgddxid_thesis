@@ -101,6 +101,7 @@ public class ShigellangController : MonoBehaviour {
 				break;
 			case 3:
 				Walk ();
+				break;
 			}
 
 		} 
