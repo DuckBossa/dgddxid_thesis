@@ -16,6 +16,7 @@ public class ShigellangController : MonoBehaviour {
     Animator anim;
     Vector2 dirWalk;
     Vector2 dirLeap;
+    Vector3 pos_leap;
     bool isIdle;
     bool isWalking;
     bool isLeaping;
@@ -50,7 +51,7 @@ public class ShigellangController : MonoBehaviour {
                 WhatDo();
             }
         }
-        if (isWalking) {
+        else if (isWalking) {
             distTraveled += GAME.Shigellang_mvspd * Time.deltaTime;
             if (distTraveled > GAME.Shigellang_walkdist) {
                 isWalking = false;
@@ -58,6 +59,9 @@ public class ShigellangController : MonoBehaviour {
                 setVel(Vector2.zero);
                 distTraveled = 0;
             }
+        }
+        else if (isLeaping) {
+
         }
 
     }
@@ -80,6 +84,7 @@ public class ShigellangController : MonoBehaviour {
                 break;
         }
         */
+
         LeapPlatform();
     }
 
@@ -102,6 +107,18 @@ public class ShigellangController : MonoBehaviour {
     void LeapPlatform() {
         Collider2D[] stuff = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 15f, mask);
         int rnglul = Random.Range(0, stuff.Length);
+        pos_leap = stuff[rnglul].transform.position;
+        dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position).normalized;
+        //if player can be seen, go to the platform nearest the player
+        //if not, go to a platorm that is not the nearest
+        isWalking = false;
+        isIdle = false;
+        isLeaping = true;
+        dirWalk.x = dirLeap.x > 0 ? 1 : -1;
+    }
+
+    void MoveLeap() {
+
     }
 
     void ShootProjectile(Vector2 dir) {
