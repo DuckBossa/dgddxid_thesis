@@ -1535,6 +1535,9 @@ MonoBehaviour:
   quitPrompt: {fileID: 287526188}
   mainMenu: {fileID: 2075763639}
   buttonPress: {fileID: 8300000, guid: abcce7e234da91c41ac0ce8eec562ed8, type: 3}
+  start: {fileID: 1052020176}
+  tutorial: {fileID: 1630144839}
+  quitgame: {fileID: 724626069}
 --- !u!114 &2040495830
 MonoBehaviour:
   m_ObjectHideFlags: 0

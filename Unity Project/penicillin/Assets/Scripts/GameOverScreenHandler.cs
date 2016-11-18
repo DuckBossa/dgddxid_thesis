@@ -10,7 +10,6 @@ public class GameOverScreenHandler : MonoBehaviour {
     public Text tp, rp;
 
     public void RestartLevel() {
-        Time.timeScale = 1;
         SceneManager.LoadScene("LevelStomach");// TEMPORARY ONLY; We somehow have to pass what level to restart
     }
 
