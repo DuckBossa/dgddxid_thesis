@@ -46,6 +46,8 @@ namespace GLOBAL{
         public const float Shigellang_ProjectileSpeed = 1.5f;
 		public const float Shigellang_LeapSpeed = 2.5f;
 		public const float Shigellang_JumpForce = 15f;
+        public const int Shigellang_Dormant_MaxHealth = 15;
+        public const float Shigellang_Dormant_TimeBetweenAttacks = 1f;
     }
 
 }
