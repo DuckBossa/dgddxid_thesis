@@ -7,6 +7,7 @@ public class Shigellang_Dormant : MonoBehaviour {
 
     public Slider healthSlider;
     public Sprite current, dmg1, dmg2, broken;
+    public GameObject Fighting_Shigella;
     public int health;
     private float damageTimer;
     private bool vulnerable;
@@ -49,9 +50,9 @@ public class Shigellang_Dormant : MonoBehaviour {
         //ded
         else if(health == 0) {
             //play awakening animation
-
+            Debug.Log("RIP");
             //spawn the boss
-
+            Instantiate(Fighting_Shigella, transform.position, Quaternion.identity);
             //set gameobject to inactive
             gameObject.SetActive(false);
         }

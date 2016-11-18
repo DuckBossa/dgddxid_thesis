@@ -15254,7 +15254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1754147214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15271,6 +15271,8 @@ MonoBehaviour:
   dmg1: {fileID: 21300000, guid: aefada14844c3f4409e3bb3a5e66532f, type: 3}
   dmg2: {fileID: 21300000, guid: 4c39b204db0fb9f4996f7f733b38e84a, type: 3}
   broken: {fileID: 21300000, guid: f3ac01efa12330742877b39f0f747aa0, type: 3}
+  Fighting_Shigella: {fileID: 1000010038870208, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
+    type: 2}
   health: 0
 --- !u!58 &1754147215
 CircleCollider2D:
