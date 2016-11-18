@@ -6,7 +6,9 @@ using GLOBAL;
 public class ShigellangController : MonoBehaviour {
     public LayerMask mask_map;
 	public LayerMask mask_player;
-
+	public GameObject fire_position;
+	public GameObject fire_projectile;
+	public GameObject projectile_parent;
     float leapTimer;
     float leapAttackTimer;
     float projectileSpewTimer;
@@ -51,11 +53,9 @@ public class ShigellangController : MonoBehaviour {
 		player = Physics2D.OverlapCircle (rb.position, 15f,mask_player);
 		if (player) {
 			playerSpotted = true;
-			Debug.Log ("Spot");
 		} 
 		else {
 			playerSpotted = false;
-			Debug.Log ("No Spot");
 		}
 
 
@@ -88,6 +88,21 @@ public class ShigellangController : MonoBehaviour {
     void WhatDo() {
 
 		if (playerSpotted) {
+			int rnglul = Random.Range (0, 100)%4;
+			switch (rnglul) {
+			case 0:
+				Idle ();
+				break;
+			case 1:
+				LeapAttack ();
+				break;
+			case 2:
+				ShootProjectile ();
+				break;
+			case 3:
+				Walk ();
+			}
+
 		} 
 		else {
 			int rnglul = Random.Range (0, 100) % 3;
@@ -139,8 +154,6 @@ public class ShigellangController : MonoBehaviour {
         isWalking = false;
         isIdle = false;
 		isLeapUp = pos_leap.y > transform.position.y;
-
-
         dirWalk.x = dirLeap.x > 0 ? 1 : -1;
 		anim.SetTrigger ("leap");
 
@@ -160,8 +173,15 @@ public class ShigellangController : MonoBehaviour {
 		Idle ();
 	}
 
-    void ShootProjectile(Vector2 dir) {
-
+    void ShootProjectile() {
+		anim.SetTrigger ("projectileAttack");
+		Debug.Log ("LOL");
     }
+
+	void Fire(){
+		GameObject temp = Instantiate(fire_projectile,fire_position.transform.position,Quaternion.identity) as GameObject;
+		temp.GetComponent<MoveDir>().setDir((player.transform.position - fire_position.transform.position).normalized);
+		temp.transform.parent = projectile_parent.transform;
+	}
 
 }
