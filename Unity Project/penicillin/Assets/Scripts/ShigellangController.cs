@@ -61,8 +61,12 @@ public class ShigellangController : MonoBehaviour {
             }
         }
         else if (isLeaping) {
-
-        }
+			rb.position = Vector2.Lerp (transform.position, pos_leap, GAME.Shigellang_LeapSpeed * Time.deltaTime);
+			float mag = (new Vector2 (pos_leap.x, pos_leap.y) - rb.position).magnitude;
+			if (mag < 0.3f) {
+				StopLeap ();
+			}
+		}
 
     }
 
@@ -102,24 +106,38 @@ public class ShigellangController : MonoBehaviour {
 
     void Idle() {
         idleTimer = 0;
+		isIdle = true;
+		isWalking = false;
+		isLeaping = false;
         idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
     }
     void LeapPlatform() {
         Collider2D[] stuff = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 15f, mask);
         int rnglul = Random.Range(0, stuff.Length);
-        pos_leap = stuff[rnglul].transform.position;
-        dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position).normalized;
+		pos_leap = stuff[rnglul].transform.position + Vector3.up * (stuff[rnglul].bounds.extents.y + 1f);
+		dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position + Vector2.up * stuff[rnglul].bounds.extents.y).normalized;
         //if player can be seen, go to the platform nearest the player
         //if not, go to a platorm that is not the nearest
         isWalking = false;
         isIdle = false;
-        isLeaping = true;
+        
         dirWalk.x = dirLeap.x > 0 ? 1 : -1;
+		anim.SetTrigger ("leap");
+
     }
 
     void MoveLeap() {
-
+		rb.isKinematic = true;
+		isLeaping = true;
+		//rb.velocity = dirLeap * GAME.Shigellang_LeapSpeed;
+		//rb.AddForce (Vector2.up * GAME.Shigellang_JumpForce, ForceMode2D.Impulse);
     }
+
+	void StopLeap(){
+		rb.isKinematic = false;
+		//rb.velocity = Vector2.zero;
+		anim.SetTrigger ("landing");	
+	}
 
     void ShootProjectile(Vector2 dir) {
 
