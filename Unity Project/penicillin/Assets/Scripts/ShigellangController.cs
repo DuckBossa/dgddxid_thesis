@@ -4,7 +4,8 @@ using GLOBAL;
 
 
 public class ShigellangController : MonoBehaviour {
-    public LayerMask mask;
+    public LayerMask mask_map;
+	public LayerMask mask_player;
 
     float leapTimer;
     float leapAttackTimer;
@@ -21,7 +22,8 @@ public class ShigellangController : MonoBehaviour {
     bool isWalking;
     bool isLeaping;
     bool playerSpotted;
-
+	bool isLeapUp;
+	Collider2D player;
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -30,6 +32,7 @@ public class ShigellangController : MonoBehaviour {
         isWalking = false;
         isLeaping = false;
         isIdle = true;
+		isLeapUp = false;
         idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
 	}
 
@@ -45,6 +48,17 @@ public class ShigellangController : MonoBehaviour {
     }
 
     void FixedUpdate() {
+		player = Physics2D.OverlapCircle (rb.position, 15f,mask_player);
+		if (player) {
+			playerSpotted = true;
+			Debug.Log ("Spot");
+		} 
+		else {
+			playerSpotted = false;
+			Debug.Log ("No Spot");
+		}
+
+
         if (isIdle) {
             idleTimer += Time.deltaTime;
             if (idleTimer > idleTimerMax) {
@@ -63,6 +77,7 @@ public class ShigellangController : MonoBehaviour {
         else if (isLeaping) {
 			rb.position = Vector2.Lerp (transform.position, pos_leap, GAME.Shigellang_LeapSpeed * Time.deltaTime);
 			float mag = (new Vector2 (pos_leap.x, pos_leap.y) - rb.position).magnitude;
+			Debug.Log (mag);
 			if (mag < 0.3f) {
 				StopLeap ();
 			}
@@ -71,35 +86,38 @@ public class ShigellangController : MonoBehaviour {
     }
 
     void WhatDo() {
-        /*
-        int rnglul = Random.Range(0, 100) % 4;
-        switch (rnglul) {
-            case 0:
-                Walk();
-                break;
-            case 1:
-                LeapAttack();
-                break;
-            case 2:
-                Idle();
-                break;
-            case 3:
-                LeapPlatform();
-                break;
-        }
-        */
 
-        LeapPlatform();
+		if (playerSpotted) {
+		} 
+		else {
+			int rnglul = Random.Range (0, 100) % 3;
+			switch (rnglul) {
+			case 0:
+				Idle ();
+				break;
+			case 1:
+				Walk ();
+				break;
+			case 2:
+				LeapPlatform ();
+				break;
+			}
+		
+		}
+			
+
+       
     }
 
 
     void LeapAttack() {
-       
+		Idle ();
     }
 
     void Walk() {
         isWalking = true;
         isIdle = false;
+		isLeaping = false;
         dirWalk *= -1;
         setVel(dirWalk);
     }
@@ -112,15 +130,17 @@ public class ShigellangController : MonoBehaviour {
         idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
     }
     void LeapPlatform() {
-        Collider2D[] stuff = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 15f, mask);
+		Collider2D[] stuff = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 30f, mask_map);
         int rnglul = Random.Range(0, stuff.Length);
-		pos_leap = stuff[rnglul].transform.position + Vector3.up * (stuff[rnglul].bounds.extents.y + 1f);
+		pos_leap = stuff[rnglul].bounds.center + Vector3.up * (stuff [rnglul].bounds.extents.y + 1f); 
 		dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position + Vector2.up * stuff[rnglul].bounds.extents.y).normalized;
         //if player can be seen, go to the platform nearest the player
         //if not, go to a platorm that is not the nearest
         isWalking = false;
         isIdle = false;
-        
+		isLeapUp = pos_leap.y > transform.position.y;
+
+
         dirWalk.x = dirLeap.x > 0 ? 1 : -1;
 		anim.SetTrigger ("leap");
 
@@ -136,7 +156,8 @@ public class ShigellangController : MonoBehaviour {
 	void StopLeap(){
 		rb.isKinematic = false;
 		//rb.velocity = Vector2.zero;
-		anim.SetTrigger ("landing");	
+		anim.SetTrigger ("landing");
+		Idle ();
 	}
 
     void ShootProjectile(Vector2 dir) {
