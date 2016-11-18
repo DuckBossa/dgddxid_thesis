@@ -4,15 +4,14 @@ using System.Collections;
 namespace GLOBAL{
     
     public class GAME : MonoBehaviour {
-        public const float range = .5f;
-        public const int max_health = 3;
+        public const int max_health = 15;
 
         public const float invulnerable_timer = 2f;
         public const float player_velocity = 3f;
         public const float player_atkRange = .25f;
 
         public const int dashes = 3;
-        public const float dash_force = 7f;
+        public const float dash_force = 6.5f;
         public const float dash_timer = 0.25f;
         public const float dash_cooldown = 2f;
         
