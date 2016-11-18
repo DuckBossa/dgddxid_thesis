@@ -17,7 +17,6 @@ public class StomachLevel_Global : MonoBehaviour {
     private Color defaultColor;
     private Vector3 defaultScale;
 	void Start () {
-        Time.timeScale = 1;
         //timeLimitInSeconds = 60*GAME.waveTimeInMins;
         timeLimitInSeconds = 1;
         defaultColor = screenTimer.color;
@@ -31,6 +30,10 @@ public class StomachLevel_Global : MonoBehaviour {
         screenTimer.text = "";
     }
 	
+    void OnEnable() {
+        Time.timeScale = 1;
+    }
+
 	// Update is called once per frame
     void FixedUpdate() {
         timeSlider.value = globalTime / levelTime;
