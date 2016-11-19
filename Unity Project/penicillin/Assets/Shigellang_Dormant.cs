@@ -27,7 +27,7 @@ public class Shigellang_Dormant : MonoBehaviour {
         healthSlider.gameObject.SetActive(true);
     }
 
-    void OnTriggerEnter(Collision2D col) {
+    void OnTriggerEnter2D(Collider2D col) {
         TakeDamage();
     }
 
