@@ -177,30 +177,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
         type: 2}
-      propertyPath: mask_map.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: mask_player.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: fire_position
-      value: 
-      objectReference: {fileID: 1332458905}
-    - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: fire_projectile
-      value: 
-      objectReference: {fileID: 1000011040828680, guid: 442b634739eae4275958c2b975a19bff,
-        type: 2}
-    - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
       propertyPath: projectile_parent
       value: 
       objectReference: {fileID: 984096291}
+    - target: {fileID: 1000010038870208, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}
   m_IsPrefabParent: 0
@@ -389,7 +372,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010412385610, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.2308745
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 4000010412385610, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
       propertyPath: m_LocalPosition.y
@@ -542,34 +525,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c50f1a278ac81564998041fda2f364d6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1332458905
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1332458906}
-  m_Layer: 9
-  m_Name: fire_postion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1332458906
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1332458905}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14, y: 0.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 2102937403}
-  m_RootOrder: 1
 --- !u!1001 &1397129265
 Prefab:
   m_ObjectHideFlags: 0
@@ -699,11 +654,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &2102937403 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000012655858826, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-    type: 2}
-  m_PrefabInternal: {fileID: 142381642}
 --- !u!1001 &2117866951
 Prefab:
   m_ObjectHideFlags: 0

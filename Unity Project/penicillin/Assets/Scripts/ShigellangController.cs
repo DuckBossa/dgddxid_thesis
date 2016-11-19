@@ -23,6 +23,7 @@ public class ShigellangController : MonoBehaviour {
     bool isIdle;
     bool isWalking;
     bool isLeaping;
+	bool isLeapAttacking;
     bool playerSpotted;
 	bool isLeapUp;
 	Collider2D player;
@@ -35,14 +36,13 @@ public class ShigellangController : MonoBehaviour {
         isLeaping = false;
         isIdle = true;
 		isLeapUp = false;
+		isLeapAttacking = false;
         idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
 	}
 
     void setVel(Vector2 vel) {
         rb.velocity = vel;
     }
-
-
 
     void Update() {
         anim.SetFloat("Direction", dirWalk.x > 0 ? 1f : 0f);
@@ -59,34 +59,32 @@ public class ShigellangController : MonoBehaviour {
 		}
 
 
-        if (isIdle) {
-            idleTimer += Time.deltaTime;
-            if (idleTimer > idleTimerMax) {
-                WhatDo();
-            }
-        }
-        else if (isWalking) {
-            distTraveled += GAME.Shigellang_mvspd * Time.deltaTime;
-            if (distTraveled > GAME.Shigellang_walkdist) {
-                isWalking = false;
-                isIdle = true;
-                setVel(Vector2.zero);
-                distTraveled = 0;
-            }
-        }
-        else if (isLeaping) {
+		if (isIdle) {
+			idleTimer += Time.deltaTime;
+			if (idleTimer > idleTimerMax) {
+				WhatDo ();
+			}
+		} else if (isWalking) {
+			distTraveled += GAME.Shigellang_mvspd * Time.deltaTime;
+			if (distTraveled > GAME.Shigellang_walkdist) {
+				isWalking = false;
+				isIdle = true;
+				setVel (Vector2.zero);
+				distTraveled = 0;
+			}
+		} else if (isLeaping) {
 			rb.position = Vector2.Lerp (transform.position, pos_leap, GAME.Shigellang_LeapSpeed * Time.deltaTime);
 			float mag = (new Vector2 (pos_leap.x, pos_leap.y) - rb.position).magnitude;
 			Debug.Log (mag);
 			if (mag < 0.3f) {
 				StopLeap ();
 			}
+		} else if (isLeapAttacking) {
+			
 		}
-
     }
 
     void WhatDo() {
-
 		if (playerSpotted) {
 			int rnglul = Random.Range (0, 100)%4;
 			switch (rnglul) {
@@ -97,7 +95,8 @@ public class ShigellangController : MonoBehaviour {
 				LeapAttack ();
 				break;
 			case 2:
-				ShootProjectile ();
+				LeapAttack ();
+				//ShootProjectile ();
 				break;
 			case 3:
 				Walk ();
@@ -127,13 +126,26 @@ public class ShigellangController : MonoBehaviour {
 
 
     void LeapAttack() {
-		Idle ();
+		isLeapAttacking = true;
+		isWalking = false;
+		isLeaping = false;
+		isIdle = false;
+		dirWalk.x = player.transform.position.x - rb.position.x < 0 ? -1f : 1f;
+		dirLeap = player.transform.position.x - rb.position.x < 0 ? Vector2.left : Vector2.right;
+		dirLeap += Vector2.up * 1.5f;
+		dirLeap = dirLeap.normalized;
+		anim.SetTrigger ("leapAttack");
     }
+
+	void LeapAttackJump(){
+		rb.AddForce (dirLeap * 2f, ForceMode2D.Impulse);
+	}
 
     void Walk() {
         isWalking = true;
         isIdle = false;
 		isLeaping = false;
+		isLeapAttacking = false;
         dirWalk *= -1;
         setVel(dirWalk);
     }
@@ -141,8 +153,10 @@ public class ShigellangController : MonoBehaviour {
     void Idle() {
         idleTimer = 0;
 		isIdle = true;
+		isLeapAttacking = false;
 		isWalking = false;
 		isLeaping = false;
+		setVel (Vector2.zero);
         idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
     }
     void LeapPlatform() {
@@ -163,20 +177,18 @@ public class ShigellangController : MonoBehaviour {
     void MoveLeap() {
 		rb.isKinematic = true;
 		isLeaping = true;
-		//rb.velocity = dirLeap * GAME.Shigellang_LeapSpeed;
-		//rb.AddForce (Vector2.up * GAME.Shigellang_JumpForce, ForceMode2D.Impulse);
     }
 
 	void StopLeap(){
 		rb.isKinematic = false;
-		//rb.velocity = Vector2.zero;
 		anim.SetTrigger ("landing");
 		Idle ();
 	}
 
     void ShootProjectile() {
 		anim.SetTrigger ("projectileAttack");
-		Debug.Log ("LOL");
+		setVel (Vector2.zero);
+		dirWalk.x = player.transform.position.x - rb.position.x < 0 ? -1f : 1f;
     }
 
 	void Fire(){
@@ -184,5 +196,11 @@ public class ShigellangController : MonoBehaviour {
 		temp.GetComponent<MoveDir>().setDir((player.transform.position - fire_position.transform.position).normalized);
 		temp.transform.parent = projectile_parent.transform;
 	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		//other.GetComponent<PlayerHealth> ().TakeDamage ();
+	}
+
+
 
 }
