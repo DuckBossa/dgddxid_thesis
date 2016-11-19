@@ -47,7 +47,8 @@ public class PlayerAttack : MonoBehaviour {
 
 	public void Attack() {
 		if ( !pm.isDash() && !isAttacking) {
-			rb.velocity = new Vector2(0, rb.velocity.y);
+            if(!pm.isJump() && !pm.isFall()) 
+			    rb.velocity = new Vector2(0, rb.velocity.y);
 			isAttacking = true;
 		}
 	}
