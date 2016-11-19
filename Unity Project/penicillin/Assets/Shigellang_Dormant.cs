@@ -6,7 +6,8 @@ using GLOBAL;
 public class Shigellang_Dormant : MonoBehaviour {
 
     public Slider healthSlider;
-    public Sprite current, dmg1, dmg2, broken;
+    public Sprite current, dmg1, dmg2, broken, awake;
+    public Image bossIcon;
     public GameObject Fighting_Shigella;
     public int health;
     private float damageTimer;
@@ -51,6 +52,11 @@ public class Shigellang_Dormant : MonoBehaviour {
         else if(health == 0) {
             //play awakening animation
             Debug.Log("RIP");
+            //reconfigure slider
+            bossIcon.sprite = awake;
+            healthSlider.maxValue = GAME.Shigellang_Active_MaxHealth;
+            healthSlider.value = healthSlider.maxValue;
+            healthSlider.minValue = 0;
             //spawn the boss
             Instantiate(Fighting_Shigella, transform.position, Quaternion.identity);
             //set gameobject to inactive

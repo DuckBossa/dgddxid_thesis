@@ -48,6 +48,7 @@ namespace GLOBAL{
 		public const float Shigellang_JumpForce = 15f;
         public const int Shigellang_Dormant_MaxHealth = 15;
         public const float Shigellang_Dormant_TimeBetweenAttacks = 1f;
+        public const float Shigellang_Active_MaxHealth = 15;
     }
 
 }

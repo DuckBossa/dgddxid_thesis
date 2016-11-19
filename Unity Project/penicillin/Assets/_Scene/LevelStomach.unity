@@ -15245,9 +15245,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1754147218}
   - 212: {fileID: 1754147217}
-  - 58: {fileID: 1754147215}
   - 114: {fileID: 1754147214}
   - 95: {fileID: 1754147219}
+  - 58: {fileID: 1754147216}
+  - 58: {fileID: 1754147215}
   m_Layer: 9
   m_Name: Shigellang_Dormant
   m_TagString: Untagged
@@ -15271,6 +15272,8 @@ MonoBehaviour:
   dmg1: {fileID: 21300000, guid: aefada14844c3f4409e3bb3a5e66532f, type: 3}
   dmg2: {fileID: 21300000, guid: 4c39b204db0fb9f4996f7f733b38e84a, type: 3}
   broken: {fileID: 21300000, guid: f3ac01efa12330742877b39f0f747aa0, type: 3}
+  awake: {fileID: 21300018, guid: 326300f08f900472fa40786385684c48, type: 3}
+  bossIcon: {fileID: 1173304396}
   Fighting_Shigella: {fileID: 1000010038870208, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
     type: 2}
   health: 0
@@ -15283,11 +15286,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.03, y: -0.18}
+  m_Offset: {x: -0.03, y: 0.12}
   serializedVersion: 2
-  m_Radius: 1.1
+  m_Radius: 1.1244301
+--- !u!58 &1754147216
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754147213}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.03, y: -0.15}
+  serializedVersion: 2
+  m_Radius: 1.1244301
 --- !u!212 &1754147217
 SpriteRenderer:
   m_ObjectHideFlags: 0
