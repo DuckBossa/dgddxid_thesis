@@ -8,7 +8,7 @@ public class ShigellangController : MonoBehaviour {
 	public LayerMask mask_player;
 	public GameObject fire_position;
 	public GameObject fire_projectile;
-	public GameObject projectile_parent;
+	GameObject projectile_parent;
     float leapTimer;
     float leapAttackTimer;
     float projectileSpewTimer;
@@ -27,6 +27,7 @@ public class ShigellangController : MonoBehaviour {
     bool playerSpotted;
 	bool isLeapUp;
 	Collider2D player;
+    Collider2D currOnTop;
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -38,6 +39,7 @@ public class ShigellangController : MonoBehaviour {
 		isLeapUp = false;
 		isLeapAttacking = false;
         idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
+        projectile_parent = GameObject.Find("Projectile Parent");
 	}
 
     void setVel(Vector2 vel) {
@@ -50,7 +52,7 @@ public class ShigellangController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-		player = Physics2D.OverlapCircle (rb.position, 15f,mask_player);
+		player = Physics2D.OverlapCircle (rb.position, GAME.Shigellang_RadarPlayer,mask_player);
 		if (player) {
 			playerSpotted = true;
 		} 
@@ -75,8 +77,7 @@ public class ShigellangController : MonoBehaviour {
 		} else if (isLeaping) {
 			rb.position = Vector2.Lerp (transform.position, pos_leap, GAME.Shigellang_LeapSpeed * Time.deltaTime);
 			float mag = (new Vector2 (pos_leap.x, pos_leap.y) - rb.position).magnitude;
-			Debug.Log (mag);
-			if (mag < 0.3f) {
+			if (mag < 0.25f) {
 				StopLeap ();
 			}
 		} else if (isLeapAttacking) {
@@ -160,10 +161,19 @@ public class ShigellangController : MonoBehaviour {
         idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
     }
     void LeapPlatform() {
-		Collider2D[] stuff = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 30f, mask_map);
+		Collider2D[] stuff = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), GAME.Shigellang_RadarMap, mask_map);
         int rnglul = Random.Range(0, stuff.Length);
-		pos_leap = stuff[rnglul].bounds.center + Vector3.up * (stuff [rnglul].bounds.extents.y + 1f); 
-		dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position + Vector2.up * stuff[rnglul].bounds.extents.y).normalized;
+
+        if(currOnTop != null && currOnTop == stuff[rnglul]) {
+            Debug.Log(rnglul);
+            Debug.Log("change");
+            rnglul = (rnglul + 1) % stuff.Length;
+            Debug.Log(rnglul);
+            
+        }
+        currOnTop = stuff[rnglul];
+        pos_leap = currOnTop.bounds.center + Vector3.up * (currOnTop.bounds.extents.y + 1f);
+        dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position + Vector2.up * currOnTop.bounds.extents.y).normalized;
         //if player can be seen, go to the platform nearest the player
         //if not, go to a platorm that is not the nearest
         isWalking = false;
