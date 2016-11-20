@@ -36,18 +36,22 @@ namespace GLOBAL{
         public const float FlyingShigella_projlife = 4f;
         public const float FlyingShigella_projspeed = 2f;
 
+        public const int Shigellang_Dormant_MaxHealth = 15;
+        public const float Shigellang_Dormant_TimeBetweenAttacks = 1f;
+
         public const float Shigellang_mvspd = 1.25f;
         public const float Shigellang_walkdist = 2f;
         public const float Shigellang_LeapCD = 2f;
-        public const float Shigellang_TimeIdleRange = 3f;
+        public const float Shigellang_TimeIdleRange = 0.75f;
         public const float Shigellang_LeapAttackCD = 5f;
         public const float Shigellang_ProjectileCD = 4f;
         public const float Shigellang_ProjectileLife = 5f;
         public const float Shigellang_ProjectileSpeed = 1.5f;
+        public const float Shigellang_RadarPlayer = 10f;
+        public const float Shigellang_RadarMap = 30f;
 		public const float Shigellang_LeapSpeed = 2.5f;
 		public const float Shigellang_JumpForce = 15f;
-        public const int Shigellang_Dormant_MaxHealth = 15;
-        public const float Shigellang_Dormant_TimeBetweenAttacks = 1f;
+
         public const float Shigellang_Active_MaxHealth = 15;
     }
 
