@@ -17195,7 +17195,7 @@ Prefab:
         type: 2}
       propertyPath: controls
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 961854057}
     - target: {fileID: 1000012032498276, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
       propertyPath: m_IsActive
       value: 1
