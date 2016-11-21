@@ -38,6 +38,7 @@ public class ShigellangController : MonoBehaviour {
         isIdle = true;
 		isLeapUp = false;
 		isLeapAttacking = false;
+        anim.SetBool("isMidair", false);
         idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
         projectile_parent = GameObject.Find("Projectile Parent");
 	}
@@ -130,6 +131,7 @@ public class ShigellangController : MonoBehaviour {
 		isWalking = false;
 		isLeaping = false;
 		isIdle = false;
+        anim.SetBool("isMidair", true);
 		dirWalk.x = player.transform.position.x - rb.position.x < 0 ? -1f : 1f;
 		dirLeap = player.transform.position.x - rb.position.x < 0 ? Vector2.left : Vector2.right;
 		dirLeap += Vector2.up * 1.5f;
@@ -139,11 +141,11 @@ public class ShigellangController : MonoBehaviour {
     }
 
 	void LeapAttackJump(){
-		rb.AddForce (dirLeap * 3f, ForceMode2D.Impulse);
+        float mag = (pos_leap - transform.position).magnitude;
+		rb.AddForce (dirLeap * mag*2, ForceMode2D.Impulse);
 	}
 
     void LeapAttackStop() {
-        anim.SetTrigger("landing");
         Idle();
     }
     void Walk() {

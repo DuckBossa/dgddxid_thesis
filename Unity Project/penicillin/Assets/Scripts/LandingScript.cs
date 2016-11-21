@@ -9,8 +9,7 @@ public class LandingScript : MonoBehaviour {
 	}
 	
     void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("SetTile to " + other.collider.name);
-        anim.SetTrigger("landing");
+        anim.SetBool("isMidair",false);
         transform.parent.gameObject.GetComponent<ShigellangController>().SetBottom(other.collider);
     }
 }
