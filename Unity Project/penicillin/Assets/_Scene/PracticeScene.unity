@@ -129,44 +129,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: projectile_parent
-      value: 
-      objectReference: {fileID: 984096291}
-    - target: {fileID: 1000010038870208, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000011696902350, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -0.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000011696902350, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000014270893166, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000011696902350, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000011696902350, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: -0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013256003550, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}
   m_IsPrefabParent: 0
@@ -216,22 +178,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c50f1a278ac81564998041fda2f364d6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &497594468 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010213427460, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-    type: 2}
-  m_PrefabInternal: {fileID: 142381642}
---- !u!114 &497594471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 497594468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd7513a2c00bbd4c90e5adfb0baa085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &566515232
 Prefab:
   m_ObjectHideFlags: 0
@@ -321,6 +267,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212000014073292368, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
   m_IsPrefabParent: 0
@@ -333,7 +284,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 984096292}
   m_Layer: 0
-  m_Name: Parent
+  m_Name: Projectile Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

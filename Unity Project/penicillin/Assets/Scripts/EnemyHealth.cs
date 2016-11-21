@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GLOBAL;
 
-public class EnemyHealth : MonoBehaviour {
+public class EnemyHealth : MonoBehaviour, IDamage {
 
     public int maxHealth;
     public int currHealth;

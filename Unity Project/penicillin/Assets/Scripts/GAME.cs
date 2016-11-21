@@ -51,10 +51,14 @@ namespace GLOBAL{
         public const float Shigellang_RadarMap = 30f;
 		public const float Shigellang_LeapSpeed = 2.5f;
 		public const float Shigellang_JumpForce = 15f;
-
+        public const int Shigellang_Fighting_MaxHealth = 30;
         public const float Shigellang_Active_MaxHealth = 15;
     }
 
+
+    public interface IDamage {
+        void TakeDamage(int dmg);
+    }
 }
 
 

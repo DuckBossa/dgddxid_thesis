@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using GLOBAL;
 
-public class Shigellang_Dormant : MonoBehaviour {
+public class Shigellang_Dormant : MonoBehaviour, IDamage {
 
     public Slider healthSlider;
     public Sprite current, dmg1, dmg2, broken, awake;
@@ -28,7 +28,7 @@ public class Shigellang_Dormant : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        TakeDamage();
+        TakeDamage(1);
     }
 
 	void Update () {
@@ -51,10 +51,9 @@ public class Shigellang_Dormant : MonoBehaviour {
         //ded
         else if(health == 0) {
             //play awakening animation
-            Debug.Log("RIP");
             //reconfigure slider
             bossIcon.sprite = awake;
-            healthSlider.maxValue = GAME.Shigellang_Active_MaxHealth;
+            healthSlider.maxValue = GAME.Shigellang_Fighting_MaxHealth;
             healthSlider.value = healthSlider.maxValue;
             healthSlider.minValue = 0;
             //spawn the boss
@@ -64,7 +63,7 @@ public class Shigellang_Dormant : MonoBehaviour {
         }
     }
 
-    public void TakeDamage() {
+    public void TakeDamage(int dmg) {
         if(vulnerable) {
             myAnim.SetTrigger("takeDamage");
             healthSlider.value = --health;

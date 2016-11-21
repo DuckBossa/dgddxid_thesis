@@ -22,10 +22,9 @@ GameObject:
   - 212: {fileID: 212000011914949046}
   - 95: {fileID: 95000013130958008}
   - 114: {fileID: 114000012164453440}
-  - 114: {fileID: 114000014270893166}
   - 50: {fileID: 50000010834896494}
   - 61: {fileID: 61000010643744482}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: ShigellangFighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,6 +40,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011030199768}
   - 61: {fileID: 61000011696902350}
+  - 114: {fileID: 114000013954515594}
   m_Layer: 9
   m_Name: Collision
   m_TagString: Untagged
@@ -63,7 +63,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000013958268558
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010038870208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7356324, y: -0.5422487, z: 0}
+  m_LocalPosition: {x: -4.31, y: -0.5422487, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -176,9 +176,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.44}
+  m_Offset: {x: -0.05, y: -0.62}
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.4}
+  m_Size: {x: 0.94, y: 1.05}
 --- !u!61 &61000012846035986
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -230,21 +230,18 @@ MonoBehaviour:
   fire_position: {fileID: 1000013958268558}
   fire_projectile: {fileID: 1000011040828680, guid: 442b634739eae4275958c2b975a19bff,
     type: 2}
-  projectile_parent: {fileID: 0}
---- !u!114 &114000014270893166
+  currHealth: 0
+--- !u!114 &114000013954515594
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010038870208}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1000010213427460}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1075f7a126dc2418e2cd1ec555d8e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dd7513a2c00bbd4c90e5adfb0baa085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currHealth: 100
-  researchPoints: 100
 --- !u!212 &212000011914949046
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -272,8 +269,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1398653461
-  m_SortingOrder: 1
+  m_SortingLayerID: -680373737
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 48819fa5f2bbf4b0982f68787b6f8b86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
