@@ -66,7 +66,8 @@ public class ShigellangController : MonoBehaviour {
 			if (idleTimer > idleTimerMax) {
 				WhatDo ();
 			}
-		} else if (isWalking) {
+		}
+        else if (isWalking) {
 			distTraveled += GAME.Shigellang_mvspd * Time.deltaTime;
 			if (distTraveled > GAME.Shigellang_walkdist) {
 				isWalking = false;
@@ -74,14 +75,15 @@ public class ShigellangController : MonoBehaviour {
 				setVel (Vector2.zero);
 				distTraveled = 0;
 			}
-		} else if (isLeaping) {
+		}
+        else if (isLeaping) {
 			rb.position = Vector2.Lerp (transform.position, pos_leap, GAME.Shigellang_LeapSpeed * Time.deltaTime);
 			float mag = (new Vector2 (pos_leap.x, pos_leap.y) - rb.position).magnitude;
 			if (mag < 0.25f) {
 				StopLeap ();
 			}
-		} else if (isLeapAttacking) {
-			
+		}
+        else if (isLeapAttacking) {
 		}
     }
 
@@ -132,13 +134,18 @@ public class ShigellangController : MonoBehaviour {
 		dirLeap = player.transform.position.x - rb.position.x < 0 ? Vector2.left : Vector2.right;
 		dirLeap += Vector2.up * 1.5f;
 		dirLeap = dirLeap.normalized;
+        pos_leap = player.transform.position;
 		anim.SetTrigger ("leapAttack");
     }
 
 	void LeapAttackJump(){
-		rb.AddForce (dirLeap * 2f, ForceMode2D.Impulse);
+		rb.AddForce (dirLeap * 3f, ForceMode2D.Impulse);
 	}
 
+    void LeapAttackStop() {
+        anim.SetTrigger("landing");
+        Idle();
+    }
     void Walk() {
         isWalking = true;
         isIdle = false;
@@ -167,6 +174,8 @@ public class ShigellangController : MonoBehaviour {
         currOnTop = stuff[rnglul];
         pos_leap = currOnTop.bounds.center + Vector3.up * (currOnTop.bounds.extents.y + 1f);
         dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position + Vector2.up * currOnTop.bounds.extents.y).normalized;
+        //if player can be seen, go to the platform nearest the player
+        //if not, go to a platorm that is not the nearest
         isWalking = false;
         isIdle = false;
         isLeapAttacking = false;
@@ -200,9 +209,12 @@ public class ShigellangController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
+        Debug.Log("triggered");
 		//other.GetComponent<PlayerHealth> ().TakeDamage ();
 	}
 
-
+    public void SetBottom(Collider2D tile) {
+        currOnTop = tile;
+    }
 
 }
