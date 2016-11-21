@@ -120,9 +120,6 @@ public class ShigellangController : MonoBehaviour {
 			}
 		
 		}
-			
-
-       
     }
 
 
@@ -165,19 +162,14 @@ public class ShigellangController : MonoBehaviour {
         int rnglul = Random.Range(0, stuff.Length);
 
         if(currOnTop != null && currOnTop == stuff[rnglul]) {
-            Debug.Log(rnglul);
-            Debug.Log("change");
             rnglul = (rnglul + 1) % stuff.Length;
-            Debug.Log(rnglul);
-            
         }
         currOnTop = stuff[rnglul];
         pos_leap = currOnTop.bounds.center + Vector3.up * (currOnTop.bounds.extents.y + 1f);
         dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position + Vector2.up * currOnTop.bounds.extents.y).normalized;
-        //if player can be seen, go to the platform nearest the player
-        //if not, go to a platorm that is not the nearest
         isWalking = false;
         isIdle = false;
+        isLeapAttacking = false;
 		isLeapUp = pos_leap.y > transform.position.y;
         dirWalk.x = dirLeap.x > 0 ? 1 : -1;
 		anim.SetTrigger ("leap");
