@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using GLOBAL;
 
@@ -8,6 +9,7 @@ public class ShigellangController : MonoBehaviour {
     public LayerMask mask_player;
     public GameObject fire_position;
     public GameObject fire_projectile;
+    public Slider healthSlider;
     public int currHealth;
     GameObject projectile_parent;
     float leapTimer;
@@ -227,6 +229,7 @@ public class ShigellangController : MonoBehaviour {
     public void TakeDamage(int dmg) {
         currHealth -= dmg;
         if (currHealth < 0) {
+            healthSlider.value = currHealth;
             Death();
         }
     }
