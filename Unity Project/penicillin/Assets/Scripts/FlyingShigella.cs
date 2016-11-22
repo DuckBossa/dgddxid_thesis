@@ -3,7 +3,6 @@ using System.Collections;
 using GLOBAL;
 public class FlyingShigella : MonoBehaviour {
     public GameObject projectile;
-    
     public Transform fireposition;
     GameObject projectile_parent;
     Animator anim;
@@ -11,6 +10,7 @@ public class FlyingShigella : MonoBehaviour {
     //float dir;
     //float timerShoot;
     float currDist;
+    float attackTimer;
     Vector2 patrolDir;
     Vector2 attackDir;
     Rigidbody2D rb;
@@ -22,6 +22,7 @@ public class FlyingShigella : MonoBehaviour {
         //parent = GetComponentInParent<Transform>();
         //dir = 0;
         currDist = 0;
+        attackTimer = GAME.FlyingShigella_aspd;
         //timerShoot = 0;
         isAttacking = false;
         patrolDir = Random.insideUnitCircle;
@@ -30,15 +31,21 @@ public class FlyingShigella : MonoBehaviour {
 
     void Update() {
         if (!isAttacking) {
-
             rb.velocity = patrolDir * GAME.FlyingShigella_mvspd;
             //transform.Translate((new Vector3(patrolDir.x, patrolDir.y, 0) * GAME.FlyingShigella_mvspd * Time.deltaTime));
             currDist += GAME.FlyingShigella_mvspd * Time.deltaTime;
         }
         else {
+
+            if(attackTimer >= GAME.FlyingShigella_aspd) {
+                anim.SetTrigger("Attack");
+                attackTimer = 0;
+            }
+            else {
+                attackTimer += Time.deltaTime;
+            }
             rb.velocity = Vector2.zero;
         }
-        anim.SetBool("isAttacking", isAttacking);
         anim.SetFloat("Direction", patrolDir.x > 0 ? 1 : 0);
         if (currDist > GAME.FlyingShigella_patrolDist) {
             currDist = 0;
@@ -56,7 +63,7 @@ public class FlyingShigella : MonoBehaviour {
     }
 
     void Attack() {
-        GameObject temp = Instantiate(projectile,fireposition.position,Quaternion.identity) as GameObject;
+        GameObject temp = Instantiate(projectile, fireposition.position, Quaternion.identity) as GameObject;
         temp.GetComponent<MoveDir>().setDir(attackDir);
         temp.transform.parent = projectile_parent.transform;
     }

@@ -24,13 +24,13 @@ namespace GLOBAL{
 
         public const float loadoutLifetime = 10;
         public const float waveTimeInMins = 2;
-        public const float num_waves = 3;
+        public const float num_waves = 1;
         public const float loadoutIndicatorDecaySpeed = .03f;
 
 		public const int num_swords = 3;
 		public const int sword_max_lvl = 3;
 
-        public const float FlyingShigella_aspd = 1f;
+        public const float FlyingShigella_aspd = 3f;
         public const float FlyingShigella_mvspd = 1f;
         public const float FlyingShigella_patrolDist = 2f;
         public const float FlyingShigella_projlife = 4f;
