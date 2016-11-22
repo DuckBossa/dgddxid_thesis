@@ -87,7 +87,7 @@ GameObject:
   - 114: {fileID: 114000010507275846}
   - 114: {fileID: 114000010157573716}
   - 114: {fileID: 114000010571315824}
-  - 50: {fileID: 50000014006546800}
+  - 50: {fileID: 50000013112483052}
   m_Layer: 16
   m_Name: Penny
   m_TagString: Untagged
@@ -164,7 +164,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000010412385610}
   m_RootOrder: 3
---- !u!50 &50000014006546800
+--- !u!50 &50000013112483052
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 5120
   dash_empty: {fileID: 21300000, guid: a43287db6e1a59f43a4d8ec82c45851c, type: 3}
   dash_one: {fileID: 21300000, guid: dfb29c9749575d44591edd826ba05f46, type: 3}
   dash_two: {fileID: 21300000, guid: 3c9651f89c8a36c46a317d35c172cf7d, type: 3}

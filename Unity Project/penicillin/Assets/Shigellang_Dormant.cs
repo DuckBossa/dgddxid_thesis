@@ -27,10 +27,6 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
         healthSlider.gameObject.SetActive(true);
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-        TakeDamage(1);
-    }
-
 	void Update () {
         damageTimer += Time.deltaTime;
         if(damageTimer > GAME.Shigellang_Dormant_TimeBetweenAttacks) {

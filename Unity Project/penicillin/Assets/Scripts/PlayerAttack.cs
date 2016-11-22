@@ -24,12 +24,8 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-        //if (other.gameObject.name == "Shigellang_Dormant") other.gameObject.GetComponent<Shigellang_Dormant>().TakeDamage();
-        //else other.gameObject.GetComponent<EnemyHealth>().TakeDamage(weapLevel[whichWeapon] + 1);
-
-        Debug.Log(other.name);
-        other.gameObject.GetComponent<IDamage>().TakeDamage(weapLevel[whichWeapon] + 1);
-
+        //other.gameObject.GetComponent<IDamage>().TakeDamage(weapLevel[whichWeapon] + 1);
+		other.gameObject.transform.parent.gameObject.GetComponent<IDamage> ().TakeDamage (weapLevel [whichWeapon] + 1);
     }
 
     void FixedUpdate() {
