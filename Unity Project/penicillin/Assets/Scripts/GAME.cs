@@ -53,6 +53,7 @@ namespace GLOBAL{
 		public const float Shigellang_JumpForce = 15f;
         public const int Shigellang_Fighting_MaxHealth = 30;
 		public const float Shigellang_DMGTimer = 1.5f;
+        public const float Shigellang_AngleProjectile = 15f;
     }
 
 

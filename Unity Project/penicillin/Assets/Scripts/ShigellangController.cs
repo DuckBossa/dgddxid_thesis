@@ -101,7 +101,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     void WhatDo() {
         if (playerSpotted) {
-            int rnglul = Random.Range(0, 4);
+            int rnglul = Random.Range(0, 5);
             switch (rnglul) {
                 case 0:
                     Idle();
@@ -114,11 +114,13 @@ public class ShigellangController : MonoBehaviour,IDamage {
                         LeapAttack();
                     break;
                 case 2:
-
                     ShootProjectile();
                     break;
                 case 3:
                     Walk();
+                    break;
+                case 4:
+                    LeapPlatform();
                     break;
             }
 
@@ -227,8 +229,16 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     void Fire() {
         GameObject temp = Instantiate(fire_projectile, fire_position.transform.position, Quaternion.identity) as GameObject;
-        temp.GetComponent<MoveDir>().setDir((player.transform.position - fire_position.transform.position).normalized);
+        GameObject temp2 = Instantiate(fire_projectile, fire_position.transform.position, Quaternion.identity) as GameObject;
+        GameObject temp3 = Instantiate(fire_projectile, fire_position.transform.position, Quaternion.identity) as GameObject;
+        Vector2 Target = (player.transform.position - fire_position.transform.position).normalized;
+        
+        temp.GetComponent<MoveDir>().setDir(Target);
         temp.transform.parent = projectile_parent.transform;
+        temp2.GetComponent<MoveDir>().setDir(RotateVectBy(15f,Target).normalized);
+        temp2.transform.parent = projectile_parent.transform;
+        temp3.GetComponent<MoveDir>().setDir(RotateVectBy(-15f, Target).normalized);
+        temp3.transform.parent = projectile_parent.transform;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -258,5 +268,14 @@ public class ShigellangController : MonoBehaviour,IDamage {
     public void Death() {
         anim.SetTrigger("dead");
         Destroy(gameObject, 1f);
+    }
+
+    Vector2 RotateVectBy(float theta, Vector2 vect) {
+        theta = theta * Mathf.Deg2Rad;
+        float _cos = Mathf.Cos(theta);
+        float _sin = Mathf.Sin(theta);
+        float _x2 = vect.x * _cos - vect.y * _sin;
+        float _y2 = vect.x * _sin + vect.y * _cos;
+        return new Vector2(_x2, _y2);
     }
 }
