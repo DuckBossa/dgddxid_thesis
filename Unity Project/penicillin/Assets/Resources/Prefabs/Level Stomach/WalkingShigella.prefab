@@ -41,7 +41,7 @@ GameObject:
   - 50: {fileID: 50000010196731858}
   - 114: {fileID: 114000012579849116}
   - 114: {fileID: 114000013888177756}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: WalkingShigella
   m_TagString: Untagged
   m_Icon: {fileID: 0}

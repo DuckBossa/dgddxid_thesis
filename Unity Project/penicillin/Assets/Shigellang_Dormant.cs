@@ -10,6 +10,7 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
     public Image bossIcon;
     public GameObject Fighting_Shigella;
     public TileDeconstructionConstruction tdc;
+    public EnemyManager em;
     public int health;
     private float damageTimer;
     private bool vulnerable;
@@ -22,6 +23,7 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
         healthSlider.minValue = 0;
         health = GAME.Shigellang_Dormant_MaxHealth;
         vulnerable = true;
+        em.enabled = true;
     }
 	
     void OnEnable() {
