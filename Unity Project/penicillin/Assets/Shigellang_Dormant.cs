@@ -9,6 +9,7 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
     public Sprite current, dmg1, dmg2, broken, awake;
     public Image bossIcon;
     public GameObject Fighting_Shigella;
+    public TileDeconstructionConstruction tdc;
     public int health;
     private float damageTimer;
     private bool vulnerable;
@@ -53,6 +54,7 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
             healthSlider.value = healthSlider.maxValue;
             healthSlider.minValue = 0;
             //spawn the boss
+            tdc.BossBattle();
             GameObject temp = Instantiate(Fighting_Shigella, transform.position, Quaternion.identity) as GameObject;
             temp.GetComponent<ShigellangController>().healthSlider = healthSlider;
             //set gameobject to inactive

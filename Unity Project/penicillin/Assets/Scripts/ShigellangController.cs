@@ -232,10 +232,14 @@ public class ShigellangController : MonoBehaviour,IDamage {
     public void TakeDamage(int dmg) {
 		if (damageTimer >= GAME.Shigellang_DMGTimer) {
 			currHealth -= dmg;
-			if (currHealth < 0) {
-				healthSlider.value = currHealth;
-				Death();
+            healthSlider.value = currHealth;
+            if (currHealth < 0) {
+                healthSlider.value = 0;
+                Death();
 			}
+            else {
+                healthSlider.value = currHealth;
+            }
 			damageTimer = 0;
 		}        
     }

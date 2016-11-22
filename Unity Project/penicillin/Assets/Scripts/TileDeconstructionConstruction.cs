@@ -4,10 +4,20 @@ using System.Collections.Generic;
 
 public class TileDeconstructionConstruction : MonoBehaviour {
 	public List<GameObject> sets = new List<GameObject>();
-	int rnglul;
+    public Animator anim_back;
+    int rnglul;
+    Animator anim;
+    
+    bool stop;
 	void Start () {
+        anim = GetComponent<Animator>();
+        stop = false;
 		rnglul = Random.Range (0, sets.Count);
 	}
+
+    public void BossBattle() {
+        stop = true;
+    }
 
     public void reconstruct() {
 		foreach (GameObject set in sets) {
@@ -22,8 +32,16 @@ public class TileDeconstructionConstruction : MonoBehaviour {
 	}
 
     public void EnableDeconstruction() {
-        gameObject.GetComponent<TileDeconstruction>().enabled = true;
-        gameObject.GetComponent<TileConstruction>().enabled = false;
+        if (!stop) {
+            gameObject.GetComponent<TileDeconstruction>().enabled = true;
+            gameObject.GetComponent<TileConstruction>().enabled = false;
+        }
+        else {
+            anim.SetTrigger("Boss");
+            anim_back.SetTrigger("Boss");
+            Debug.Log("LOL");
+        }
+
     }
     public void DisableDeconstruction() {
         gameObject.GetComponent<TileConstruction>().enabled = true;

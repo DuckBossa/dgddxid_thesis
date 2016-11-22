@@ -346,15 +346,15 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0
-    functionName: EnableDeconstruction
+  - time: 6
+    functionName: reconstruct
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 6
-    functionName: reconstruct
+  - time: 15.333333
+    functionName: EnableDeconstruction
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
