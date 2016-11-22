@@ -32,11 +32,12 @@ public class ShigellangController : MonoBehaviour,IDamage {
     bool isLeapUp;
     Collider2D player;
     Collider2D currOnTop;
-
+    BoxCollider2D attack_hit;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        attack_hit = GetComponent<BoxCollider2D>();
         leapTimer = leapAttackTimer = projectileSpewTimer = idleTimer = damageTimer =0;
         dirWalk = Vector2.left;
         isWalking = false;
@@ -170,6 +171,10 @@ public class ShigellangController : MonoBehaviour,IDamage {
         setVel(dirWalk);
     }
 
+    void StopAttacks() {
+        attack_hit.enabled = false;
+    }
+
     void Idle() {
         idleTimer = 0;
         isIdle = true;
@@ -231,7 +236,8 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     public void TakeDamage(int dmg) {
 		if (damageTimer >= GAME.Shigellang_DMGTimer) {
-			currHealth -= dmg;
+            anim.SetTrigger("dead");
+            currHealth -= dmg;
             healthSlider.value = currHealth;
             if (currHealth < 0) {
                 healthSlider.value = 0;
