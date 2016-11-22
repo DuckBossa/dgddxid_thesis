@@ -13,6 +13,7 @@ public class TileDeconstructionConstruction : MonoBehaviour {
         anim = GetComponent<Animator>();
         stop = false;
 		rnglul = Random.Range (0, sets.Count);
+        EnableDeconstruction();
 	}
 
     public void BossBattle() {
@@ -39,7 +40,6 @@ public class TileDeconstructionConstruction : MonoBehaviour {
         else {
             anim.SetTrigger("Boss");
             anim_back.SetTrigger("Boss");
-            Debug.Log("LOL");
         }
 
     }

@@ -11,18 +11,22 @@ public class TileDeconstruction : MonoBehaviour {
 		tiles = new List<Collider2D> ();
 	}
 
+    void OnEnable() {
+        tiles.Clear();
+    }
+
 	void FixedUpdate(){
 		for (int i = tiles.Count - 1; i >= 0; i--) {
 			if (bounderinos.bounds.max.y > tiles [i].bounds.max.y) {
 				tiles [i].gameObject.SetActive (false);
 				tiles.RemoveAt (i);
-              
 			}
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag.Equals ("Tiles")) {
+            Debug.Log(other.name);
 			tiles.Add (other);
 		}
 	}	
