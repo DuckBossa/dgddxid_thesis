@@ -147,14 +147,15 @@ public class ShigellangController : MonoBehaviour,IDamage {
         isIdle = false;
         dirWalk.x = player.transform.position.x - rb.position.x < 0 ? -1f : 1f;
         dirLeap = player.transform.position.x - rb.position.x < 0 ? Vector2.left : Vector2.right;
-        dirLeap += Vector2.up * 1.5f;
+        dirLeap += Vector2.up*1.5f;
         dirLeap = dirLeap.normalized;
         pos_leap = player.transform.position;
-        anim.SetBool("isMidair", true);
+        //anim.SetBool("isMidair", true);
         anim.SetTrigger("leapAttack");
     }
 
     void LeapAttackJump() {
+        anim.SetBool("isMidair", true);
         float mag = (pos_leap - transform.position).magnitude;
         rb.AddForce(dirLeap * mag * 2, ForceMode2D.Impulse);
     }
@@ -215,8 +216,12 @@ public class ShigellangController : MonoBehaviour,IDamage {
     }
 
     void ShootProjectile() {
-        anim.SetTrigger("projectileAttack");
+        isIdle = false;
+        isLeapAttacking = false;
+        isWalking = false;
+        isLeaping = false;
         setVel(Vector2.zero);
+        anim.SetTrigger("projectileAttack");
         dirWalk.x = player.transform.position.x - rb.position.x < 0 ? -1f : 1f;
     }
 
@@ -252,6 +257,6 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     public void Death() {
         anim.SetTrigger("dead");
-        Destroy(gameObject, 0.75f);
+        Destroy(gameObject, 1f);
     }
 }
