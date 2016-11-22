@@ -101,7 +101,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     void WhatDo() {
         if (playerSpotted) {
-            int rnglul = Random.Range(0, 100) % 4;
+            int rnglul = Random.Range(0, 4);
             switch (rnglul) {
                 case 0:
                     Idle();
@@ -124,7 +124,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
         }
         else {
-            int rnglul = Random.Range(0, 100) % 3;
+            int rnglul = Random.Range(0, 4);
             switch (rnglul) {
                 case 0:
                     Idle();
