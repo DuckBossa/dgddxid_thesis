@@ -41,7 +41,7 @@ GameObject:
   - 4: {fileID: 4000011030199768}
   - 61: {fileID: 61000011696902350}
   - 114: {fileID: 114000013954515594}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000013958268558
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +230,7 @@ MonoBehaviour:
   fire_position: {fileID: 1000013958268558}
   fire_projectile: {fileID: 1000011040828680, guid: 442b634739eae4275958c2b975a19bff,
     type: 2}
+  healthSlider: {fileID: 0}
   currHealth: 0
 --- !u!114 &114000013954515594
 MonoBehaviour:

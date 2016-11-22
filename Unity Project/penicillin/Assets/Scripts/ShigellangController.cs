@@ -4,7 +4,7 @@ using System.Collections;
 using GLOBAL;
 
 
-public class ShigellangController : MonoBehaviour {
+public class ShigellangController : MonoBehaviour,IDamage {
     public LayerMask mask_map;
     public LayerMask mask_player;
     public GameObject fire_position;
@@ -15,6 +15,7 @@ public class ShigellangController : MonoBehaviour {
     float leapTimer;
     float leapAttackTimer;
     float projectileSpewTimer;
+	float damageTimer;
     float idleTimer;
     float distTraveled;
     float idleTimerMax;
@@ -36,7 +37,7 @@ public class ShigellangController : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        leapTimer = leapAttackTimer = projectileSpewTimer = idleTimer = 0;
+        leapTimer = leapAttackTimer = projectileSpewTimer = idleTimer = damageTimer =0;
         dirWalk = Vector2.left;
         isWalking = false;
         isLeaping = false;
@@ -54,6 +55,9 @@ public class ShigellangController : MonoBehaviour {
     }
 
     void Update() {
+		if (damageTimer < GAME.Shigellang_DMGTimer) {
+			damageTimer += Time.deltaTime;
+		}
         anim.SetFloat("Direction", dirWalk.x > 0 ? 1f : 0f);
         anim.SetBool("isWalking", isWalking);
     }
@@ -218,8 +222,7 @@ public class ShigellangController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("triggered");
-        //other.GetComponent<PlayerHealth> ().TakeDamage ();
+        other.GetComponent<PlayerHealth> ().TakeDamage ();
     }
 
     public void SetBottom(Collider2D tile) {
@@ -227,11 +230,14 @@ public class ShigellangController : MonoBehaviour {
     }
 
     public void TakeDamage(int dmg) {
-        currHealth -= dmg;
-        if (currHealth < 0) {
-            healthSlider.value = currHealth;
-            Death();
-        }
+		if (damageTimer >= GAME.Shigellang_DMGTimer) {
+			currHealth -= dmg;
+			if (currHealth < 0) {
+				healthSlider.value = currHealth;
+				Death();
+			}
+			damageTimer = 0;
+		}        
     }
 
     public void Death() {
