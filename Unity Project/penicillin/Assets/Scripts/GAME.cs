@@ -4,8 +4,7 @@ using System.Collections;
 namespace GLOBAL{
     
     public class GAME : MonoBehaviour {
-        public const int max_health = 15;
-
+        public const int max_health = 10;
         public const float invulnerable_timer = 2f;
         public const float player_velocity = 3f;
         public const float player_atkRange = .25f;

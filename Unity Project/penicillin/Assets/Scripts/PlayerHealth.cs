@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour {
         if (!isInvulnerable && !playerMovement.amDashing()) {
             anim.SetTrigger("isOuchie");
             damaged = true;
-            fill.color = Color.Lerp(deadColor, aliveColor, currHealth/GAME.max_health);
+            fill.color = Color.Lerp(deadColor, aliveColor, (float) currHealth/GAME.max_health);
             currHealth--;
             currTime = 0;
             healthSlider.value = currHealth;
@@ -90,8 +90,7 @@ public class PlayerHealth : MonoBehaviour {
         loadout.gameObject.SetActive(false);
         controls.gameObject.SetActive(false);
 		gamewon.gameObject.SetActive (false);
-		gameover.gameObject.SetActive(true);
-
+        gameover.gameObject.SetActive(true);
         GameOverScreenHandler.displayStats();
         //Debug.Log("player dead");
         //anim.SetTrigger("Die");
