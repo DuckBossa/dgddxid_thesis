@@ -28,7 +28,6 @@ public class GameOverScreenHandler : MonoBehaviour {
         string min = Mathf.Floor(totalTime / 60).ToString("00");
         string sec = (totalTime % 60).ToString("00");
         timePlayed.text = "TIME PLAYED: " + min + ":" + sec;
-
         researchPoints.text = "TOTAL RESEARCH POINTS: " + ScoreManager.totalResearchPoints;
     }
 }

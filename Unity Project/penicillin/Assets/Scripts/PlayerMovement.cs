@@ -65,7 +65,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        Move(CrossPlatformInputManager.GetAxisRaw("Horizontal"));
+        //Move(CrossPlatformInputManager.GetAxisRaw("Horizontal"));
+        Move(hInput);
 
         //jump
         isJumping = !(Physics2D.Linecast(new Vector3(groundCheckL.position.x, groundCheckL.position.y + .1f, groundCheckL.position.z), groundCheckL.position, playerMask) || 
