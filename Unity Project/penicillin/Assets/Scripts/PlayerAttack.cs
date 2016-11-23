@@ -24,7 +24,6 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-		Debug.Log (other.name);
         //other.gameObject.GetComponent<IDamage>().TakeDamage(weapLevel[whichWeapon] + 1);
 		if(other.gameObject.layer == LayerMask.NameToLayer ("Enemy"))
 			other.gameObject.transform.parent.gameObject.GetComponent<IDamage> ().TakeDamage (weapLevel [whichWeapon] + 1);

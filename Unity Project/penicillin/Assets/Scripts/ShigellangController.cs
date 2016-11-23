@@ -5,6 +5,9 @@ using GLOBAL;
 
 
 public class ShigellangController : MonoBehaviour,IDamage {
+
+	public Canvas hud, pause, loadout, gameover, controls, gamewon;
+
     public LayerMask mask_map;
     public LayerMask mask_player;
     public GameObject fire_position;
@@ -267,6 +270,14 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     public void Death() {
         anim.SetTrigger("dead");
+		Time.timeScale = 0;
+		hud.gameObject.SetActive(false);
+		pause.gameObject.SetActive(false);
+		loadout.gameObject.SetActive(false);
+		controls.gameObject.SetActive(false);
+		gameover.gameObject.SetActive(false);
+		gamewon.gameObject.SetActive (true);
+		GameOverScreenHandler.displayStats();
         Destroy(gameObject, 1f);
     }
 

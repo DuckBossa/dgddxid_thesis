@@ -221,6 +221,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ed7af542eead4eb1dde0e26f38d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hud: {fileID: 0}
+  pause: {fileID: 0}
+  loadout: {fileID: 0}
+  gameover: {fileID: 0}
+  controls: {fileID: 0}
+  gamewon: {fileID: 0}
   mask_map:
     serializedVersion: 2
     m_Bits: 1024

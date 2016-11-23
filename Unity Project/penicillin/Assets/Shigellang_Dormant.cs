@@ -57,8 +57,8 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
             healthSlider.minValue = 0;
             //spawn the boss
             tdc.BossBattle();
-            GameObject temp = Instantiate(Fighting_Shigella, transform.position, Quaternion.identity) as GameObject;
-            temp.GetComponent<ShigellangController>().healthSlider = healthSlider;
+			Fighting_Shigella.SetActive (true);
+			Fighting_Shigella.GetComponent<ShigellangController>().healthSlider = healthSlider;
             //set gameobject to inactive
             gameObject.SetActive(false);
         }
