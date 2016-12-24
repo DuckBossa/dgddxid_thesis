@@ -6,12 +6,12 @@ PlayerSettings:
   serializedVersion: 8
   productGUID: f09f58ffc1e5f5d4f9459221204dbca9
   AndroidProfiler: 0
-  defaultScreenOrientation: 2
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: penicillin
+  productName: Penicillin
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenStyle: 0
