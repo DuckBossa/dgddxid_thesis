@@ -19,10 +19,10 @@ public class StomachLevel_Global : MonoBehaviour {
     private Color defaultColor;
     private Vector3 defaultScale;
 	void Start () {
-        //timeLimitInSeconds = 60*GAME.waveTimeInMins;
-        //levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
-        timeLimitInSeconds = 1;
-        levelTime = 10;
+        timeLimitInSeconds = 60 * GAME.waveTimeInMins;
+        levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
+        //timeLimitInSeconds = 1;
+        //levelTime = 10;
         defaultColor = screenTimer.color;
         globalTime = 0;
         Loadout.SetActive(false);

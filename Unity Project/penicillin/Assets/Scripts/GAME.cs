@@ -21,10 +21,10 @@ namespace GLOBAL{
         public const float acid_dot_timer = 2f;
         public const int tile_size = 64;
 
+        public const float loadoutIndicatorDecaySpeed = .03f;
         public const float loadoutLifetime = 10;
         public const float waveTimeInMins = 2;
-        public const float num_waves = 1;
-        public const float loadoutIndicatorDecaySpeed = .03f;
+        public const float num_waves = 3;
 
 		public const int num_swords = 3;
 		public const int sword_max_lvl = 3;
@@ -35,9 +35,9 @@ namespace GLOBAL{
         public const float FlyingShigella_projlife = 4f;
         public const float FlyingShigella_projspeed = 2f;
 
+        public const int Shigellang_Fighting_MaxHealth = 15;
         public const int Shigellang_Dormant_MaxHealth = 15;
         public const float Shigellang_Dormant_TimeBetweenAttacks = 1f;
-
         public const float Shigellang_mvspd = 1.25f;
         public const float Shigellang_walkdist = 2f;
         public const float Shigellang_LeapCD = 2f;
@@ -50,7 +50,6 @@ namespace GLOBAL{
         public const float Shigellang_RadarMap = 30f;
 		public const float Shigellang_LeapSpeed = 2.5f;
 		public const float Shigellang_JumpForce = 15f;
-        public const int Shigellang_Fighting_MaxHealth = 15;
 		public const float Shigellang_DMGTimer = 1.5f;
         public const float Shigellang_AngleProjectile = 15f;
     }
