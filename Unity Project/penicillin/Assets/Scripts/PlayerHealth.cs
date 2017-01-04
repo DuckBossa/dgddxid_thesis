@@ -85,15 +85,18 @@ public class PlayerHealth : MonoBehaviour {
     void Death() {
         isDead = true;
         Time.timeScale = 0;
+
+        /// Death animation?
+        //Debug.Log("player dead");
+        //anim.SetTrigger("Die");
+        //playerMovement.enabled = false;
+
         hud.gameObject.SetActive(false);
         pause.gameObject.SetActive(false);
         loadout.gameObject.SetActive(false);
         controls.gameObject.SetActive(false);
-		gamewon.gameObject.SetActive (false);
         gameover.gameObject.SetActive(true);
         GameOverScreenHandler.displayStats();
-        //Debug.Log("player dead");
-        //anim.SetTrigger("Die");
-        //playerMovement.enabled = false;
+        
     }
 }
