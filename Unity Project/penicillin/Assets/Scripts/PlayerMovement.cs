@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     public Sprite dash_empty, dash_one, dash_two, dash_three;
     public Image dashImage, dashCooldown;
 
+    public float hInput = 0;
     Animator anim;
     Rigidbody2D rb;
     PlayerAttack pa;
@@ -18,7 +19,6 @@ public class PlayerMovement : MonoBehaviour {
 	bool isWalking, isDashing, isFalling, faceRight,isJumping;
     Transform trans, groundCheckL, groundCheckR;
     float dir, dashCDTimer, dashTimer, attackTimer;
-    float hInput = 0;
     float timer;
 
     void Start() {

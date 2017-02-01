@@ -3,23 +3,17 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PauseHandler : MonoBehaviour {
-    public Transform pauseCanvas;
-    public Transform audioToggle;
-    public Transform quitPrompt;
-    public Transform pauseMenu;
-    public Transform restartPrompt;
-    public Transform mainMenuPrompt;
-    public AudioClip buttonPress;
+public class Tutorial_Pause : MonoBehaviour {
+    public Transform pauseCanvas, mainMenuPrompt, restartPrompt, pauseMenu, audioToggle, quitPrompt;
     AudioSource buttonSound;
     bool soundOn = true;
 
 	void Start () {
-        buttonSound = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
         pauseCanvas.gameObject.SetActive(false);
         quitPrompt.gameObject.SetActive(false);
         restartPrompt.gameObject.SetActive(false);
         mainMenuPrompt.gameObject.SetActive(false);
+        buttonSound = gameObject.GetComponent<AudioSource>();
     }
 
     public void PauseButton() {
