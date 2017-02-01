@@ -23,11 +23,11 @@ public class Tutorial : MonoBehaviour {
     private GameObject pnorm, pangr;
     private int cur_msg;
 	void Start () {
-        c_pause.SetActive(false);
         timeLimitInSeconds = 60 * GAME.waveTimeInMins;
         levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
+
         c_controls.SetActive(false);
-        c_pause.SetActive(false);
+        //c_pause.SetActive(false);
         //c_hud.SetActive(false);
         c_loadout.SetActive(false);
         minimap.enabled = false;
@@ -172,7 +172,7 @@ public class Tutorial : MonoBehaviour {
             c_controls.transform.GetChild(1).gameObject.SetActive(false);
             c_controls.transform.GetChild(2).gameObject.SetActive(false);
             c_controls.transform.GetChild(3).gameObject.SetActive(false);
-            //c_controls.transform.GetChild(4).gameObject.SetActive(false);
+            c_controls.transform.GetChild(4).gameObject.SetActive(false);
         }
 
         if (cur_msg == 8) { // cp1

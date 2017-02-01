@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial_Pause : MonoBehaviour {
     public Transform pauseCanvas, mainMenuPrompt, restartPrompt, pauseMenu, audioToggle, quitPrompt;
+    public Camera gimmeaudio;
     AudioSource buttonSound;
     bool soundOn = true;
 
@@ -13,7 +14,10 @@ public class Tutorial_Pause : MonoBehaviour {
         quitPrompt.gameObject.SetActive(false);
         restartPrompt.gameObject.SetActive(false);
         mainMenuPrompt.gameObject.SetActive(false);
-        buttonSound = gameObject.GetComponent<AudioSource>();
+        //buttonSound = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
+        //buttonSound.clip = buttonPress;
+        //buttonSound = gameObject.GetComponent<AudioSource>();
+        buttonSound = gimmeaudio.GetComponent<AudioSource>();
     }
 
     public void PauseButton() {

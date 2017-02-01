@@ -10,7 +10,6 @@ public class PauseHandler : MonoBehaviour {
     public Transform pauseMenu;
     public Transform restartPrompt;
     public Transform mainMenuPrompt;
-    public AudioClip buttonPress;
     AudioSource buttonSound;
     bool soundOn = true;
 
