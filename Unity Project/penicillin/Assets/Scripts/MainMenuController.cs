@@ -32,7 +32,7 @@ public class MainMenuController : MonoBehaviour {
 
     public void Tutorial() {
         audio.Play();
-        toggleUI(t_tutorial);
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void Credits() {

@@ -10,7 +10,7 @@ namespace GLOBAL{
         public const float player_atkRange = .25f;
 
         public const int dashes = 3;
-        public const float dash_force = 6.5f;
+        public const float dash_force = 10f;
         public const float dash_timer = 0.25f;
         public const float dash_cooldown = 2f;
         
