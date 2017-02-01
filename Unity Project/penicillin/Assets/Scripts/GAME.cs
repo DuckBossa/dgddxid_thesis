@@ -52,7 +52,10 @@ namespace GLOBAL{
 		public const float Shigellang_JumpForce = 15f;
 		public const float Shigellang_DMGTimer = 1.5f;
         public const float Shigellang_AngleProjectile = 15f;
-    }
+    	
+		public const string PLAYER_PREFS_RP = "PlayerResearchPoints";
+		public const string PLAYER_PREFS_WEAPLEVEL = "WeaponLVL";
+	}
 
 
     public interface IDamage {

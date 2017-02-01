@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour {
 		attackCalled = false;
 		whichWeapon = 0;
 		for (int i = 0; i < weapLevel.Length; i++) {
-			weapLevel [i] = i;
+			weapLevel [i] = PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
 		}
 		anim = GetComponent<Animator>();
         isAttacking = false;
@@ -40,6 +40,18 @@ public class PlayerAttack : MonoBehaviour {
     public bool isAttack() {
         return isAttacking;
     }
+
+	public void SaveData(){
+		for (int i = 0; i < weapLevel.Length; i++) {
+			PlayerPrefs.SetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),weapLevel [i]);
+		}
+	}
+
+	public void UpgradeWeapon(int id){
+		if (weapLevel [id] < 2) {
+			++weapLevel [id];
+		}
+	}
 
     void endAttack() {
         isAttacking = false;
