@@ -11,10 +11,11 @@ public class PauseHandler : MonoBehaviour {
     public Transform restartPrompt;
     public Transform mainMenuPrompt;
     AudioSource buttonSound;
+    public Camera mainCam;
     bool soundOn = true;
 
 	void Start () {
-        buttonSound = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
+        buttonSound = gameObject.GetComponent<AudioSource>();
         pauseCanvas.gameObject.SetActive(false);
         quitPrompt.gameObject.SetActive(false);
         restartPrompt.gameObject.SetActive(false);
@@ -22,15 +23,23 @@ public class PauseHandler : MonoBehaviour {
     }
 
     public void PauseButton() {
-        buttonSound.Play();
-        pauseCanvas.gameObject.SetActive(pauseCanvas.gameObject.activeInHierarchy ? false : true);
-        Time.timeScale = pauseCanvas.gameObject.activeInHierarchy ? 0 : 1;
+        //order matters; can't play audio from a disabled object
+        if (pauseCanvas.gameObject.activeInHierarchy) {
+            AudioSource.PlayClipAtPoint(buttonSound.clip, mainCam.transform.position);
+            pauseCanvas.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else {
+            pauseCanvas.gameObject.SetActive(true);
+            AudioSource.PlayClipAtPoint(buttonSound.clip, mainCam.transform.position);
+            Time.timeScale = 0;
+        }
     }
 
     public void ToggleAudio() {
-        buttonSound.Play();
         soundOn = !soundOn;
         audioToggle.GetComponent<Text>().text = soundOn ? "Sound: On" : "Sound: Off";
+        buttonSound.Play();
     }
 
     public void QuitPrompt() {

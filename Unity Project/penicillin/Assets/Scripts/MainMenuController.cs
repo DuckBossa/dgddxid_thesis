@@ -7,36 +7,44 @@ public class MainMenuController : MonoBehaviour {
 
     public Transform t_quit, t_menu, t_tutorial, t_credits;
     public Button b_start, b_quit, b_tutorial, b_credits;
-    public AudioClip buttonPress;
-    AudioSource audio;
-    bool started;
+    AudioSource buttonSound;
 
     void Start() {
         t_quit.gameObject.SetActive(false);
-        audio = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
+        buttonSound = gameObject.GetComponent<AudioSource>();
     }
 
     void OnEnable() {
         Time.timeScale = 1;
     }
 
-	public void StartGame() {
-        audio.Play();
-        SceneManager.LoadScene("LevelStomach");
+    public void StartGame() {
+        StartCoroutine(Load("LevelStomach"));
+    }
+
+    IEnumerator Load(string level) { //need this so the audio plays completely before loading scene
+       buttonSound.PlayOneShot(buttonSound.clip);
+        yield return new WaitForSeconds(buttonSound.clip.length);
+        SceneManager.LoadScene(level);
+    }
+
+    IEnumerator QuitGame() {
+       buttonSound.PlayOneShot(buttonSound.clip);
+        yield return new WaitForSeconds(buttonSound.clip.length);
+        Application.Quit();
     }
 
     public void QuitPrompt() {
-        audio.Play();
+        buttonSound.Play();
         toggleUI(t_quit);
     }
 
     public void Tutorial() {
-        audio.Play();
-        SceneManager.LoadScene("Tutorial");
+        StartCoroutine(Load("Tutorial"));
     }
 
     public void Credits() {
-        audio.Play();
+       buttonSound.PlayOneShot(buttonSound.clip);
         toggleUI(t_credits);
     }
 
@@ -49,7 +57,6 @@ public class MainMenuController : MonoBehaviour {
     }
 
     public void ExitApplication() {
-        audio.Play();
-        Application.Quit();
+        StartCoroutine(QuitGame());
     }
 }

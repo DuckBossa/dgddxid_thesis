@@ -11,16 +11,16 @@ public class Tutorial : MonoBehaviour {
     public Slider timeSlider;
     public static float globalTime;
     public Transform player;
-    public GameObject c_loadout, loadoutIndicator, c_controls, c_pause, c_hud, dialogues;
+    public GameObject c_loadout, c_controls, c_pause, c_hud, dialogues, t_loadoutTrigger, t_loadoutMarker;
     public Camera minimap;
 
     private string[] messages;
-    private bool active, cp1, cp2, cp3, wasLoadout;
+    private bool active, cp1, cp2, cp3, cp4, cp5, wasLoadout;
     private float timeLimitInSeconds, localTime, levelTime;
     private Color defaultColor;
     private Vector3 defaultScale;
     private Text text;
-    private GameObject pnorm, pangr;
+    private GameObject pnorm, pangr; //penny normal and angry
     private int cur_msg;
 	void Start () {
         timeLimitInSeconds = 60 * GAME.waveTimeInMins;
@@ -32,12 +32,14 @@ public class Tutorial : MonoBehaviour {
         c_loadout.SetActive(false);
         minimap.enabled = false;
 
+        t_loadoutTrigger.SetActive(false);
+        t_loadoutMarker.SetActive(false);
+
         defaultColor = screenTimer.color;
         globalTime = 0;
-        loadoutIndicator.SetActive(false);
         timeSlider.value = globalTime / levelTime;
         wasLoadout = false;
-        defaultScale = loadoutIndicator.transform.localScale;
+        defaultScale = t_loadoutMarker.transform.localScale;
         screenTimer.text = "";
         active = false;
         cur_msg = 0;
@@ -46,26 +48,42 @@ public class Tutorial : MonoBehaviour {
         cp1 = false;
         cp2 = false;
         cp3 = false;
+        cp4 = false;
+        cp5 = false;
 
         pnorm = dialogues.transform.GetChild(0).gameObject;
         pangr = dialogues.transform.GetChild(1).gameObject;
 
         messages = new string[] {
+            //0-4
             "Hello there! I'm Private Penny Pennicilin, your trusty antibiotic.",
             "Humans have been abusing antibiotics for a long time now, taking them even when unnecessary, or not finishing their prescribed dosages.",
             "This caused bacteria to evolve and strengthen rapidly to the point where current Antibiotic research cannot keep up.",
             "We need all the help we can get, and I'm glad we have you on our side!",
             "Let's begin with the basics. That's me at the center of the screen. You can control me using the left and right arrows on the bottom left of the screen",
-
-            "Proceed to the right edge of the platform to get started.",
+            //5-9
+            "Proceed to the first checkpoint to get started.",
             "", 
-            "Great! You can fall off of platforms or jump onto higher ones with your jump ability on the bottom right of the screen. Try getting to the next platform.",
+            "Great! You can fall off of platforms or jump onto higher ones with your jump ability on the bottom right of the screen. Try getting to the next checkpoint.",
             "",
-            "That other platform is too far for a single jump. Use your dash ability to reach it.",
-
+            "That other checkpoint is too far to reach with a single jump. Use your dash ability to leap further.",
+            //10-14
             "",
             "You can chain dashes up to three times. Just remember that the ability takes some time to regenerate.",
-            "You can pause the game anytime by clicking on the pause button on the upper-right corner of the screen. Try accessing the pause menu now.",
+            "You will have to attack enemy bacteria pretty soon. For that, use the buttons above your jump and dash ability.",
+            "Tapping these buttons attack nearby enemies or change the current weapon in-use. Try them now, and proceed going to the next checkpoint.",
+            "",
+            //15-19
+            "At the bottom middle of your screen is the minimap. This will show you all of the things currently active on the level, as well as your current location.",
+            "Proceed to the next checkpoint. I will mark it for you.",
+            "",
+            "Did you see that big red circle that appeared? That indicates where the Research Lab is.",
+            "The Research Lab is where you spend Research Points, which you gain from killing bacteria throughout levels.",
+            //20-24
+            "The lab allows you to upgrade your antibiotics and unlock new ones so you have more options to kill more bacteria.",
+            "You can see the amount of research points you currently have at the top of the screen, as well as your current health.",
+            "Between the health and research points, you can see a timer that indicates how long a level is going to be.",
+            "Pick the pill up and see what we have the lab has to offer!",
             ""
         };
 
@@ -111,6 +129,22 @@ public class Tutorial : MonoBehaviour {
             cp3 = true;
         }
 
+        if(!cp4 && player.position.x > 12 && player.position.y < 0) {
+            c_controls.SetActive(false);
+            text.text = messages[++cur_msg];
+            dialogues.SetActive(true);
+            player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
+            cp4 = true;
+        }
+
+        if(!cp5 && player.position.x < 4.7 && player.position.y < -3.3) {
+            c_controls.SetActive(false);
+            text.text = messages[++cur_msg];
+            dialogues.SetActive(true);
+            player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
+            cp5 = true;
+        }
+
         /*
         //spawn loadout section if it's not yet there
         if (timeRemaining == -1 && !c_loadout.activeInHierarchy) {
@@ -145,6 +179,10 @@ public class Tutorial : MonoBehaviour {
             loadoutIndicator.transform.localScale = defaultScale;
         }
         */
+
+        if (t_loadoutTrigger.activeInHierarchy) {
+            if (t_loadoutMarker.transform.localScale.x >= 0) t_loadoutMarker.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
+        }
     }
 
     public void NextMessage() {
@@ -195,14 +233,30 @@ public class Tutorial : MonoBehaviour {
             //c_controls.transform.GetChild(4).gameObject.SetActive(false);
         }
 
-        if (cur_msg == 13) { // cp3
+        if (cur_msg == 14) { // cp3
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             //c_controls.transform.GetChild(0).gameObject.SetActive(true);
             //c_controls.transform.GetChild(1).gameObject.SetActive(true);
-            //c_controls.transform.GetChild(2).gameObject.SetActive(false);
-            //c_controls.transform.GetChild(3).gameObject.SetActive(false);
-            c_controls.transform.GetChild(4).gameObject.SetActive(true);
+            c_controls.transform.GetChild(2).gameObject.SetActive(true);
+            c_controls.transform.GetChild(3).gameObject.SetActive(true);
+            //c_controls.transform.GetChild(4).gameObject.SetActive(false);
+        }
+
+        if(cur_msg == 17) {
+            dialogues.SetActive(false);
+            c_controls.SetActive(true);
+            minimap.enabled = true;
+            //activate loadout
+            t_loadoutTrigger.SetActive(true);
+            t_loadoutMarker.SetActive(true);
+            t_loadoutMarker.transform.position = t_loadoutTrigger.transform.position;
+        }
+
+        if(cur_msg == 24) {
+            dialogues.SetActive(false);
+            c_controls.SetActive(true);
+            c_hud.SetActive(true);
         }
     }
 

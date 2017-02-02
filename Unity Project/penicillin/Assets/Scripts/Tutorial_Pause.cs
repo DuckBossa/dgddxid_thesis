@@ -14,9 +14,6 @@ public class Tutorial_Pause : MonoBehaviour {
         quitPrompt.gameObject.SetActive(false);
         restartPrompt.gameObject.SetActive(false);
         mainMenuPrompt.gameObject.SetActive(false);
-        //buttonSound = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
-        //buttonSound.clip = buttonPress;
-        //buttonSound = gameObject.GetComponent<AudioSource>();
         buttonSound = gimmeaudio.GetComponent<AudioSource>();
     }
 
@@ -49,7 +46,6 @@ public class Tutorial_Pause : MonoBehaviour {
     }
 
     public void RestartLevel() {
-        buttonSound.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -60,7 +56,6 @@ public class Tutorial_Pause : MonoBehaviour {
     }
 
     public void GoToMainMenu() {
-        buttonSound.Play();
         SceneManager.LoadScene("MainMenu");
     }
 }
