@@ -35,4 +35,8 @@ public class LoadoutCanvasController : MonoBehaviour {
     public void Previous() {
         currButton = (currButton + buttons.Length - 1) % buttons.Length;
     }
+
+    public int getCurrImageID() {
+        return currButton;
+    }
 }
