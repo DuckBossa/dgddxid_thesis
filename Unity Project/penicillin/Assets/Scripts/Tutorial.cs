@@ -29,9 +29,10 @@ public class Tutorial : MonoBehaviour {
         c_controls.SetActive(false);
         c_hud.SetActive(false);
         c_loadout.SetActive(false);
+        c_pause.SetActive(false);
         minimap.enabled = false;
 
-        t_loadoutTrigger.SetActive(false);
+        //t_loadoutTrigger.SetActive(false);
         t_loadoutMarker.SetActive(false);
 
         globalTime = 0;
@@ -87,7 +88,8 @@ public class Tutorial : MonoBehaviour {
             "",
             //25-29
             "You can pause the game anytime using the pause button at the upper-right corner. Use this to go back to the main menu.",
-            "You are now ready to start the resistance against antibiotic misuse / abuse and bacterial mutation. Good luck!"
+            "You are now ready to start the resistance against antibiotic misuse / abuse and bacterial mutation. Good luck!",
+            ""
         };
 
         text = dialogues.transform.GetChild(4).gameObject.GetComponent<Text>();
@@ -233,10 +235,10 @@ public class Tutorial : MonoBehaviour {
             minimap.enabled = true;
         }
 
-        if(cur_msg == 26) {
+        if(cur_msg == 27) {
             dialogues.SetActive(false);
             c_controls.SetActive(true);
-            c_controls.transform.GetChild(4).gameObject.SetActive(false);
+            c_controls.transform.GetChild(4).gameObject.SetActive(true);
             c_hud.SetActive(true);
             minimap.enabled = true;
         }

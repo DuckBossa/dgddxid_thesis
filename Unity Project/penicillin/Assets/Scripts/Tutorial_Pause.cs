@@ -10,7 +10,6 @@ public class Tutorial_Pause : MonoBehaviour {
     bool soundOn = true;
 
 	void Start () {
-        pauseCanvas.gameObject.SetActive(false);
         quitPrompt.gameObject.SetActive(false);
         restartPrompt.gameObject.SetActive(false);
         mainMenuPrompt.gameObject.SetActive(false);
@@ -18,7 +17,6 @@ public class Tutorial_Pause : MonoBehaviour {
     }
 
     public void PauseButton() {
-        buttonSound.Play();
         pauseCanvas.gameObject.SetActive(pauseCanvas.gameObject.activeInHierarchy ? false : true);
         Time.timeScale = pauseCanvas.gameObject.activeInHierarchy ? 0 : 1;
     }

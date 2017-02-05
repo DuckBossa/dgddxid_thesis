@@ -12,7 +12,6 @@ public class Tutorial_LoadoutCanvas : MonoBehaviour {
     bool drag;
     // Use this for initialization
     void Start() {
-        gameObject.SetActive(false);
         drag = false;
         distBetButtons = (int)Mathf.Abs(buttons[0].GetComponent<RectTransform>().anchoredPosition.x - buttons[1].GetComponent<RectTransform>().anchoredPosition.x);
     }
