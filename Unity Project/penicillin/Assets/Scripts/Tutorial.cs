@@ -13,11 +13,11 @@ public class Tutorial : MonoBehaviour {
     public Transform player;
     public GameObject c_loadout, c_controls, c_pause, c_hud, dialogues, t_loadoutTrigger, t_loadoutMarker;
     public Camera minimap;
+    public bool checkpoint;
 
     private string[] messages;
-    private bool active, cp1, cp2, cp3, cp4, cp5, wasLoadout;
+    private bool active, cp1, cp0, cp2, cp3, cp4, cp5, cp6;
     private float timeLimitInSeconds, localTime, levelTime;
-    private Color defaultColor;
     private Vector3 defaultScale;
     private Text text;
     private GameObject pnorm, pangr; //penny normal and angry
@@ -27,29 +27,29 @@ public class Tutorial : MonoBehaviour {
         levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
 
         c_controls.SetActive(false);
-        //c_pause.SetActive(false);
-        //c_hud.SetActive(false);
+        c_hud.SetActive(false);
         c_loadout.SetActive(false);
         minimap.enabled = false;
 
         t_loadoutTrigger.SetActive(false);
         t_loadoutMarker.SetActive(false);
 
-        defaultColor = screenTimer.color;
         globalTime = 0;
         timeSlider.value = globalTime / levelTime;
-        wasLoadout = false;
         defaultScale = t_loadoutMarker.transform.localScale;
         screenTimer.text = "";
         active = false;
         cur_msg = 0;
 
         //tutorial checkpoints
+        checkpoint = false;
+        cp0 = false;
         cp1 = false;
         cp2 = false;
         cp3 = false;
         cp4 = false;
         cp5 = false;
+        cp6 = false;
 
         pnorm = dialogues.transform.GetChild(0).gameObject;
         pangr = dialogues.transform.GetChild(1).gameObject;
@@ -69,7 +69,7 @@ public class Tutorial : MonoBehaviour {
             "That other checkpoint is too far to reach with a single jump. Use your dash ability to leap further.",
             //10-14
             "",
-            "You can chain dashes up to three times. Just remember that the ability takes some time to regenerate.",
+            "You can chain up to three dashes at a time. Just remember that dashing takes some time to regenerate.",
             "You will have to attack enemy bacteria pretty soon. For that, use the buttons above your jump and dash ability.",
             "Tapping these buttons attack nearby enemies or change the current weapon in-use. Try them now, and proceed going to the next checkpoint.",
             "",
@@ -77,14 +77,17 @@ public class Tutorial : MonoBehaviour {
             "At the bottom middle of your screen is the minimap. This will show you all of the things currently active on the level, as well as your current location.",
             "Proceed to the next checkpoint. I will mark it for you.",
             "",
-            "Did you see that big red circle that appeared? That indicates where the Research Lab is.",
-            "The Research Lab is where you spend Research Points, which you gain from killing bacteria throughout levels.",
+            "Did you see that big red circle? That indicates the location of the Research Lab.",
+            "The Research Lab is where you can spend Research Points, which you gain from killing bacteria throughout levels.",
             //20-24
             "The lab allows you to upgrade your antibiotics and unlock new ones so you have more options to kill more bacteria.",
             "You can see the amount of research points you currently have at the top of the screen, as well as your current health.",
-            "Between the health and research points, you can see a timer that indicates how long a level is going to be.",
+            "Between the health and research points, you can see a progress bar that indicates how long a level is going to be.",
             "Pick the pill up and see what we have the lab has to offer!",
-            ""
+            "",
+            //25-29
+            "You can pause the game anytime using the pause button at the upper-right corner. Use this to go back to the main menu.",
+            "You are now ready to start the resistance against antibiotic misuse / abuse and bacterial mutation. Good luck!"
         };
 
         text = dialogues.transform.GetChild(4).gameObject.GetComponent<Text>();
@@ -103,82 +106,62 @@ public class Tutorial : MonoBehaviour {
         globalTime += Time.deltaTime; //time in seconds
         localTime += Time.deltaTime; //time used to calculate the time to display on screen; separate from globalTime; should not be used for anything else 
         int timeRemaining = (int)timeLimitInSeconds - (int)localTime;
-
         //triggers
-        if (!cp1 && player.position.x > -8.75f) { //walk towards edge
+        if (!cp1 && checkpoint) { //walk towards edge
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
             player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
             cp1 = true;
+            checkpoint = false;
         }
 
-        if (!cp2 && player.position.x > 0 && player.position.y > 1) { //jump to next platform
+        if (!cp2 && checkpoint) { //jump to next platform
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
             player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
             cp2 = true;
+            checkpoint = false;
         }
 
-        if(!cp3 &&player.position.x > 5 && player.position.y > 1) { // use dash
+        if(!cp3 && checkpoint) { // use dash
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
             player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
             cp3 = true;
+            checkpoint = false;
         }
 
-        if(!cp4 && player.position.x > 12 && player.position.y < 0) {
+        if (!cp4 && checkpoint) { //
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
             player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
             cp4 = true;
+            checkpoint = false;
         }
 
-        if(!cp5 && player.position.x < 4.7 && player.position.y < -3.3) {
+        if (!cp5 && checkpoint) {
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
             player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
             cp5 = true;
+            checkpoint = false;
+            minimap.enabled = false;
         }
 
-        /*
-        //spawn loadout section if it's not yet there
-        if (timeRemaining == -1 && !c_loadout.activeInHierarchy) {
-            //enable c_loadout gameobject
-            c_loadout.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position;
-            c_loadout.SetActive(true);
-            screenTimer.color = Color.red;
-            localTime = 0;
-            timeLimitInSeconds = GAME.loadoutLifetime;
-            wasLoadout = true;
+        if (!cp6 && checkpoint) {
+            c_controls.SetActive(false);
+            text.text = messages[++cur_msg];
+            dialogues.SetActive(true);
+            player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
+            cp6 = true;
+            checkpoint = false;
+            minimap.enabled = false;
         }
-        //player didn't reach loadoutsection in time, go straight to 2nd wave
-        else if (timeRemaining == -1 && c_loadout.activeInHierarchy) {
-            screenTimer.text = "";
-            localTime = 0;
-            timeLimitInSeconds = 60 * GAME.waveTimeInMins;
-            screenTimer.color = defaultColor;
-            c_loadout.SetActive(false);
-        }
-
-        if (c_loadout.activeInHierarchy) {
-            loadoutIndicator.SetActive(true);
-            loadoutIndicator.transform.position = c_loadout.transform.position;
-            if (loadoutIndicator.transform.localScale.x >= 0) loadoutIndicator.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
-            string min = Mathf.Floor(timeRemaining / 60).ToString("00");
-            string sec = (timeRemaining % 60).ToString("00");
-            screenTimer.text = min + ":" + sec;
-        }
-        else if (!c_loadout.activeInHierarchy && wasLoadout) {
-            screenTimer.text = "";
-            loadoutIndicator.SetActive(false);
-            loadoutIndicator.transform.localScale = defaultScale;
-        }
-        */
 
         if (t_loadoutTrigger.activeInHierarchy) {
             if (t_loadoutMarker.transform.localScale.x >= 0) t_loadoutMarker.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
@@ -194,7 +177,7 @@ public class Tutorial : MonoBehaviour {
         }
 
         // Penny's current face
-        if (cur_msg == 1 || cur_msg == 2) {
+        if (cur_msg == 1 || cur_msg == 2 || cur_msg == 12) {
             pnorm.SetActive(false);
             pangr.SetActive(true);
         }
@@ -217,10 +200,6 @@ public class Tutorial : MonoBehaviour {
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             c_controls.transform.GetChild(0).gameObject.SetActive(true);
-            //c_controls.transform.GetChild(1).gameObject.SetActive(false);
-            //c_controls.transform.GetChild(2).gameObject.SetActive(false);
-            //c_controls.transform.GetChild(3).gameObject.SetActive(false);
-            //c_controls.transform.GetChild(4).gameObject.SetActive(false);
         }
 
         if (cur_msg == 10) { // cp2
@@ -228,19 +207,13 @@ public class Tutorial : MonoBehaviour {
             c_controls.SetActive(true);
             c_controls.transform.GetChild(0).gameObject.SetActive(true);
             c_controls.transform.GetChild(1).gameObject.SetActive(true);
-            //c_controls.transform.GetChild(2).gameObject.SetActive(false);
-            //c_controls.transform.GetChild(3).gameObject.SetActive(false);
-            //c_controls.transform.GetChild(4).gameObject.SetActive(false);
         }
 
         if (cur_msg == 14) { // cp3
             dialogues.SetActive(false);
             c_controls.SetActive(true);
-            //c_controls.transform.GetChild(0).gameObject.SetActive(true);
-            //c_controls.transform.GetChild(1).gameObject.SetActive(true);
             c_controls.transform.GetChild(2).gameObject.SetActive(true);
             c_controls.transform.GetChild(3).gameObject.SetActive(true);
-            //c_controls.transform.GetChild(4).gameObject.SetActive(false);
         }
 
         if(cur_msg == 17) {
@@ -253,10 +226,19 @@ public class Tutorial : MonoBehaviour {
             t_loadoutMarker.transform.position = t_loadoutTrigger.transform.position;
         }
 
-        if(cur_msg == 24) {
+        if(cur_msg == 24) {//get the pill
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             c_hud.SetActive(true);
+            minimap.enabled = true;
+        }
+
+        if(cur_msg == 26) {
+            dialogues.SetActive(false);
+            c_controls.SetActive(true);
+            c_controls.transform.GetChild(4).gameObject.SetActive(false);
+            c_hud.SetActive(true);
+            minimap.enabled = true;
         }
     }
 
@@ -265,6 +247,5 @@ public class Tutorial : MonoBehaviour {
         timeLimitInSeconds = 60 * GAME.waveTimeInMins;
         localTime = 0;
         c_loadout.SetActive(false);
-        screenTimer.color = defaultColor;
     }
 }
