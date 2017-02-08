@@ -55,6 +55,9 @@ namespace GLOBAL{
     	
 		public const string PLAYER_PREFS_RP = "PlayerResearchPoints";
 		public const string PLAYER_PREFS_WEAPLEVEL = "WeaponLVL";
+
+
+		public static int[] RP_UPGRADE = {20,40,60};
 	}
 
 

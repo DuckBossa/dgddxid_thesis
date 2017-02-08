@@ -7319,7 +7319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2
+  m_Text: 
 --- !u!222 &643236275
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10087,7 +10087,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 400, y: 0.0000015497208}
-  m_SizeDelta: {x: 160, y: 177.8}
+  m_SizeDelta: {x: 140.7, y: 177.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918812029
 MonoBehaviour:
@@ -10778,7 +10778,20 @@ MonoBehaviour:
   - {fileID: 1295538799}
   - {fileID: 2050873300}
   - {fileID: 918812029}
+  normal:
+  - {fileID: 21300000, guid: e200040673deb4e6c85b61198b0c87d8, type: 3}
+  - {fileID: 21300000, guid: 8a5c5845beeac2e48b49f4986de8611e, type: 3}
+  - {fileID: 21300000, guid: 1fb95994251874e408eb87b6f48328be, type: 3}
+  upgraded:
+  - {fileID: 21300000, guid: ee815ec248d10cd448bd4b6e2187b4b3, type: 3}
+  - {fileID: 21300000, guid: 6f9084ad37c4f9845b8dd9d70df104b8, type: 3}
+  - {fileID: 21300000, guid: 45b72d982192fd84c9f5017987d0606a, type: 3}
+  final:
+  - {fileID: 21300000, guid: ce6fa09deacb92f4ca2d0fd69f812dd2, type: 3}
+  - {fileID: 21300000, guid: 1e891f62049c44842b101eda08d79a8a, type: 3}
+  - {fileID: 21300000, guid: a08c5afa465b7ca4fa0d3d636acf4c00, type: 3}
   center: {fileID: 131854444}
+  pa: {fileID: 1924780871}
 --- !u!1001 &1037636720
 Prefab:
   m_ObjectHideFlags: 0
@@ -10897,7 +10910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 
 --- !u!222 &1045983161
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16663,7 +16676,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 
 --- !u!222 &1694045095
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20826,7 +20839,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 190.6, y: 0.0000015497208}
-  m_SizeDelta: {x: 141.2, y: 177.8}
+  m_SizeDelta: {x: 140.7, y: 177.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050873300
 MonoBehaviour:

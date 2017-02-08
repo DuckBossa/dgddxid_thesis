@@ -7,6 +7,7 @@ public class WeaponUpgrade_Listener : MonoBehaviour {
     public PlayerAttack pa;
     public void upgradeWeap() {
         pa.UpgradeWeapon(LCC.getCurrImageID());
+		LCC.UpdateButtonImages ();
     }
 
 }

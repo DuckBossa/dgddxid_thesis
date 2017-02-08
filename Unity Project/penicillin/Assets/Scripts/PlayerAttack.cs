@@ -5,7 +5,7 @@ using GLOBAL;
 
 public class PlayerAttack : MonoBehaviour {
     int whichWeapon;
-	int[] weapLevel;
+	int[] weapLevel = new int[GAME.num_swords];
     bool isAttacking,attackCalled;
     Animator anim;
 	PlayerMovement pm;
@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour {
     void Start() {
 		pm = GetComponent<PlayerMovement> ();
 		rb = GetComponent<Rigidbody2D> ();
-		weapLevel = new int[GAME.num_swords];
+
 		attackCalled = false;
 		whichWeapon = 0;
 		for (int i = 0; i < weapLevel.Length; i++) {
@@ -40,6 +40,13 @@ public class PlayerAttack : MonoBehaviour {
     public bool isAttack() {
         return isAttacking;
     }
+
+	public int GetWeapLevel(int weapID){
+		if (weapID < weapLevel.Length) {
+			return weapLevel [weapID];
+		}
+		return -1;
+	}
 
 	public void SaveData(){
 		for (int i = 0; i < weapLevel.Length; i++) {
