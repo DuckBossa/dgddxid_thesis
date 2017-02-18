@@ -4,6 +4,7 @@ using GLOBAL;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour {
     // Use this for initialization
@@ -236,11 +237,14 @@ public class Tutorial : MonoBehaviour {
         }
 
         if(cur_msg == 27) {
+            /*
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             c_controls.transform.GetChild(4).gameObject.SetActive(true);
             c_hud.SetActive(true);
             minimap.enabled = true;
+            */
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
