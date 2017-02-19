@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using GLOBAL;
 
-public class PlayerAttack : MonoBehaviour {
+public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     int whichWeapon;
 	int[] weapLevel = new int[GAME.num_swords];
     bool isAttacking,attackCalled;
@@ -25,9 +25,13 @@ public class PlayerAttack : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other) {
         //other.gameObject.GetComponent<IDamage>().TakeDamage(weapLevel[whichWeapon] + 1);
+		/*
 		if(other.gameObject.layer == LayerMask.NameToLayer ("Enemy"))
 			other.gameObject.transform.parent.gameObject.GetComponent<IDamage> ().TakeDamage (weapLevel [whichWeapon] + 1);
-    }
+		*/
+	}
+
+
 
     void FixedUpdate() {
 		if (attackCalled && !pm.isDash ())
@@ -80,6 +84,10 @@ public class PlayerAttack : MonoBehaviour {
 
 	public void SetAttack(bool a) {
 		attackCalled = a;
+	}
+
+	public int Damage(){
+		return weapLevel [whichWeapon] + 1;
 	}
 
 }

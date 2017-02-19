@@ -34,7 +34,6 @@ public class LoadoutCanvasController : MonoBehaviour {
 			int weapLevel = pa.GetWeapLevel (i);
 			switch (weapLevel) {
 			case 0:
-				
 				buttons [i].GetComponent<Image> ().sprite = normal [i];
 				break;
 			case 1:
@@ -63,4 +62,5 @@ public class LoadoutCanvasController : MonoBehaviour {
     public int getCurrImageID() {
         return currButton;
     }
+
 }

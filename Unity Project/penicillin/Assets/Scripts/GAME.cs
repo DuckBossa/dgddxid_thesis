@@ -15,8 +15,8 @@ namespace GLOBAL{
         public const float dash_cooldown = 2f;
         
         public const int jumps = 1;
-        public const float jump_force = 250f;
-        public const float jump_velocity = 5;
+        public const float jump_force = 250;//250
+        public const float jump_velocity = 5	;
 
         public const float acid_dot_timer = 2f;
         public const int tile_size = 64;
@@ -64,6 +64,11 @@ namespace GLOBAL{
     public interface IDamage {
         void TakeDamage(int dmg);
     }
+	public interface IPlayerDamage{
+		int Damage ();
+	}
+
+
 }
 
 

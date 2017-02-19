@@ -30,17 +30,17 @@ public class EnemyHealth : MonoBehaviour, IDamage {
         if (isDead) return;
 		currHealth -= damage;
         if (currHealth <= 0) Death();
-        enemy.isStunned = true;
+        enemy.isStunned = true;	
     }
 
     void Death() {
         isDead = true;
         //anim.SetBool("isDead", true);
         manager.currEnemies--;
-        Destroy(gameObject, .75f);
-        ScoreManager.researchPoints += researchPoints;
-        ScoreManager.totalResearchPoints += researchPoints;
-        GetComponent<Enemy>().enabled = false;
+		ScoreManager.researchPoints += researchPoints;
+		ScoreManager.totalResearchPoints += researchPoints;
+		GetComponent<Enemy>().enabled = false;
+        Destroy(gameObject, 0.25f);
         // collider.isTrigger = true; //they don't collide so this isn't necessary
     }
 }
