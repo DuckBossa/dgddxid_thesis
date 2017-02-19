@@ -175,8 +175,8 @@ public class Tutorial : MonoBehaviour {
         // Current text in text area
         try {
             text.text = messages[++cur_msg];
-        }catch(Exception exc) {
-            throw;
+        }catch(Exception e) {
+            throw(e);
         }
 
         // Penny's current face
