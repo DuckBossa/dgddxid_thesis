@@ -85,7 +85,7 @@ public class Tutorial : MonoBehaviour {
             "The lab allows you to upgrade your antibiotics and unlock new ones so you have more options to kill more bacteria.",
             "You can see the amount of research points you currently have at the top of the screen, as well as your current health.",
             "Between the health and research points, you can see a progress bar that indicates how long a level is going to be.",
-            "Pick the pill up and see what we have the lab has to offer!",
+            "Pick the pill up and see what we have the lab has to offer! Here's 200 research points, on me!",
             "",
             //25-29
             "You can pause the game anytime using the pause button at the upper-right corner. Use this to go back to the main menu.",
@@ -236,7 +236,7 @@ public class Tutorial : MonoBehaviour {
             minimap.enabled = true;
         }
 
-        if(cur_msg == 27) {
+        if(cur_msg == 26) {
             /*
             dialogues.SetActive(false);
             c_controls.SetActive(true);
