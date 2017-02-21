@@ -94,9 +94,10 @@ public class Tutorial : MonoBehaviour {
             "Good thing you have a weapon now. Quick! Get rid of it!",
             "",
             "That was close! But prepare yourself, as more of them will be invading soon.",
-            "Remember, you can only purchase and upgrade weapons in the research lab, so make sure you don't miss it!",
+            "To aid you in this task, health pick-ups will randomly appear on the map. Be on the lookout for them!",
 
             //30-34
+            "Remember, you can only purchase and upgrade weapons in the research lab, so make sure you don't miss it!",
             "Your weapons also have a set durability. Hitting enemy bacteria damages your weapons as well, and they'll eventually break. ",
             "Durability will only reset on upgrade, so use your weapons wisely!",
             "You are now ready to fight the hordes of bacteria infecting our host. Remember what I taught you, and good luck!"
