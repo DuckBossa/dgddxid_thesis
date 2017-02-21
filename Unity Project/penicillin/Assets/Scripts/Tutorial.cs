@@ -12,12 +12,12 @@ public class Tutorial : MonoBehaviour {
     public Slider timeSlider;
     public static float globalTime;
     public Transform player;
-    public GameObject c_loadout, c_controls, c_pause, c_hud, dialogues, t_loadoutTrigger, t_loadoutMarker;
+    public GameObject c_loadout, c_controls, c_pause, c_hud, dialogues, t_loadoutTrigger, t_loadoutMarker, enemy, rpoints;
     public Camera minimap;
-    public bool checkpoint;
+    public bool checkpoint, researchDone;
 
     private string[] messages;
-    private bool active, cp1, cp0, cp2, cp3, cp4, cp5, cp6;
+    private bool active, cp1, cp2, cp3, cp4, cp5, cp6, cp7, enemySpawned;
     private float timeLimitInSeconds, localTime, levelTime;
     private Vector3 defaultScale;
     private Text text;
@@ -45,13 +45,15 @@ public class Tutorial : MonoBehaviour {
 
         //tutorial checkpoints
         checkpoint = false;
-        cp0 = false;
+        researchDone = false;
         cp1 = false;
         cp2 = false;
         cp3 = false;
         cp4 = false;
         cp5 = false;
         cp6 = false;
+        cp7 = false;
+        enemySpawned = false;
 
         pnorm = dialogues.transform.GetChild(0).gameObject;
         pangr = dialogues.transform.GetChild(1).gameObject;
@@ -73,7 +75,7 @@ public class Tutorial : MonoBehaviour {
             "",
             "You can chain up to three dashes at a time. Just remember that dashing takes some time to regenerate.",
             "You will have to attack enemy bacteria pretty soon. For that, use the buttons above your jump and dash ability.",
-            "Tapping these buttons attack nearby enemies or change the current weapon in-use. Try them now, and proceed going to the next checkpoint.",
+            "Tapping these buttons attack nearby enemies or change the current weapon in-use. Try them now, and proceed to the next checkpoint.",
             "",
             //15-19
             "At the bottom middle of your screen is the minimap. This will show you all of the things currently active on the level, as well as your current location.",
@@ -88,9 +90,16 @@ public class Tutorial : MonoBehaviour {
             "Pick the pill up and see what we have the lab has to offer! Here's 200 research points, on me!",
             "",
             //25-29
-            "You can pause the game anytime using the pause button at the upper-right corner. Use this to go back to the main menu.",
-            "You are now ready to start the resistance against antibiotic misuse / abuse and bacterial mutation. Good luck!",
-            ""
+            "Oh no! A stray shigella appeared out of nowhere!",
+            "Good thing you have a weapon now. Quick! Get rid of it!",
+            "",
+            "That was close! But prepare yourself, as more of them will be invading soon.",
+            "Remember, you can only purchase and upgrade weapons in the research lab, so make sure you don't miss it!",
+
+            //30-34
+            "Your weapons also have a set durability. Hitting enemy bacteria damages your weapons as well, and they'll eventually break. ",
+            "Durability will only reset on upgrade, so use your weapons wisely!",
+            "You are now ready to fight the hordes of bacteria infecting our host. Remember what I taught you, and good luck!"
         };
 
         text = dialogues.transform.GetChild(4).gameObject.GetComponent<Text>();
@@ -166,6 +175,34 @@ public class Tutorial : MonoBehaviour {
             minimap.enabled = false;
         }
 
+        if (researchDone) {
+
+            c_controls.SetActive(false);
+            text.text = messages[++cur_msg];
+            dialogues.SetActive(true);
+            player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
+            checkpoint = false;
+            minimap.enabled = false;
+            researchDone = false;
+        }
+
+        if(cur_msg == 27 && !enemySpawned) {
+            c_controls.SetActive(false);
+            text.text = messages[++cur_msg];
+            dialogues.SetActive(true);
+            player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
+            minimap.enabled = false;
+            enemySpawned = true;
+        }
+
+        if(!enemy.gameObject.activeInHierarchy && enemySpawned) {
+            c_controls.SetActive(false);
+            text.text = messages[++cur_msg];
+            dialogues.SetActive(true);
+            player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
+            minimap.enabled = false;
+        }
+
         if (t_loadoutTrigger.activeInHierarchy) {
             if (t_loadoutMarker.transform.localScale.x >= 0) t_loadoutMarker.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
         }
@@ -180,7 +217,7 @@ public class Tutorial : MonoBehaviour {
         }
 
         // Penny's current face
-        if (cur_msg == 1 || cur_msg == 2 || cur_msg == 12) {
+        if (cur_msg == 1 || cur_msg == 2 || cur_msg == 12 || cur_msg == 25) {
             pnorm.SetActive(false);
             pangr.SetActive(true);
         }
@@ -189,7 +226,7 @@ public class Tutorial : MonoBehaviour {
             pnorm.SetActive(true);
         }
 
-        if(cur_msg == 6) {
+        if(cur_msg == 6) { // walk to edge
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             c_controls.transform.GetChild(0).gameObject.SetActive(false);
@@ -199,16 +236,15 @@ public class Tutorial : MonoBehaviour {
             c_controls.transform.GetChild(4).gameObject.SetActive(false);
         }
 
-        if (cur_msg == 8) { // cp1
+        if (cur_msg == 8) { // jump to platform
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             c_controls.transform.GetChild(0).gameObject.SetActive(true);
         }
 
-        if (cur_msg == 10) { // cp2
+        if (cur_msg == 10) { // use dash
             dialogues.SetActive(false);
             c_controls.SetActive(true);
-            c_controls.transform.GetChild(0).gameObject.SetActive(true);
             c_controls.transform.GetChild(1).gameObject.SetActive(true);
         }
 
@@ -229,22 +265,22 @@ public class Tutorial : MonoBehaviour {
             t_loadoutMarker.transform.position = t_loadoutTrigger.transform.position;
         }
 
-        if(cur_msg == 24) {//get the pill
+        if(cur_msg == 24) {// get the pill
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             c_hud.SetActive(true);
             minimap.enabled = true;
+            rpoints.GetComponent<ScoreManager>().AddPoints(200);
         }
 
-        if(cur_msg == 26) {
-            /*
+        if(cur_msg == 27) { // spawn bacteria
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             c_controls.transform.GetChild(4).gameObject.SetActive(true);
             c_hud.SetActive(true);
             minimap.enabled = true;
-            */
-            SceneManager.LoadScene("MainMenu");
+            enemy.SetActive(true);
+            enemySpawned = true;
         }
     }
 
@@ -253,5 +289,9 @@ public class Tutorial : MonoBehaviour {
         timeLimitInSeconds = 60 * GAME.waveTimeInMins;
         localTime = 0;
         c_loadout.SetActive(false);
+    }
+
+    public void ResearchDone() {
+        researchDone = true;
     }
 }
