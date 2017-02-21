@@ -21002,10 +21002,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1969110926}
-  - 114: {fileID: 1969110924}
   - 212: {fileID: 1969110923}
-  - 95: {fileID: 1969110922}
   - 58: {fileID: 1969110925}
+  - 114: {fileID: 1969110927}
   m_Layer: 10
   m_Name: Health Pickup
   m_TagString: Untagged
@@ -21013,23 +21012,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!95 &1969110922
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1969110921}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 067f5d0b7fd7dcd4687577f79a306f8b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &1969110923
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21063,18 +21045,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!114 &1969110924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1969110921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6adc07099c49f4e42bb67046169db5ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadoutCanvas: {fileID: 1021974943}
 --- !u!58 &1969110925
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -21102,6 +21072,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &1969110927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1969110921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6756819d4048d478e35e78c049668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2133346555}
+  mgr: {fileID: 665904960}
 --- !u!1 &1974363984
 GameObject:
   m_ObjectHideFlags: 0
@@ -22713,6 +22696,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2130761160}
+--- !u!1 &2133346555 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014031088176, guid: fd63a716ba13f794db82e52bf4755ada,
+    type: 2}
+  m_PrefabInternal: {fileID: 1924780870}
 --- !u!1 &2134076933
 GameObject:
   m_ObjectHideFlags: 0
