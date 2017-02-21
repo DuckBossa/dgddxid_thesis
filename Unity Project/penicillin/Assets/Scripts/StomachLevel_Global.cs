@@ -9,8 +9,10 @@ public class StomachLevel_Global : MonoBehaviour {
     public Slider timeSlider;
     public static float globalTime;
     public Transform[] loadouts;
+    public Transform[] health;
     public Transform player;
-    public GameObject Loadout, loadoutIndicator, Shigellang_Dormant;
+    public GameObject Loadout, loadoutIndicator, Shigellang_Dormant, healthPickup, healthPickupIndicator;
+    public int acidCycleCounter;
     bool bossFight;
     bool bossDormant;
 
@@ -19,10 +21,10 @@ public class StomachLevel_Global : MonoBehaviour {
     private Color defaultColor;
     private Vector3 defaultScale;
 	void Start () {
-        //timeLimitInSeconds = 60 * GAME.waveTimeInMins;
-        //levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
-        timeLimitInSeconds = 1;
-        levelTime = 10;
+        timeLimitInSeconds = 60 * GAME.waveTimeInMins;
+        levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
+        //timeLimitInSeconds = 1;
+        //levelTime = 10;
         defaultColor = screenTimer.color;
         globalTime = 0;
         Loadout.SetActive(false);
@@ -32,6 +34,8 @@ public class StomachLevel_Global : MonoBehaviour {
         defaultScale = loadoutIndicator.transform.localScale;
         screenTimer.text = "";
         bossDormant = true;
+        acidCycleCounter = 0;
+        localTime = 0;
     }
 	
     void OnEnable() {
@@ -48,11 +52,33 @@ public class StomachLevel_Global : MonoBehaviour {
         localTime += Time.deltaTime; //time used to calculate the time to display on screen; separate from globalTime; should not be used for anything else 
         int timeRemaining = (int)timeLimitInSeconds - (int)localTime;
 
+        /* Health Pickup Management */
+        // Once the acid rises and subsides acidCyclesPerHealthPickup times, spawn the health pickup if it hasn't spawned yet
+        if(acidCycleCounter == GAME.acidCyclesPerHealthPickup && !healthPickup.activeInHierarchy) {
+            healthPickup.SetActive(true);
+            healthPickup.transform.position = health[(int)Random.Range(0, health.Length)].transform.position;
+            localTime = 0;
+            timeLimitInSeconds = GAME.loadoutLifetime;
+        }
+        // Health pickup indicator resizing and shite
+        if (healthPickup.activeInHierarchy) {
+            healthPickupIndicator.SetActive(true);
+            healthPickupIndicator.transform.position = healthPickup.transform.position;
+            if (healthPickupIndicator.transform.localScale.x >= 0) healthPickupIndicator.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
+        }
+
+        // If the player fails to pick up the health thingy within its lifteime delete it from the scene
+        if (healthPickup.activeInHierarchy && timeRemaining < 0 ) {
+            healthPickup.SetActive(false);
+            acidCycleCounter = 0;
+        }
+
         if (!bossFight) {
             if (globalTime > levelTime) bossFight = true;
 
-            //spawn loadout section if it's not yet there
-            if (timeRemaining == -1 && !Loadout.activeInHierarchy) {
+            /* Research Lab Pill Management */
+            // spawn research lab if it's not yet there
+            if (timeRemaining < 0 && !Loadout.activeInHierarchy) {
                 //enable loadout gameobject
                 Loadout.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position;
                 Loadout.SetActive(true);
@@ -62,7 +88,7 @@ public class StomachLevel_Global : MonoBehaviour {
                 wasLoadout = true;
             }
             //player didn't reach loadoutsection in time, go straight to 2nd wave
-            else if (timeRemaining == -1 && Loadout.activeInHierarchy) {
+            else if (timeRemaining < 0 && Loadout.activeInHierarchy) {
                 screenTimer.text = "";
                 localTime = 0;
                 timeLimitInSeconds = 60 * GAME.waveTimeInMins;
