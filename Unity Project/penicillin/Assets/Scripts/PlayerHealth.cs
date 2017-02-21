@@ -73,13 +73,11 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     public void GainHealth() {
-        if (currHealth < GAME.max_health) {
-            currHealth++;
-        }
+        healthSlider.value = currHealth < GAME.max_health ? ++currHealth : currHealth;
     }
 
 
-	public void NotOuchie(){
+    public void NotOuchie(){
 		anim.SetBool ("isOuchie", false);
 	}
     void Death() {
