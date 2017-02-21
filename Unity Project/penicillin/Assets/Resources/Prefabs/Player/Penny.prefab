@@ -247,6 +247,7 @@ MonoBehaviour:
   pause: {fileID: 0}
   loadout: {fileID: 0}
   gameover: {fileID: 0}
+  gamewon: {fileID: 0}
   controls: {fileID: 0}
 --- !u!114 &114000010507275846
 MonoBehaviour:
@@ -268,6 +269,7 @@ MonoBehaviour:
   dash_three: {fileID: 21300000, guid: 3d0fc9802c3f544479f0892b24e975fd, type: 3}
   dashImage: {fileID: 0}
   dashCooldown: {fileID: 0}
+  hInput: 0
 --- !u!114 &114000010571315824
 MonoBehaviour:
   m_ObjectHideFlags: 1
