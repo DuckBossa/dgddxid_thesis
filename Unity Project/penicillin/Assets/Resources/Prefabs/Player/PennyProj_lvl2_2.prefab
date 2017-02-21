@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011185929692}
   - 61: {fileID: 61000014113809040}
-  m_Layer: 0
+  - 114: {fileID: 114000010750303886}
+  m_Layer: 16
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +39,7 @@ GameObject:
   - 212: {fileID: 212000010123223580}
   - 114: {fileID: 114000012701745806}
   - 50: {fileID: 50000010024734704}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: PennyProj_lvl2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +104,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.01}
   serializedVersion: 2
   m_Size: {x: 0.22, y: 0.61}
+--- !u!114 &114000010750303886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011440060156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14fa714022aef4053b50d660bb30dcfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012701745806
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -36,10 +36,8 @@ namespace GLOBAL{
         public const float loadoutLifetime = 10;
         public const float waveTimeInMins = 2;
         public const float num_waves = 3;
-        public const int acidCyclesPerHealthPickup = 3;
-
-		public const int num_swords = 3;
-		public const int sword_max_lvl = 3;
+		public const int num_weapons = 3;
+		public const int weaps_max_lvl = 3;
 
         public const float FlyingShigella_aspd = 3f;
         public const float FlyingShigella_mvspd = 1f;
@@ -70,6 +68,9 @@ namespace GLOBAL{
 
 
 		public static int[] RP_UPGRADE = {20,40,60};
+		public readonly int[,] WEAP_DAMAGE = new int[,]{ {10,20,30},
+													     {2,4,5},
+													  	 {10,20,30}};
 	}
 
 

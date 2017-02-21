@@ -18,11 +18,8 @@ public class GetDamage : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(Collider2D other){
-		
 		if (timer >= damageTimer) {
 			if (other.gameObject.layer == LayerMask.NameToLayer ("PlayerAttack")) {
-				Debug.Log ("keepo");
-				Debug.Log (other.gameObject.GetComponent<IPlayerDamage> ().Damage ());
 				transform.parent.gameObject.GetComponent<IDamage> ().TakeDamage (other.gameObject.GetComponent<IPlayerDamage> ().Damage ());
 				timer = 0;
 			}

@@ -5,7 +5,7 @@ using GLOBAL;
 
 public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     int whichWeapon;
-	int[] weapLevel = new int[GAME.num_swords];
+	int[] weapLevel = new int[GAME.num_weapons];
     bool isAttacking,attackCalled;
     Animator anim;
 	PlayerMovement pm;
@@ -79,7 +79,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 	}
 	public void SwitchWeapon() {
 		if (!isAttacking) {
-            whichWeapon = (whichWeapon + 1) % GAME.num_swords;
+            whichWeapon = (whichWeapon + 1) % GAME.num_weapons;
         }
 	}
 
@@ -88,7 +88,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 	}
 
 	public int Damage(){
-		return weapLevel [whichWeapon] + 1;
+		return GAME.WEAP_DAMAGE[whichWeapon,weapLevel [whichWeapon]];
 	}
 
     public void CheckAttack() {

@@ -123,8 +123,6 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
- 
-
     void stopDash() {
         isDashing = false;
         anim.SetBool("isDashing", isDashing);

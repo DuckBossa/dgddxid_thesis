@@ -11,13 +11,7 @@ public class DamageChecks : MonoBehaviour {
     public void Update() {
         if (Input.GetKeyUp(KeyCode.Space)) {
             foreach (var s in listem) {
-                
-             
-             
-                    s.transform.parent.gameObject.GetComponent<IDamage>().TakeDamage(1);
-                    Debug.Log("keepo");
-                
-               // s.TakeDamage(1);
+				s.transform.parent.gameObject.GetComponent<IDamage>().TakeDamage(1);
             }
         }
     }
