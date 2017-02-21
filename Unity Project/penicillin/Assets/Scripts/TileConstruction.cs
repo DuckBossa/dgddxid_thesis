@@ -6,16 +6,18 @@ public class TileConstruction : MonoBehaviour {
     BoxCollider2D bounderinos;
 	List<BoxCollider2D> tiles= new List<BoxCollider2D>();
 	List<Transform> go_tiles = new List<Transform>();
+    public GameObject mgr;
 	bool check;
     void Start() {
         bounderinos = GetComponent<BoxCollider2D>();
-
         
     }
 
 	void OnEnable(){
 		tiles.Clear ();
 		go_tiles.Clear ();
+        //Debug.Log(++mgr.GetComponent<StomachLevel_Global>().acidCycleCounter);
+        mgr.GetComponent<StomachLevel_Global>().acidCycleCounter++;
 	}
 	void OnDisable(){
 		//tiles.Clear ();

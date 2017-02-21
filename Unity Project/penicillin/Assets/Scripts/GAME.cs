@@ -36,6 +36,7 @@ namespace GLOBAL{
         public const float loadoutLifetime = 10;
         public const float waveTimeInMins = 2;
         public const float num_waves = 3;
+        public const int acidCyclesPerHealthPickup = 3;
 
 		public const int num_swords = 3;
 		public const int sword_max_lvl = 3;
