@@ -65,13 +65,14 @@ public class StomachLevel_Global : MonoBehaviour {
             healthPickupIndicator.SetActive(true);
             healthPickupIndicator.transform.position = healthPickup.transform.position;
             if (healthPickupIndicator.transform.localScale.x >= 0) healthPickupIndicator.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
-        }
 
         // If the player fails to pick up the health thingy within its lifteime delete it from the scene
-        if (healthPickup.activeInHierarchy && timeRemaining < 0 ) {
-            healthPickup.SetActive(false);
-            acidCycleCounter = 0;
+            if(timeRemaining < 0) {
+                healthPickup.SetActive(false);
+                acidCycleCounter = 0;
+            }
         }
+
 
         if (!bossFight) {
             if (globalTime > levelTime) bossFight = true;

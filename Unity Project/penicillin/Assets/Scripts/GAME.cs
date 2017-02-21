@@ -7,7 +7,7 @@ namespace GLOBAL{
         public const int max_health = 10;
         public const float invulnerable_timer = 2f;
         public const float player_velocity = 3f;
-        public const int acidCyclesPerHealthPickup = 3;
+        public const int acidCyclesPerHealthPickup = 1;
 
 
         public const int dashes = 3;
@@ -36,7 +36,6 @@ namespace GLOBAL{
         public const float loadoutLifetime = 10;
         public const float waveTimeInMins = 2;
         public const float num_waves = 3;
-        public const int acidCyclesPerHealthPickup = 3;
 
 		public const int num_swords = 3;
 		public const int sword_max_lvl = 3;
