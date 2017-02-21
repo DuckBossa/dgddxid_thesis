@@ -141,4 +141,9 @@ public class PlayerMovement : MonoBehaviour {
 	public bool isDash(){
 		return isDashing;
 	}
+    
+    public float getDir() {
+        return faceRight ? -1f : 1f;
+    }
+
 }

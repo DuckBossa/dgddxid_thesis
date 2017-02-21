@@ -23,15 +23,16 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         isAttacking = false;
     }
 
+    /*
     public void OnTriggerEnter2D(Collider2D other) {
         //other.gameObject.GetComponent<IDamage>().TakeDamage(weapLevel[whichWeapon] + 1);
-		/*
+	
 		if(other.gameObject.layer == LayerMask.NameToLayer ("Enemy"))
 			other.gameObject.transform.parent.gameObject.GetComponent<IDamage> ().TakeDamage (weapLevel [whichWeapon] + 1);
-		*/
+	
 	}
 
-
+   */
 
     void FixedUpdate() {
 		if (attackCalled && !pm.isDash ())
@@ -89,5 +90,12 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 	public int Damage(){
 		return weapLevel [whichWeapon] + 1;
 	}
+
+    public void CheckAttack() {
+        if(!attackCalled && isAttacking) {
+            endAttack();
+        }
+    }
+
 
 }

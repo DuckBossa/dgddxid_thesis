@@ -7,7 +7,8 @@ namespace GLOBAL{
         public const int max_health = 10;
         public const float invulnerable_timer = 2f;
         public const float player_velocity = 3f;
-        public const float player_atkRange = .25f;
+        public const int acidCyclesPerHealthPickup = 3;
+
 
         public const int dashes = 3;
         public const float dash_force = 10f;
@@ -15,8 +16,18 @@ namespace GLOBAL{
         public const float dash_cooldown = 2f;
         
         public const int jumps = 1;
-        public const float jump_force = 250;//250
-        public const float jump_velocity = 5	;
+        public const float jump_force = 250;
+        public const float jump_velocity = 5;
+
+
+        public const float playerdagger_aspd = 0.25f;
+        public const float playerdagger_speed = 4.5f;
+        public const float playerclusterbomb_aspd = 1f;
+        public const float playerclusterbomb_speed = 3f;
+        public const float playersword_aspd = 1f;
+
+
+
 
         public const float acid_dot_timer = 2f;
         public const int tile_size = 64;

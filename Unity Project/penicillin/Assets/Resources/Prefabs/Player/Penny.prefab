@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000014031088176}
   m_IsPrefabParent: 1
+--- !u!1 &1000010147279312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000014039759030}
+  m_Layer: 16
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000010222239726
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +103,7 @@ GameObject:
   - 114: {fileID: 114000010157573716}
   - 114: {fileID: 114000010571315824}
   - 50: {fileID: 50000013112483052}
+  - 114: {fileID: 114000012304450940}
   m_Layer: 16
   m_Name: Penny
   m_TagString: Untagged
@@ -110,6 +126,7 @@ Transform:
   - {fileID: 4000010955609780}
   - {fileID: 4000011098376070}
   - {fileID: 4000013178842944}
+  - {fileID: 4000014039759030}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000010955609780
@@ -164,6 +181,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000010412385610}
   m_RootOrder: 3
+--- !u!4 &4000014039759030
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010147279312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000010412385610}
+  m_RootOrder: 4
 --- !u!50 &50000013112483052
 Rigidbody2D:
   serializedVersion: 2
@@ -281,6 +311,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b426733a11b508840a04c3059e219987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000012304450940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014031088176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd24e21aeb621ed40a8a05e64817e6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projs:
+  - {fileID: 1000010586032530, guid: c6500d1a882c65645b76c78991d5beb8, type: 2}
+  - {fileID: 1000010098940258, guid: 083840387679b3e40a39a672a697a554, type: 2}
+  - {fileID: 1000010259716948, guid: 3e71b4f9c71f9924cb5aa369b4c2511c, type: 2}
+  - {fileID: 1000013687160048, guid: e7107dad632f8d443ab62b69a0fe7c82, type: 2}
+  - {fileID: 1000012173208826, guid: 3b85c823004a36945a1792957efbe105, type: 2}
+  - {fileID: 1000011432768396, guid: f790cc87bdcbc7049a7684fa0bc426f5, type: 2}
 --- !u!212 &212000012936267966
 SpriteRenderer:
   m_ObjectHideFlags: 1
