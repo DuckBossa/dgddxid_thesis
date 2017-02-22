@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: 2e40900ba30ed86478bc06c063b8a9e6
-timeCreated: 1487694453
+timeCreated: 1487721341
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: dagger_penny_revised_0
+    21300002: dagger_penny_revised_1
+    21300004: dagger_penny_revised_2
+    21300006: dagger_penny_revised_3
+    21300008: dagger_penny_revised_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +43,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +56,72 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: dagger_penny_revised_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 2
+        width: 53
+        height: 62
+      alignment: 9
+      pivot: {x: 0.7109826, y: 0.4573762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dagger_penny_revised_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 2
+        width: 53
+        height: 55
+      alignment: 9
+      pivot: {x: 0.7504929, y: 0.48554045}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dagger_penny_revised_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2
+        width: 49
+        height: 55
+      alignment: 9
+      pivot: {x: 0.7853948, y: 0.48408824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dagger_penny_revised_3
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 2
+        width: 68
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5974565, y: 0.53926504}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dagger_penny_revised_4
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 2
+        width: 73
+        height: 61
+      alignment: 9
+      pivot: {x: 0.65191984, y: 0.56208026}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
