@@ -39,9 +39,8 @@ public class PlayerDaggerShoots : MonoBehaviour {
 			temp.GetComponentInChildren<TakeDamage> ().SetDamage (GAME.WEAP_DAMAGE [1, pa.GetWeapLevel (1)]);
         }
     }
-
-
-    public void ReplenishAmmo() {
+    
+	public void ReplenishAmmo() {
         currAmmo = GAME.WEAP_DURABILITY[1, pa.GetWeapLevel(1)];
     }
 }

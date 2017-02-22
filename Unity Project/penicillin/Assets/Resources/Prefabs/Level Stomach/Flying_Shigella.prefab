@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000012639831038}
   - 58: {fileID: 58000010763703986}
   - 114: {fileID: 114000012850048268}
-  m_Layer: 14
+  m_Layer: 13
   m_Name: Radar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012804718952}
   - 61: {fileID: 61000013402245810}
-  m_Layer: 13
+  m_Layer: 21
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014221098054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.66, y: 3.25, z: 0}
+  m_LocalPosition: {x: -1.6133442, y: 3.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:

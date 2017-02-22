@@ -11464,7 +11464,7 @@ RectTransform:
   - {fileID: 1748978397}
   - {fileID: 110817890}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -20459,7 +20459,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012655858826, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
         type: 2}
@@ -22688,7 +22688,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
 --- !u!1 &2111429498
 GameObject:
   m_ObjectHideFlags: 0

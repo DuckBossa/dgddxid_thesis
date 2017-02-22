@@ -29,8 +29,6 @@ namespace GLOBAL{
         public const float playersword_aspd = 1f;
 
 
-
-
         public const float acid_dot_timer = 2f;
         public const int tile_size = 64;
 

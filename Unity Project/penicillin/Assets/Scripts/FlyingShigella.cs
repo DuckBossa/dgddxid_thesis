@@ -34,9 +34,9 @@ public class FlyingShigella : MonoBehaviour {
             rb.velocity = patrolDir * GAME.FlyingShigella_mvspd;
             //transform.Translate((new Vector3(patrolDir.x, patrolDir.y, 0) * GAME.FlyingShigella_mvspd * Time.deltaTime));
             currDist += GAME.FlyingShigella_mvspd * Time.deltaTime;
+
         }
         else {
-
             if(attackTimer >= GAME.FlyingShigella_aspd) {
                 anim.SetTrigger("Attack");
                 attackTimer = 0;
@@ -45,12 +45,20 @@ public class FlyingShigella : MonoBehaviour {
                 attackTimer += Time.deltaTime;
             }
             rb.velocity = Vector2.zero;
+
         }
-        anim.SetFloat("Direction", patrolDir.x > 0 ? 1 : 0);
+	
         if (currDist > GAME.FlyingShigella_patrolDist) {
             currDist = 0;
             patrolDir = Random.insideUnitCircle;
         }
+
+		if (isAttacking) {
+			anim.SetFloat ("Direction", attackDir.x > 0 ? 1 : 0);
+		} 
+		else {
+			anim.SetFloat("Direction", patrolDir.x > 0 ? 1 : 0);
+		}
     }
 
 
@@ -64,7 +72,7 @@ public class FlyingShigella : MonoBehaviour {
 
     void Attack() {
         GameObject temp = Instantiate(projectile, fireposition.position, Quaternion.identity) as GameObject;
-        temp.GetComponent<MoveDir>().setDir(attackDir);
+		temp.GetComponent<MoveDir>().setDir(attackDir * GAME.FlyingShigella_projspeed);
         temp.transform.parent = projectile_parent.transform;
     }
 }
