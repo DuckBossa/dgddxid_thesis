@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 		ScoreManager.researchPoints += researchPoints;
 		ScoreManager.totalResearchPoints += researchPoints;
 		GetComponent<Enemy>().enabled = false;
-        Destroy(gameObject, 0.25f);
+        Destroy(gameObject, 0.3f);
         // collider.isTrigger = true; //they don't collide so this isn't necessary
     }
 }

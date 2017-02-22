@@ -3,16 +3,15 @@ using System.Collections;
 using GLOBAL;
 
 
-public class TakeDamage : MonoBehaviour {
+public class TakeDamage : MonoBehaviour,IPlayerDamage {
 	int damage;
 	//for projectiles
-	public void OnTriggerEnter2D(Collider2D other){
-		other.transform.parent.gameObject.GetComponent<IDamage> ().TakeDamage (damage);
-		Destroy (transform.parent.gameObject);
-	}
-
 	public void SetDamage(int dmg){
 		damage = dmg;
 	}
+
+    public int Damage() {
+        return damage;
+    }
 }
     
