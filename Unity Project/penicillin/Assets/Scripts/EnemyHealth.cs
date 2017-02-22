@@ -40,7 +40,6 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 			manager.currEnemies--;
 			ScoreManager.researchPoints += researchPoints;
 			ScoreManager.totalResearchPoints += researchPoints;
-			Debug.Log (ScoreManager.researchPoints + " points now jacky mao");
 			//GetComponent<Enemy>().enabled = false;
 			Destroy(gameObject, 0.3f);
 		}

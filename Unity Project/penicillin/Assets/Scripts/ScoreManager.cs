@@ -15,12 +15,10 @@ public class ScoreManager : MonoBehaviour {
 	}
 
     void Update() {
-		updateText ();
+		text.text = researchPoints.ToString("D8");
     }
 
-	static void updateText(){
-		text.text = researchPoints.ToString("D8");
-	}
+
 	public void SaveData(){
 		PlayerPrefs.SetInt (GAME.PLAYER_PREFS_RP, researchPoints);
 	}
