@@ -8,10 +8,11 @@ public class TakeDamage : MonoBehaviour {
 	//for projectiles
 	public void OnTriggerEnter2D(Collider2D other){
 		other.transform.parent.gameObject.GetComponent<IDamage> ().TakeDamage (damage);
-		Destroy (other.transform.parent.gameObject);
+		Destroy (transform.parent.gameObject);
 	}
 
 	public void SetDamage(int dmg){
-		damage = damage;
+		damage = dmg;
 	}
 }
+    

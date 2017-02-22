@@ -104,6 +104,7 @@ GameObject:
   - 114: {fileID: 114000010571315824}
   - 50: {fileID: 50000013112483052}
   - 114: {fileID: 114000012304450940}
+  - 114: {fileID: 114000011617158768}
   m_Layer: 16
   m_Name: Penny
   m_TagString: Untagged
@@ -311,6 +312,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b426733a11b508840a04c3059e219987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011617158768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014031088176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f932a49e498d0744aaefe2a075c2d7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projs:
+  - {fileID: 1000011374916854, guid: 1d08823eec3c4974fbbea9c72ab157f1, type: 2}
 --- !u!114 &114000012304450940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -329,6 +343,7 @@ MonoBehaviour:
   - {fileID: 1000013687160048, guid: e7107dad632f8d443ab62b69a0fe7c82, type: 2}
   - {fileID: 1000012173208826, guid: 3b85c823004a36945a1792957efbe105, type: 2}
   - {fileID: 1000011432768396, guid: f790cc87bdcbc7049a7684fa0bc426f5, type: 2}
+  spawn_point: {fileID: 0}
 --- !u!212 &212000012936267966
 SpriteRenderer:
   m_ObjectHideFlags: 1

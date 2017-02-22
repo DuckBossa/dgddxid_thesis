@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     Animator anim;
 	PlayerMovement pm;
 	Rigidbody2D rb;
-    void Start() {
+    void Awake() {
 		pm = GetComponent<PlayerMovement> ();
 		rb = GetComponent<Rigidbody2D> ();
 

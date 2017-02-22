@@ -6,13 +6,15 @@ using GLOBAL;
 public class PlayerClusterBombs : MonoBehaviour {
 
 	public List<GameObject> projs = new List<GameObject>();
+    public GameObject spawn_point;
 	PlayerMovement pm;
 	PlayerAttack pa;
 	int switcheroonie;
 	float timer = 0f;
+    int currAmmo;
 
+    public void Start(){
 
-	public void Start(){
 		pm = GetComponent<PlayerMovement> ();
 		pa = GetComponent<PlayerAttack> ();
 
@@ -24,13 +26,19 @@ public class PlayerClusterBombs : MonoBehaviour {
 		}
 	}
 
-	public void fire(){
-		if (timer >= GAME.playerclusterbomb_aspd) {
+	public void bomb(){
+		if (timer >= GAME.playerclusterbomb_aspd && currAmmo > 0) {
 			timer = 0f;
-			var temp = Instantiate(projs[switcheroonie], transform.position, projs[switcheroonie].transform.rotation) as GameObject;
-			switcheroonie = (switcheroonie + 1) % 2  + pa.GetWeapLevel(2) * 2;
+            currAmmo--;
+			var temp = Instantiate(projs[switcheroonie], spawn_point.transform.position, projs[switcheroonie].transform.rotation) as GameObject;
+			//switcheroonie = (switcheroonie + 1) % 2  + pa.GetWeapLevel(2) * 2;
 			temp.GetComponent<MoveDir>().setDir(pm.getDir() > 0 ? Vector2.left * GAME.playerclusterbomb_speed : Vector2.right * GAME.playerclusterbomb_speed);
-		}	
+            temp.GetComponentInChildren<TakeDamage>().SetDamage(GAME.WEAP_DAMAGE[2, pa.GetWeapLevel(2)]);
+        }	
 	}
+
+    public void ReplenishAmmo() {
+        currAmmo = GAME.WEAP_DURABILITY[2, pa.GetWeapLevel(2)];
+    }
 
 }

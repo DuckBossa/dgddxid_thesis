@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: 40e4f97893edf45589e72901aaee036a
-timeCreated: 1487717768
+timeCreated: 1487724548
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: midair_dagger_0
+    21300002: midair_dagger_1
+    21300004: midair_dagger_2
+    21300006: midair_dagger_3
+    21300008: midair_dagger_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +43,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +56,72 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: midair_dagger_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1
+        width: 56
+        height: 58
+      alignment: 9
+      pivot: {x: 0.692676, y: 0.4840521}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: midair_dagger_1
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 0
+        width: 59
+        height: 59
+      alignment: 9
+      pivot: {x: 0.6779364, y: 0.507414}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: midair_dagger_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 57
+        height: 60
+      alignment: 9
+      pivot: {x: 0.6841795, y: 0.5024301}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: midair_dagger_3
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 0
+        width: 68
+        height: 60
+      alignment: 9
+      pivot: {x: 0.622222, y: 0.5364522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: midair_dagger_4
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 0
+        width: 71
+        height: 60
+      alignment: 9
+      pivot: {x: 0.64375496, y: 0.54131246}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
