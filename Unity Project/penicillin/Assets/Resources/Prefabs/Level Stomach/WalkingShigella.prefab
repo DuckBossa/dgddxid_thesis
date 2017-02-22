@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   currHealth: 0
-  researchPoints: 10
+  researchPoints: 100
 --- !u!212 &212000012877728724
 SpriteRenderer:
   m_ObjectHideFlags: 1

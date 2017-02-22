@@ -34,13 +34,16 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     }
 
     void Death() {
-        isDead = true;
-        //anim.SetTrigger("isDead");
-        manager.currEnemies--;
-		ScoreManager.researchPoints += researchPoints;
-		ScoreManager.totalResearchPoints += researchPoints;
-		//GetComponent<Enemy>().enabled = false;
-        Destroy(gameObject, 0.3f);
-        // collider.isTrigger = true; //they don't collide so this isn't necessary
+		if (!isDead) {
+			isDead = true;
+			//anim.SetTrigger("isDead");
+			manager.currEnemies--;
+			ScoreManager.researchPoints += researchPoints;
+			ScoreManager.totalResearchPoints += researchPoints;
+			Debug.Log (ScoreManager.researchPoints + " points now jacky mao");
+			//GetComponent<Enemy>().enabled = false;
+			Destroy(gameObject, 0.3f);
+		}
+
     }
 }
