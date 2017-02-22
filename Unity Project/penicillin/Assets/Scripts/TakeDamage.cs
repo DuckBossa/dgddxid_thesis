@@ -10,6 +10,10 @@ public class TakeDamage : MonoBehaviour,IPlayerDamage {
 		damage = dmg;
 	}
 
+    public void OnTriggerEnter2D(Collider2D other) {
+        Destroy(gameObject, 0.3f);
+    }
+
     public int Damage() {
         return damage;
     }

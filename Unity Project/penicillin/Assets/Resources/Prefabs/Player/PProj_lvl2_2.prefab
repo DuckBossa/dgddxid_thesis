@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013146074954}
   - 212: {fileID: 212000010942623860}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - 50: {fileID: 50000013279384138}
   - 114: {fileID: 114000012431951364}
   - 114: {fileID: 114000011618117822}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: PProj_lvl2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
