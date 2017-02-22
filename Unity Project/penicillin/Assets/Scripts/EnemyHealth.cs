@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using GLOBAL;
 
@@ -7,6 +8,8 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     public int maxHealth;
     public int currHealth;
     public int researchPoints = 10;//temporary value
+	public GameObject DamageText;
+
 
     //GameObject player;
     Animator anim;
@@ -23,13 +26,15 @@ public class EnemyHealth : MonoBehaviour, IDamage {
         //player = GameObject.Find("Penny");
         manager = GameObject.Find("SpawnControllers").GetComponent<EnemyManager>();
         //stunDuration = .5f;
+		TakeDamage(1);
         enemy = GetComponent<Enemy>();
     }
 
 	public void TakeDamage(int damage) {
         if (isDead) return;
 		currHealth -= damage;
-        if (currHealth <= 0) Death();
+		ShowDamage (damage.ToString());
+		if (currHealth <= 0) Death();
         enemy.isStunned = true;	
     }
 
@@ -41,8 +46,19 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 			ScoreManager.researchPoints += researchPoints;
 			ScoreManager.totalResearchPoints += researchPoints;
 			//GetComponent<Enemy>().enabled = false;
-			Destroy(gameObject, 0.3f);
+			Destroy(gameObject, 0.8f);
 		}
 
     }
+
+	void ShowDamage(string damage){
+		GameObject temp = Instantiate (DamageText) as GameObject;
+		RectTransform rt = temp.GetComponent<RectTransform> ();
+		temp.transform.SetParent(transform.FindChild("EnemyCanvas"));
+		rt.transform.localPosition = DamageText.transform.localPosition;
+		rt.transform.localScale = DamageText.transform.localScale;
+		rt.transform.localRotation = DamageText.transform.localRotation;
+		temp.GetComponent<Text> ().text = damage;
+		Destroy (temp, 1f);
+	}
 }
