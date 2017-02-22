@@ -7,13 +7,14 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     int whichWeapon;
 	int[] weapLevel = new int[GAME.num_weapons];
     bool isAttacking,attackCalled;
+    bool hasAmmo;
     Animator anim;
 	PlayerMovement pm;
 	Rigidbody2D rb;
     void Awake() {
 		pm = GetComponent<PlayerMovement> ();
 		rb = GetComponent<Rigidbody2D> ();
-
+        hasAmmo = true;
 		attackCalled = false;
 		whichWeapon = 0;
 		for (int i = 0; i < weapLevel.Length; i++) {
