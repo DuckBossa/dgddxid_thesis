@@ -11,7 +11,13 @@ public class StomachLevel_Global : MonoBehaviour {
     public Transform[] loadouts;
     public Transform[] health;
     public Transform player;
-    public GameObject Loadout, loadoutIndicator, Shigellang_Dormant, healthPickup, healthPickupIndicator;
+    public GameObject Loadout,
+        loadoutIndicator,
+        Shigellang_Dormant,
+        healthPickup, healthPickupIndicator,
+        dialogues,
+        c_controls,
+        c_hud;
     public int acidCycleCounter;
     bool bossFight;
     bool bossDormant;
@@ -34,6 +40,10 @@ public class StomachLevel_Global : MonoBehaviour {
         bossDormant = true;
         acidCycleCounter = 0;
         localTime = 0;
+
+        dialogues.SetActive(true);
+        c_controls.SetActive(false);
+        c_hud.SetActive(false);
     }
 	
     void OnEnable() {
@@ -127,5 +137,11 @@ public class StomachLevel_Global : MonoBehaviour {
         localTime = 0;
         Loadout.SetActive(false);
         screenTimer.color = defaultColor;
+    }
+
+    void Dialogue() {
+        dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
+        c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
+        c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
     }
 }
