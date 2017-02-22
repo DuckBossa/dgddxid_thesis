@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 		currHealth -= damage;
 		ShowDamage (damage.ToString());
 		if (currHealth <= 0) Death();
-        enemy.isStunned = true;	
+        //enemy.isStunned = true;	
     }
 
     void Death() {

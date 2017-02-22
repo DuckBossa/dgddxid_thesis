@@ -35,7 +35,7 @@ public class PlayerClusterBombs : MonoBehaviour {
 			var temp = Instantiate(projs[switcheroonie], spawn_point.transform.position, projs[switcheroonie].transform.rotation) as GameObject;
 			//switcheroonie = (switcheroonie + 1) % 2  + pa.GetWeapLevel(2) * 2;
 			temp.GetComponent<MoveDir>().setDir(pm.getDir() > 0 ? Vector2.left * GAME.playerclusterbomb_speed : Vector2.right * GAME.playerclusterbomb_speed);
-            temp.GetComponentInChildren<TakeDamage>().SetDamage(GAME.WEAP_DAMAGE[2, pa.GetWeapLevel(2)]);
+			temp.GetComponentInChildren<ClusterBomb>().SetDamage(GAME.WEAP_DAMAGE[2, pa.GetWeapLevel(2)]);
         }	
 	}
 
