@@ -13,11 +13,13 @@ public class PlayerClusterBombs : MonoBehaviour {
 	float timer = 0f;
     int currAmmo;
 
+    public void Awake() {
+        pm = GetComponent<PlayerMovement>();
+        pa = GetComponent<PlayerAttack>();
+    }
+
     public void Start(){
-
-		pm = GetComponent<PlayerMovement> ();
-		pa = GetComponent<PlayerAttack> ();
-
+        ReplenishAmmo();
 	}
 
 	public void Update(){
