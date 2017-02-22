@@ -3,16 +3,17 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Weapon1Controller : MonoBehaviour {
-    public RectTransform content;
+    public RectTransform content, wlv1, wlv2, wlv3;
     public Image lv3;
 
-    private Button[] wps;
+    private Image[] wps;
     private int cur;
     private int distBetButtons;
     private Vector2 newpos;
     private bool moving;
     private int lvl;
     private CanvasRenderer col;
+    private float movingTimer;
 
     // Check for costs and disable applicable upgrades
     public void CheckAvailability(int rp) {
@@ -20,31 +21,33 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     void Start() {
-        wps = new Button[3]; //store the buttons, pls don't mess with the arrangement of the buttons in the editor
+        wps = new Image[3]; //store the buttons, pls don't mess with the arrangement of the buttons in the editor
         for (int i = 0; i < wps.Length; i++) {
-            wps[i] = content.GetChild(i).gameObject.GetComponent<Button>();
+            wps[i] = content.GetChild(i).gameObject.GetComponent<Image>();
         }
 
         cur = 0; // current weapon
 
-        distBetButtons = 235;
+        distBetButtons = (int)wps[1].transform.position.y - (int)wps[0].transform.position.y;
         newpos = content.position;
         col = this.GetComponent<CanvasRenderer>();
+        lvl = 0;
     }
 
     
     void Update() {
-        if(lvl == 3) {
+        if(lvl == 3) { //if level = 3 just dim everything then disable
             col.SetAlpha(Mathf.Lerp(col.GetAlpha(), 0, 10 * Time.unscaledDeltaTime));
             for(int i = 0; i < 6; i++) {
                 content.GetChild(i).GetComponent<CanvasRenderer>().SetAlpha(Mathf.Lerp(content.GetChild(i).GetComponent<CanvasRenderer>().GetAlpha(), 0, 10 * Time.unscaledDeltaTime));
             }
         }
+
         if (moving) {
+            movingTimer += Time.unscaledDeltaTime;
             content.position = Vector2.Lerp(content.position, newpos, 10 * Time.unscaledDeltaTime);
-            moving = (int)newpos.y == (int)content.position.y ? false : true;
-            //col.SetAlpha(lvl == 3 ? Mathf.Lerp(col.GetAlpha(), 0, 10 * Time.unscaledDeltaTime) : 1);
-            if(lvl == 3 && !moving) {
+            moving = movingTimer > .5f ? false : true;
+            if (lvl == 3 && !moving) {
                 lv3.gameObject.SetActive(true);
                 this.gameObject.SetActive(false);
             }
@@ -52,14 +55,18 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     public void Upgrade() {
+        Debug.Log(moving);
         if (!moving) {
-            // deactivate button, update weapon (just a counter of how many times upgrade was clicked here, to avoid confusion)
-            wps[cur++].interactable = false;
-            lvl++;
+            movingTimer = 0;
+            lvl++; // current weapon lvl, 0 means not purchased
 
             // move objects
-            newpos =  lvl == 3 ? new Vector2(content.position.x, content.position.y - distBetButtons/2) : new Vector2(content.position.x, content.position.y - distBetButtons);
+            newpos = lvl == 3 ? new Vector2(content.position.x, content.position.y - distBetButtons / 2) : new Vector2(content.position.x, content.position.y - distBetButtons);
             moving = true;
+            // remove the locked icon
+            if (lvl == 1) wlv1.GetChild(0).GetComponent<Image>().enabled = false;
+            else if (lvl == 2) wlv2.GetChild(0).GetComponent<Image>().enabled = false;
+            else if (lvl == 3) wlv3.GetChild(0).GetComponent<Image>().enabled = false;
 
             // upgrade weapon
 
