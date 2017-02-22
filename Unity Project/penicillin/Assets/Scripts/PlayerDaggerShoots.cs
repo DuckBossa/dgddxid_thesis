@@ -30,7 +30,6 @@ public class PlayerDaggerShoots : MonoBehaviour {
 
     public void fire() {
         if (timer >= GAME.playerdagger_aspd && currAmmo > 0) {
-            Debug.Log("check");
             currAmmo--;
             timer = 0f;
             var tempRot = projs[switcheroonie].transform.rotation.eulerAngles;
