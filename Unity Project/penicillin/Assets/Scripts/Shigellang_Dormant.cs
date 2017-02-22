@@ -67,7 +67,13 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
     public void TakeDamage(int dmg) {
         if(vulnerable) {
             myAnim.SetTrigger("takeDamage");
-            healthSlider.value = --health;
+            health -= dmg;
+            if(health < 0) {
+                healthSlider.value = 0;
+            }
+            else {
+                healthSlider.value = health;
+            }
             vulnerable = false;
             damageTimer = 0;
         }
