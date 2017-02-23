@@ -41,9 +41,9 @@ public class StomachLevel_Global : MonoBehaviour {
         acidCycleCounter = 0;
         localTime = 0;
 
-        dialogues.SetActive(true);
-        c_controls.SetActive(false);
-        c_hud.SetActive(false);
+        //dialogues.SetActive(true);
+        //c_controls.SetActive(false);
+        //c_hud.SetActive(false);
     }
 	
     void OnEnable() {

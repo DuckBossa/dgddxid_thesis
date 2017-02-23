@@ -100,7 +100,8 @@ public class Tutorial : MonoBehaviour {
             "Remember, you can only purchase and upgrade weapons in the research lab, so make sure you don't miss it!",
             "Your weapons also have a set durability. Hitting enemy bacteria damages your weapons as well, and they'll eventually break. ",
             "Durability will only reset on upgrade, so use your weapons wisely!",
-            "You are now ready to fight the hordes of bacteria infecting our host. Remember what I taught you, and good luck!"
+            "You are now ready to fight the hordes of bacteria infecting our host. Remember what I taught you, and good luck!",
+			""
         };
 
         text = dialogues.transform.GetChild(4).gameObject.GetComponent<Text>();
@@ -202,6 +203,7 @@ public class Tutorial : MonoBehaviour {
             dialogues.SetActive(true);
             player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
             minimap.enabled = false;
+			enemySpawned = false;
         }
 
         if (t_loadoutTrigger.activeInHierarchy) {
@@ -213,6 +215,7 @@ public class Tutorial : MonoBehaviour {
         // Current text in text area
         try {
             text.text = messages[++cur_msg];
+			Debug.Log(cur_msg);
         }catch(Exception e) {
             throw(e);
         }
@@ -283,6 +286,10 @@ public class Tutorial : MonoBehaviour {
             enemy.SetActive(true);
             enemySpawned = true;
         }
+
+		if (cur_msg == 34) {
+			SceneManager.LoadScene ("MainMenu");
+		}
     }
 
     public void Reset() {
