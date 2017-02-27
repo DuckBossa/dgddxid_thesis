@@ -5,6 +5,7 @@ using GLOBAL;
 
 public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     int whichWeapon;
+	int swordDurr;
 	int[] weapLevel = new int[GAME.num_weapons];
     bool isAttacking,attackCalled;
     bool hasAmmo;
@@ -18,9 +19,10 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		attackCalled = false;
 		whichWeapon = 0;
 		for (int i = 0; i < weapLevel.Length; i++) {
-			weapLevel [i] = PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
+			weapLevel [i] = 0;//PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
 		}
 		anim = GetComponent<Animator>();
+		swordDurr = GAME.WEAP_DURABILITY [0, 0];
         isAttacking = false;
     }
 

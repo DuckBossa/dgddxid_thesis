@@ -9,7 +9,6 @@ public class PlayerDaggerShoots : MonoBehaviour {
     PlayerMovement pm;
 	PlayerAttack pa;
     int currAmmo;
-    int switcheroonie;
     float timer = 0f;
 
     public void Awake() {
@@ -18,7 +17,6 @@ public class PlayerDaggerShoots : MonoBehaviour {
     }
 
     public void Start() {
-        switcheroonie = 0;
         ReplenishAmmo();
     }
 
@@ -32,11 +30,11 @@ public class PlayerDaggerShoots : MonoBehaviour {
         if (timer >= GAME.playerdagger_aspd && currAmmo > 0) {
             currAmmo--;
             timer = 0f;
-            var tempRot = projs[switcheroonie].transform.rotation.eulerAngles;
-            var temp = Instantiate(projs[switcheroonie], transform.position, Quaternion.Euler(tempRot.x,tempRot.y + pm.getDir() > 0 ? 0f : 180f,tempRot.z)) as GameObject;
-			switcheroonie = (switcheroonie + 1) % 2  + pa.GetWeapLevel(1) * 2;
+			var tempRot = projs[pa.GetWeapLevel (1)].transform.rotation.eulerAngles;
+			var temp = Instantiate(projs[pa.GetWeapLevel (1)], transform.position, Quaternion.Euler(tempRot.x,tempRot.y + pm.getDir() > 0 ? 0f : 180f,tempRot.z)) as GameObject;
             temp.GetComponent<MoveDir>().setDir(pm.getDir() > 0 ? Vector2.left * GAME.playerdagger_speed : Vector2.right * GAME.playerdagger_speed);
 			temp.GetComponentInChildren<TakeDamage> ().SetDamage (GAME.WEAP_DAMAGE [1, pa.GetWeapLevel (1)]);
+
         }
     }
     

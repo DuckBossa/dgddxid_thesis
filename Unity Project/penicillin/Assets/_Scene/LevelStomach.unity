@@ -19340,6 +19340,11 @@ Prefab:
       propertyPath: projs.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012304450940, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: projs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010412385610, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
       propertyPath: m_LocalPosition.x
       value: -11.139
@@ -19459,13 +19464,13 @@ Prefab:
         type: 2}
       propertyPath: projs.Array.data[1]
       value: 
-      objectReference: {fileID: 1000010436305698, guid: 166f660e32e60ba4592df08e6f30eb11,
+      objectReference: {fileID: 1000012776246386, guid: 67aaff38ea4a8d34eace91c403807ac3,
         type: 2}
     - target: {fileID: 114000012304450940, guid: fd63a716ba13f794db82e52bf4755ada,
         type: 2}
       propertyPath: projs.Array.data[2]
       value: 
-      objectReference: {fileID: 1000012776246386, guid: 67aaff38ea4a8d34eace91c403807ac3,
+      objectReference: {fileID: 1000013376508382, guid: b2eb19a5fd9a5bd43a5a673e1f24e70c,
         type: 2}
     - target: {fileID: 114000012304450940, guid: fd63a716ba13f794db82e52bf4755ada,
         type: 2}
