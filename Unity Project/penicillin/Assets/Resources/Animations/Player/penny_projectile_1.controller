@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: penny_projectile_0
+  m_Name: penny_projectile_1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: boom
@@ -69,7 +69,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 766e1fefa904f4e00b3e243de6ba7a0c, type: 2}
+  m_Motion: {fileID: 7400000, guid: b8e3abf0bc243684bb19a4629fddff0f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -108,17 +108,17 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102000013240184846}
-    m_Position: {x: 348, y: 192, z: 0}
+    m_Position: {x: 48, y: 192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000013162061408}
-    m_Position: {x: 348, y: 276, z: 0}
+    m_Position: {x: 72, y: 264, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 360, y: 108, z: 0}
+  m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102000013240184846}

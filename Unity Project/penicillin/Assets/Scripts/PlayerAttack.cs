@@ -38,8 +38,6 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     void FixedUpdate() {
 		if (attackCalled && !pm.isDash ())
 			Attack ();
-        anim.SetInteger("whichWeapon", whichWeapon);
-        anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
         anim.SetBool("isAttacking", isAttacking);
     }
 
@@ -64,7 +62,9 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		if (weapLevel [id] < 2) {
 			++weapLevel [id];
 		}
-	}
+        anim.SetInteger("whichWeapon", whichWeapon);
+        anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
+    }
 
     void endAttack() {
         isAttacking = false;
@@ -72,7 +72,10 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 
 
 	public void Attack() {
-		if ( !pm.isDash() && !isAttacking) {
+        anim.SetInteger("whichWeapon", whichWeapon);
+        anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
+
+        if ( !pm.isDash() && !isAttacking) {
             if(!pm.isJump() && !pm.isFall()) 
 			    rb.velocity = new Vector2(0, rb.velocity.y);
 			isAttacking = true;
@@ -82,7 +85,9 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		if (!isAttacking) {
             whichWeapon = (whichWeapon + 1) % GAME.num_weapons;
         }
-	}
+        anim.SetInteger("whichWeapon", whichWeapon);
+        anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
+    }
 
 	public void SetAttack(bool a) {
 		attackCalled = a;
