@@ -133,11 +133,11 @@ public class StomachLevel_Global : MonoBehaviour {
                 globalTime = waveTimeInSeconds * waveCounter; /* reasonable, right? */
                 screenTimer.text = "";
                 waveTime = 0;
-                waveCounter++;
                 plifetime = 0; /* reset value so waveTime won't always be 0 */
                 waveTimeInSeconds = 60 * GAME.waveTimeInMins;
                 screenTimer.color = defaultColor;
                 pill.SetActive(false);
+                waspill = false;
             }
 
             if (globalTime > levelTime) {
