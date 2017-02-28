@@ -63,7 +63,6 @@ public class StomachLevel_Global : MonoBehaviour {
         /* Update Timers */
         globalTime += Time.deltaTime;
         waveTime += Time.deltaTime;
-        Debug.Log("GT: " + globalTime + "\nWT: " + waveTime);
 
         int timeRemaining = (int)waveTimeInSeconds - (int)waveTime;
 

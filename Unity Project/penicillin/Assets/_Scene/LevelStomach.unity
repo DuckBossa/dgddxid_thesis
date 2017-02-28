@@ -4713,7 +4713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.60784316, b: 0.61960787, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -19406,6 +19406,11 @@ Prefab:
       propertyPath: projs.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.size
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010412385610, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
       propertyPath: m_LocalPosition.x
       value: -11.139
@@ -19569,6 +19574,65 @@ Prefab:
       value: 
       objectReference: {fileID: 1000012925363030, guid: 094c615dff6f4634d94682a8214e960a,
         type: 2}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 24fde46bb4fb147628547c92d55f6352,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: b8e4437e6493b426d980589183894c11,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: e4436137a317c6943a63c72da136f4fd,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: afa47fecb29314aadba48f24ef445ff3,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: 81b69d7f7f05e4ea3859d6a7d2d05372,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: b897be57337a60747a456a42650a067b,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: bc3c2b8c8d4454a2fb176a2ec4cabfda,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6255ad9ceb2264607be3ad55dd6dd878,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: c85c10787b9844aa68339ab2e4d3856c,
+        type: 3}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: sw
+      value: 
+      objectReference: {fileID: 420367265}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
   m_IsPrefabParent: 0

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 using GLOBAL;
 
 public class PlayerAttack : MonoBehaviour,IPlayerDamage {
@@ -12,6 +13,8 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     Animator anim;
 	PlayerMovement pm;
 	Rigidbody2D rb;
+    public Sprite[] weapsp;
+    public GameObject sw; /* button for switching weapons */
 
 
 
@@ -29,6 +32,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		anim = GetComponent<Animator>();
 		swordDurr = GAME.WEAP_DURABILITY [0, 0];
         isAttacking = false;
+        sw.GetComponent<Image>().sprite = weapsp[0];
     }
 
     /*
@@ -113,6 +117,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         }
         anim.SetInteger("whichWeapon", whichWeapon);
         anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
+        sw.GetComponent<Image>().sprite = weapsp[whichWeapon*GAME.num_weapons]; // + currentlevel
     }
 
 	public void SetAttack(bool a) {

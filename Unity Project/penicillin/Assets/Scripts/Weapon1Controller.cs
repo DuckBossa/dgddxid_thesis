@@ -7,8 +7,7 @@ public class Weapon1Controller : MonoBehaviour {
     public RectTransform content, wlv1, wlv2, wlv3;
     public Image lv3;
 	public PlayerAttack pa;
-	public int weapType;
-
+    public int weapType;
 
     private Image[] wps;
     private int cur;
