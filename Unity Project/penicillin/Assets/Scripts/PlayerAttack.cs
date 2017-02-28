@@ -69,7 +69,17 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		if (weapLevel [id] < 2) {
 			++weapLevel [id];
 		}
-
+		switch (id) {
+		case 0:
+			swordDurr = GAME.WEAP_DURABILITY [id, weapLevel [id]];
+			break;
+		case 1:
+			GetComponent<PlayerDaggerShoots> ().ReplenishAmmo ();
+			break;
+		case 2:
+			GetComponent<PlayerClusterBombs> ().ReplenishAmmo ();
+			break;
+		}
         anim.SetInteger("whichWeapon", whichWeapon);
         anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
     }
