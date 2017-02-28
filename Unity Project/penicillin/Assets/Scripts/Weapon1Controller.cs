@@ -42,9 +42,7 @@ public class Weapon1Controller : MonoBehaviour {
     void Update() {
         if(lvl == 3) { //if level = 3 just dim everything then disable
             col.SetAlpha(Mathf.Lerp(col.GetAlpha(), 0, 10 * Time.unscaledDeltaTime));
-            for(int i = 0; i < 6; i++) {
-                content.GetChild(i).GetComponent<CanvasRenderer>().SetAlpha(Mathf.Lerp(content.GetChild(i).GetComponent<CanvasRenderer>().GetAlpha(), 0, 10 * Time.unscaledDeltaTime));
-            }
+            content.gameObject.SetActive(false);
         }
 
         if (moving) {
