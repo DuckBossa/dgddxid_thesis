@@ -64,6 +64,12 @@ public class Weapon1Controller : MonoBehaviour {
 				movingTimer = 0;
 				lvl++; // current weapon lvl, 0 means not purchased
 
+				// upgrade weapon
+				pa.UpgradeWeapon(weapType);
+				// change research points accordingly
+				ScoreManager.researchPoints -= GAME.RP_UPGRADE[pa.GetWeapLevel(weapType)];
+
+
 				// move objects
 				newpos = lvl == 3 ? new Vector2(content.position.x, content.position.y - distBetButtons / 2) : new Vector2(content.position.x, content.position.y - distBetButtons);
 				moving = true;
@@ -72,10 +78,6 @@ public class Weapon1Controller : MonoBehaviour {
 				else if (lvl == 2) wlv2.GetChild(0).GetComponent<Image>().enabled = false;
 				else if (lvl == 3) wlv3.GetChild(0).GetComponent<Image>().enabled = false;
 
-				// upgrade weapon
-				pa.UpgradeWeapon(weapType);
-				// change research points accordingly
-				ScoreManager.researchPoints -= GAME.RP_UPGRADE[pa.GetWeapLevel(weapType)];
 			}
 		}
         
