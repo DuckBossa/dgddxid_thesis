@@ -6,6 +6,9 @@ using GLOBAL;
 public class Weapon1Controller : MonoBehaviour {
     public RectTransform content, wlv1, wlv2, wlv3;
     public Image lv3;
+	public PlayerAttack pa;
+	public int weapType;
+
 
     private Image[] wps;
     private int cur;
@@ -56,23 +59,25 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     public void Upgrade() {
-        Debug.Log(moving);
-        if (!moving) {
-            movingTimer = 0;
-            lvl++; // current weapon lvl, 0 means not purchased
+		if (ScoreManager.researchPoints >= GAME.RP_UPGRADE [pa.GetWeapLevel (weapType)]) {
+			if (!moving) {
+				movingTimer = 0;
+				lvl++; // current weapon lvl, 0 means not purchased
 
-            // move objects
-            newpos = lvl == 3 ? new Vector2(content.position.x, content.position.y - distBetButtons / 2) : new Vector2(content.position.x, content.position.y - distBetButtons);
-            moving = true;
-            // remove the locked icon
-            if (lvl == 1) wlv1.GetChild(0).GetComponent<Image>().enabled = false;
-            else if (lvl == 2) wlv2.GetChild(0).GetComponent<Image>().enabled = false;
-            else if (lvl == 3) wlv3.GetChild(0).GetComponent<Image>().enabled = false;
+				// move objects
+				newpos = lvl == 3 ? new Vector2(content.position.x, content.position.y - distBetButtons / 2) : new Vector2(content.position.x, content.position.y - distBetButtons);
+				moving = true;
+				// remove the locked icon
+				if (lvl == 1) wlv1.GetChild(0).GetComponent<Image>().enabled = false;
+				else if (lvl == 2) wlv2.GetChild(0).GetComponent<Image>().enabled = false;
+				else if (lvl == 3) wlv3.GetChild(0).GetComponent<Image>().enabled = false;
 
-            // upgrade weapon
-            
-            // change research points accordingly
-
-        }
+				// upgrade weapon
+				pa.UpgradeWeapon(weapType);
+				// change research points accordingly
+				ScoreManager.researchPoints -= GAME.RP_UPGRADE[pa.GetWeapLevel(weapType)];
+			}
+		}
+        
     }
 }

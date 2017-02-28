@@ -21,8 +21,10 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         hasAmmo = true;
 		attackCalled = false;
 		whichWeapon = 0;
-		for (int i = 0; i < weapLevel.Length; i++) {
-			weapLevel [i] = 0;//PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
+		weapLevel [0] = 0;
+		for (int i = 1; i < weapLevel.Length; i++) {
+			weapLevel [i] = -1;
+			//PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
 		}
 		anim = GetComponent<Animator>();
 		swordDurr = GAME.WEAP_DURABILITY [0, 0];
@@ -67,6 +69,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		if (weapLevel [id] < 2) {
 			++weapLevel [id];
 		}
+
         anim.SetInteger("whichWeapon", whichWeapon);
         anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
     }
@@ -87,7 +90,9 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 				isAttacking = false;
 			} 
 			else {
-				isAttacking = true;
+				if (weapLevel [whichWeapon] >= 0) {
+					isAttacking = true;
+				}
 			}
 
 		}

@@ -67,7 +67,7 @@ namespace GLOBAL{
 		public const string PLAYER_PREFS_WEAPLEVEL = "WeaponLVL";
 
 
-		public static readonly int[] RP_UPGRADE = {50,100,150};
+		public static readonly int[] RP_UPGRADE = {50,150,200};
         public static readonly int[,] WEAP_DURABILITY = new int[,] { {100,150,200},
                                                                      {1000,1200,1500}, 
                                                                      {10,10,15}
