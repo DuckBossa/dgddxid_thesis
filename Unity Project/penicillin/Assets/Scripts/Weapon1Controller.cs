@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using GLOBAL;
 
 public class Weapon1Controller : MonoBehaviour {
     public RectTransform content, wlv1, wlv2, wlv3;
@@ -69,7 +70,7 @@ public class Weapon1Controller : MonoBehaviour {
             else if (lvl == 3) wlv3.GetChild(0).GetComponent<Image>().enabled = false;
 
             // upgrade weapon
-
+            
             // change research points accordingly
 
         }

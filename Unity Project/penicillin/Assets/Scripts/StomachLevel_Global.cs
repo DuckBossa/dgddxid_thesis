@@ -11,7 +11,7 @@ public class StomachLevel_Global : MonoBehaviour {
     public Transform[] loadouts;
     public Transform[] health;
     public Transform player;
-    public GameObject Loadout,
+    public GameObject pill,
         loadoutIndicator,
         Shigellang_Dormant,
         healthPickup, healthPickupIndicator,
@@ -22,24 +22,26 @@ public class StomachLevel_Global : MonoBehaviour {
     bool bossFight;
     bool bossDormant;
 
-    private float timeLimitInSeconds, localTime, levelTime;
-    private bool wasLoadout;
+    private float waveTimeInSeconds, waveTime, levelTime, hplifetime, plifetime;
+    private bool waspill;
     private Color defaultColor;
     private Vector3 defaultScale;
 	void Start () {
-        timeLimitInSeconds = 60 * GAME.waveTimeInMins;
-		levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
+        waveTimeInSeconds = 60 * GAME.waveTimeInMins; /* Duration of one wave */
+		levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves; /* Duration of the entire level without boss fight // fix this; 3, 2, 1 */
+        timeSlider.value = globalTime / levelTime; /* Time slider indicating the length of the level */
         defaultColor = screenTimer.color;
-        globalTime = 0;
-        Loadout.SetActive(false);
+        globalTime = 0; /* Time elapsed since the beginning of the level */
+        pill.SetActive(false);
         loadoutIndicator.SetActive(false);
-        timeSlider.value = globalTime / levelTime;
-        wasLoadout = false;
-        defaultScale = loadoutIndicator.transform.localScale;
+        waspill = false; /* Did the pill spawn? */
+        defaultScale = loadoutIndicator.transform.localScale; /* Editing the scale through script instead of animator */
         screenTimer.text = "";
         bossDormant = true;
-        acidCycleCounter = 0;
-        localTime = 0;
+        acidCycleCounter = 0; /* Using this counter to determine when to spawn health pickups */
+        waveTime = 0; /* Time elapsed for each wave (resets every next wave) */
+        hplifetime = 0; /* Lifetime of health pickup */
+        plifetime = 0; /* Lifetime of pill */
 
         //dialogues.SetActive(true);
         //c_controls.SetActive(false);
@@ -52,72 +54,93 @@ public class StomachLevel_Global : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if(!bossFight) timeSlider.value = globalTime / levelTime;
+        if(!bossFight) timeSlider.value = globalTime / levelTime; /* boss fight? if not, update the time slider; the slider will be used as the boss' health bar when it spawns */
     }
 
 	void Update () {
-        globalTime += Time.deltaTime; //time in seconds
-        localTime += Time.deltaTime; //time used to calculate the time to display on screen; separate from globalTime; should not be used for anything else 
-        int timeRemaining = (int)timeLimitInSeconds - (int)localTime;
+        /* Update Timers */
+        globalTime += Time.deltaTime;
+        waveTime += Time.deltaTime;
+        Debug.Log("GT: " + globalTime + "\nWT: " + waveTime);
+
+        int timeRemaining = (int)waveTimeInSeconds - (int)waveTime;
 
         /* Health Pickup Management */
         // Once the acid rises and subsides acidCyclesPerHealthPickup times, spawn the health pickup if it hasn't spawned yet
-        if(acidCycleCounter == GAME.acidCyclesPerHealthPickup && !healthPickup.activeInHierarchy) {
+        if (acidCycleCounter == GAME.acidCyclesPerHealthPickup && !healthPickup.activeInHierarchy) {
+            /* Health Pickup */
             healthPickup.SetActive(true);
             healthPickup.transform.position = health[(int)Random.Range(0, health.Length)].transform.position;
-            localTime = 0;
-            timeLimitInSeconds = GAME.loadoutLifetime;
+            /* Indicator */
+            healthPickupIndicator.SetActive(true);
+            healthPickupIndicator.transform.localScale = defaultScale;
+            healthPickupIndicator.transform.position = healthPickup.transform.position;
+            hplifetime = 0; /* reset lifetime tracker */
         }
+
         // Health pickup indicator resizing and shite
         if (healthPickup.activeInHierarchy) {
-            healthPickupIndicator.SetActive(true);
-            healthPickupIndicator.transform.position = healthPickup.transform.position;
+            hplifetime += Time.deltaTime; /* update the hp lifetime while it's active */
             if (healthPickupIndicator.transform.localScale.x >= 0) healthPickupIndicator.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
-
-        // If the player fails to pick up the health thingy within its lifteime delete it from the scene
-            if(timeRemaining < 0) {
-                healthPickup.SetActive(false);
-                acidCycleCounter = 0;
+            else healthPickupIndicator.SetActive(false);
+            // If the player fails to pick up the health thingy within its lifteime delete it from the scene
+            if (hplifetime > GAME.loadoutLifetime) {
+                healthPickup.SetActive(false); /* despawn pickup */
+                acidCycleCounter = 0; /* reset acid cycle counter for the next pickup */
             }
         }
 
 
+        ////////////////////////////////////////////////////////
+        /* Research Lab Pill Management */
+
+        // Only spawn the pill when not in boss fight
         if (!bossFight) {
-            if (globalTime > levelTime) bossFight = true;
-
-            /* Research Lab Pill Management */
-            // spawn research lab if it's not yet there
-            if (timeRemaining < 0 && !Loadout.activeInHierarchy) {
-                //enable loadout gameobject
-                Loadout.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position;
-                Loadout.SetActive(true);
-                screenTimer.color = Color.red;
-                localTime = 0;
-                timeLimitInSeconds = GAME.loadoutLifetime;
-                wasLoadout = true;
-            }
-            //player didn't reach loadoutsection in time, go straight to 2nd wave
-            else if (timeRemaining < 0 && Loadout.activeInHierarchy) {
-                screenTimer.text = "";
-                localTime = 0;
-                timeLimitInSeconds = 60 * GAME.waveTimeInMins;
-                screenTimer.color = defaultColor;
-                Loadout.SetActive(false);
+            //if the time remaining in the wave is enough for the lifetime of the pill, spawn the pill
+            if (!pill.activeInHierarchy && waveTimeInSeconds - waveTime <= GAME.loadoutLifetime ) {
+                pill.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
+                pill.SetActive(true); /* activate */
+                screenTimer.color = Color.red; /* show lifetime timer */
+                loadoutIndicator.SetActive(true);/* activate indicator */
+                loadoutIndicator.transform.localScale = defaultScale;
+                loadoutIndicator.transform.position = pill.transform.position; /* set indicator position to where pill is */
+                plifetime = 0; /* set pill lifetime to 0 */
+                waspill = true; /* pill spawned */
             }
 
-            if (Loadout.activeInHierarchy) {
-                loadoutIndicator.SetActive(true);
-                loadoutIndicator.transform.position = Loadout.transform.position;
+            /*
+                Rescale the pill marker while it's active
+                Also update the timer which indicates:
+                    > Pill lifetime
+                    > Time remaining for current wave (in seconds)
+            */
+            if (pill.activeInHierarchy) {
+                plifetime += Time.deltaTime; /* update the pill lifetime while it's active */
                 if (loadoutIndicator.transform.localScale.x >= 0) loadoutIndicator.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
+                else {
+                    loadoutIndicator.SetActive(false);
+                }
                 string min = Mathf.Floor(timeRemaining / 60).ToString("00");
                 string sec = (timeRemaining % 60).ToString("00");
                 screenTimer.text = min + ":" + sec;
             }
-            else if (!Loadout.activeInHierarchy && wasLoadout) {
+
+            /* Player didn't reach loadoutsection in time, go straight to 2nd wave */
+            if (plifetime > GAME.loadoutLifetime) {
                 screenTimer.text = "";
-                loadoutIndicator.SetActive(false);
-                loadoutIndicator.transform.localScale = defaultScale;
+                waveTime = 0;
+                plifetime = 0; /* reset value so waveTime won't always be 0 */
+                waveTimeInSeconds = 60 * GAME.waveTimeInMins;
+                screenTimer.color = defaultColor;
+                pill.SetActive(false);
             }
+
+            /* If the pill was spawned and was deactivated for any reason */
+            if (!pill.activeInHierarchy && waspill) {
+                screenTimer.text = "";
+            }
+
+            if (globalTime > levelTime) bossFight = true;
         }
         else {
             //enable boss health bar, disable level timer
@@ -133,9 +156,10 @@ public class StomachLevel_Global : MonoBehaviour {
 
     public void Reset() {
         Time.timeScale = 1;
-        timeLimitInSeconds = 60 * GAME.waveTimeInMins;
-        localTime = 0;
-        Loadout.SetActive(false);
+        waveTimeInSeconds = 60 * GAME.waveTimeInMins;
+        globalTime = 0;
+        waveTime = 0;
+        pill.SetActive(false);
         screenTimer.color = defaultColor;
     }
 

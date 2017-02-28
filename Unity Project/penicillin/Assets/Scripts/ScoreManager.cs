@@ -25,7 +25,6 @@ public class ScoreManager : MonoBehaviour {
 
 
     public void AddPoints(int val) {
-		
         researchPoints += val;
         totalResearchPoints += val;
         text.text = researchPoints.ToString("D8");
