@@ -28,7 +28,7 @@ public class StomachLevel_Global : MonoBehaviour {
     private Vector3 defaultScale;
     private int waveCounter;
 	void Start () {
-        waveTimeInSeconds = 60 * GAME.waveTimeInMins; /* Duration of one wave */
+		waveTimeInSeconds = 10; //60 * GAME.waveTimeInMins; /* Duration of one wave */
 		levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves; /* Duration of the entire level without boss fight // fix this; 3, 2, 1 */
         timeSlider.value = globalTime / levelTime; /* Time slider indicating the length of the level */
         defaultColor = screenTimer.color;

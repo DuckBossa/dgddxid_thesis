@@ -40,7 +40,9 @@ public class PlayerClusterBombs : MonoBehaviour {
 	}
 
     public void ReplenishAmmo() {
-        currAmmo = GAME.WEAP_DURABILITY[2, pa.GetWeapLevel(2)];
-    }
+		if (pa.GetWeapLevel (2) >= 0) {
+			currAmmo = GAME.WEAP_DURABILITY[1, pa.GetWeapLevel(2)];
+		}
+	}
 
 }

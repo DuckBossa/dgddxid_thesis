@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour {
     public Text text;
 
     void Start () {
-		researchPoints = PlayerPrefs.GetInt (GAME.PLAYER_PREFS_RP, 0);
+		researchPoints = 0; // PlayerPrefs.GetInt (GAME.PLAYER_PREFS_RP, 0);
         totalResearchPoints = 0;
 		//AddPoints (400);
 	}

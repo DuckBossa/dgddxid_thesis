@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		attackCalled = false;
 		whichWeapon = 0;
 		weapLevel [0] = 0;
-		for (int i = 1; i < weapLevel.Length; i++) {
+		for (int i = 0; i < weapLevel.Length; i++) {
 			weapLevel [i] = -1;
 			//PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
 		}

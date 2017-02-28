@@ -57,7 +57,7 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     public void Upgrade() {
-		if (ScoreManager.researchPoints >= GAME.RP_UPGRADE [pa.GetWeapLevel (weapType)]) {
+		if (ScoreManager.researchPoints >= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ]) {
 			if (!moving) {
 				movingTimer = 0;
 				lvl++; // current weapon lvl, 0 means not purchased
@@ -65,7 +65,7 @@ public class Weapon1Controller : MonoBehaviour {
 				// upgrade weapon
 				pa.UpgradeWeapon(weapType);
 				// change research points accordingly
-				ScoreManager.researchPoints -= GAME.RP_UPGRADE[pa.GetWeapLevel(weapType)];
+				ScoreManager.researchPoints -= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ];
 
 
 				// move objects

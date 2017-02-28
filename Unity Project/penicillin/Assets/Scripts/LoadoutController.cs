@@ -17,5 +17,6 @@ public class LoadoutController : MonoBehaviour {
 
     public void DisableCanvas() {
         loadoutCanvas.gameObject.SetActive(false);
+		Time.timeScale = 1;
     }
 }

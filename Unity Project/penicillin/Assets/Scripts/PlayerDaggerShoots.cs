@@ -39,6 +39,8 @@ public class PlayerDaggerShoots : MonoBehaviour {
     }
     
 	public void ReplenishAmmo() {
-        currAmmo = GAME.WEAP_DURABILITY[1, pa.GetWeapLevel(1)];
+		if (pa.GetWeapLevel (1) >= 0) {
+			currAmmo = GAME.WEAP_DURABILITY[1, pa.GetWeapLevel(1)];
+		}
     }
 }
