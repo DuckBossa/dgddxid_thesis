@@ -26,6 +26,7 @@ public class StomachLevel_Global : MonoBehaviour {
     private bool waspill;
     private Color defaultColor;
     private Vector3 defaultScale;
+    private int waveCounter;
 	void Start () {
         waveTimeInSeconds = 60 * GAME.waveTimeInMins; /* Duration of one wave */
 		levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves; /* Duration of the entire level without boss fight // fix this; 3, 2, 1 */
@@ -42,6 +43,7 @@ public class StomachLevel_Global : MonoBehaviour {
         waveTime = 0; /* Time elapsed for each wave (resets every next wave) */
         hplifetime = 0; /* Lifetime of health pickup */
         plifetime = 0; /* Lifetime of pill */
+        waveCounter = 1;
 
         //dialogues.SetActive(true);
         //c_controls.SetActive(false);
@@ -125,31 +127,29 @@ public class StomachLevel_Global : MonoBehaviour {
                 screenTimer.text = min + ":" + sec;
             }
 
-            /* Player didn't reach loadoutsection in time, go straight to 2nd wave */
-            if (plifetime > GAME.loadoutLifetime) {
+            /* Player didn't reach loadoutsection in time, go straight to next wave */
+            /* Player picked up pill */
+            if (plifetime > GAME.loadoutLifetime || (!pill.activeInHierarchy && waspill)) {
+                globalTime = waveTimeInSeconds * waveCounter; /* reasonable, right? */
                 screenTimer.text = "";
                 waveTime = 0;
+                waveCounter++;
                 plifetime = 0; /* reset value so waveTime won't always be 0 */
                 waveTimeInSeconds = 60 * GAME.waveTimeInMins;
                 screenTimer.color = defaultColor;
                 pill.SetActive(false);
             }
 
-            /* If the pill was spawned and was deactivated for any reason */
-            if (!pill.activeInHierarchy && waspill) {
-                screenTimer.text = "";
-            }
-
-            if (globalTime > levelTime) bossFight = true;
-        }
-        else {
-            //enable boss health bar, disable level timer
-            screenTimer.gameObject.SetActive(false);
-            if (timeSlider.isActiveAndEnabled) timeSlider.gameObject.SetActive(false);
-            //spawn boss if not already there
-            if (!Shigellang_Dormant.activeInHierarchy && bossDormant) {
-                Shigellang_Dormant.SetActive(true);
-                bossDormant = false;
+            if (globalTime > levelTime) {
+                bossFight = true;
+                //enable boss health bar, disable level timer
+                screenTimer.gameObject.SetActive(false);
+                if (timeSlider.isActiveAndEnabled) timeSlider.gameObject.SetActive(false);
+                //spawn boss if not already there
+                if (!Shigellang_Dormant.activeInHierarchy && bossDormant) {
+                    Shigellang_Dormant.SetActive(true);
+                    bossDormant = false;
+                }
             }
         }
     }

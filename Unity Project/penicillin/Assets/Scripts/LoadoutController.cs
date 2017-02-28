@@ -9,8 +9,9 @@ public class LoadoutController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.name == "Penny") {
-            Time.timeScale = 0;
             loadoutCanvas.gameObject.SetActive(true);
+            Time.timeScale = 0;
+            gameObject.SetActive(false);
         }
     }
 
