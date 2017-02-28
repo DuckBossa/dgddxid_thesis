@@ -12,6 +12,9 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     Animator anim;
 	PlayerMovement pm;
 	Rigidbody2D rb;
+
+
+
     void Awake() {
 		pm = GetComponent<PlayerMovement> ();
 		rb = GetComponent<Rigidbody2D> ();
@@ -80,7 +83,13 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         if ( !pm.isDash() && !isAttacking) {
             if(!pm.isJump() && !pm.isFall()) 
 			    rb.velocity = new Vector2(0, rb.velocity.y);
-			isAttacking = true;
+			if (whichWeapon == 0 && swordDurr <= 0) {
+				isAttacking = false;
+			} 
+			else {
+				isAttacking = true;
+			}
+
 		}
 	}
 	public void SwitchWeapon() {
@@ -105,5 +114,8 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         }
     }
 
+	public void SwordAttackCompleted(){
+		swordDurr--;
+	}
 
 }

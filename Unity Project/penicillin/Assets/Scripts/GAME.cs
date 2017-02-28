@@ -68,9 +68,9 @@ namespace GLOBAL{
 
 
 		public static readonly int[] RP_UPGRADE = {50,100,150};
-        public static readonly int[,] WEAP_DURABILITY = new int[,] { {1000,1000,1000},
-                                                                     {1000,1000,1000}, 
-                                                                     {1000,1000,1000}
+        public static readonly int[,] WEAP_DURABILITY = new int[,] { {100,150,200},
+                                                                     {1000,1200,1500}, 
+                                                                     {10,10,15}
                                                                     };
 		public static readonly int[,] WEAP_DAMAGE = new int[,]{ {10,20,30},
 													     {2,4,5},
