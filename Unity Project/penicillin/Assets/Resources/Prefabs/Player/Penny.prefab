@@ -18,9 +18,9 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000014039759030}
+  - 4: {fileID: 4000012284141576}
   m_Layer: 16
-  m_Name: ProjectileSpawnPoint
+  m_Name: ProjectileSpawnPointDagger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,6 +88,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000012203671740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000014039759030}
+  m_Layer: 16
+  m_Name: ProjectileSpawnPointClusterBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000014031088176
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +143,7 @@ Transform:
   - {fileID: 4000011098376070}
   - {fileID: 4000013178842944}
   - {fileID: 4000014039759030}
+  - {fileID: 4000012284141576}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000010955609780
@@ -156,6 +172,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000010412385610}
   m_RootOrder: 2
+--- !u!4 &4000012284141576
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010147279312}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.262, y: 0.016, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000010412385610}
+  m_RootOrder: 5
 --- !u!4 &4000012346990932
 Transform:
   m_ObjectHideFlags: 1
@@ -187,9 +216,9 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010147279312}
+  m_GameObject: {fileID: 1000012203671740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.202, y: 0.173, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -312,6 +341,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b426733a11b508840a04c3059e219987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapsp:
+  - {fileID: 21300000, guid: c85c10787b9844aa68339ab2e4d3856c, type: 3}
+  - {fileID: 21300000, guid: bc3c2b8c8d4454a2fb176a2ec4cabfda, type: 3}
+  - {fileID: 21300000, guid: 6255ad9ceb2264607be3ad55dd6dd878, type: 3}
+  - {fileID: 21300000, guid: e4436137a317c6943a63c72da136f4fd, type: 3}
+  - {fileID: 21300000, guid: 24fde46bb4fb147628547c92d55f6352, type: 3}
+  - {fileID: 21300000, guid: b8e4437e6493b426d980589183894c11, type: 3}
+  - {fileID: 21300000, guid: b897be57337a60747a456a42650a067b, type: 3}
+  - {fileID: 21300000, guid: afa47fecb29314aadba48f24ef445ff3, type: 3}
+  - {fileID: 21300000, guid: 81b69d7f7f05e4ea3859d6a7d2d05372, type: 3}
+  sw: {fileID: 0}
 --- !u!114 &114000011617158768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,7 +364,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projs:
-  - {fileID: 1000011374916854, guid: 1d08823eec3c4974fbbea9c72ab157f1, type: 2}
+  - {fileID: 1000013177965544, guid: a33c81941db9c184583deadc8e4454da, type: 2}
+  - {fileID: 1000010439481120, guid: ca4b89c478b5097469fa5984978578dd, type: 2}
+  - {fileID: 1000012925363030, guid: 094c615dff6f4634d94682a8214e960a, type: 2}
+  spawn_point: {fileID: 1000012203671740}
 --- !u!114 &114000012304450940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,13 +380,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projs:
-  - {fileID: 1000010586032530, guid: c6500d1a882c65645b76c78991d5beb8, type: 2}
-  - {fileID: 1000010098940258, guid: 083840387679b3e40a39a672a697a554, type: 2}
-  - {fileID: 1000010259716948, guid: 3e71b4f9c71f9924cb5aa369b4c2511c, type: 2}
-  - {fileID: 1000013687160048, guid: e7107dad632f8d443ab62b69a0fe7c82, type: 2}
-  - {fileID: 1000012173208826, guid: 3b85c823004a36945a1792957efbe105, type: 2}
-  - {fileID: 1000011432768396, guid: f790cc87bdcbc7049a7684fa0bc426f5, type: 2}
-  spawn_point: {fileID: 0}
+  - {fileID: 1000010578382576, guid: c190f5313a9e1aa4f8a4168911e430c8, type: 2}
+  - {fileID: 1000012776246386, guid: 67aaff38ea4a8d34eace91c403807ac3, type: 2}
+  - {fileID: 1000013376508382, guid: b2eb19a5fd9a5bd43a5a673e1f24e70c, type: 2}
+  spawn_point: {fileID: 4000012284141576}
 --- !u!212 &212000012936267966
 SpriteRenderer:
   m_ObjectHideFlags: 1

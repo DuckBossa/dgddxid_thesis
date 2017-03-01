@@ -3561,6 +3561,8 @@ MonoBehaviour:
   wlv2: {fileID: 0}
   wlv3: {fileID: 0}
   lv3: {fileID: 164748626}
+  pa: {fileID: 0}
+  weapType: 0
 --- !u!114 &530182647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10643,6 +10645,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: sw
+      value: 
+      objectReference: {fileID: 2144301947}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
   m_IsPrefabParent: 0
@@ -10996,6 +11003,8 @@ MonoBehaviour:
   wlv2: {fileID: 0}
   wlv3: {fileID: 0}
   lv3: {fileID: 224898250}
+  pa: {fileID: 0}
+  weapType: 0
 --- !u!114 &1474593456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11768,6 +11777,8 @@ MonoBehaviour:
   wlv2: {fileID: 0}
   wlv3: {fileID: 0}
   lv3: {fileID: 1559703758}
+  pa: {fileID: 0}
+  weapType: 0
 --- !u!114 &1563221261
 MonoBehaviour:
   m_ObjectHideFlags: 0
