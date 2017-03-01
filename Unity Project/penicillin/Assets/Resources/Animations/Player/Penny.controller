@@ -1393,10 +1393,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.000000011175871
   m_TransitionOffset: 0
   m_ExitTime: 0.16666669
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -2449,7 +2449,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.16666669
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -3326,13 +3326,13 @@ AnimatorStateMachine:
       second:
       - {fileID: 1109000010346941858}
     data:
-      first: {fileID: 1107000012044360812}
-      second:
-      - {fileID: 1109000010641996944}
-    data:
       first: {fileID: 1107000012934396378}
       second:
       - {fileID: 1109000011221104472}
+    data:
+      first: {fileID: 1107000012044360812}
+      second:
+      - {fileID: 1109000010641996944}
     data:
       first: {fileID: 1107000013876934570}
       second:
@@ -3422,14 +3422,6 @@ AnimatorStateMachine:
   - {fileID: 1109000013713610660}
   m_StateMachineTransitions:
     data:
-      first: {fileID: 1107000010040404254}
-      second:
-      - {fileID: 1109000011831188758}
-    data:
-      first: {fileID: 1107000012329637898}
-      second:
-      - {fileID: 1109000012139443498}
-    data:
       first: {fileID: 0}
       second:
       - {fileID: 1109000012489894480}
@@ -3438,13 +3430,13 @@ AnimatorStateMachine:
       second:
       - {fileID: 1109000010156815670}
     data:
-      first: {fileID: 0}
+      first: {fileID: 1107000012329637898}
       second:
-      - {fileID: 1109000014185430650}
+      - {fileID: 1109000012139443498}
     data:
-      first: {fileID: 0}
+      first: {fileID: 1107000010040404254}
       second:
-      - {fileID: 1109000012183711640}
+      - {fileID: 1109000011831188758}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -216, y: -216, z: 0}
   m_EntryPosition: {x: 252, y: -144, z: 0}
