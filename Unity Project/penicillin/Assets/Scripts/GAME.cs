@@ -30,6 +30,7 @@ namespace GLOBAL{
 
 
         public const float acid_dot_timer = 2f;
+        public const float acid_stay_timer = 10.5f;
         public const int tile_size = 64;
 
         public const float loadoutIndicatorDecaySpeed = .03f;
