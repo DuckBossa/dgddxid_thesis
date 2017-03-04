@@ -86,7 +86,7 @@ public class Tutorial : MonoBehaviour {
             //20-24
             "The lab allows you to upgrade your antibiotics and unlock new ones so you have more options to kill more bacteria.",
             "You can see the amount of research points you currently have at the top of the screen, as well as your current health.",
-            "Between the health and research points, you can see a progress bar that indicates how long a level is going to be.",
+            "Between the health and research points, you can see a progress bar that indicates how many enemies you need to eliminate to proceed to the next wave.",
             "Pick the pill up and see what we have the lab has to offer! Here's 200 research points, on me!",
             "",
             //25-29
@@ -98,8 +98,8 @@ public class Tutorial : MonoBehaviour {
 
             //30-34
             "Remember, you can only purchase and upgrade weapons in the research lab, so make sure you don't miss it!",
-            "Your weapons also have a set durability. Hitting enemy bacteria damages your weapons as well, and they'll eventually break. ",
-            "Durability will only reset on upgrade, so use your weapons wisely!",
+            "Enemy bacteria will be more and more resistant to your weapons over time. Make sure you finish as fast as you can.",
+            "Researching for new antibiotic weapons make them less resistant, making it easier to clear waves again.",
             "You are now ready to fight the hordes of bacteria infecting our host. Remember what I taught you, and good luck!",
 			""
         };
@@ -215,7 +215,7 @@ public class Tutorial : MonoBehaviour {
         // Current text in text area
         try {
             text.text = messages[++cur_msg];
-			Debug.Log(cur_msg);
+			//Debug.Log(cur_msg);
         }catch(Exception e) {
             throw(e);
         }
