@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
     public LayerMask enemyMask;
     public bool isStunned;
-
+    public Canvas c;
     //SpriteRenderer psprite;
     Animator myAnim;
     GameObject player;
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour {
     Rigidbody2D myBody;
     //Rigidbody2D playerBody;
     Transform myTrans, penny;
+  
     bool withinRange, isAggro;
     float atkRange, aggressionDistance, myWidth, myHeight, timer, speed, timeBetweenAttacks, stunDuration, stunTimer;
     EnemyHealth enemyHealth;
@@ -155,6 +157,7 @@ public class Enemy : MonoBehaviour {
                 myBody.velocity = myVel;
             }
         }
+        c.GetComponent<RectTransform>().localRotation = myTrans.rotation;   
     }
 
     Vector2 toVector2(Vector3 vec3) {

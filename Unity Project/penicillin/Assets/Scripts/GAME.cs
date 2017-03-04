@@ -77,8 +77,8 @@ namespace GLOBAL{
 													     {2,4,5},
                                                          {10,20,30}};
 
-        public static readonly float[] RESISTANCE_TICK = {0.05f,0.01f, 0.05f};
-        public const float resitanceTickTimer = 30f;
+        public static readonly float[] RESISTANCE_TICK = {0.5f,0.5f, 0.5f};
+        public const float resitanceTickTimer = 0.5f;
         public const float peakResist = 0.85f;
     }
 

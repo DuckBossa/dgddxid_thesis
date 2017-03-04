@@ -10,7 +10,6 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     public int researchPoints = 10;//temporary value
     public GameObject DamageText, score; //score manager
     public Slider enemyCountSlider;
-
     private ScoreManager smgr;
     //GameObject player;
     Animator anim;
@@ -22,13 +21,13 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 
 	void Start () {
         smgr = score.GetComponent<ScoreManager>();
+       
         //collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
         //player = GameObject.Find("Penny");
         manager = GameObject.Find("SpawnControllers").GetComponent<EnemyManager>();
         //stunDuration = .5f;
-		TakeDamage(1);
         enemy = GetComponent<Enemy>();
     }
 
