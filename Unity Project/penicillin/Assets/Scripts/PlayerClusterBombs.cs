@@ -19,7 +19,6 @@ public class PlayerClusterBombs : MonoBehaviour {
     }
 
     public void Start(){
-        ReplenishAmmo();
 	}
 
 	public void Update(){
@@ -29,7 +28,7 @@ public class PlayerClusterBombs : MonoBehaviour {
 	}
 
 	public void bomb(){
-		if (timer >= GAME.playerclusterbomb_aspd && currAmmo > 0) {
+		if (timer >= GAME.playerclusterbomb_aspd) {
 			timer = 0f;
             currAmmo--;
 			var temp = Instantiate(projs[switcheroonie], spawn_point.transform.position, projs[switcheroonie].transform.rotation) as GameObject;
@@ -39,10 +38,5 @@ public class PlayerClusterBombs : MonoBehaviour {
         }	
 	}
 
-    public void ReplenishAmmo() {
-		if (pa.GetWeapLevel (2) >= 0) {
-			currAmmo = GAME.WEAP_DURABILITY[1, pa.GetWeapLevel(2)];
-		}
-	}
 
 }

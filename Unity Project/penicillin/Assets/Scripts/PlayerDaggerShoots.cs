@@ -8,7 +8,6 @@ public class PlayerDaggerShoots : MonoBehaviour {
     public Transform spawn_point;
     PlayerMovement pm;
 	PlayerAttack pa;
-    int currAmmo;
     float timer = 0f;
 
     public void Awake() {
@@ -17,7 +16,6 @@ public class PlayerDaggerShoots : MonoBehaviour {
     }
 
     public void Start() {
-        ReplenishAmmo();
     }
 
     public void Update() {
@@ -27,8 +25,7 @@ public class PlayerDaggerShoots : MonoBehaviour {
     }    
 
     public void fire() {
-        if (timer >= GAME.playerdagger_aspd && currAmmo > 0) {
-            currAmmo--;
+        if (timer >= GAME.playerdagger_aspd) {
             timer = 0f;
 			var tempRot = projs[pa.GetWeapLevel (1)].transform.rotation.eulerAngles;
 			var temp = Instantiate(projs[pa.GetWeapLevel (1)], transform.position, Quaternion.Euler(tempRot.x,tempRot.y + pm.getDir() > 0 ? 0f : 180f,tempRot.z)) as GameObject;
@@ -38,9 +35,4 @@ public class PlayerDaggerShoots : MonoBehaviour {
         }
     }
     
-	public void ReplenishAmmo() {
-		if (pa.GetWeapLevel (1) >= 0) {
-			currAmmo = GAME.WEAP_DURABILITY[1, pa.GetWeapLevel(1)];
-		}
-    }
 }

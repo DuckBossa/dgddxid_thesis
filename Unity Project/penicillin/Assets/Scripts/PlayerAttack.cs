@@ -35,16 +35,6 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         sw.GetComponent<Image>().sprite = weapsp[0];
     }
 
-    /*
-    public void OnTriggerEnter2D(Collider2D other) {
-        //other.gameObject.GetComponent<IDamage>().TakeDamage(weapLevel[whichWeapon] + 1);
-	
-		if(other.gameObject.layer == LayerMask.NameToLayer ("Enemy"))
-			other.gameObject.transform.parent.gameObject.GetComponent<IDamage> ().TakeDamage (weapLevel [whichWeapon] + 1);
-	
-	}
-
-   */
 
     void FixedUpdate() {
 		if (attackCalled && !pm.isDash ())
@@ -73,17 +63,6 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		if (weapLevel [id] < 2) {
 			++weapLevel [id];
 		}
-		switch (id) {
-		case 0:
-			swordDurr = GAME.WEAP_DURABILITY [id, weapLevel [id]];
-			break;
-		case 1:
-			GetComponent<PlayerDaggerShoots> ().ReplenishAmmo ();
-			break;
-		case 2:
-			GetComponent<PlayerClusterBombs> ().ReplenishAmmo ();
-			break;
-		}
         anim.SetInteger("whichWeapon", whichWeapon);
         anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
     }
@@ -100,15 +79,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         if ( !pm.isDash() && !isAttacking) {
             if(!pm.isJump() && !pm.isFall()) 
 			    rb.velocity = new Vector2(0, rb.velocity.y);
-			if (whichWeapon == 0 && swordDurr <= 0) {
-				isAttacking = false;
-			} 
-			else {
-				if (weapLevel [whichWeapon] >= 0) {
-					isAttacking = true;
-				}
-			}
-
+            isAttacking = true;
 		}
 	}
 	public void SwitchWeapon() {
@@ -136,6 +107,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 
 	public void SwordAttackCompleted(){
 		swordDurr--;
+        CheckAttack();
 	}
 
 }
