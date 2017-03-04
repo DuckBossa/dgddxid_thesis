@@ -5,8 +5,14 @@ using System.Collections;
 
 public class StomachLevel_Global : MonoBehaviour {
     // Use this for initialization
+
+        /*
+         To-do:
+         Somehow count the number of waves to determine when to change the value of bossFight boolean
+         Adjust the required number of enemies to eliminate per wave
+         */
     public Text screenTimer;
-    public Slider timeSlider;
+    public Slider enemyCountSlider;
     public static float globalTime;
     public Transform[] loadouts;
     public Transform[] health;
@@ -30,7 +36,8 @@ public class StomachLevel_Global : MonoBehaviour {
 	void Start () {
 		waveTimeInSeconds = 60 * GAME.waveTimeInMins; /* Duration of one wave */
 		levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves; /* Duration of the entire level without boss fight // fix this; 3, 2, 1 */
-        timeSlider.value = globalTime / levelTime; /* Time slider indicating the length of the level */
+        enemyCountSlider.value = 0;
+        enemyCountSlider.maxValue = 50;
         defaultColor = screenTimer.color;
         globalTime = 0; /* Time elapsed since the beginning of the level */
         pill.SetActive(false);
@@ -56,7 +63,6 @@ public class StomachLevel_Global : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if(!bossFight) timeSlider.value = globalTime / levelTime; /* boss fight? if not, update the time slider; the slider will be used as the boss' health bar when it spawns */
     }
 
 	void Update () {
@@ -143,7 +149,7 @@ public class StomachLevel_Global : MonoBehaviour {
                 bossFight = true;
                 //enable boss health bar, disable level timer
                 screenTimer.gameObject.SetActive(false);
-                if (timeSlider.isActiveAndEnabled) timeSlider.gameObject.SetActive(false);
+                if (enemyCountSlider.isActiveAndEnabled) enemyCountSlider.gameObject.SetActive(false);
                 //spawn boss if not already there
                 if (!Shigellang_Dormant.activeInHierarchy && bossDormant) {
                     Shigellang_Dormant.SetActive(true);

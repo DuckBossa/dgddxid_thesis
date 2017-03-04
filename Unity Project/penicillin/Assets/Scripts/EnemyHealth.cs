@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     public int currHealth;
     public int researchPoints = 10;//temporary value
     public GameObject DamageText, score; //score manager
+    public Slider enemyCountSlider;
 
     private ScoreManager smgr;
     //GameObject player;
@@ -46,6 +47,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 			manager.currEnemies--;
 			smgr.researchPoints += researchPoints;
 			smgr.totalResearchPoints += researchPoints;
+            enemyCountSlider.value++;
 			//GetComponent<Enemy>().enabled = false;
 			Destroy(gameObject, 0.8f);
 		}
