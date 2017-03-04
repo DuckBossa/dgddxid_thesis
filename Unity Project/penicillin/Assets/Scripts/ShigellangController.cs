@@ -276,7 +276,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
 		loadout.gameObject.SetActive(false);
 		controls.gameObject.SetActive(false);
 		gamewon.gameObject.SetActive (true);
-		GameOverScreenHandler.displayStats();
+		//GameOverScreenHandler.displayStats();
         Destroy(gameObject, 1f);
     }
 

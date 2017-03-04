@@ -5,8 +5,8 @@ using GLOBAL;
 
 public class ScoreManager : MonoBehaviour {
 
-	public static int researchPoints;
-    public static int totalResearchPoints;
+	public int researchPoints;
+    public int totalResearchPoints;
     public Text text;
 
     void Start () {
@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour {
 
     void Update() {
 		text.text = researchPoints.ToString("D8");
+        //AddPoints(1);
     }
 
 

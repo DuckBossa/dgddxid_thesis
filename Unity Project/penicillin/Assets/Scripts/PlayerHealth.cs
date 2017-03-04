@@ -94,7 +94,7 @@ public class PlayerHealth : MonoBehaviour {
         loadout.gameObject.SetActive(false);
         controls.gameObject.SetActive(false);
         gameover.gameObject.SetActive(true);
-        GameOverScreenHandler.displayStats();
+        //GameOverScreenHandler.displayStats();
         
     }
 }

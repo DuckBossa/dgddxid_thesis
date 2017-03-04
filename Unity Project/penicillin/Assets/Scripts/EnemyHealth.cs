@@ -8,9 +8,9 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     public int maxHealth;
     public int currHealth;
     public int researchPoints = 10;//temporary value
-	public GameObject DamageText;
+    public GameObject DamageText, score; //score manager
 
-
+    private ScoreManager smgr;
     //GameObject player;
     Animator anim;
     bool isDead;
@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     EnemyManager manager;
 
 	void Start () {
+        smgr = score.GetComponent<ScoreManager>();
         //collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
@@ -43,8 +44,8 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 			isDead = true;
 			//anim.SetTrigger("isDead");
 			manager.currEnemies--;
-			ScoreManager.researchPoints += researchPoints;
-			ScoreManager.totalResearchPoints += researchPoints;
+			smgr.researchPoints += researchPoints;
+			smgr.totalResearchPoints += researchPoints;
 			//GetComponent<Enemy>().enabled = false;
 			Destroy(gameObject, 0.8f);
 		}

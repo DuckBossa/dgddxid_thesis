@@ -256,6 +256,7 @@ MonoBehaviour:
   currHealth: 0
   researchPoints: 100
   DamageText: {fileID: 1000012323185882, guid: 6c6cd6e4120da43eabafefccd90f2396, type: 2}
+  score: {fileID: 1000010684306748, guid: 94dadb65559384145ba1a11541377c42, type: 2}
 --- !u!114 &114000013194057134
 MonoBehaviour:
   m_ObjectHideFlags: 1

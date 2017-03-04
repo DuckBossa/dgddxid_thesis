@@ -8,8 +8,10 @@ public class Weapon1Controller : MonoBehaviour {
     public Image lv3;
 	public PlayerAttack pa;
     public int weapType;
+    public GameObject score;
 
     private Image[] wps;
+    private ScoreManager smgr;
     private int cur;
     private int distBetButtons;
     private Vector2 newpos;
@@ -24,6 +26,8 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     void Start() {
+        smgr = score.GetComponent<ScoreManager>();
+        Debug.Log(smgr.gameObject.name);
         wps = new Image[3]; //store the buttons, pls don't mess with the arrangement of the buttons in the editor
         for (int i = 0; i < wps.Length; i++) {
             wps[i] = content.GetChild(i).gameObject.GetComponent<Image>();
@@ -56,7 +60,7 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     public void Upgrade() {
-		if (ScoreManager.researchPoints >= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ]) {
+		if (smgr.researchPoints >= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ]) {
 			if (!moving) {
 				movingTimer = 0;
 				lvl++; // current weapon lvl, 0 means not purchased
@@ -64,7 +68,7 @@ public class Weapon1Controller : MonoBehaviour {
 				// upgrade weapon
 				pa.UpgradeWeapon(weapType);
 				// change research points accordingly
-				ScoreManager.researchPoints -= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ];
+				smgr.researchPoints -= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ];
 
 
 				// move objects
@@ -74,7 +78,6 @@ public class Weapon1Controller : MonoBehaviour {
 				if (lvl == 1) wlv1.GetChild(0).GetComponent<Image>().enabled = false;
 				else if (lvl == 2) wlv2.GetChild(0).GetComponent<Image>().enabled = false;
 				else if (lvl == 3) wlv3.GetChild(0).GetComponent<Image>().enabled = false;
-
 			}
 		}
         

@@ -941,6 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8241a97826c746448a4d6264eb604012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  researchPoints: 0
+  totalResearchPoints: 0
   text: {fileID: 2051011138}
 --- !u!1 &84206078
 GameObject:
@@ -2724,21 +2726,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010582464362, guid: 94dadb65559384145ba1a11541377c42,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 603513575}
-    - target: {fileID: 114000010582464362, guid: 94dadb65559384145ba1a11541377c42,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisableCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012999677508, guid: 94dadb65559384145ba1a11541377c42, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011371947500, guid: 94dadb65559384145ba1a11541377c42,
+    - target: {fileID: 114000012218929480, guid: 94dadb65559384145ba1a11541377c42,
         type: 2}
       propertyPath: pa
       value: 
@@ -2748,19 +2736,20 @@ Prefab:
       propertyPath: pa
       value: 
       objectReference: {fileID: 1924780871}
-    - target: {fileID: 114000012218929480, guid: 94dadb65559384145ba1a11541377c42,
+    - target: {fileID: 114000011371947500, guid: 94dadb65559384145ba1a11541377c42,
         type: 2}
       propertyPath: pa
       value: 
       objectReference: {fileID: 1924780871}
-    - target: {fileID: 114000012218929480, guid: 94dadb65559384145ba1a11541377c42,
+    - target: {fileID: 114000010582464362, guid: 94dadb65559384145ba1a11541377c42,
         type: 2}
-      propertyPath: weapType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010635846364, guid: 94dadb65559384145ba1a11541377c42, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 603513575}
+    - target: {fileID: 114000012525400128, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94dadb65559384145ba1a11541377c42, type: 2}
@@ -2770,23 +2759,6 @@ Canvas:
   m_PrefabParentObject: {fileID: 223000012347039724, guid: 94dadb65559384145ba1a11541377c42,
     type: 2}
   m_PrefabInternal: {fileID: 197763807}
---- !u!1 &197763810 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000013739474508, guid: 94dadb65559384145ba1a11541377c42,
-    type: 2}
-  m_PrefabInternal: {fileID: 197763807}
---- !u!114 &197763811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 197763810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b90fc9a80274175865bae4202e0f24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thing: {fileID: 197763808}
 --- !u!1001 &206673904
 Prefab:
   m_ObjectHideFlags: 0
@@ -3558,6 +3530,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 239171264}
+--- !u!1 &256862097 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010684306748, guid: 94dadb65559384145ba1a11541377c42,
+    type: 2}
+  m_PrefabInternal: {fileID: 197763807}
 --- !u!1 &271852689
 GameObject:
   m_ObjectHideFlags: 0
@@ -4882,6 +4859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tp: {fileID: 905840017}
   rp: {fileID: 1151213708}
+  score: {fileID: 256862097}
 --- !u!1 &433038314
 GameObject:
   m_ObjectHideFlags: 0
@@ -8590,7 +8568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &814782574
 MonoBehaviour:
   m_ObjectHideFlags: 0
