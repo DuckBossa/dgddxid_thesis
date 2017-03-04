@@ -6,33 +6,33 @@ using GLOBAL;
 
 public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     int whichWeapon;
-	int swordDurr;
 	int[] weapLevel = new int[GAME.num_weapons];
     bool isAttacking,attackCalled;
     bool hasAmmo;
     Animator anim;
 	PlayerMovement pm;
 	Rigidbody2D rb;
+    ResitanceCalculator rc;
     public Sprite[] weapsp;
     public GameObject sw; /* button for switching weapons */
 
 
 
     void Awake() {
+        rc = GetComponent<ResitanceCalculator>();
 		pm = GetComponent<PlayerMovement> ();
 		rb = GetComponent<Rigidbody2D> ();
         hasAmmo = true;
 		attackCalled = false;
 		whichWeapon = 0;
-		weapLevel [0] = 0;
+		//weapLevel [0] = 0;
 		for (int i = 0; i < weapLevel.Length; i++) {
-			weapLevel [i] = -1;
+            weapLevel[i] = 0;//-1;
 			//PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
 		}
 		anim = GetComponent<Animator>();
-		swordDurr = GAME.WEAP_DURABILITY [0, 0];
         isAttacking = false;
-        sw.GetComponent<Image>().sprite = weapsp[0];
+        sw.GetComponent<Image>().sprite = weapsp[whichWeapon];
     }
 
 
@@ -96,7 +96,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 	}
 
 	public int Damage(){
-		return GAME.WEAP_DAMAGE[whichWeapon,weapLevel [whichWeapon]];
+        return (int)(GAME.WEAP_DAMAGE[0, GetWeapLevel(0)] * (1 /*can be modified to be above???*/ - rc.GetResistanceModifier(0)));
 	}
 
     public void CheckAttack() {
@@ -106,7 +106,6 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     }
 
 	public void SwordAttackCompleted(){
-		swordDurr--;
         CheckAttack();
 	}
 

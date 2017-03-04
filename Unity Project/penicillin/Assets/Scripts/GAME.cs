@@ -72,14 +72,15 @@ namespace GLOBAL{
 		public static readonly int[,] RP_UPGRADE = {{0,150,200},
 													{50,150,200},
 													{50,150,200}};
-        public static readonly int[,] WEAP_DURABILITY = new int[,] { {100,150,200},
-                                                                     {1000,1200,1500}, 
-                                                                     {10,10,15}
-                                                                    };
+
 		public static readonly int[,] WEAP_DAMAGE = new int[,]{ {10,20,30},
 													     {2,4,5},
-													  	 {10,20,30}};
-	}
+                                                         {10,20,30}};
+
+        public static readonly float[] RESISTANCE_TICK = {0.05f,0.01f, 0.05f};
+        public const float resitanceTickTimer = 30f;
+        public const float peakResist = 0.85f;
+    }
 
 
     public interface IDamage {
