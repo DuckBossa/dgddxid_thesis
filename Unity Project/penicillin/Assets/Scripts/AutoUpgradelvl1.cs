@@ -6,21 +6,23 @@ public class AutoUpgradelvl1 : MonoBehaviour {
 	public Canvas thing;
     public GameObject score; //score manager
 
+    Weapon1Controller wp;
     private ScoreManager smgr;
 	void Start()
 	{
-		Time.timeScale = 0;
+        wp = GetComponent<Weapon1Controller>();
+        Time.timeScale = 0;
 		StartCoroutine(LateStart(0.5f));
         smgr = score.GetComponent<ScoreManager>();
-	}
+    }
 
 	IEnumerator LateStart(float waitTime)
 	{
-		GetComponent<Weapon1Controller>().Upgrade();
-		smgr.researchPoints = 0;
-		Time.timeScale = 1;
-		thing.gameObject.SetActive (false);
-		yield return new WaitForSeconds(waitTime);
+        wp.Upgrade();
+        smgr.researchPoints = 0;
+        Time.timeScale = 1;
+        thing.gameObject.SetActive(false);
+        yield return new WaitForSeconds(waitTime);
 
 	}
 }

@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		whichWeapon = 0;
 		//weapLevel [0] = 0;
 		for (int i = 0; i < weapLevel.Length; i++) {
-            weapLevel[i] = 0;//-1;
+            weapLevel[i] = -1;//-1;
 			//PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
 		}
 		anim = GetComponent<Animator>();
@@ -73,14 +73,16 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 
 
 	public void Attack() {
-        anim.SetInteger("whichWeapon", whichWeapon);
-        anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
+        if(weapLevel[whichWeapon] != -1) {
+            anim.SetInteger("whichWeapon", whichWeapon);
+            anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
 
-        if ( !pm.isDash() && !isAttacking) {
-            if(!pm.isJump() && !pm.isFall()) 
-			    rb.velocity = new Vector2(0, rb.velocity.y);
-            isAttacking = true;
-		}
+            if (!pm.isDash() && !isAttacking) {
+                if (!pm.isJump() && !pm.isFall())
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                isAttacking = true;
+            }
+        }
 	}
 	public void SwitchWeapon() {
 		if (!isAttacking) {

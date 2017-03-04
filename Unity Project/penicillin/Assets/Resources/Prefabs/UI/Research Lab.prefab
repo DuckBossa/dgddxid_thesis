@@ -1335,7 +1335,6 @@ GameObject:
   - 222: {fileID: 222000013323293528}
   - 114: {fileID: 114000013276320894}
   - 114: {fileID: 114000011371947500}
-  - 114: {fileID: 114000012525400128}
   m_Layer: 5
   m_Name: Weapon 1
   m_TagString: Untagged
@@ -2525,6 +2524,7 @@ MonoBehaviour:
   wlv1: {fileID: 224000011126111868}
   wlv2: {fileID: 224000012803720184}
   wlv3: {fileID: 224000013660524562}
+  rlab: {fileID: 223000012347039724}
   lv3: {fileID: 114000013468426756}
   pa: {fileID: 0}
   weapType: 0
@@ -2898,9 +2898,10 @@ MonoBehaviour:
   wlv1: {fileID: 224000012157772774}
   wlv2: {fileID: 224000012602771406}
   wlv3: {fileID: 224000014293551104}
+  rlab: {fileID: 223000012347039724}
   lv3: {fileID: 114000012482918884}
   pa: {fileID: 0}
-  weapType: 0
+  weapType: 1
   score: {fileID: 1000010684306748}
 --- !u!114 &114000011860501280
 MonoBehaviour:
@@ -3106,9 +3107,10 @@ MonoBehaviour:
   wlv1: {fileID: 224000011471808364}
   wlv2: {fileID: 224000013194985890}
   wlv3: {fileID: 224000013109435804}
+  rlab: {fileID: 223000012347039724}
   lv3: {fileID: 114000013002487710}
   pa: {fileID: 0}
-  weapType: 1
+  weapType: 2
   score: {fileID: 1000010684306748}
 --- !u!114 &114000012273054166
 MonoBehaviour:
@@ -3371,19 +3373,6 @@ MonoBehaviour:
   m_Text: 'UPGRADE
 
     100 Points'
---- !u!114 &114000012525400128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013739474508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b90fc9a80274175865bae4202e0f24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thing: {fileID: 223000012347039724}
-  score: {fileID: 1000010684306748}
 --- !u!114 &114000012570704018
 MonoBehaviour:
   m_ObjectHideFlags: 1

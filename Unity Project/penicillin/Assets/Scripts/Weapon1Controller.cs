@@ -5,6 +5,7 @@ using GLOBAL;
 
 public class Weapon1Controller : MonoBehaviour {
     public RectTransform content, wlv1, wlv2, wlv3;
+    public Canvas rlab;
     public Image lv3;
 	public PlayerAttack pa;
     public int weapType;
@@ -27,7 +28,7 @@ public class Weapon1Controller : MonoBehaviour {
 
     void Start() {
         smgr = score.GetComponent<ScoreManager>();
-        Debug.Log(smgr.gameObject.name);
+        //Debug.Log(smgr.gameObject.name);
         wps = new Image[3]; //store the buttons, pls don't mess with the arrangement of the buttons in the editor
         for (int i = 0; i < wps.Length; i++) {
             wps[i] = content.GetChild(i).gameObject.GetComponent<Image>();
@@ -39,6 +40,13 @@ public class Weapon1Controller : MonoBehaviour {
         newpos = content.position;
         col = this.GetComponent<CanvasRenderer>();
         lvl = 0;
+
+        if (weapType == 0) {
+            smgr.researchPoints = 1000;
+            Upgrade();
+            smgr.researchPoints = 0;
+            rlab.gameObject.SetActive(false);
+        }
     }
 
     
