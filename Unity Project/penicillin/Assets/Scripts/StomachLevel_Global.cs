@@ -28,20 +28,19 @@ public class StomachLevel_Global : MonoBehaviour {
     public int acidCycleCounter;
     bool bossFight;
     bool bossDormant;
+    float pillTimer;
 
     private float waveTimeInSeconds, waveTime, levelTime, hplifetime, plifetime;
     private bool waspill;
     private Color defaultColor;
     private Vector3 defaultScale;
     private int waveCounter;
-    
-	void Start () {
-		waveTimeInSeconds = 60 * GAME.waveTimeInMins; /* Duration of one wave */
-		levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves; /* Duration of the entire level without boss fight // fix this; 3, 2, 1 */
+
+    void Start() {
         enemyCountSlider.value = 0;
-        enemyCountSlider.maxValue = GAME.num_bacteria_wave1;
-        defaultColor = screenTimer.color;
-        globalTime = 0; /* Time elapsed since the beginning of the level */
+        waveCounter = 1;
+        enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE[waveCounter - 1];
+
         pill.SetActive(false);
         loadoutIndicator.SetActive(false);
         waspill = false; /* Did the pill spawn? */
@@ -52,29 +51,32 @@ public class StomachLevel_Global : MonoBehaviour {
         waveTime = 0; /* Time elapsed for each wave (resets every next wave) */
         hplifetime = 0; /* Lifetime of health pickup */
         plifetime = 0; /* Lifetime of pill */
-        waveCounter = 1;
         kills = 0;
+
         //dialogues.SetActive(true);
         //c_controls.SetActive(false);
         //c_hud.SetActive(false);
     }
-	
+
     void OnEnable() {
         Time.timeScale = 1;
+        EnemyHealth.Dead += AddEnemyCount;
         bossFight = false;
     }
 
-    void FixedUpdate() {
+    void OnDisable() {
+        EnemyHealth.Dead -= AddEnemyCount;
     }
 
-	void Update () {
+
+    void Update() {
         /* Update Timers */
         globalTime += Time.deltaTime;
         waveTime += Time.deltaTime;
 
-        enemyCountSlider.value = kills; //temporary update manner, there's gotta be a better way to do this
+        //temporary update manner, there's gotta be a better way to do this
 
-        int timeRemaining = (int)waveTimeInSeconds - (int)waveTime;
+
 
         /* Health Pickup Management */
         // Once the acid rises and subsides acidCyclesPerHealthPickup times, spawn the health pickup if it hasn't spawned yet
@@ -88,7 +90,6 @@ public class StomachLevel_Global : MonoBehaviour {
             healthPickupIndicator.transform.position = healthPickup.transform.position;
             hplifetime = 0; /* reset lifetime tracker */
         }
-
         // Health pickup indicator resizing and shite
         if (healthPickup.activeInHierarchy) {
             hplifetime += Time.deltaTime; /* update the hp lifetime while it's active */
@@ -104,21 +105,7 @@ public class StomachLevel_Global : MonoBehaviour {
 
         ////////////////////////////////////////////////////////
         /* Research Lab Pill Management */
-
-        // Only spawn the pill when not in boss fight
         if (!bossFight) {
-            //if the time remaining in the wave is enough for the lifetime of the pill, spawn the pill
-            if (!pill.activeInHierarchy && waveTimeInSeconds - waveTime <= GAME.loadoutLifetime ) {
-                pill.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
-                pill.SetActive(true); /* activate */
-                screenTimer.color = Color.red; /* show lifetime timer */
-                loadoutIndicator.SetActive(true);/* activate indicator */
-                loadoutIndicator.transform.localScale = defaultScale;
-                loadoutIndicator.transform.position = pill.transform.position; /* set indicator position to where pill is */
-                plifetime = 0; /* set pill lifetime to 0 */
-                waspill = true; /* pill spawned */
-            }
-
             /*
                 Rescale the pill marker while it's active
                 Also update the timer which indicates:
@@ -127,29 +114,57 @@ public class StomachLevel_Global : MonoBehaviour {
             */
             if (pill.activeInHierarchy) {
                 plifetime += Time.deltaTime; /* update the pill lifetime while it's active */
+
+                int timeRemaining = (int)GAME.PillPickupTimeLimit - (int)plifetime;                
                 if (loadoutIndicator.transform.localScale.x >= 0) loadoutIndicator.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
                 else {
                     loadoutIndicator.SetActive(false);
                 }
-                string min = Mathf.Floor(timeRemaining / 60).ToString("00");
-                string sec = (timeRemaining % 60).ToString("00");
+                string min = Mathf.Floor( timeRemaining/ 60).ToString("00");
+                string sec = ( timeRemaining % 60).ToString("00");
                 screenTimer.text = min + ":" + sec;
             }
 
-            /* Player didn't reach loadoutsection in time, go straight to next wave */
-            /* Player picked up pill */
-            if (plifetime > GAME.loadoutLifetime || (!pill.activeInHierarchy && waspill)) {
-                globalTime = waveTimeInSeconds * waveCounter; /* reasonable, right? */
+            if (plifetime > GAME.PillPickupTimeLimit || (!pill.activeInHierarchy && waspill)) {
                 screenTimer.text = "";
-                waveTime = 0;
                 plifetime = 0; /* reset value so waveTime won't always be 0 */
-                waveTimeInSeconds = 60 * GAME.waveTimeInMins;
                 screenTimer.color = defaultColor;
                 pill.SetActive(false);
                 waspill = false;
             }
 
-            if (globalTime > levelTime) {
+        }
+
+
+    }
+
+    public void Reset() {
+        Time.timeScale = 1;
+        waveTimeInSeconds = 60 * GAME.waveTimeInMins;
+        globalTime = 0;
+        waveTime = 0;
+        waveCounter = 1;
+        kills = 0;
+        pill.SetActive(false);
+        enemyCountSlider.value = 0;
+        enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE[0];
+        screenTimer.color = defaultColor;
+    }
+
+    // int timeRemaining = (int)waveTimeInSeconds - (int)waveTime;
+    void Dialogue() {
+        dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
+        c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
+        c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
+    }
+
+
+    public void AddEnemyCount(int points) {
+        kills += points;
+        if (kills >= enemyCountSlider.maxValue && !bossFight) {
+            enemyCountSlider.value = enemyCountSlider.maxValue;
+
+            if (waveCounter >= 3) {
                 bossFight = true;
                 //enable boss health bar, disable level timer
                 screenTimer.gameObject.SetActive(false);
@@ -160,21 +175,29 @@ public class StomachLevel_Global : MonoBehaviour {
                     bossDormant = false;
                 }
             }
+            else {
+                //spawn pill
+                if (!pill.activeInHierarchy) {
+                    pill.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
+                    pill.SetActive(true); /* activate */
+                    screenTimer.color = Color.red; /* show lifetime timer */
+                    loadoutIndicator.SetActive(true);/* activate indicator */
+                    loadoutIndicator.transform.localScale = defaultScale;
+                    loadoutIndicator.transform.position = pill.transform.position; /* set indicator position to where pill is */
+                    plifetime = 0; /* set pill lifetime to 0 */
+                    waspill = true; /* pill spawned */
+                }
+                
+            }
+        }
+        else {
+            enemyCountSlider.value = kills;
         }
     }
 
-    public void Reset() {
-        Time.timeScale = 1;
-        waveTimeInSeconds = 60 * GAME.waveTimeInMins;
-        globalTime = 0;
-        waveTime = 0;
-        pill.SetActive(false);
-        screenTimer.color = defaultColor;
+    public void NextWaveStart() {
+        waveCounter++;
     }
 
-    void Dialogue() {
-        dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
-        c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
-        c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
-    }
+
 }

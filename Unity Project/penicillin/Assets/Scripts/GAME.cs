@@ -4,7 +4,7 @@ using System.Collections;
 namespace GLOBAL{
     
     public class GAME : MonoBehaviour {
-        public const int max_health = 10000;
+        public const int max_health = 50;
         public const float invulnerable_timer = 2f;
         public const float player_velocity = 3f;
         public const int acidCyclesPerHealthPickup = 1;
@@ -81,10 +81,8 @@ namespace GLOBAL{
         public const float resitanceTickTimer = 0.5f;
         public const float peakResist = 0.85f;
 
-
-        public const int num_bacteria_wave1 = 50;
-        public const int num_bacteria_wave2 = 100;
-        public const int num_bacteria_wave3 = 250;
+        public static readonly int[] NUM_BACTERIA_WAVE = { 50, 100, 150 };
+        public const int PillPickupTimeLimit = 20; // in seconds
     }
 
 

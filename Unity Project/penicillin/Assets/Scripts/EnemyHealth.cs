@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 using GLOBAL;
 
 public class EnemyHealth : MonoBehaviour, IDamage {
 
+    public static event Action<int> Dead;
+        
     public int maxHealth;
     public int currHealth;
     public int researchPoints = 10;//temporary value
@@ -47,7 +50,10 @@ public class EnemyHealth : MonoBehaviour, IDamage {
             smgr.AddPoints(researchPoints);
             Debug.Log(smgr.researchPoints);
             enemyCountSlider.value++;
-            player.GetComponent<StomachLevel_Global>().kills++;
+            if(Dead != null) {
+                Dead(1);
+            }
+            //player.GetComponent<StomachLevel_Global>().kills++;
 			//GetComponent<Enemy>().enabled = false;
 			Destroy(gameObject, 0.8f);
 		}

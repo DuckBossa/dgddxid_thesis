@@ -24,7 +24,9 @@ public class ResitanceCalculator : MonoBehaviour {
 
     void ResetResitance() {
         for (int i = 0; i < resistance.Length; i++) {
+            /*part of the code where you can have some form of negative resistance */
             resistance[i] = 0;
+
         }
     }
 
