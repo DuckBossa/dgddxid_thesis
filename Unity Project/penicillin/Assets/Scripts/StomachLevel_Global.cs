@@ -127,7 +127,7 @@ public class StomachLevel_Global : MonoBehaviour {
 
             if (plifetime > GAME.PillPickupTimeLimit || (!pill.activeInHierarchy && waspill)) {
                 screenTimer.text = "";
-                plifetime = 0; /* reset value so waveTime won't always be 0 */
+                plifetime = 0; 
                 screenTimer.color = defaultColor;
                 pill.SetActive(false);
                 waspill = false;
