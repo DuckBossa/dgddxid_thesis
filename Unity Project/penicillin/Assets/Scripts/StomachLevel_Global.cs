@@ -72,11 +72,7 @@ public class StomachLevel_Global : MonoBehaviour {
     void Update() {
         /* Update Timers */
         globalTime += Time.deltaTime;
-        waveTime += Time.deltaTime;
-
         //temporary update manner, there's gotta be a better way to do this
-
-
 
         /* Health Pickup Management */
         // Once the acid rises and subsides acidCyclesPerHealthPickup times, spawn the health pickup if it hasn't spawned yet
@@ -131,6 +127,7 @@ public class StomachLevel_Global : MonoBehaviour {
                 screenTimer.color = defaultColor;
                 pill.SetActive(false);
                 waspill = false;
+				NextWaveStart ();
             }
 
         }
@@ -163,21 +160,7 @@ public class StomachLevel_Global : MonoBehaviour {
         kills += points;
         if (kills >= enemyCountSlider.maxValue && !bossFight) {
             enemyCountSlider.value = enemyCountSlider.maxValue;
-
-            if (waveCounter >= 3) {
-                bossFight = true;
-                //enable boss health bar, disable level timer
-                screenTimer.gameObject.SetActive(false);
-                if (enemyCountSlider.isActiveAndEnabled) enemyCountSlider.gameObject.SetActive(false);
-                //spawn boss if not already there
-                if (!Shigellang_Dormant.activeInHierarchy && bossDormant) {
-                    Shigellang_Dormant.SetActive(true);
-                    bossDormant = false;
-                }
-            }
-            else {
-                //spawn pill
-                if (!pill.activeInHierarchy) {
+			if (!pill.activeInHierarchy) {
                     pill.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
                     pill.SetActive(true); /* activate */
                     screenTimer.color = Color.red; /* show lifetime timer */
@@ -186,9 +169,7 @@ public class StomachLevel_Global : MonoBehaviour {
                     loadoutIndicator.transform.position = pill.transform.position; /* set indicator position to where pill is */
                     plifetime = 0; /* set pill lifetime to 0 */
                     waspill = true; /* pill spawned */
-                }
-                
-            }
+        	}
         }
         else {
             enemyCountSlider.value = kills;
@@ -197,6 +178,26 @@ public class StomachLevel_Global : MonoBehaviour {
 
     public void NextWaveStart() {
         waveCounter++;
+		if (waveCounter > 3) {
+			bossFight = true;
+			//enable boss health bar, disable level timer
+			screenTimer.gameObject.SetActive (false);
+			if (enemyCountSlider.isActiveAndEnabled)
+				enemyCountSlider.gameObject.SetActive (false);
+			//spawn boss if not already there
+			if (!Shigellang_Dormant.activeInHierarchy && bossDormant) {
+				Shigellang_Dormant.SetActive (true);
+				bossDormant = false;
+			}
+		} 
+		else {
+			kills = 0;
+			enemyCountSlider.value = 0;
+			enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE [waveCounter - 1];
+			
+		}
+	
+
     }
 
 

@@ -6,7 +6,6 @@ using System;
 public class LoadoutController : MonoBehaviour {
 
     public Canvas loadoutCanvas;
-    public static event Action NextWave;
 
 
     void OnCollisionEnter2D(Collision2D col) {
@@ -19,8 +18,6 @@ public class LoadoutController : MonoBehaviour {
 
     public void DisableCanvas() {
         loadoutCanvas.gameObject.SetActive(false);
-        if (NextWave != null)
-            NextWave();
         Time.timeScale = 1;
         //waves
     }
