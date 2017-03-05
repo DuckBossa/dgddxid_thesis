@@ -2561,7 +2561,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00000000
+  m_Text: asd
 --- !u!114 &114000011412502842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2655,7 +2655,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010684306748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8241a97826c746448a4d6264eb604012, type: 3}
   m_Name: 
@@ -2663,6 +2663,7 @@ MonoBehaviour:
   researchPoints: 0
   totalResearchPoints: 0
   text: {fileID: 114000011380077158}
+  hudtext: {fileID: 0}
 --- !u!114 &114000011462537102
 MonoBehaviour:
   m_ObjectHideFlags: 1

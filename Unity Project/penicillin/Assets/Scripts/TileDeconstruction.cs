@@ -12,7 +12,7 @@ public class TileDeconstruction : MonoBehaviour {
 	}
 
     void OnEnable() {
-        tiles.Clear();
+        if(tiles!= null) tiles.Clear();
     }
 
 	void FixedUpdate(){

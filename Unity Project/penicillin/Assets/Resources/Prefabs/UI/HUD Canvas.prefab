@@ -679,6 +679,7 @@ MonoBehaviour:
   researchPoints: 0
   totalResearchPoints: 0
   text: {fileID: 114000012062900328}
+  hudtext: {fileID: 114000014144640188, guid: ab02c4f0dfad627449e691a720f4c922, type: 2}
 --- !u!114 &114000011788733510
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     public int maxHealth;
     public int currHealth;
     public int researchPoints = 10;//temporary value
-    public GameObject DamageText, score; //score manager
+    public GameObject DamageText, score, player;
     public Slider enemyCountSlider;
     private ScoreManager smgr;
     //GameObject player;
@@ -44,9 +44,10 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 			isDead = true;
 			//anim.SetTrigger("isDead");
 			manager.currEnemies--;
-			smgr.researchPoints += researchPoints;
-			smgr.totalResearchPoints += researchPoints;
+            smgr.AddPoints(researchPoints);
+            Debug.Log(smgr.researchPoints);
             enemyCountSlider.value++;
+            player.GetComponent<StomachLevel_Global>().kills++;
 			//GetComponent<Enemy>().enabled = false;
 			Destroy(gameObject, 0.8f);
 		}

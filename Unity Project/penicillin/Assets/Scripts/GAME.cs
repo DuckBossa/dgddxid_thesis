@@ -80,6 +80,11 @@ namespace GLOBAL{
         public static readonly float[] RESISTANCE_TICK = {0.5f,0.5f, 0.5f};
         public const float resitanceTickTimer = 0.5f;
         public const float peakResist = 0.85f;
+
+
+        public const int num_bacteria_wave1 = 50;
+        public const int num_bacteria_wave2 = 100;
+        public const int num_bacteria_wave3 = 250;
     }
 
 

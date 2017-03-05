@@ -17,6 +17,7 @@ public class StomachLevel_Global : MonoBehaviour {
     public Transform[] loadouts;
     public Transform[] health;
     public Transform player;
+    public int kills;
     public GameObject pill,
         loadoutIndicator,
         Shigellang_Dormant,
@@ -33,11 +34,12 @@ public class StomachLevel_Global : MonoBehaviour {
     private Color defaultColor;
     private Vector3 defaultScale;
     private int waveCounter;
+    
 	void Start () {
 		waveTimeInSeconds = 60 * GAME.waveTimeInMins; /* Duration of one wave */
 		levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves; /* Duration of the entire level without boss fight // fix this; 3, 2, 1 */
         enemyCountSlider.value = 0;
-        enemyCountSlider.maxValue = 50;
+        enemyCountSlider.maxValue = GAME.num_bacteria_wave1;
         defaultColor = screenTimer.color;
         globalTime = 0; /* Time elapsed since the beginning of the level */
         pill.SetActive(false);
@@ -51,7 +53,7 @@ public class StomachLevel_Global : MonoBehaviour {
         hplifetime = 0; /* Lifetime of health pickup */
         plifetime = 0; /* Lifetime of pill */
         waveCounter = 1;
-
+        kills = 0;
         //dialogues.SetActive(true);
         //c_controls.SetActive(false);
         //c_hud.SetActive(false);
@@ -69,6 +71,8 @@ public class StomachLevel_Global : MonoBehaviour {
         /* Update Timers */
         globalTime += Time.deltaTime;
         waveTime += Time.deltaTime;
+
+        enemyCountSlider.value = kills; //temporary update manner, there's gotta be a better way to do this
 
         int timeRemaining = (int)waveTimeInSeconds - (int)waveTime;
 
