@@ -78,10 +78,10 @@ namespace GLOBAL{
                                                          {10,20,30}};
 
         public static readonly float[] RESISTANCE_TICK = {0.5f,0.5f, 0.5f};
-        public const float resitanceTickTimer = 0.5f;
+        public const float resitanceTickTimer = 30f;
         public const float peakResist = 0.85f;
 
-        public static readonly int[] NUM_BACTERIA_WAVE = { 50, 100, 150 };
+        public static readonly int[] NUM_BACTERIA_WAVE = { 10, 10, 10 };
         public const int PillPickupTimeLimit = 20; // in seconds
     }
 
