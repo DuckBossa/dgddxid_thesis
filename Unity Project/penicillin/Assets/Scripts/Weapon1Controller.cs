@@ -9,10 +9,9 @@ public class Weapon1Controller : MonoBehaviour {
     public Image lv3;
 	public PlayerAttack pa;
     public int weapType;
-    public GameObject score;
+    public GameObject lvlmgr;
 
     private Image[] wps;
-    private ScoreManager smgr;
     private int cur;
     private int distBetButtons;
     private Vector2 newpos;
@@ -20,6 +19,7 @@ public class Weapon1Controller : MonoBehaviour {
     private int lvl;
     private CanvasRenderer col;
     private float movingTimer;
+    private StomachLevel_Global smgr;
 
     // Check for costs and disable applicable upgrades
     public void CheckAvailability(int rp) {
@@ -27,7 +27,7 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     void Start() {
-        smgr = score.GetComponent<ScoreManager>();
+        smgr = lvlmgr.GetComponent<StomachLevel_Global>();
         //Debug.Log(smgr.gameObject.name);
         wps = new Image[3]; //store the buttons, pls don't mess with the arrangement of the buttons in the editor
         for (int i = 0; i < wps.Length; i++) {
@@ -42,9 +42,7 @@ public class Weapon1Controller : MonoBehaviour {
         lvl = 0;
 
         if (weapType == 0) {
-            smgr.researchPoints = 1000;
             Upgrade();
-            smgr.researchPoints = 0;
             rlab.gameObject.SetActive(false);
         }
     }
@@ -68,7 +66,7 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     public void Upgrade() {
-		if (smgr.researchPoints >= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ]) {
+		if (smgr.rpcurrent >= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ]) {
 			if (!moving) {
 				movingTimer = 0;
 				lvl++; // current weapon lvl, 0 means not purchased
@@ -76,7 +74,7 @@ public class Weapon1Controller : MonoBehaviour {
 				// upgrade weapon
 				pa.UpgradeWeapon(weapType);
 				// change research points accordingly
-				smgr.researchPoints -= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ];
+				smgr.rpcurrent -= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ];
 
 
 				// move objects

@@ -10,7 +10,7 @@ public class Tutorial_Shigella : MonoBehaviour, IDamage {
     public int researchPoints = 10;//temporary value
     public GameObject DamageText, score;
 
-    private ScoreManager smgr;
+    //private ScoreManager smgr;
 
 
     //GameObject player;
@@ -21,7 +21,7 @@ public class Tutorial_Shigella : MonoBehaviour, IDamage {
     Enemy enemy;
 
 	void Start () {
-        smgr = score.GetComponent<ScoreManager>();
+        //smgr = score.GetComponent<ScoreManager>();
         //collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
@@ -43,8 +43,8 @@ public class Tutorial_Shigella : MonoBehaviour, IDamage {
 		if (!isDead) {
 			isDead = true;
 			//anim.SetTrigger("isDead");
-			smgr.researchPoints += researchPoints;
-			smgr.totalResearchPoints += researchPoints;
+			//smgr.researchPoints += researchPoints;
+			//smgr.totalResearchPoints += researchPoints;
             this.gameObject.SetActive(false);
         }
 

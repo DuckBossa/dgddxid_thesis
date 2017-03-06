@@ -10,7 +10,7 @@ public class GameOverScreenHandler : MonoBehaviour {
     public Text tp, rp;
     public GameObject score;
 
-    private ScoreManager smgr;
+    //private ScoreManager smgr;
 
     public void RestartLevel() {
         SceneManager.LoadScene("LevelStomach");// TEMPORARY ONLY; We somehow have to pass what level to restart
@@ -21,7 +21,7 @@ public class GameOverScreenHandler : MonoBehaviour {
     }
 
     void Start() {
-        smgr = score.GetComponent<ScoreManager>();
+        //smgr = score.GetComponent<ScoreManager>();
         gameObject.SetActive(false);
         timePlayed = tp;
         researchPoints = rp;
@@ -32,6 +32,6 @@ public class GameOverScreenHandler : MonoBehaviour {
         string min = Mathf.Floor(totalTime / 60).ToString("00");
         string sec = (totalTime % 60).ToString("00");
         timePlayed.text = min + ":" + sec;
-        researchPoints.text = "" + smgr.totalResearchPoints;
+        //researchPoints.text = "" + smgr.totalResearchPoints;
     }
 }

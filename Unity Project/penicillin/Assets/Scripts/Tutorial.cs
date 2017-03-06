@@ -274,7 +274,7 @@ public class Tutorial : MonoBehaviour {
             c_controls.SetActive(true);
             c_hud.SetActive(true);
             minimap.enabled = true;
-            rpoints.GetComponent<ScoreManager>().AddPoints(200);
+            //rpoints.GetComponent<ScoreManager>().AddPoints(200);
         }
 
         if(cur_msg == 27) { // spawn bacteria

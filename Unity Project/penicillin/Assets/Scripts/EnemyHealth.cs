@@ -11,9 +11,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     public int maxHealth;
     public int currHealth;
     public int researchPoints = 10;//temporary value
-    public GameObject DamageText, score, player;
-    public Slider enemyCountSlider;
-    private ScoreManager smgr;
+    public GameObject DamageText;
     //GameObject player;
     Animator anim;
     bool isDead;
@@ -21,10 +19,11 @@ public class EnemyHealth : MonoBehaviour, IDamage {
     //BoxCollider2D collider;
     Enemy enemy;
     EnemyManager manager;
+    GameObject lvmanager;
 
-	void Start () {
-        smgr = score.GetComponent<ScoreManager>();
-       
+
+    void Start () {
+        lvmanager = GameObject.Find("Managers");
         //collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
@@ -47,9 +46,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
 			isDead = true;
 			//anim.SetTrigger("isDead");
 			manager.currEnemies--;
-            smgr.AddPoints(researchPoints);
-            Debug.Log(smgr.researchPoints);
-            enemyCountSlider.value++;
+            lvmanager.GetComponent<StomachLevel_Global>().Addpoints(researchPoints);
             if(Dead != null) {
                 Dead(1);
             }

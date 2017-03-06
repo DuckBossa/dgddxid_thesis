@@ -256,8 +256,8 @@ MonoBehaviour:
   currHealth: 0
   researchPoints: 100
   DamageText: {fileID: 1000012323185882, guid: 6c6cd6e4120da43eabafefccd90f2396, type: 2}
-  score: {fileID: 1000013240475954, guid: 7d8da02831d0953428b673f14533da63, type: 2}
-  player: {fileID: 1000010050320506, guid: 1e261031b3e247e4d9935f9c57b7f5f9, type: 2}
+  score: {fileID: 0}
+  lvmanager: {fileID: 1000010050320506, guid: 1e261031b3e247e4d9935f9c57b7f5f9, type: 2}
   enemyCountSlider: {fileID: 114000012498383868, guid: 7d8da02831d0953428b673f14533da63,
     type: 2}
 --- !u!114 &114000013194057134
