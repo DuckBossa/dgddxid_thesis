@@ -42,7 +42,7 @@ public class Weapon1Controller : MonoBehaviour {
         lvl = 0;
 
         if (weapType == 0) {
-            Upgrade();
+            SubtleUpgrade();
             rlab.gameObject.SetActive(false);
         }
     }
@@ -63,6 +63,14 @@ public class Weapon1Controller : MonoBehaviour {
                 this.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void SubtleUpgrade() {
+        lvl++;
+        pa.UpgradeWeapon(weapType);
+        content.position = new Vector2(content.position.x, content.position.y - distBetButtons);
+        wlv1.GetChild(0).GetComponent<Image>().enabled = false;
+        smgr.rpcurrent -= GAME.RP_UPGRADE[weapType, pa.GetWeapLevel(weapType) < 0 ? 0 : pa.GetWeapLevel(weapType)];
     }
 
     public void Upgrade() {
