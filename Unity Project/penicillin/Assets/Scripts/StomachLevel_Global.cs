@@ -6,18 +6,19 @@ using System.Collections;
 public class StomachLevel_Global : MonoBehaviour {
     // Use this for initialization
 
-        /*
-         To-do:
-         Somehow count the number of waves to determine when to change the value of bossFight boolean
-         Adjust the required number of enemies to eliminate per wave
-         */
-    public Text screenTimer;
+    /*
+     To-do:
+     Somehow count the number of waves to determine when to change the value of bossFight boolean
+     Adjust the required number of enemies to eliminate per wave
+     */
+
+    public int kills, rpcurrent, rptotal;
+    public Text screenTimer, rphud, rplab;
     public Slider enemyCountSlider;
     public static float globalTime;
     public Transform[] loadouts;
     public Transform[] health;
     public Transform player;
-    public int kills;
     public GameObject pill,
         loadoutIndicator,
         Shigellang_Dormant,
@@ -40,6 +41,11 @@ public class StomachLevel_Global : MonoBehaviour {
         enemyCountSlider.value = 0;
         waveCounter = 1;
         enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE[waveCounter - 1];
+
+        rpcurrent = 0;
+        rptotal = 0;
+        rphud.text = rpcurrent.ToString("D6");
+        rplab.text = rpcurrent.ToString("D6");
 
         pill.SetActive(false);
         loadoutIndicator.SetActive(false);
@@ -200,5 +206,11 @@ public class StomachLevel_Global : MonoBehaviour {
 
     }
 
-
+    public void Addpoints(int val) {
+        rpcurrent += val;
+        rptotal += val;
+        rphud.text = rpcurrent.ToString("D6");
+        rplab.text = rpcurrent.ToString("D6");
+        enemyCountSlider.value++;
+    }
 }
