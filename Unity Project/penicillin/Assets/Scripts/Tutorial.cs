@@ -114,7 +114,6 @@ public class Tutorial : MonoBehaviour {
 
     void FixedUpdate() {
         if(active) timeSlider.value = globalTime / levelTime;
-        Debug.Log(cur_msg);
     }
 
     void Update() {

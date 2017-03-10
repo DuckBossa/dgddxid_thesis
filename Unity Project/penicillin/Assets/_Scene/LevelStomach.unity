@@ -2717,6 +2717,10 @@ Prefab:
       propertyPath: lvlmgr
       value: 
       objectReference: {fileID: 665904960}
+    - target: {fileID: 1000012999677508, guid: 94dadb65559384145ba1a11541377c42, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000011446334346, guid: 94dadb65559384145ba1a11541377c42, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 94dadb65559384145ba1a11541377c42, type: 2}
@@ -7147,11 +7151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kills: 0
-  rpcurrent: 0
-  rptotal: 0
   screenTimer: {fileID: 604221249}
-  rphud: {fileID: 2073003792}
-  rplab: {fileID: 1339177174}
   enemyCountSlider: {fileID: 1544594840}
   loadouts:
   - {fileID: 1657131348}
