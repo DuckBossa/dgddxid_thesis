@@ -114,6 +114,7 @@ public class Tutorial : MonoBehaviour {
 
     void FixedUpdate() {
         if(active) timeSlider.value = globalTime / levelTime;
+        Debug.Log(cur_msg);
     }
 
     void Update() {
@@ -263,7 +264,7 @@ public class Tutorial : MonoBehaviour {
             dialogues.SetActive(false);
             c_controls.SetActive(true);
             minimap.enabled = true;
-            //activate loadout
+            //activate rlab
             t_loadoutTrigger.SetActive(true);
             t_loadoutMarker.SetActive(true);
             t_loadoutMarker.transform.position = t_loadoutTrigger.transform.position;
@@ -274,6 +275,10 @@ public class Tutorial : MonoBehaviour {
             c_controls.SetActive(true);
             c_hud.SetActive(true);
             minimap.enabled = true;
+            GetComponent<ResearchPointsManager>().rpcurrent += 200;
+            GetComponent<ResearchPointsManager>().rptotal += 200;
+            GetComponent<ResearchPointsManager>().rphud.text = GetComponent<ResearchPointsManager>().rpcurrent.ToString("D6");
+            GetComponent<ResearchPointsManager>().rplab.text = GetComponent<ResearchPointsManager>().rpcurrent.ToString("D6");
             //rpoints.GetComponent<ScoreManager>().AddPoints(200);
         }
 

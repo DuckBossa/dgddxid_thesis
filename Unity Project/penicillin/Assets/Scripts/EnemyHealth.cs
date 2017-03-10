@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
             //anim.SetTrigger("isDead");
             manager.currEnemies--;
 
-            lvmanager.GetComponent<StomachLevel_Global>().Addpoints(researchPoints);
+            lvmanager.GetComponent<ResearchPointsManager>().Addpoints(researchPoints);
             if (Dead != null) {
                 Dead(1);
             }

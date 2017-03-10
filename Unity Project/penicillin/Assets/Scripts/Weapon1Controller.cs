@@ -19,7 +19,7 @@ public class Weapon1Controller : MonoBehaviour {
     private int lvl;
     private CanvasRenderer col;
     private float movingTimer;
-    private StomachLevel_Global smgr;
+    private ResearchPointsManager smgr;
 
     // Check for costs and disable applicable upgrades
     public void CheckAvailability(int rp) {
@@ -27,7 +27,7 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     void Start() {
-        smgr = lvlmgr.GetComponent<StomachLevel_Global>();
+        smgr = lvlmgr.GetComponent<ResearchPointsManager>();
         //Debug.Log(smgr.gameObject.name);
         wps = new Image[3]; //store the buttons, pls don't mess with the arrangement of the buttons in the editor
         for (int i = 0; i < wps.Length; i++) {
@@ -82,7 +82,7 @@ public class Weapon1Controller : MonoBehaviour {
 				// upgrade weapon
 				pa.UpgradeWeapon(weapType);
 				// change research points accordingly
-				smgr.rpcurrent -= GAME.RP_UPGRADE [weapType,pa.GetWeapLevel (weapType) < 0 ? 0 : pa.GetWeapLevel (weapType) ];
+                smgr.Deductpoints(GAME.RP_UPGRADE[weapType, pa.GetWeapLevel(weapType) < 0 ? 0 : pa.GetWeapLevel(weapType)]);
 
 
 				// move objects

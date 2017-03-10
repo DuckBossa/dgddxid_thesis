@@ -12,8 +12,8 @@ public class StomachLevel_Global : MonoBehaviour {
      Adjust the required number of enemies to eliminate per wave
      */
 
-    public int kills, rpcurrent, rptotal;
-    public Text screenTimer, rphud, rplab;
+    public int kills;
+    public Text screenTimer;
     public Slider enemyCountSlider;
     public static float globalTime;
     public Transform[] loadouts;
@@ -47,11 +47,6 @@ public class StomachLevel_Global : MonoBehaviour {
             spawnWaveLVLS[i - 1].SetActive(false);
         }
         enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE[waveCounter - 1];
-
-        rpcurrent = 0;
-        rptotal = 0;
-        rphud.text = rpcurrent.ToString("D6");
-        rplab.text = rpcurrent.ToString("D6");
 
         pill.SetActive(false);
         loadoutIndicator.SetActive(false);
@@ -213,13 +208,5 @@ public class StomachLevel_Global : MonoBehaviour {
             }
             spawnWaveLVLS[waveCounter - 1].SetActive(true);
 		}
-    }
-
-    public void Addpoints(int val) {
-        rpcurrent += val;
-        rptotal += val;
-        rphud.text = rpcurrent.ToString("D6");
-        rplab.text = rpcurrent.ToString("D6");
-        enemyCountSlider.value++;
     }
 }
