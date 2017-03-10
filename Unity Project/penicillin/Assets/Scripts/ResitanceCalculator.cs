@@ -3,14 +3,27 @@ using GLOBAL;
 using System.Collections.Generic;
 using System.Collections;
 
-public class ResitanceCalculator : MonoBehaviour {
+public class ResitanceCalculator : Singleton<ResitanceCalculator> {
+
+
+    public static ResitanceCalculator Instance {
+        get {
+            return ((ResitanceCalculator)mInstance);
+        }
+        set {
+            mInstance = value;
+        }
+    }
+
 
     float[] resistance = new float[3];
     float timer;
     
 	void Start () {
         timer = 0;
-        ResetResitance();
+        for(int i = 0; i < resistance.Length; i++) {
+            ResetResitance(i);
+        }
 	}
 
 
@@ -22,18 +35,13 @@ public class ResitanceCalculator : MonoBehaviour {
 	}
 
 
-    void ResetResitance() {
-        for (int i = 0; i < resistance.Length; i++) {
-            /*part of the code where you can have some form of negative resistance */
-            resistance[i] = 0;
-
-        }
+    void ResetResitance(int weapID) {
+        resistance[weapID] = 0;
     }
 
     void AddResistance() {
         timer = 0;
         for (int i = 0; i < resistance.Length; i++) {
-            //might change, since htis is a linear increase in resistance. might not reset time anymore at this point
             resistance[i] += GAME.RESISTANCE_TICK[i];
             if(resistance[i] >= GAME.peakResist) {
                 resistance[i] = GAME.peakResist;

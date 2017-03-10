@@ -46,8 +46,8 @@ namespace GLOBAL{
         public const float FlyingShigella_projlife = 4f;
         public const float FlyingShigella_projspeed = 2f;
 
-        public const int Shigellang_Fighting_MaxHealth = 15;
-        public const int Shigellang_Dormant_MaxHealth = 15;
+        public const int Shigellang_Fighting_MaxHealth = 500;
+        public const int Shigellang_Dormant_MaxHealth = 100;
         public const float Shigellang_Dormant_TimeBetweenAttacks = 1f;
         public const float Shigellang_mvspd = 1.25f;
         public const float Shigellang_walkdist = 2f;
@@ -73,15 +73,16 @@ namespace GLOBAL{
 													{50,150,200},
 													{50,150,200}};
 
-		public static readonly int[,] WEAP_DAMAGE = new int[,]{ {10,20,30},
-													     {2,4,5},
+		public static readonly int[,] WEAP_DAMAGE = new int[,]{ {15,30,40},
+													     {2,4,6},
                                                          {10,20,30}};
 
-        public static readonly float[] RESISTANCE_TICK = {0.5f,0.5f, 0.5f};
+        public const int LevelStomach_WAVECOUNTER = 3;
+        public static readonly float[] RESISTANCE_TICK = {0.2f,0.1f, 0.1f};
         public const float resitanceTickTimer = 30f;
         public const float peakResist = 0.85f;
 
-        public static readonly int[] NUM_BACTERIA_WAVE = { 10, 10, 10 };
+        public static readonly int[] NUM_BACTERIA_WAVE = { 1, 1, 1 };
         public const int PillPickupTimeLimit = 20; // in seconds
     }
 

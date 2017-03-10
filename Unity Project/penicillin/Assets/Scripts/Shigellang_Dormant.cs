@@ -35,33 +35,7 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
         if(damageTimer > GAME.Shigellang_Dormant_TimeBetweenAttacks) {
             vulnerable = true;
         }
-        //2/3 health
-        if (health > GAME.Shigellang_Dormant_MaxHealth / 3 && health < 2 * GAME.Shigellang_Dormant_MaxHealth / 3) {
-            GetComponent<SpriteRenderer>().sprite = dmg1;
-        }
-        //1/3 health
-        else if (health > 1 && health < GAME.Shigellang_Dormant_MaxHealth / 3) {
-            GetComponent<SpriteRenderer>().sprite = dmg2;
-        }
-        //broken
-        else if (health == 1) { //1 more hit to finally break 
-            GetComponent<SpriteRenderer>().sprite = broken;
-        }
-        //ded
-        else if(health == 0) {
-            //play awakening animation
-            //reconfigure slider
-            bossIcon.sprite = awake;
-            healthSlider.maxValue = GAME.Shigellang_Fighting_MaxHealth;
-            healthSlider.value = healthSlider.maxValue;
-            healthSlider.minValue = 0;
-            //spawn the boss
-            tdc.BossBattle();
-			Fighting_Shigella.SetActive (true);
-			Fighting_Shigella.GetComponent<ShigellangController>().healthSlider = healthSlider;
-            //set gameobject to inactive
-            gameObject.SetActive(false);
-        }
+       
     }
 
     public void TakeDamage(int dmg) {
@@ -76,6 +50,35 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
             }
             vulnerable = false;
             damageTimer = 0;
+
+            //2/3 health
+            if (health > GAME.Shigellang_Dormant_MaxHealth / 3 && health < 2 * GAME.Shigellang_Dormant_MaxHealth / 3) {
+                GetComponent<SpriteRenderer>().sprite = dmg1;
+            }
+            //1/3 health
+            else if (health > 1 && health < GAME.Shigellang_Dormant_MaxHealth / 3) {
+                GetComponent<SpriteRenderer>().sprite = dmg2;
+            }
+            //broken
+            else if (health == 1) { //1 more hit to finally break 
+                GetComponent<SpriteRenderer>().sprite = broken;
+            }
+            //ded
+            else if (health <= 0) {
+                //play awakening animation
+                //reconfigure slider
+                bossIcon.sprite = awake;
+                healthSlider.maxValue = GAME.Shigellang_Fighting_MaxHealth;
+                healthSlider.value = healthSlider.maxValue;
+                healthSlider.minValue = 0;
+                //spawn the boss
+                tdc.BossBattle();
+                Fighting_Shigella.SetActive(true);
+                Fighting_Shigella.GetComponent<ShigellangController>().healthSlider = healthSlider;
+                //set gameobject to inactive
+                gameObject.SetActive(false);
+            }
+
         }
     }
 }

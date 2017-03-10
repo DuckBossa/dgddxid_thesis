@@ -26,6 +26,8 @@ public class StomachLevel_Global : MonoBehaviour {
         dialogues,
         c_controls,
         c_hud;
+    public GameObject[] spawnWaveLVLS;
+    public GameObject bossSpawnDefense;
     public int acidCycleCounter;
     bool bossFight;
     bool bossDormant;
@@ -40,6 +42,10 @@ public class StomachLevel_Global : MonoBehaviour {
     void Start() {
         enemyCountSlider.value = 0;
         waveCounter = 1;
+        spawnWaveLVLS[waveCounter - 1].SetActive(true);
+        for(int i = waveCounter + 1; i <= GAME.LevelStomach_WAVECOUNTER; i++) {
+            spawnWaveLVLS[i - 1].SetActive(false);
+        }
         enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE[waveCounter - 1];
 
         rpcurrent = 0;
@@ -166,15 +172,16 @@ public class StomachLevel_Global : MonoBehaviour {
         kills += points;
         if (kills >= enemyCountSlider.maxValue && !bossFight) {
             enemyCountSlider.value = enemyCountSlider.maxValue;
-			if (!pill.activeInHierarchy) {
-                    pill.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
-                    pill.SetActive(true); /* activate */
-                    screenTimer.color = Color.red; /* show lifetime timer */
-                    loadoutIndicator.SetActive(true);/* activate indicator */
-                    loadoutIndicator.transform.localScale = defaultScale;
-                    loadoutIndicator.transform.position = pill.transform.position; /* set indicator position to where pill is */
-                    plifetime = 0; /* set pill lifetime to 0 */
-                    waspill = true; /* pill spawned */
+            if (!pill.activeInHierarchy) {
+                spawnWaveLVLS[waveCounter - 1].SetActive(false);
+                pill.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
+                pill.SetActive(true); /* activate */
+                screenTimer.color = Color.red; /* show lifetime timer */
+                loadoutIndicator.SetActive(true);/* activate indicator */
+                loadoutIndicator.transform.localScale = defaultScale;
+                loadoutIndicator.transform.position = pill.transform.position; /* set indicator position to where pill is */
+                plifetime = 0; /* set pill lifetime to 0 */
+                waspill = true; /* pill spawned */
         	}
         }
         else {
@@ -195,15 +202,17 @@ public class StomachLevel_Global : MonoBehaviour {
 				Shigellang_Dormant.SetActive (true);
 				bossDormant = false;
 			}
+            bossSpawnDefense.SetActive(true);
 		} 
 		else {
 			kills = 0;
 			enemyCountSlider.value = 0;
 			enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE [waveCounter - 1];
-			
+            foreach(var wave in spawnWaveLVLS) {
+                wave.SetActive(false);
+            }
+            spawnWaveLVLS[waveCounter - 1].SetActive(true);
 		}
-	
-
     }
 
     public void Addpoints(int val) {
