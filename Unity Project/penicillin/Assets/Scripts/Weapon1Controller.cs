@@ -81,6 +81,9 @@ public class Weapon1Controller : MonoBehaviour {
 
 				// upgrade weapon
 				pa.UpgradeWeapon(weapType);
+                if(ResitanceCalculator.Instance != null) {
+                    ResitanceCalculator.Instance.ResetResitance(weapType);
+                }
 				// change research points accordingly
                 smgr.Deductpoints(GAME.RP_UPGRADE[weapType, pa.GetWeapLevel(weapType) < 0 ? 0 : pa.GetWeapLevel(weapType)]);
 

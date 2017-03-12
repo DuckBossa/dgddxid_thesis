@@ -35,8 +35,9 @@ public class ResitanceCalculator : Singleton<ResitanceCalculator> {
 	}
 
 
-    void ResetResitance(int weapID) {
+    public void ResetResitance(int weapID) {
         resistance[weapID] = 0;
+        timer = 0;
     }
 
     void AddResistance() {

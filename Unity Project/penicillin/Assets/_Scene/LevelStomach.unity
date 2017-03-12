@@ -20051,6 +20051,11 @@ Prefab:
       propertyPath: sw
       value: 
       objectReference: {fileID: 420367265}
+    - target: {fileID: 114000010157573716, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: loadout
+      value: 
+      objectReference: {fileID: 197763808}
     m_RemovedComponents:
     - {fileID: 114000013590322674, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
