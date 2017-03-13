@@ -27,13 +27,13 @@ public class Tutorial : MonoBehaviour {
         timeLimitInSeconds = 60 * GAME.waveTimeInMins;
         levelTime = 60 * GAME.waveTimeInMins * GAME.num_waves;
 
+        //disable everything
         c_controls.SetActive(false);
         c_hud.SetActive(false);
         c_loadout.SetActive(false);
         c_pause.SetActive(false);
         minimap.enabled = false;
-
-        //t_loadoutTrigger.SetActive(false);
+        t_loadoutTrigger.SetActive(false);
         t_loadoutMarker.SetActive(false);
 
         globalTime = 0;
