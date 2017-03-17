@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using GLOBAL;
+using System;
 using System.Collections;
 
 public class StomachLevel_Global : MonoBehaviour {
@@ -24,7 +25,7 @@ public class StomachLevel_Global : MonoBehaviour {
         c_controls,
         c_hud;
     public GameObject[] spawnWaveLVLS;
-    public GameObject bossSpawnDefense;
+    public GameObject bossSpawnDefense, angry, normal;
     public int acidCycleCounter;
     bool bossFight;
     bool bossDormant;
@@ -59,7 +60,8 @@ public class StomachLevel_Global : MonoBehaviour {
         kills = 0;
 
         /* For Dialogue */
-        cur_msg = 0;
+        cur_msg = -1;
+        
         msgs = new string[] {
             //introductory message
             "Our host's stomach has been infected by Shigella bacteria. Get rid of them before they pose a threat to our host's health!",
@@ -94,7 +96,44 @@ public class StomachLevel_Global : MonoBehaviour {
             "Try again once more; I'm sure you'll do a great job!",
             "" //automatically go to the main menu after this message
         };
+
+        Dialogue();
+        NextMessage();
     }
+
+    public void NextMessage() {
+        try {
+            dialogueTextArea.text = msgs[++cur_msg];
+        }
+        catch (Exception e) {
+            throw (e);
+        }
+        //set Penny's face
+        if (cur_msg == 0 || cur_msg == 1) {
+            angry.SetActive(true);
+            normal.SetActive(false);
+        }
+        else {
+            angry.SetActive(false);
+            normal.SetActive(true);
+        }
+
+        //events
+        if (cur_msg == 4) // first dialogue is over
+            Dialogue();
+    }
+
+    void Dialogue() {
+        dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
+        c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
+        c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
+        foreach (GameObject g in spawnWaveLVLS) {
+            g.gameObject.SetActive(g.gameObject.activeInHierarchy ? false : true);
+        }
+        gameObject.GetComponent<ResitanceCalculator>().enabled = gameObject.GetComponent<ResitanceCalculator>().isActiveAndEnabled ? false : true;
+        //Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+    }
+
 
     void OnEnable() {
         Time.timeScale = 1;
@@ -106,7 +145,6 @@ public class StomachLevel_Global : MonoBehaviour {
         EnemyHealth.Dead -= AddEnemyCount;
     }
 
-
     void Update() {
         /* Update Timers */
         globalTime += Time.deltaTime;
@@ -117,7 +155,7 @@ public class StomachLevel_Global : MonoBehaviour {
         if (acidCycleCounter == GAME.acidCyclesPerHealthPickup && !healthPickup.activeInHierarchy) {
             /* Health Pickup */
             healthPickup.SetActive(true);
-            healthPickup.transform.position = health[(int)Random.Range(0, health.Length)].transform.position;
+            healthPickup.transform.position = health[(int)UnityEngine.Random.Range(0, health.Length)].transform.position;
             /* Indicator */
             healthPickupIndicator.SetActive(true);
             healthPickupIndicator.transform.localScale = defaultScale;
@@ -187,16 +225,6 @@ public class StomachLevel_Global : MonoBehaviour {
     }
 
     // int timeRemaining = (int)waveTimeInSeconds - (int)waveTime;
-    void Dialogue() {
-        dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
-        c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
-        c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
-        foreach (GameObject g in spawnWaveLVLS) {
-            g.gameObject.SetActive(g.gameObject.activeInHierarchy ? false : true);
-        }
-        gameObject.GetComponent<ResitanceCalculator>().enabled = gameObject.GetComponent<ResitanceCalculator>().isActiveAndEnabled ? false : true;
-    }
-
 
     public void AddEnemyCount(int points) {
         kills += points;
@@ -204,7 +232,7 @@ public class StomachLevel_Global : MonoBehaviour {
             enemyCountSlider.value = enemyCountSlider.maxValue;
             if (!pill.activeInHierarchy) {
                 spawnWaveLVLS[waveCounter - 1].SetActive(false);
-                pill.transform.position = loadouts[(int)Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
+                pill.transform.position = loadouts[(int)UnityEngine.Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
                 pill.SetActive(true); /* activate */
                 screenTimer.color = Color.red; /* show lifetime timer */
                 loadoutIndicator.SetActive(true);/* activate indicator */
@@ -244,4 +272,6 @@ public class StomachLevel_Global : MonoBehaviour {
             spawnWaveLVLS[waveCounter - 1].SetActive(true);
 		}
     }
+
+    
 }

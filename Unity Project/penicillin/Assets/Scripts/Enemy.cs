@@ -38,7 +38,6 @@ public class Enemy : MonoBehaviour {
         withinRange = false;
         stunDuration = .5f;
         isStunned = false;
-        gameObject.SetActive(false);
     }
 
     void Update() {

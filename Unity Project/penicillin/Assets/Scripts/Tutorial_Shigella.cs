@@ -18,9 +18,10 @@ public class Tutorial_Shigella : MonoBehaviour, IDamage {
 	void Start () {
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
+        gameObject.SetActive(false);
     }
 
-	public void TakeDamage(int damage) {
+    public void TakeDamage(int damage) {
         if (isDead) return;
 		currHealth -= damage;
 		ShowDamage (damage.ToString());

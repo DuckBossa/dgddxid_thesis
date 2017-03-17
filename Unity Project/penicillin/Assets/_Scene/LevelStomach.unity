@@ -7186,6 +7186,8 @@ MonoBehaviour:
   - {fileID: 783457218}
   - {fileID: 1924533772}
   bossSpawnDefense: {fileID: 1784670641}
+  angry: {fileID: 1761062986}
+  normal: {fileID: 1642817888}
   acidCycleCounter: 0
 --- !u!114 &665904963
 MonoBehaviour:
@@ -8929,7 +8931,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a43287db6e1a59f43a4d8ec82c45851c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 718c498854ed7a0489271583b2bf69a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15697,7 +15699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 665904962}
         m_MethodName: NextMessage
         m_Mode: 1
         m_Arguments:
