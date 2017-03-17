@@ -284,6 +284,7 @@ MonoBehaviour:
     m_Bits: 1280
   isStunned: 0
   c: {fileID: 223000012305248544}
+  player: {fileID: 1000014031088176, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
 --- !u!114 &114000013977841510
 MonoBehaviour:
   m_ObjectHideFlags: 1

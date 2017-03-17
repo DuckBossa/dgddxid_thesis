@@ -8,27 +8,16 @@ public class Tutorial_Shigella : MonoBehaviour, IDamage {
     public int maxHealth;
     public int currHealth;
     public int researchPoints = 10;//temporary value
-    public GameObject DamageText, score;
+    public GameObject DamageText, score, mgr;
 
-    //private ScoreManager smgr;
-
-
-    //GameObject player;
     Animator anim;
     bool isDead;
     //float stunDuration;
     //BoxCollider2D collider;
-    Enemy enemy;
 
 	void Start () {
-        //smgr = score.GetComponent<ScoreManager>();
-        //collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         currHealth = maxHealth;
-        //player = GameObject.Find("Penny");
-        //stunDuration = .5f;
-		TakeDamage(1);
-        enemy = GetComponent<Enemy>();
     }
 
 	public void TakeDamage(int damage) {
@@ -36,16 +25,13 @@ public class Tutorial_Shigella : MonoBehaviour, IDamage {
 		currHealth -= damage;
 		ShowDamage (damage.ToString());
 		if (currHealth <= 0) Death();
-        enemy.isStunned = true;	
     }
 
     void Death() {
 		if (!isDead) {
 			isDead = true;
-			//anim.SetTrigger("isDead");
-			//smgr.researchPoints += researchPoints;
-			//smgr.totalResearchPoints += researchPoints;
             this.gameObject.SetActive(false);
+            mgr.GetComponent<Tutorial>().enemySpawned = true;
         }
 
     }

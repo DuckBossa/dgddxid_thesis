@@ -14,10 +14,10 @@ public class Tutorial : MonoBehaviour {
     public Transform player;
     public GameObject c_loadout, c_controls, c_pause, c_hud, dialogues, t_loadoutTrigger, t_loadoutMarker, enemy, rpoints;
     public Camera minimap;
-    public bool checkpoint, researchDone;
+    public bool checkpoint, researchDone, enemySpawned;
 
     private string[] messages;
-    private bool active, cp1, cp2, cp3, cp4, cp5, cp6, cp7, enemySpawned;
+    private bool active, cp1, cp2, cp3, cp4, cp5, cp6, cp7;
     private float timeLimitInSeconds, localTime, levelTime;
     private Vector3 defaultScale;
     private Text text;
@@ -188,23 +188,14 @@ public class Tutorial : MonoBehaviour {
             researchDone = false;
         }
 
-        if(cur_msg == 27 && !enemySpawned) {
+        if(cur_msg == 27 && enemySpawned) {
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
             player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
             minimap.enabled = false;
-            enemySpawned = true;
         }
 
-        if(!enemy.gameObject.activeInHierarchy && enemySpawned) {
-            c_controls.SetActive(false);
-            text.text = messages[++cur_msg];
-            dialogues.SetActive(true);
-            player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;
-            minimap.enabled = false;
-			enemySpawned = false;
-        }
 
         if (t_loadoutTrigger.activeInHierarchy) {
             if (t_loadoutMarker.transform.localScale.x >= 0) t_loadoutMarker.transform.localScale -= new Vector3(GAME.loadoutIndicatorDecaySpeed, GAME.loadoutIndicatorDecaySpeed, 0);
@@ -288,7 +279,7 @@ public class Tutorial : MonoBehaviour {
             c_hud.SetActive(true);
             minimap.enabled = true;
             enemy.SetActive(true);
-            enemySpawned = true;
+            //enemySpawned = true;
         }
 
 		if (cur_msg == 34) {

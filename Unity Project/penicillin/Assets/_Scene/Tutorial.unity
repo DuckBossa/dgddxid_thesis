@@ -765,13 +765,28 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000010284134586, guid: 9c5ab75758f7e304fa8482fe7fac7210, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000012579849116, guid: 9c5ab75758f7e304fa8482fe7fac7210,
         type: 2}
       propertyPath: c
       value: 
       objectReference: {fileID: 1649597062}
+    - target: {fileID: 114000012579849116, guid: 9c5ab75758f7e304fa8482fe7fac7210,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 626106844}
+    - target: {fileID: 114000012579849116, guid: 9c5ab75758f7e304fa8482fe7fac7210,
+        type: 2}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 626106849}
+    - target: {fileID: 114000011108430726, guid: 9c5ab75758f7e304fa8482fe7fac7210,
+        type: 2}
+      propertyPath: mgr
+      value: 
+      objectReference: {fileID: 573347796}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c5ab75758f7e304fa8482fe7fac7210, type: 2}
   m_IsPrefabParent: 0
@@ -796,7 +811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &105363128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +829,7 @@ MonoBehaviour:
   researchPoints: 10
   DamageText: {fileID: 1000012323185882, guid: 6c6cd6e4120da43eabafefccd90f2396, type: 2}
   score: {fileID: 1000010684306748, guid: 94dadb65559384145ba1a11541377c42, type: 2}
+  mgr: {fileID: 573347796}
 --- !u!114 &105363129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,6 +847,7 @@ MonoBehaviour:
     m_Bits: 1280
   isStunned: 0
   c: {fileID: 1649597062}
+  player: {fileID: 626106844}
 --- !u!50 &105363130
 Rigidbody2D:
   serializedVersion: 2
@@ -3111,6 +3128,7 @@ MonoBehaviour:
   minimap: {fileID: 321514796}
   checkpoint: 0
   researchDone: 0
+  enemySpawned: 0
 --- !u!114 &573347799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3483,6 +3501,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!1 &626106844 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014031088176, guid: fd63a716ba13f794db82e52bf4755ada,
+    type: 2}
+  m_PrefabInternal: {fileID: 1437413549}
+--- !u!114 &626106849 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000010157573716, guid: fd63a716ba13f794db82e52bf4755ada,
+    type: 2}
+  m_PrefabInternal: {fileID: 1437413549}
+  m_Script: {fileID: 11500000, guid: 4ea95cc8942b82342b0dbd26aa99ae2c, type: 3}
 --- !u!1001 &674002535
 Prefab:
   m_ObjectHideFlags: 0

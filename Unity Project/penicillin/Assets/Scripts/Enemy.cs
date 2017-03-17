@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
     public Canvas c;
     //SpriteRenderer psprite;
     Animator myAnim;
-    GameObject player;
+    public GameObject player;
     PlayerHealth playerHealth;
     Rigidbody2D myBody;
     //Rigidbody2D playerBody;
@@ -20,16 +20,11 @@ public class Enemy : MonoBehaviour {
 
 
     void Start() {
-        //player-related
-        player = GameObject.Find("Penny");
         playerHealth = player.GetComponent<PlayerHealth>();
         penny = player.transform;
-        //psprite = player.GetComponent<SpriteRenderer>();
-        //playerBody = player.GetComponent<Rigidbody2D>();
 
-        //enemy-related
         enemyHealth = GetComponent<EnemyHealth>();
-        myTrans = this.transform;
+        myTrans = gameObject.transform;
         myBody = this.GetComponent<Rigidbody2D>();
         SpriteRenderer mySprite = this.GetComponent<SpriteRenderer>();
         myWidth = mySprite.bounds.extents.x;
@@ -43,18 +38,13 @@ public class Enemy : MonoBehaviour {
         withinRange = false;
         stunDuration = .5f;
         isStunned = false;
+        gameObject.SetActive(false);
     }
 
     void Update() {
         timer += Time.deltaTime;
         if (isStunned) stunTimer += Time.deltaTime;
         if (stunTimer > stunDuration) isStunned = false;
-        /*
-        // check if player is dead, set trigger to animate death
-        if (playerHealth.currHealth <= 0) {
-            
-        }
-        */
     }
 
     public void Stun() {
