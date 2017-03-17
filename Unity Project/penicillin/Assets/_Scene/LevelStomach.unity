@@ -7152,6 +7152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kills: 0
   screenTimer: {fileID: 604221249}
+  dialogueTextArea: {fileID: 2128537975}
   enemyCountSlider: {fileID: 1544594840}
   loadouts:
   - {fileID: 1657131348}

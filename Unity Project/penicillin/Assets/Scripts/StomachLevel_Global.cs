@@ -4,16 +4,13 @@ using GLOBAL;
 using System.Collections;
 
 public class StomachLevel_Global : MonoBehaviour {
-    // Use this for initialization
-
     /*
-     To-do:
-     Somehow count the number of waves to determine when to change the value of bossFight boolean
-     Adjust the required number of enemies to eliminate per wave
-     */
+         To-do:
+         
+    */
 
     public int kills;
-    public Text screenTimer;
+    public Text screenTimer, dialogueTextArea;
     public Slider enemyCountSlider;
     public static float globalTime;
     public Transform[] loadouts;
@@ -37,7 +34,8 @@ public class StomachLevel_Global : MonoBehaviour {
     private bool waspill;
     private Color defaultColor;
     private Vector3 defaultScale;
-    private int waveCounter;
+    private int waveCounter, cur_msg;
+    private string[] msgs;
 
     void Start() {
         enemyCountSlider.value = 0;
@@ -60,9 +58,42 @@ public class StomachLevel_Global : MonoBehaviour {
         plifetime = 0; /* Lifetime of pill */
         kills = 0;
 
-        //dialogues.SetActive(true);
-        //c_controls.SetActive(false);
-        //c_hud.SetActive(false);
+        /* For Dialogue */
+        cur_msg = 0;
+        msgs = new string[] {
+            //introductory message
+            "Our host's stomach has been infected by Shigella bacteria. Get rid of them before they pose a threat to our host's health!",
+            "Be careful of the green acid! If you fall into the pit, you'll get damaged!",
+            "To progress through the level, eliminate enough enemies in the shortest amount of time possible.",
+            "Good luck!",
+            "",
+
+            //after finishing wave 1
+            "Great work, Private!",
+            "You managed to clear out the first wave of bacteria that's harming our host.",
+            "The research lab is going to appear soon, as it's time for your host to take another dose of antibiotics. Don't miss it! Make sure you upgrade your weapons wisely!",
+            "",
+
+            //after finishing wave 3
+            "Oh no... Is that what I think it is?",
+            "It's Shigellang: The Indifferent!",
+            "You have to help me stop him before he takes over our host! Quick, break its outer shell and defeat it once and for all!",
+            "",
+
+            //if success, cur_msg = 13
+            "You did it! You stopped the Shigella invasion by properly using antibiotics!",
+            "Our fight does not end here. More and more bacteria evolve as time passes, and many people still need to be educated on antibiotic misuse and abuse.",
+            "I'm sure you'll do a great job of informing everyone! I believe in you, Private!",
+            "",
+
+            //if loss, cur_msg = 17
+            "Oh no! Shigella have taken over our host; we've lost the battle!",
+            "This is a minor victory for Shigella today, but in the grand scheme of things, humans are at a greater risk.",
+            "More bacteria, not just Shigella, will continuously mutate and cause harm to humans.",
+            "It's not yet too late for us to change our ways, Private!",
+            "Try again once more; I'm sure you'll do a great job!",
+            "" //automatically go to the main menu after this message
+        };
     }
 
     void OnEnable() {
@@ -160,6 +191,10 @@ public class StomachLevel_Global : MonoBehaviour {
         dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
         c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
         c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
+        foreach (GameObject g in spawnWaveLVLS) {
+            g.gameObject.SetActive(g.gameObject.activeInHierarchy ? false : true);
+        }
+        gameObject.GetComponent<ResitanceCalculator>().enabled = gameObject.GetComponent<ResitanceCalculator>().isActiveAndEnabled ? false : true;
     }
 
 
