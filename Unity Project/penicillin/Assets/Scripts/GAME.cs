@@ -73,8 +73,8 @@ namespace GLOBAL{
 													{50,150,200},
 													{50,150,200}};
 
-		public static readonly int[,] WEAP_DAMAGE = new int[,]{ {15,30,40},
-													     {2,4,6},
+		public static readonly int[,] WEAP_DAMAGE = new int[,]{ {15,30,60},
+													     {3,6,12},
                                                          {10,20,30}};
 
         public const int LevelStomach_WAVECOUNTER = 3;
