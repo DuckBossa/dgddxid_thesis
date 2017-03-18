@@ -90,7 +90,13 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         }
         anim.SetInteger("whichWeapon", whichWeapon);
         anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
-        sw.GetComponent<Image>().sprite = weapsp[whichWeapon*GAME.num_weapons]; // + currentlevel
+        if(weapLevel[whichWeapon] < 0) {
+            sw.GetComponent<Image>().sprite = weapsp[GAME.num_weapons * 3];
+        }
+        else {
+            sw.GetComponent<Image>().sprite = weapsp[whichWeapon * GAME.num_weapons];
+        }
+       // + currentlevel
     }
 
 	public void SetAttack(bool a) {
