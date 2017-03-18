@@ -32,7 +32,7 @@ public class StomachLevel_Global : MonoBehaviour {
     float pillTimer;
 
     private float waveTimeInSeconds, waveTime, levelTime, hplifetime, plifetime;
-    private bool waspill;
+    private bool waspill, freeze, w1;
     private Color defaultColor;
     private Vector3 defaultScale;
     private int waveCounter, cur_msg;
@@ -57,7 +57,10 @@ public class StomachLevel_Global : MonoBehaviour {
         waveTime = 0; /* Time elapsed for each wave (resets every next wave) */
         hplifetime = 0; /* Lifetime of health pickup */
         plifetime = 0; /* Lifetime of pill */
-        kills = 0;
+        //kills = 0;
+        kills = 19;
+        freeze = false;
+        w1 = false;
 
         /* For Dialogue */
         cur_msg = -1;
@@ -66,8 +69,8 @@ public class StomachLevel_Global : MonoBehaviour {
             //introductory message
             "Our host's stomach has been infected by Shigella bacteria. Get rid of them before they pose a threat to our host's health!",
             "Be careful of the green acid! If you fall into the pit, you'll get damaged!",
-            "To progress through the level, eliminate enough enemies in the shortest amount of time possible.",
-            "Good luck!",
+            "To progress through the level, eliminate enough enemies as quick as you can. Keep an eye on your progress bar, as well as health pickups along the way.",
+            "I know you can do this. Good luck!",
             "",
 
             //after finishing wave 1
@@ -98,7 +101,6 @@ public class StomachLevel_Global : MonoBehaviour {
         };
 
         Dialogue();
-        NextMessage();
     }
 
     public void NextMessage() {
@@ -121,17 +123,36 @@ public class StomachLevel_Global : MonoBehaviour {
         //events
         if (cur_msg == 4) // first dialogue is over
             Dialogue();
+        if (cur_msg == 8) { // first wave is over, unfreeze time scale, spawn trigger
+            Dialogue();
+            freeze = false;
+
+            {
+                spawnWaveLVLS[waveCounter - 1].SetActive(false);
+                pill.transform.position = loadouts[(int)UnityEngine.Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
+                pill.SetActive(true); /* activate */
+                screenTimer.color = Color.red; /* show lifetime timer */
+                loadoutIndicator.SetActive(true);/* activate indicator */
+                loadoutIndicator.transform.localScale = defaultScale;
+                loadoutIndicator.transform.position = pill.transform.position; /* set indicator position to where pill is */
+                plifetime = 0; /* set pill lifetime to 0 */
+                waspill = true; /* pill spawned */
+            }
+        }
+
     }
 
     void Dialogue() {
+        // Set Penny's animation to idle
         dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
+        if (dialogues.activeInHierarchy) NextMessage();
         c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
         c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
-        foreach (GameObject g in spawnWaveLVLS) {
-            g.gameObject.SetActive(g.gameObject.activeInHierarchy ? false : true);
+        for(int i = 0; i < waveCounter; i++) {
+            spawnWaveLVLS[i].SetActive(spawnWaveLVLS[i].activeInHierarchy ? false : true);
         }
         gameObject.GetComponent<ResitanceCalculator>().enabled = gameObject.GetComponent<ResitanceCalculator>().isActiveAndEnabled ? false : true;
-        //Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+        if (freeze) Time.timeScale = Time.timeScale == 1 ? 0 : 1;
     }
 
 
@@ -148,7 +169,13 @@ public class StomachLevel_Global : MonoBehaviour {
     void Update() {
         /* Update Timers */
         globalTime += Time.deltaTime;
-        //temporary update manner, there's gotta be a better way to do this
+
+        /* Dialogues */
+        if (kills >= GAME.NUM_BACTERIA_WAVE[waveCounter-1] && waveCounter == 1 && !w1) {//wave 1 over
+            w1 = true;
+            freeze = true;
+            Dialogue();
+        }
 
         /* Health Pickup Management */
         // Once the acid rises and subsides acidCyclesPerHealthPickup times, spawn the health pickup if it hasn't spawned yet
@@ -207,8 +234,6 @@ public class StomachLevel_Global : MonoBehaviour {
             }
 
         }
-
-
     }
 
     public void Reset() {
@@ -230,7 +255,7 @@ public class StomachLevel_Global : MonoBehaviour {
         kills += points;
         if (kills >= enemyCountSlider.maxValue && !bossFight) {
             enemyCountSlider.value = enemyCountSlider.maxValue;
-            if (!pill.activeInHierarchy) {
+            if (!pill.activeInHierarchy && waveCounter != 1) {
                 spawnWaveLVLS[waveCounter - 1].SetActive(false);
                 pill.transform.position = loadouts[(int)UnityEngine.Random.Range(0, loadouts.Length)].transform.position; /* Randomize position */
                 pill.SetActive(true); /* activate */
