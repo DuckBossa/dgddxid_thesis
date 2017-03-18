@@ -19967,6 +19967,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010412385610, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
       propertyPath: m_LocalPosition.x
       value: -11.139
@@ -20059,6 +20064,12 @@ Prefab:
       propertyPath: loadout
       value: 
       objectReference: {fileID: 197763808}
+    - target: {fileID: 114000010571315824, guid: fd63a716ba13f794db82e52bf4755ada,
+        type: 2}
+      propertyPath: weapsp.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: b1f0c917baddd6541886db57b336359d,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114000013590322674, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fd63a716ba13f794db82e52bf4755ada, type: 2}
