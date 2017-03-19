@@ -38,6 +38,10 @@ public class EnemyManager : MonoBehaviour {
 
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
         var temp = Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation) as GameObject;
+        var isWalking = temp.GetComponent<Enemy>();
+        if (isWalking != null) {
+            isWalking.SetupPlayer(playerHealth.gameObject);
+        }
         temp.GetComponent<EnemyHealth>().SetManager(this);
         temp.GetComponent<EnemyHealth>().SetStomachLevelGlobal(slg);
         currEnemies++;

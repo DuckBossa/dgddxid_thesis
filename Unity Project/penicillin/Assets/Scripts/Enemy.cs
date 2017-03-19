@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour {
     void Start() {
         playerHealth = player.GetComponent<PlayerHealth>();
         penny = player.transform;
-
         enemyHealth = GetComponent<EnemyHealth>();
         myTrans = gameObject.transform;
         myBody = this.GetComponent<Rigidbody2D>();
@@ -44,6 +43,12 @@ public class Enemy : MonoBehaviour {
         timer += Time.deltaTime;
         if (isStunned) stunTimer += Time.deltaTime;
         if (stunTimer > stunDuration) isStunned = false;
+    }
+
+    public void SetupPlayer(GameObject playerGO) {
+        player = playerGO;
+        playerHealth = playerGO.GetComponent<PlayerHealth>();
+        penny = playerGO.transform;
     }
 
     public void Stun() {
@@ -103,6 +108,7 @@ public class Enemy : MonoBehaviour {
                     Vector2 myVel = myBody.velocity;
                     myVel.x = 0;
                     myBody.velocity = myVel;
+                    Debug.Log("????");
                     if (timer > timeBetweenAttacks) Attack();
                     //rotate the sprite to the proper orientation
                     Vector3 currRot = myTrans.eulerAngles;
