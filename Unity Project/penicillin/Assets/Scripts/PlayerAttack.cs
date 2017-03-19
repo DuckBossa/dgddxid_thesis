@@ -14,8 +14,8 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 	Rigidbody2D rb;
     ResitanceCalculator rc;
     public Sprite[] weapsp;
-    public GameObject sw; /* button for switching weapons */
-
+    public GameObject sw, mgr; /* button for switching weapons */
+    public Image resistanceDisplay;
 
 
     void Awake() {
@@ -40,6 +40,8 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		if (attackCalled && !pm.isDash ())
 			Attack ();
         anim.SetBool("isAttacking", isAttacking);
+        if (weapLevel[whichWeapon] != -1) resistanceDisplay.fillAmount = 1.0f - (mgr.GetComponent<ResitanceCalculator>().GetResistanceModifier(whichWeapon) / GAME.peakResist);
+        else resistanceDisplay.fillAmount = 0;
     }
 
     public bool isAttack() {

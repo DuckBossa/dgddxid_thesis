@@ -5,7 +5,6 @@ using System.Collections;
 
 public class ResitanceCalculator : Singleton<ResitanceCalculator> {
 
-
     public static ResitanceCalculator Instance {
         get {
             return ((ResitanceCalculator)mInstance);
@@ -14,7 +13,6 @@ public class ResitanceCalculator : Singleton<ResitanceCalculator> {
             mInstance = value;
         }
     }
-
 
     float[] resistance = new float[3];
     float timer;
@@ -26,12 +24,12 @@ public class ResitanceCalculator : Singleton<ResitanceCalculator> {
         }
 	}
 
-
 	void Update () {
         timer += Time.deltaTime;
         if(timer >= GAME.resitanceTickTimer) {
             AddResistance();
         }
+
 	}
 
 
