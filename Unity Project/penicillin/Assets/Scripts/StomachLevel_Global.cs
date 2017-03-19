@@ -29,10 +29,10 @@ public class StomachLevel_Global : MonoBehaviour {
     public int acidCycleCounter;
     bool bossFight;
     bool bossDormant;
-    float pillTimer;
+    float pillTimer, dialogueTimer;
 
     private float waveTimeInSeconds, waveTime, levelTime, hplifetime, plifetime;
-    private bool waspill, freeze, w1;
+    private bool waspill, freeze, w1, w3, dw1;
     private Color defaultColor;
     private Vector3 defaultScale;
     private int waveCounter, cur_msg;
@@ -61,6 +61,8 @@ public class StomachLevel_Global : MonoBehaviour {
         kills = 19;
         freeze = false;
         w1 = false;
+        w3 = false;
+        dw1 = false;
 
         /* For Dialogue */
         cur_msg = -1;
@@ -171,9 +173,24 @@ public class StomachLevel_Global : MonoBehaviour {
         globalTime += Time.deltaTime;
 
         /* Dialogues */
-        if (kills >= GAME.NUM_BACTERIA_WAVE[waveCounter-1] && waveCounter == 1 && !w1) {//wave 1 over
+        /// Wave 1
+        if (kills >= GAME.NUM_BACTERIA_WAVE[waveCounter-1] && waveCounter == 1 && !dw1) {
             w1 = true;
-            freeze = true;
+            dw1 = true;
+        }
+        // delay the dialogue for a second
+        if (w1 && waveCounter == 1) {
+            dialogueTimer += Time.deltaTime;
+            if(dialogueTimer > 1) {
+                freeze = true;
+                Dialogue();
+                w1 = false;
+            }
+        }
+
+        /// Wave 3
+        if(kills >= GAME.NUM_BACTERIA_WAVE[waveCounter-1] && waveCounter == 3 && !w3) {
+            w3 = true;
             Dialogue();
         }
 
