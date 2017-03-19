@@ -6,13 +6,14 @@ using System;
 public class LoadoutController : MonoBehaviour {
 
     public Canvas loadoutCanvas;
-
+    public GameObject loadoutIndicator;
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.name == "Penny") {
             loadoutCanvas.gameObject.SetActive(true);
             Time.timeScale = 0;
             gameObject.SetActive(false);
+            loadoutIndicator.SetActive(false);
         }
     }
 

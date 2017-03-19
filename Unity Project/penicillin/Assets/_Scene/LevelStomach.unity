@@ -6857,6 +6857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadoutCanvas: {fileID: 197763808}
+  loadoutIndicator: {fileID: 1416124335}
 --- !u!114 &604221249
 MonoBehaviour:
   m_ObjectHideFlags: 0
