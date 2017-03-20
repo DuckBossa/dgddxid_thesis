@@ -110,6 +110,11 @@ public class PlayerHealth : MonoBehaviour {
 
 
     void PostGameDeath() {
+        StartCoroutine("ShowStatsDeath");
+    }
+
+    IEnumerator ShowStatsDeath() {
+        yield return new WaitForSeconds(1.0f);
         Time.timeScale = 0;
         hud.gameObject.SetActive(false);
         pause.gameObject.SetActive(false);
@@ -131,6 +136,10 @@ public class PlayerHealth : MonoBehaviour {
         controls.gameObject.SetActive(false);
         gamewon.gameObject.SetActive(true);
         //GameOverScreenHandler.displayStats();
+    }
+
+    IEnumerator ShowStatsWon() {
+        yield return new WaitForSeconds(1.0f);
     }
 
 }
