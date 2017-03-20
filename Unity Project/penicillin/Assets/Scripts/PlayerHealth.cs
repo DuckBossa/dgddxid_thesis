@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System;
 using UnityEngine.UI;
 using GLOBAL;
 
 
 public class PlayerHealth : MonoBehaviour {
+
+    public static event Action Dead;
 
     public int currHealth;
     public static bool isInvulnerable;
@@ -38,6 +41,14 @@ public class PlayerHealth : MonoBehaviour {
         deadColor = new Color(1f, 0f, 0f, 1f);
         aliveColor = new Color(0f, 1f, 0f, 1f);
         fill.color = aliveColor;
+    }
+
+    void OnEnable() {
+        ShigellangController.Dead += Success;
+    }
+
+    void OnDisable() {
+        ShigellangController.Dead -= Success;
     }
 
     void Update() {
@@ -86,7 +97,9 @@ public class PlayerHealth : MonoBehaviour {
         isDead = true;
         anim.SetBool("gameOver", isDead);
         anim.SetTrigger("die");
-
+        if( Dead!= null) {
+            Dead();
+        }
         /// Death animation?
         //Debug.Log("player dead");
         //anim.SetTrigger("Die");
