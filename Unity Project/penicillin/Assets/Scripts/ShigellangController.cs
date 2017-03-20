@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using GLOBAL;
 
 
 public class ShigellangController : MonoBehaviour,IDamage {
 
-	public Canvas hud, pause, loadout, gameover, controls, gamewon;
+    public static event Action Dead;
+
+
+
+    public Canvas hud, pause, loadout, gameover, controls, gamewon;
 
     public LayerMask mask_map;
     public LayerMask mask_player;
@@ -49,7 +54,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
         isLeapUp = false;
         isLeapAttacking = false;
         anim.SetBool("isMidair", false);
-        idleTimerMax = Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
+        idleTimerMax = UnityEngine.Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
         projectile_parent = GameObject.Find("Projectile Parent");
         currHealth = GAME.Shigellang_Fighting_MaxHealth;
     }
@@ -104,7 +109,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     void WhatDo() {
         if (playerSpotted) {
-            int rnglul = Random.Range(0, 5);
+            int rnglul = UnityEngine.Random.Range(0, 5);
             switch (rnglul) {
                 case 0:
                     Idle();
@@ -129,7 +134,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
         }
         else {
-            int rnglul = Random.Range(0, 4);
+            int rnglul = UnityEngine.Random.Range(0, 4);
             switch (rnglul) {
                 case 0:
                     Idle();
@@ -188,11 +193,11 @@ public class ShigellangController : MonoBehaviour,IDamage {
         isWalking = false;
         isLeaping = false;
         setVel(Vector2.zero);
-        idleTimerMax = Random.Range(0.35f, GAME.Shigellang_TimeIdleRange);
+        idleTimerMax = UnityEngine.Random.Range(0.35f, GAME.Shigellang_TimeIdleRange);
     }
     void LeapPlatform() {
         Collider2D[] stuff = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), GAME.Shigellang_RadarMap, mask_map);
-        int rnglul = Random.Range(0, stuff.Length);
+        int rnglul = UnityEngine.Random.Range(0, stuff.Length);
 
         if (currOnTop != null && currOnTop == stuff[rnglul]) {
             rnglul = (rnglul + 1) % stuff.Length;
@@ -270,13 +275,9 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     public void Death() {
         anim.SetTrigger("dead");
-		Time.timeScale = 0;
-		hud.gameObject.SetActive(false);
-		pause.gameObject.SetActive(false);
-		loadout.gameObject.SetActive(false);
-		controls.gameObject.SetActive(false);
-		gamewon.gameObject.SetActive (true);
-		//GameOverScreenHandler.displayStats();
+        if(Dead!= null) {
+            Dead();
+        }
         Destroy(gameObject, 1f);
     }
 

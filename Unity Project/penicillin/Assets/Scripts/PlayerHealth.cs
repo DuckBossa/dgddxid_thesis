@@ -33,6 +33,8 @@ public class PlayerHealth : MonoBehaviour {
         healthSlider.value = currHealth;
         isInvulnerable = false;
         currTime = 0;
+        isDead = false;
+        anim.SetBool("gameOver", isDead);
         deadColor = new Color(1f, 0f, 0f, 1f);
         aliveColor = new Color(0f, 1f, 0f, 1f);
         fill.color = aliveColor;
@@ -58,7 +60,7 @@ public class PlayerHealth : MonoBehaviour {
 
 
     public void TakeDamage() {
-        if (!isInvulnerable && !playerMovement.amDashing()) {
+        if (!isInvulnerable && !playerMovement.amDashing() && !isDead) {
             anim.SetTrigger("isOuchie");
             damaged = true;
             fill.color = Color.Lerp(deadColor, aliveColor, (float) currHealth/GAME.max_health);
@@ -82,19 +84,40 @@ public class PlayerHealth : MonoBehaviour {
 	}
     void Death() {
         isDead = true;
-        Time.timeScale = 0;
+        anim.SetBool("gameOver", isDead);
+        anim.SetTrigger("die");
 
         /// Death animation?
         //Debug.Log("player dead");
         //anim.SetTrigger("Die");
         //playerMovement.enabled = false;
+        //GameOverScreenHandler.displayStats();
+        
+    }
 
+
+    void PostGameDeath() {
+        Time.timeScale = 0;
         hud.gameObject.SetActive(false);
         pause.gameObject.SetActive(false);
         loadout.gameObject.SetActive(false);
         controls.gameObject.SetActive(false);
         gameover.gameObject.SetActive(true);
-        //GameOverScreenHandler.displayStats();
-        
     }
+
+    public void Success() {
+        anim.SetBool("gameOver", true);
+        anim.SetTrigger("win");
+    }
+
+    public void Win() {
+        Time.timeScale = 0;
+        hud.gameObject.SetActive(false);
+        pause.gameObject.SetActive(false);
+        loadout.gameObject.SetActive(false);
+        controls.gameObject.SetActive(false);
+        gamewon.gameObject.SetActive(true);
+        //GameOverScreenHandler.displayStats();
+    }
+
 }

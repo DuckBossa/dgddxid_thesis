@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void SetupPlayer(GameObject playerGO) {
-        player = playerGO;
+        player = playerGO;  
         playerHealth = playerGO.GetComponent<PlayerHealth>();
         penny = playerGO.transform;
     }
