@@ -75,7 +75,7 @@ public class Tutorial : MonoBehaviour {
             "",
             "You can chain up to three dashes at a time. Just remember that dashing takes some time to regenerate.",
             "You will have to attack enemy bacteria pretty soon. For that, use the buttons above your jump and dash ability.",
-            "Tapping these buttons attack nearby enemies or change the current weapon in-use. Try them now, and proceed to the next checkpoint.",
+            "Tapping these buttons attack nearby enemies or change the current weapon in-use. The switch weapon button also shows the current weapon's effectiveness against other bacteria. Try them now, and proceed to the next checkpoint.",
             "",
             //15-19
             "At the bottom middle of your screen is the minimap. This will show you all of the things currently active on the level, as well as your current location.",

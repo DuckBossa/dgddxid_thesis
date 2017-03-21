@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public static event Action Dead;
 
+    public GameObject mgr;
     public int currHealth;
     public static bool isInvulnerable;
     public float flashSpeed = .5f;
@@ -115,12 +116,7 @@ public class PlayerHealth : MonoBehaviour {
 
     IEnumerator ShowStatsDeath() {
         yield return new WaitForSeconds(1.0f);
-        Time.timeScale = 0;
-        hud.gameObject.SetActive(false);
-        pause.gameObject.SetActive(false);
-        loadout.gameObject.SetActive(false);
-        controls.gameObject.SetActive(false);
-        gameover.gameObject.SetActive(true);
+        mgr.GetComponent<StomachLevel_Global>().PennyDied();
     }
 
     public void Success() {
@@ -129,13 +125,7 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     public void Win() {
-        Time.timeScale = 0;
-        hud.gameObject.SetActive(false);
-        pause.gameObject.SetActive(false);
-        loadout.gameObject.SetActive(false);
-        controls.gameObject.SetActive(false);
-        gamewon.gameObject.SetActive(true);
-        //GameOverScreenHandler.displayStats();
+        mgr.GetComponent<StomachLevel_Global>().PennyWon();
     }
 
     IEnumerator ShowStatsWon() {

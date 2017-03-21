@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using GLOBAL;
 using System;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class StomachLevel_Global : MonoBehaviour {
@@ -37,6 +38,7 @@ public class StomachLevel_Global : MonoBehaviour {
     private Vector3 defaultScale;
     private int waveCounter, cur_msg;
     private string[] msgs;
+    private bool face;
 
     void Start() {
         enemyCountSlider.value = 0;
@@ -63,6 +65,7 @@ public class StomachLevel_Global : MonoBehaviour {
         w1 = false;
         w3 = false;
         dw1 = false;
+        face = true;
 
         /* For Dialogue */
         cur_msg = -1;
@@ -94,11 +97,12 @@ public class StomachLevel_Global : MonoBehaviour {
             "",
 
             //if loss, cur_msg = 17
+            "",
             "Oh no! Shigella have taken over our host; we've lost the battle!",
             "This is a minor victory for Shigella today, but in the grand scheme of things, humans are at a greater risk.",
             "More bacteria, not just Shigella, will continuously mutate and cause harm to humans.",
             "It's not yet too late for us to change our ways, Private!",
-            "Try again once more; I'm sure you'll do a great job!",
+            "Try again; I'm sure you'll do a great job!",
             "" //automatically go to the main menu after this message
         };
 
@@ -113,14 +117,15 @@ public class StomachLevel_Global : MonoBehaviour {
             throw (e);
         }
         //set Penny's face
-        if (cur_msg == 0 || cur_msg == 1) {
-            angry.SetActive(true);
-            normal.SetActive(false);
+        if (cur_msg == 0 || cur_msg == 1 || cur_msg == 9 || cur_msg == 10 || cur_msg == 11 || cur_msg == 18 || cur_msg == 19 || cur_msg == 20 || cur_msg == 21) {
+            face = false;
         }
-        else {
-            angry.SetActive(false);
-            normal.SetActive(true);
+        else{
+            face = true;
         }
+
+        angry.SetActive(face ? false : true);
+        normal.SetActive(face ? true : false);
 
         //events
         if (cur_msg == 4) // first dialogue is over
@@ -142,6 +147,9 @@ public class StomachLevel_Global : MonoBehaviour {
             }
         }
 
+        if(cur_msg == 23 || cur_msg == 16) {// win or lose, go to main menu
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     void Dialogue() {
@@ -166,6 +174,16 @@ public class StomachLevel_Global : MonoBehaviour {
 
     void OnDisable() {
         EnemyHealth.Dead -= AddEnemyCount;
+    }
+
+    public void PennyDied() {
+        cur_msg = 17;
+        Dialogue();
+    }
+
+    public void PennyWon() {
+        cur_msg = 12;
+        Dialogue();
     }
 
     void Update() {
