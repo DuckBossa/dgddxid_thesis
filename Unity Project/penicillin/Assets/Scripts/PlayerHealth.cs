@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour {
 
     bool isDead;
     bool damaged;
+    bool isWon;
     Color deadColor, aliveColor;
     
 
@@ -38,6 +39,7 @@ public class PlayerHealth : MonoBehaviour {
         isInvulnerable = false;
         currTime = 0;
         isDead = false;
+        isWon = false;
         anim.SetBool("gameOver", isDead);
         deadColor = new Color(1f, 0f, 0f, 1f);
         aliveColor = new Color(0f, 1f, 0f, 1f);
@@ -125,6 +127,15 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     public void Win() {
+        if (!isWon) {
+            isWon = true;
+            StartCoroutine("Won");
+        }
+    }
+
+
+    IEnumerator Won() {
+        yield return new WaitForSeconds(1.0f);
         mgr.GetComponent<StomachLevel_Global>().PennyWon();
     }
 
