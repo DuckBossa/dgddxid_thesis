@@ -122,13 +122,13 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     public void Success() {
-        anim.SetBool("gameOver", true);
+        isWon = true;
+        anim.SetBool("gameOver", isWon);
         anim.SetTrigger("win");
     }
 
     public void Win() {
         if (!isWon) {
-            isWon = true;
             StartCoroutine("Won");
         }
     }
