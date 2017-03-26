@@ -2859,6 +2859,51 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 95000010157443762, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000013944790720, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000011953752836, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000012292621998, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000011860007940, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000010398753262, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000010799917470, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000011793022448, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000010756631744, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000011446334346, guid: 94dadb65559384145ba1a11541377c42, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 94dadb65559384145ba1a11541377c42, type: 2}
@@ -20677,6 +20722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2133346555}
   mgr: {fileID: 665904960}
+  indicator: {fileID: 735781852}
 --- !u!1 &1981131649
 GameObject:
   m_ObjectHideFlags: 0

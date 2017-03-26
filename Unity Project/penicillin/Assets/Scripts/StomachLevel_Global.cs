@@ -151,6 +151,7 @@ public class StomachLevel_Global : MonoBehaviour {
             Dialogue();
             waveCounter = 3;
             NextWaveStart();
+            Time.timeScale = 0;
         }
 
         if(cur_msg == 23 || cur_msg == 16) {// win or lose, go to main menu
@@ -288,7 +289,7 @@ public class StomachLevel_Global : MonoBehaviour {
     public void BossDialogue() {
         if(waveCounter > 3) {
             cur_msg = 8;
-            freeze = true;
+            Time.timeScale = 0;
             Dialogue();
         }
     }
