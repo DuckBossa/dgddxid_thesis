@@ -54,8 +54,7 @@ public class StomachLevel_Global : MonoBehaviour {
         waveTime = 0; /* Time elapsed for each wave (resets every next wave) */
         hplifetime = 0; /* Lifetime of health pickup */
         plifetime = 0; /* Lifetime of pill */
-        //kills = 0;
-        kills = 19;
+        kills = 0;
         freeze = false;
         w1 = false;
         w3 = false;
