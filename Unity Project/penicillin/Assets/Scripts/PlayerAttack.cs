@@ -113,7 +113,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 	}
 
 	public int Damage(){
-        return (int)(GAME.WEAP_DAMAGE[0, GetWeapLevel(0)] * (1 /*can be modified to be above???*/ - ResitanceCalculator.Instance.GetResistanceModifier(0)));
+        return Mathf.CeilToInt((GAME.WEAP_DAMAGE[0, GetWeapLevel(0)] * (1 /*can be modified to be above???*/ - ResitanceCalculator.Instance.GetResistanceModifier(0))));
 	}
 
     public void CheckAttack() {
