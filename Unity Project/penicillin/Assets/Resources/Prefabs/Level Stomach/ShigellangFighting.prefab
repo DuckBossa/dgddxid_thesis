@@ -30,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000010213427460
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011650494724}
   - 61: {fileID: 61000012846035986}
+  - 114: {fileID: 114000010970262670}
   m_Layer: 9
   m_Name: HitBox
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010038870208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.604167, y: 0.72499955, z: 0}
+  m_LocalPosition: {x: -0.03, y: -3.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -210,6 +211,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010970262670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013256003550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5322c012fda81431ea7cfab1247e2519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTimer: 0.5
 --- !u!114 &114000012164453440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,8 +289,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -680373737
-  m_SortingOrder: 0
+  m_SortingLayerID: 1398653461
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300002, guid: 48819fa5f2bbf4b0982f68787b6f8b86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
