@@ -4,10 +4,10 @@ using System.Collections;
 namespace GLOBAL{
     
     public class GAME : MonoBehaviour {
-        public const int max_health = 50;
+        public const int max_health = 500;
         public const float invulnerable_timer = 2f;
         public const float player_velocity = 3f;
-        public const int acidCyclesPerHealthPickup = 3;
+        public const int acidCyclesPerHealthPickup = 1;
 
 
         public const int dashes = 3;

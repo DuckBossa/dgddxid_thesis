@@ -6,11 +6,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class StomachLevel_Global : MonoBehaviour {
-    /*
-         To-do:
-         
-    */
-
     public int kills;
     public Text screenTimer, dialogueTextArea;
     public Slider enemyCountSlider;
@@ -33,7 +28,7 @@ public class StomachLevel_Global : MonoBehaviour {
     float pillTimer, dialogueTimer;
 
     private float waveTimeInSeconds, waveTime, levelTime, hplifetime, plifetime;
-    private bool waspill, freeze, w1, w3, dw1;
+    private bool waspill, freeze, w1, w3, dw1, bosserino;
     private Color defaultColor;
     private Vector3 defaultScale;
     private int waveCounter, cur_msg;
@@ -66,10 +61,15 @@ public class StomachLevel_Global : MonoBehaviour {
         w3 = false;
         dw1 = false;
         face = true;
+        bosserino = false;
 
         /* For Dialogue */
         cur_msg = -1;
-        
+
+        ///// Debug
+        //waveCounter = 3;
+        //kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
+
         msgs = new string[] {
             //introductory message
             "Our host's stomach has been infected by Shigella bacteria. Get rid of them before they pose a threat to our host's health!",
@@ -84,7 +84,7 @@ public class StomachLevel_Global : MonoBehaviour {
             "The research lab is going to appear soon, as it's time for your host to take another dose of antibiotics. Don't miss it! Make sure you upgrade your weapons wisely!",
             "",
 
-            //after finishing wave 3
+            //after finishing wave 3 ...... 9
             "Oh no... Is that what I think it is?",
             "It's Shigellang: The Indifferent!",
             "You have to help me stop him before he takes over our host! Quick, break its outer shell and defeat it once and for all!",
@@ -147,6 +147,12 @@ public class StomachLevel_Global : MonoBehaviour {
             }
         }
 
+        if(cur_msg == 12) { // boss warning done
+            Dialogue();
+            waveCounter = 3;
+            NextWaveStart();
+        }
+
         if(cur_msg == 23 || cur_msg == 16) {// win or lose, go to main menu
             SceneManager.LoadScene("MainMenu");
         }
@@ -164,7 +170,6 @@ public class StomachLevel_Global : MonoBehaviour {
         gameObject.GetComponent<ResitanceCalculator>().enabled = gameObject.GetComponent<ResitanceCalculator>().isActiveAndEnabled ? false : true;
         if (freeze) Time.timeScale = Time.timeScale == 1 ? 0 : 1;
     }
-
 
     void OnEnable() {
         Time.timeScale = 1;
@@ -192,10 +197,13 @@ public class StomachLevel_Global : MonoBehaviour {
 
         /* Dialogues */
         /// Wave 1
-        if (kills >= GAME.NUM_BACTERIA_WAVE[waveCounter-1] && waveCounter == 1 && !dw1) {
-            w1 = true;
-            dw1 = true;
+        if(waveCounter == 1) {
+            if (kills >= GAME.NUM_BACTERIA_WAVE[waveCounter - 1] && !dw1) {
+                w1 = true;
+                dw1 = true;
+            }
         }
+        
         // delay the dialogue for a second
         if (w1 && waveCounter == 1) {
             dialogueTimer += Time.deltaTime;
@@ -204,12 +212,6 @@ public class StomachLevel_Global : MonoBehaviour {
                 Dialogue();
                 w1 = false;
             }
-        }
-
-        /// Wave 3
-        if(kills >= GAME.NUM_BACTERIA_WAVE[waveCounter-1] && waveCounter == 3 && !w3) {
-            w3 = true;
-            Dialogue();
         }
 
         /* Health Pickup Management */
@@ -267,7 +269,6 @@ public class StomachLevel_Global : MonoBehaviour {
                 waspill = false;
 				NextWaveStart ();
             }
-
         }
     }
 
@@ -282,6 +283,14 @@ public class StomachLevel_Global : MonoBehaviour {
         enemyCountSlider.value = 0;
         enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE[0];
         screenTimer.color = defaultColor;
+    }
+
+    public void BossDialogue() {
+        if(waveCounter > 3) {
+            cur_msg = 8;
+            freeze = true;
+            Dialogue();
+        }
     }
 
     // int timeRemaining = (int)waveTimeInSeconds - (int)waveTime;
