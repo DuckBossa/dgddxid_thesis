@@ -190,6 +190,7 @@ public class Tutorial : MonoBehaviour {
 
         if(cur_msg == 27 && enemySpawned) {
             c_controls.SetActive(false);
+            c_hud.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
             player.transform.gameObject.GetComponent<PlayerMovement>().hInput = 0;

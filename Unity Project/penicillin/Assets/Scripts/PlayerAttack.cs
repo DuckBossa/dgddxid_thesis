@@ -40,7 +40,10 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 		if (attackCalled && !pm.isDash ())
 			Attack ();
         anim.SetBool("isAttacking", isAttacking);
-        if (weapLevel[whichWeapon] != -1) resistanceDisplay.fillAmount = 1.0f - (mgr.GetComponent<ResitanceCalculator>().GetResistanceModifier(whichWeapon) / GAME.peakResist);
+        if (weapLevel[whichWeapon] != -1) {
+            if(mgr.GetComponent<ResitanceCalculator>() != null)
+                resistanceDisplay.fillAmount = 1.0f - (mgr.GetComponent<ResitanceCalculator>().GetResistanceModifier(whichWeapon) / GAME.peakResist);
+        }
         else resistanceDisplay.fillAmount = 0;
     }
 
