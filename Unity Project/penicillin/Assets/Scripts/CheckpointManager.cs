@@ -45,7 +45,9 @@ public class CheckpointManager : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.name == "BodyCollider") {
             manager.GetComponent<Tutorial>().checkpoint = true;
-            gameObject.transform.position = checkpointPositions[current++].transform.position;
+
+            if (current + 1 < 5) gameObject.transform.position = checkpointPositions[current++].transform.position;
+            else gameObject.SetActive(false);
         }
     }
 }
