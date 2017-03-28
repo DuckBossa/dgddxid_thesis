@@ -33,9 +33,8 @@ public class StomachLevel_Global : MonoBehaviour {
     public int acidCycleCounter;
     bool bossFight;
     bool bossDormant;
-    float pillTimer, dialogueTimer;
 
-    private float waveTimeInSeconds, waveTime, levelTime, hplifetime, plifetime;
+    private float waveTimeInSeconds, waveTime, levelTime, hplifetime, plifetime, pillTimer, dialogueTimer, dialogueDelay;
     private bool waspill, freeze, w1, w3, dw1, bosserino;
     private Color defaultColor;
     private Vector3 defaultScale;
@@ -69,16 +68,19 @@ public class StomachLevel_Global : MonoBehaviour {
         dw1 = false;
         face = true;
         bosserino = false;
+        dialogueDelay = 2;
 
         /* For Dialogue */
-        cur_msg = -1;
+        cur_msg = 0;
 
         ///// Debug
         //waveCounter = 3;
         //kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
+        kills = 19;
 
         msgs = new string[] {
             //introductory message
+            "",
             "Our host's stomach has been infected by Shigella bacteria. Get rid of them before they pose a threat to our host's health!",
             "Be careful of the green acid! If you fall into the pit, you'll get damaged!",
             "To progress through the level, eliminate enough enemies as quick as you can. Keep an eye on your progress bar, as well as health pickups along the way.",
@@ -119,13 +121,17 @@ public class StomachLevel_Global : MonoBehaviour {
 
     public void NextMessage() {
         try {
-            dialogueTextArea.text = msgs[++cur_msg];
+            if (msgs[cur_msg] == "" || dialogueDelay > 1) {
+                dialogueTextArea.text = msgs[++cur_msg];
+                dialogueDelay = 0;
+            }
+            else return;
         }
         catch (Exception e) {
             throw (e);
         }
         //set Penny's face
-        if (cur_msg == 0 || cur_msg == 1 || cur_msg == 9 || cur_msg == 10 || cur_msg == 11 || cur_msg == 18 || cur_msg == 19 || cur_msg == 20 || cur_msg == 21) {
+        if (cur_msg == 1 || cur_msg == 2 || cur_msg == 10 || cur_msg == 11 || cur_msg == 12 || cur_msg == 19 || cur_msg == 20 || cur_msg == 21 || cur_msg == 22) {
             face = false;
         }
         else{
@@ -136,11 +142,11 @@ public class StomachLevel_Global : MonoBehaviour {
         normal.SetActive(face ? true : false);
 
         //events
-        if (cur_msg == 4) {// first dialogue is over
+        if (cur_msg == 5) {// first dialogue is over
             Dialogue();
             freeze = false;
         }
-        if (cur_msg == 8) { // first wave is over, unfreeze time scale, spawn trigger
+        if (cur_msg == 9) { // first wave is over, unfreeze time scale, spawn trigger
             Dialogue();
             freeze = false;
 
@@ -157,14 +163,14 @@ public class StomachLevel_Global : MonoBehaviour {
             }
         }
 
-        if(cur_msg == 12) { // boss warning done
+        if(cur_msg == 13) { // boss warning done
             Dialogue();
             waveCounter = 3;
             NextWaveStart();
             Time.timeScale = 0;
         }
 
-        if(cur_msg == 23 || cur_msg == 16) {// win or lose, go to main menu
+        if(cur_msg == 24 || cur_msg == 17) {// win or lose, go to main menu
             SceneManager.LoadScene("MainMenu");
         }
     }
@@ -193,18 +199,19 @@ public class StomachLevel_Global : MonoBehaviour {
     }
 
     public void PennyDied() {
-        cur_msg = 17;
+        cur_msg = 18;
         Dialogue();
     }
 
     public void PennyWon() {
-        cur_msg = 12;
+        cur_msg = 13;
         Dialogue();
     }
 
     void Update() {
         /* Update Timers */
         globalTime += Time.deltaTime;
+        if (dialogues.activeInHierarchy) dialogueDelay += Time.unscaledDeltaTime;
 
         /* Dialogues */
         /// Wave 1
@@ -280,12 +287,6 @@ public class StomachLevel_Global : MonoBehaviour {
         ////////////////////////////////////////////////////////
         /* Research Lab Pill Management */
         if (!bossFight) {
-            /*
-                Rescale the pill marker while it's active
-                Also update the timer which indicates:
-                    > Pill lifetime
-                    > Time remaining for current wave (in seconds)
-            */
             if (pill.activeInHierarchy) {
                 plifetime += Time.deltaTime; /* update the pill lifetime while it's active */
 
@@ -335,6 +336,9 @@ public class StomachLevel_Global : MonoBehaviour {
                 waspill = false;
 				NextWaveStart ();
             }
+        }
+        else {
+            /* Spawn the health pick-up here cause it stops spawning after wave 3 */
         }
     }
 

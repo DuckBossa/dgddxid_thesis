@@ -89,7 +89,7 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     public void GainHealth() {
-        healthSlider.value = currHealth < GAME.max_health ? ++currHealth : currHealth;
+        healthSlider.value = currHealth < GAME.max_health ? currHealth += GAME.healthpickupvalue : currHealth;
     }
 
 
