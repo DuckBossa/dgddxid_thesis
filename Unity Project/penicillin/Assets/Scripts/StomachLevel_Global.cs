@@ -13,15 +13,23 @@ public class StomachLevel_Global : MonoBehaviour {
     public Transform[] loadouts;
     public Transform[] health;
     public Transform player;
-    public GameObject pill,
-        loadoutIndicator,
-        Shigellang_Dormant,
-        healthPickup, healthPickupIndicator,
-        dialogues,
-        c_controls,
-        c_hud;
+    public GameObject
+        pill, // rlab pickup
+        loadoutIndicator, // rlab red circle thing
+        Shigellang_Dormant, // pink egg
+        healthPickup, // health pickup
+        healthPickupIndicator, // health pickup big-ass yellow circle thing
+        dialogues, // dialogues manager
+        c_controls, // controls canvas
+        c_hud, // hud canvas
+        bossSpawnDefense, // spawn controllers for boss fight
+        angry, // angry penny face
+        normal, // normal, smiling penny face
+        hparr, // hp arrow
+        hpicon, // hp icon
+        rlarr, // rlab arrow
+        rlicon; // rlab icon
     public GameObject[] spawnWaveLVLS;
-    public GameObject bossSpawnDefense, angry, normal;
     public int acidCycleCounter;
     bool bossFight;
     bool bossDormant;
@@ -105,6 +113,7 @@ public class StomachLevel_Global : MonoBehaviour {
             "" //automatically go to the main menu after this message
         };
 
+        freeze = true;
         Dialogue();
     }
 
@@ -127,8 +136,10 @@ public class StomachLevel_Global : MonoBehaviour {
         normal.SetActive(face ? true : false);
 
         //events
-        if (cur_msg == 4) // first dialogue is over
+        if (cur_msg == 4) {// first dialogue is over
             Dialogue();
+            freeze = false;
+        }
         if (cur_msg == 8) { // first wave is over, unfreeze time scale, spawn trigger
             Dialogue();
             freeze = false;
@@ -236,6 +247,30 @@ public class StomachLevel_Global : MonoBehaviour {
                 healthPickup.SetActive(false); /* despawn pickup */
                 acidCycleCounter = 0; /* reset acid cycle counter for the next pickup */
             }
+
+            /* Tracker */
+            Vector3 hpup = healthPickup.transform.position; // position of health pickup
+            Vector3 plpos = player.position; // penny's position
+            Vector3 dirVec = new Vector3(hpup.x - plpos.x, hpup.y - plpos.y); // direction vector from health pickup to player
+            float length = dirVec.magnitude;
+            Vector3 norm = dirVec / length; // normal vector from penny to health pickup
+
+            // check if far enough
+            if(length > 1.3f) { // 1.3f is just the value from the tutorial level
+                hpicon.transform.position = new Vector3(plpos.x + norm.x * .5f, plpos.y + norm.y * .5f); // place the health pick up icon
+                hparr.transform.position = new Vector3(plpos.x + norm.x * .8f, plpos.y + norm.y * .8f); // place the arrow
+                if (!hpicon.activeInHierarchy) {
+                    hpicon.SetActive(true);
+                    hparr.SetActive(true);
+                }
+            }
+            else {
+                hpicon.SetActive(false);
+                hparr.SetActive(false);
+            }
+            // set the rotation of the arrow indicator
+            float rad = Mathf.Atan2(dirVec.y, dirVec.x);
+            hparr.transform.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * rad);
         }
 
 
