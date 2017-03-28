@@ -272,7 +272,10 @@ public class StomachLevel_Global : MonoBehaviour {
             float rad = Mathf.Atan2(dirVec.y, dirVec.x);
             hparr.transform.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * rad);
         }
-
+        else {
+            hparr.SetActive(false);
+            hpicon.SetActive(false);
+        }
 
         ////////////////////////////////////////////////////////
         /* Research Lab Pill Management */
@@ -294,6 +297,34 @@ public class StomachLevel_Global : MonoBehaviour {
                 string min = Mathf.Floor( timeRemaining/ 60).ToString("00");
                 string sec = ( timeRemaining % 60).ToString("00");
                 screenTimer.text = min + ":" + sec;
+
+                /* Tracker */
+                Vector3 rlloc = pill.transform.position; // position of health pickup
+                Vector3 plpos = player.position; // penny's position
+                Vector3 dirVec = new Vector3(rlloc.x - plpos.x, rlloc.y - plpos.y); // direction vector from health pickup to player
+                float length = dirVec.magnitude;
+                Vector3 norm = dirVec / length; // normal vector from penny to health pickup
+
+                // check if far enough
+                if (length > 1.3f) { // 1.3f is just the value from the tutorial level
+                    rlicon.transform.position = new Vector3(plpos.x + norm.x * .5f, plpos.y + norm.y * .5f); // place the health pick up icon
+                    rlarr.transform.position = new Vector3(plpos.x + norm.x * .8f, plpos.y + norm.y * .8f); // place the arrow
+                    if (!rlicon.activeInHierarchy) {
+                        rlicon.SetActive(true);
+                        rlarr.SetActive(true);
+                    }
+                }
+                else {
+                    rlicon.SetActive(false);
+                    rlarr.SetActive(false);
+                }
+                // set the rotation of the arrow indicator
+                float rad = Mathf.Atan2(dirVec.y, dirVec.x);
+                rlarr.transform.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * rad);
+            }
+            else {
+                rlarr.SetActive(false);
+                rlicon.SetActive(false);
             }
 
             if (plifetime > GAME.PillPickupTimeLimit || (!pill.activeInHierarchy && waspill)) {
