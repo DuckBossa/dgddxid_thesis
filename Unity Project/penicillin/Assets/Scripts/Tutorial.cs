@@ -30,7 +30,7 @@ public class Tutorial : MonoBehaviour {
         //disable everything
         c_controls.SetActive(false);
         c_hud.SetActive(false);
-        c_loadout.SetActive(false);
+        //c_loadout.SetActive(false);
         c_pause.SetActive(false);
         minimap.enabled = false;
         t_loadoutTrigger.SetActive(false);
@@ -292,7 +292,7 @@ public class Tutorial : MonoBehaviour {
         Time.timeScale = 1;
         timeLimitInSeconds = 60 * GAME.waveTimeInMins;
         localTime = 0;
-        c_loadout.SetActive(false);
+        //c_loadout.SetActive(false);
     }
 
     public void ResearchDone() {
