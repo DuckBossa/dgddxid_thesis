@@ -75,7 +75,7 @@ public class Tutorial : MonoBehaviour {
             "",
             "You can chain up to three dashes at a time. Just remember that dashing takes some time to regenerate.",
             "You will have to attack enemy bacteria pretty soon. For that, use the buttons above your jump and dash ability.",
-            "Tapping these buttons attack nearby enemies or change the current weapon in-use. The switch weapon button also shows the current weapon's effectiveness against other bacteria. Try them now, and proceed to the next checkpoint.",
+            "Tapping these buttons attack nearby enemies or change the current weapon in-use. The switch weapon button also shows the current weapon's efficacy.",
             "",
             //15-19
             "At the bottom middle of your screen is the minimap. This will show you all of the things currently active on the level, as well as your current location.",
@@ -87,7 +87,7 @@ public class Tutorial : MonoBehaviour {
             "The lab allows you to upgrade your antibiotics and unlock new ones so you have more options to kill more bacteria.",
             "You can see the amount of research points you currently have at the top of the screen, as well as your current health.",
             "Between the health and research points, you can see a progress bar that indicates how many enemies you need to eliminate to proceed to the next wave.",
-            "Pick the pill up and see what we have the lab has to offer! Here's 200 research points, on me!",
+            "Pick the pill up and see what the lab has to offer! Here's 200 research points, on me!",
             "",
             //25-29
             "Oh no! A stray shigella appeared out of nowhere!",

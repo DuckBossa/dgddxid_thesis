@@ -93,7 +93,7 @@ public class StomachLevel_Global : MonoBehaviour {
             "The research lab is going to appear soon, as it's time for your host to take another dose of antibiotics. Don't miss it! Make sure you upgrade your weapons wisely!",
             "",
 
-            //after finishing wave 3 ...... 9
+            //after finishing wave 3 ...... 10
             "Oh no... Is that what I think it is?",
             "It's Shigellang: The Indifferent!",
             "You have to help me stop him before he takes over our host! Quick, break its outer shell and defeat it once and for all!",
@@ -165,6 +165,7 @@ public class StomachLevel_Global : MonoBehaviour {
 
         if(cur_msg == 13) { // boss warning done
             Dialogue();
+            freeze = false;
             waveCounter = 3;
             NextWaveStart();
             Time.timeScale = 0;
@@ -359,6 +360,7 @@ public class StomachLevel_Global : MonoBehaviour {
         if(waveCounter > 3) {
             cur_msg = 8;
             Time.timeScale = 0;
+            freeze = true;
             Dialogue();
         }
     }
