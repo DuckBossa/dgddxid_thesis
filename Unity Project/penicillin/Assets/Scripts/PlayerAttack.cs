@@ -102,8 +102,6 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         }
 
         sw.GetComponent<Image>().sprite = weapsp[whichWeapon * GAME.num_weapons];
-        
-       // + currentlevel
     }
 
 	public void SetAttack(bool a) {

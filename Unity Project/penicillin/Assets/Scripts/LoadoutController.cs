@@ -12,17 +12,16 @@ public class LoadoutController : MonoBehaviour {
         if (col.gameObject.name == "Penny") {
             loadoutCanvas.gameObject.SetActive(true);
             Time.timeScale = 0;
-            gameObject.SetActive(false);
             loadoutIndicator.SetActive(false);
         }
     }
 
     public void DisableCanvas() {
+        gameObject.SetActive(false);
         loadoutCanvas.gameObject.SetActive(false);
         Time.timeScale = 1;
         if(mgr != null) {
             mgr.GetComponent<StomachLevel_Global>().BossDialogue();
         }
-        //waves
     }
 }

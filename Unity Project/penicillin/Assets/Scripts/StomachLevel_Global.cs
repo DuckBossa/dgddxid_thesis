@@ -35,7 +35,7 @@ public class StomachLevel_Global : MonoBehaviour {
     bool bossDormant;
 
     private float waveTimeInSeconds, waveTime, levelTime, hplifetime, plifetime, pillTimer, dialogueTimer, dialogueDelay;
-    private bool waspill, freeze, w1, w3, dw1, bosserino;
+    private bool waspill, w1, w3, dw1, bosserino;
     private Color defaultColor;
     private Vector3 defaultScale;
     private int waveCounter, cur_msg;
@@ -62,7 +62,6 @@ public class StomachLevel_Global : MonoBehaviour {
         hplifetime = 0; /* Lifetime of health pickup */
         plifetime = 0; /* Lifetime of pill */
         kills = 0;
-        freeze = false;
         w1 = false;
         w3 = false;
         dw1 = false;
@@ -74,9 +73,8 @@ public class StomachLevel_Global : MonoBehaviour {
         cur_msg = 0;
 
         ///// Debug
-        //waveCounter = 3;
-        //kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
-        kills = 19;
+        waveCounter = 3;
+        kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
 
         msgs = new string[] {
             //introductory message
@@ -84,7 +82,7 @@ public class StomachLevel_Global : MonoBehaviour {
             "Our host's stomach has been infected by Shigella bacteria. Get rid of them before they pose a threat to our host's health!",
             "Be careful of the green acid! If you fall into the pit, you'll get damaged!",
             "To progress through the level, eliminate enough enemies as quick as you can. Keep an eye on your progress bar, as well as health pickups along the way.",
-            "I know you can do this. Good luck!",
+            "I know you can do this. Remember: eliminate as much bacteria as you can in the shortest time possible. Good luck!",
             "",
 
             //after finishing wave 1
@@ -95,17 +93,17 @@ public class StomachLevel_Global : MonoBehaviour {
 
             //after finishing wave 3 ...... 10
             "Oh no... Is that what I think it is?",
-            "It's Shigellang: The Indifferent!",
-            "You have to help me stop him before he takes over our host! Quick, break its outer shell and defeat it once and for all!",
+            "It's Shigellang: The Indifferent! You have to help me stop him before he takes over our host!",
+            "Quick, break its outer shell and defeat it once and for all! That'll surely end the Shigella infestation!",
             "",
 
-            //if success, cur_msg = 13
+            //if success, cur_msg = 14
             "You did it! You stopped the Shigella invasion by properly using antibiotics!",
             "Our fight does not end here. More and more bacteria evolve as time passes, and many people still need to be educated on antibiotic misuse and abuse.",
             "I'm sure you'll do a great job of informing everyone! I believe in you, Private!",
             "",
 
-            //if loss, cur_msg = 17
+            //if loss, cur_msg = 18
             "",
             "Oh no! Shigella have taken over our host; we've lost the battle!",
             "This is a minor victory for Shigella today, but in the grand scheme of things, humans are at a greater risk.",
@@ -115,7 +113,6 @@ public class StomachLevel_Global : MonoBehaviour {
             "" //automatically go to the main menu after this message
         };
 
-        freeze = true;
         Dialogue();
     }
 
@@ -144,11 +141,11 @@ public class StomachLevel_Global : MonoBehaviour {
         //events
         if (cur_msg == 5) {// first dialogue is over
             Dialogue();
-            freeze = false;
+            Time.timeScale = 1;
         }
         if (cur_msg == 9) { // first wave is over, unfreeze time scale, spawn trigger
             Dialogue();
-            freeze = false;
+            Time.timeScale = 1;
 
             {
                 spawnWaveLVLS[waveCounter - 1].SetActive(false);
@@ -165,28 +162,28 @@ public class StomachLevel_Global : MonoBehaviour {
 
         if(cur_msg == 13) { // boss warning done
             Dialogue();
-            freeze = false;
-            waveCounter = 3;
-            NextWaveStart();
-            Time.timeScale = 0;
+            Debug.Log("tangina");
+            Time.timeScale = 1;
+            Debug.Log("naman oh");
         }
 
-        if(cur_msg == 24 || cur_msg == 17) {// win or lose, go to main menu
+        if (cur_msg == 24 || cur_msg == 17) {// win or lose, go to main menu
             SceneManager.LoadScene("MainMenu");
         }
     }
 
     void Dialogue() {
         // Set Penny's animation to idle
+        Time.timeScale = 0;
         dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
         if (dialogues.activeInHierarchy) NextMessage();
         c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
         c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
-        for(int i = 0; i < waveCounter; i++) {
+        int bleh = waveCounter == 4 ? 3 : waveCounter;
+        for(int i = 0; i < bleh; i++) {
             spawnWaveLVLS[i].SetActive(spawnWaveLVLS[i].activeInHierarchy ? false : true);
         }
         gameObject.GetComponent<ResitanceCalculator>().enabled = gameObject.GetComponent<ResitanceCalculator>().isActiveAndEnabled ? false : true;
-        if (freeze) Time.timeScale = Time.timeScale == 1 ? 0 : 1;
     }
 
     void OnEnable() {
@@ -227,7 +224,6 @@ public class StomachLevel_Global : MonoBehaviour {
         if (w1 && waveCounter == 1) {
             dialogueTimer += Time.deltaTime;
             if(dialogueTimer > 1) {
-                freeze = true;
                 Dialogue();
                 w1 = false;
             }
@@ -298,7 +294,7 @@ public class StomachLevel_Global : MonoBehaviour {
                 }
                 string min = Mathf.Floor( timeRemaining/ 60).ToString("00");
                 string sec = ( timeRemaining % 60).ToString("00");
-                screenTimer.text = min + ":" + sec;
+                screenTimer.text = "WAVE ENDING\n" + min + ":" + sec;
 
                 /* Tracker */
                 Vector3 rlloc = pill.transform.position; // position of health pickup
@@ -334,8 +330,10 @@ public class StomachLevel_Global : MonoBehaviour {
                 plifetime = 0; 
                 screenTimer.color = defaultColor;
                 pill.SetActive(false);
+                rlarr.SetActive(false);
+                rlicon.SetActive(false);
                 waspill = false;
-				NextWaveStart ();
+                if (waveCounter == 3) BossDialogue(); else NextWaveStart();
             }
         }
         else {
@@ -357,15 +355,12 @@ public class StomachLevel_Global : MonoBehaviour {
     }
 
     public void BossDialogue() {
-        if(waveCounter > 3) {
-            cur_msg = 8;
-            Time.timeScale = 0;
-            freeze = true;
+        if(waveCounter == 3) {
+            cur_msg = 9;
             Dialogue();
+            NextWaveStart();
         }
     }
-
-    // int timeRemaining = (int)waveTimeInSeconds - (int)waveTime;
 
     public void AddEnemyCount(int points) {
         kills += points;
@@ -388,13 +383,13 @@ public class StomachLevel_Global : MonoBehaviour {
         }
     }
 
-    public void NextWaveStart() {
+    void NextWaveStart() {
         waveCounter++;
 		if (waveCounter > 3) {
-			bossFight = true;
+            bossFight = true;
 			//enable boss health bar, disable level timer
 			screenTimer.gameObject.SetActive (false);
-			if (enemyCountSlider.isActiveAndEnabled)
+			//if (enemyCountSlider.isActiveAndEnabled)
 				enemyCountSlider.gameObject.SetActive (false);
 			//spawn boss if not already there
 			if (!Shigellang_Dormant.activeInHierarchy && bossDormant) {
@@ -402,8 +397,8 @@ public class StomachLevel_Global : MonoBehaviour {
 				bossDormant = false;
 			}
             bossSpawnDefense.SetActive(true);
-		} 
-		else {
+        }
+        else {
 			kills = 0;
 			enemyCountSlider.value = 0;
 			enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE [waveCounter - 1];
