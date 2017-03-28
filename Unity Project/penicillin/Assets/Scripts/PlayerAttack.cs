@@ -12,14 +12,12 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     Animator anim;
 	PlayerMovement pm;
 	Rigidbody2D rb;
-    ResitanceCalculator rc;
     public Sprite[] weapsp;
     public GameObject sw, mgr, lockImage; /* button for switching weapons */
     public Image resistanceDisplay;
 
 
     void Awake() {
-        rc = GetComponent<ResitanceCalculator>();
 		pm = GetComponent<PlayerMovement> ();
 		rb = GetComponent<Rigidbody2D> ();
         hasAmmo = true;
@@ -41,8 +39,8 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 			Attack ();
         anim.SetBool("isAttacking", isAttacking);
         if (weapLevel[whichWeapon] != -1) {
-            if(mgr.GetComponent<ResitanceCalculator>() != null)
-                resistanceDisplay.fillAmount = 1.0f - (mgr.GetComponent<ResitanceCalculator>().GetResistanceModifier(whichWeapon) / GAME.peakResist);
+            if(ResitanceCalculator.Instance != null)
+                resistanceDisplay.fillAmount = 1.0f - (ResitanceCalculator.Instance.GetResistanceModifier(whichWeapon) / GAME.peakResist);
         }
         else resistanceDisplay.fillAmount = 0;
     }
