@@ -20474,6 +20474,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
         type: 2}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 381741320}
+    - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
+        type: 2}
       propertyPath: pause
       value: 
       objectReference: {fileID: 117729157}
@@ -20482,16 +20487,6 @@ Prefab:
       propertyPath: gameover
       value: 
       objectReference: {fileID: 432769328}
-    - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: loadout
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: hud
-      value: 
-      objectReference: {fileID: 381741320}
     - target: {fileID: 114000012164453440, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
         type: 2}
       propertyPath: controls
@@ -20505,21 +20500,6 @@ Prefab:
     - target: {fileID: 1000010038870208, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000011914949046, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 1398653461
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000011914949046, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010970262670, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
-        type: 2}
-      propertyPath: damageTimer
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}

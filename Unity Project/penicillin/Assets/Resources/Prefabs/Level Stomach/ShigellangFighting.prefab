@@ -30,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000010213427460
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010038870208}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -177,9 +177,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.05, y: -0.62}
+  m_Offset: {x: 0.04, y: -0.91}
   serializedVersion: 2
-  m_Size: {x: 0.94, y: 1.05}
+  m_Size: {x: 0.94, y: 0.5}
 --- !u!61 &61000012846035986
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5322c012fda81431ea7cfab1247e2519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTimer: 0.5
+  damageTimer: 0.3
 --- !u!114 &114000012164453440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,6 +240,7 @@ MonoBehaviour:
   gameover: {fileID: 0}
   controls: {fileID: 0}
   gamewon: {fileID: 0}
+  collisionBox: {fileID: 61000011696902350}
   mask_map:
     serializedVersion: 2
     m_Bits: 1024

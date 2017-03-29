@@ -58,8 +58,8 @@ namespace GLOBAL{
         public const float Shigellang_ProjectileCD = 4f;
         public const float Shigellang_ProjectileLife = 5f;
         public const float Shigellang_ProjectileSpeed = 1.5f;
-        public const float Shigellang_RadarPlayer = 10f;
-        public const float Shigellang_RadarMap = 30f;
+        public const float Shigellang_RadarPlayer = 5f;
+        public const float Shigellang_RadarMap = 15f;
 		public const float Shigellang_LeapSpeed = 2.5f;
 		public const float Shigellang_JumpForce = 15f;
 		public const float Shigellang_DMGTimer = 1.5f;
