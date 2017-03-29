@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour {
         currTime = 0;
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
+		anim.updateMode = AnimatorUpdateMode.Normal;
         currHealth = GAME.max_health;
         healthSlider.maxValue = GAME.max_health;
         healthSlider.value = currHealth;
@@ -113,6 +114,7 @@ public class PlayerHealth : MonoBehaviour {
 
 
     void PostGameDeath() {
+		anim.updateMode = AnimatorUpdateMode.UnscaledTime;
         StartCoroutine("ShowStatsDeath");
     }
 
@@ -121,7 +123,8 @@ public class PlayerHealth : MonoBehaviour {
         mgr.GetComponent<StomachLevel_Global>().PennyDied();
     }
 
-    public void Success() {
+	public void Success() {
+		anim.updateMode = AnimatorUpdateMode.UnscaledTime;
         anim.SetBool("gameOver", true);
         anim.SetTrigger("win");
     }
@@ -129,6 +132,7 @@ public class PlayerHealth : MonoBehaviour {
     public void Win() {
         if (!isWon) {
             isWon = true;
+
             StartCoroutine("Won");
         }
     }
