@@ -12,6 +12,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
 
     public Canvas hud, pause, loadout, gameover, controls, gamewon;
+    public Collider2D collisionBox;
 
     public LayerMask mask_map;
     public LayerMask mask_player;
@@ -68,6 +69,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
 			damageTimer += Time.deltaTime;
 		}
         anim.SetFloat("Direction", dirWalk.x > 0 ? 1f : 0f);
+       
         anim.SetBool("isWalking", isWalking);
     }
 
@@ -204,6 +206,8 @@ public class ShigellangController : MonoBehaviour,IDamage {
         }
         currOnTop = stuff[rnglul];
         pos_leap = currOnTop.bounds.center + Vector3.up * (currOnTop.bounds.extents.y + 1f);
+
+
         dirLeap = (new Vector2(pos_leap.x, pos_leap.y) - rb.position + Vector2.up * currOnTop.bounds.extents.y).normalized;
         isWalking = false;
         isIdle = false;
@@ -216,11 +220,13 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     void MoveLeap() {
         rb.isKinematic = true;
+        collisionBox.gameObject.SetActive(false);
         isLeaping = true;
     }
 
     void StopLeap() {
         rb.isKinematic = false;
+        collisionBox.gameObject.SetActive(true);
         anim.SetTrigger("landing");
         Idle();
     }
@@ -251,7 +257,8 @@ public class ShigellangController : MonoBehaviour,IDamage {
 
     void OnTriggerEnter2D(Collider2D other) {
         PlayerHealth ph = other.GetComponent<PlayerHealth>();
-        if(ph != null) ph.TakeDamage();
+        if (ph != null) ph.TakeDamage();
+
     }
 
     public void SetBottom(Collider2D tile) {
