@@ -77,8 +77,8 @@ public class StomachLevel_Global : MonoBehaviour {
         cur_msg = 0;
 
         ///// Debug
-        waveCounter = 3;
-        kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
+        //waveCounter = 3;
+        //kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
 
         msgs = new string[] {
             //introductory message
