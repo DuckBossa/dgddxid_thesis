@@ -41,7 +41,7 @@ public class Weapon1Controller : MonoBehaviour {
         col = this.GetComponent<CanvasRenderer>();
         lvl = 0;
 
-        if (weapType == 0) {
+        if (weapType == 1) {
             SubtleUpgrade();
             rlab.gameObject.SetActive(false);
         }

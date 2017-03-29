@@ -13,8 +13,8 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 	PlayerMovement pm;
 	Rigidbody2D rb;
     public Sprite[] weapsp;
-    public GameObject sw, mgr, lockImage; /* button for switching weapons */
     public Image resistanceDisplay;
+    public GameObject atkb; /* atk button */
 
 
     void Awake() {
@@ -23,16 +23,16 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         hasAmmo = true;
 		attackCalled = false;
 		whichWeapon = 0;
-		//weapLevel [0] = 0;
 		for (int i = 0; i < weapLevel.Length; i++) {
             weapLevel[i] = -1;//-1;
-			//PlayerPrefs.GetInt(GAME.PLAYER_PREFS_WEAPLEVEL + i.ToString(),0);
 		}
 		anim = GetComponent<Animator>();
         isAttacking = false;
-        sw.GetComponent<Image>().sprite = weapsp[whichWeapon];
     }
 
+    void Start() {
+        SwitchWeapon();
+    }
 
     void FixedUpdate() {
 		if (attackCalled && !pm.isDash ())
@@ -89,19 +89,14 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 	}
 	public void SwitchWeapon() {
 		if (!isAttacking) {
-            whichWeapon = (whichWeapon + 1) % GAME.num_weapons;
-        }
-        anim.SetInteger("whichWeapon", whichWeapon);
-        anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
-        if(weapLevel[whichWeapon] < 0) {
-            lockImage.SetActive(true);
-            //sw.GetComponent<Image>().sprite = weapsp[GAME.num_weapons * 3];
-        }
-        else {
-            lockImage.SetActive(false);
-        }
+            do {
+                whichWeapon = (whichWeapon + 1) % GAME.num_weapons;
+            } while (weapLevel[whichWeapon] == -1);
 
-        sw.GetComponent<Image>().sprite = weapsp[whichWeapon * GAME.num_weapons];
+            anim.SetInteger("whichWeapon", whichWeapon);
+            anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
+            atkb.GetComponent<Image>().sprite = weapsp[whichWeapon * GAME.num_weapons + weapLevel[whichWeapon]];
+        }
     }
 
 	public void SetAttack(bool a) {

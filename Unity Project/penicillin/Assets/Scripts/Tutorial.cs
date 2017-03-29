@@ -249,6 +249,7 @@ public class Tutorial : MonoBehaviour {
             c_controls.SetActive(true);
             c_controls.transform.GetChild(2).gameObject.SetActive(true);
             c_controls.transform.GetChild(3).gameObject.SetActive(true);
+            c_controls.transform.GetChild(4).gameObject.SetActive(true);
         }
 
         if(cur_msg == 17) {
@@ -292,7 +293,6 @@ public class Tutorial : MonoBehaviour {
         Time.timeScale = 1;
         timeLimitInSeconds = 60 * GAME.waveTimeInMins;
         localTime = 0;
-        //c_loadout.SetActive(false);
     }
 
     public void ResearchDone() {
