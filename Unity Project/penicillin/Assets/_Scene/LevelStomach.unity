@@ -7356,6 +7356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kills: 0
+  tdc: {fileID: 1157546209}
   screenTimer: {fileID: 604221249}
   dialogueTextArea: {fileID: 2128537975}
   enemyCountSlider: {fileID: 1544594840}
@@ -18279,7 +18280,6 @@ MonoBehaviour:
   awake: {fileID: 21300018, guid: 326300f08f900472fa40786385684c48, type: 3}
   bossIcon: {fileID: 1173304396}
   Fighting_Shigella: {fileID: 1911040848}
-  tdc: {fileID: 1157546209}
   em: {fileID: 297173868}
   health: 0
 --- !u!212 &1754147217

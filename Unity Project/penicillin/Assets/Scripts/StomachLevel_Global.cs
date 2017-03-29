@@ -7,6 +7,7 @@ using System.Collections;
 
 public class StomachLevel_Global : MonoBehaviour {
     public int kills;
+    public TileDeconstructionConstruction tdc;
     public Text screenTimer, dialogueTextArea;
     public Slider enemyCountSlider;
     public static float globalTime;
@@ -389,8 +390,9 @@ public class StomachLevel_Global : MonoBehaviour {
             bossFight = true;
 			//enable boss health bar, disable level timer
 			screenTimer.gameObject.SetActive (false);
-			//if (enemyCountSlider.isActiveAndEnabled)
-				enemyCountSlider.gameObject.SetActive (false);
+            //if (enemyCountSlider.isActiveAndEnabled)
+            tdc.BossBattle();
+            enemyCountSlider.gameObject.SetActive (false);
 			//spawn boss if not already there
 			if (!Shigellang_Dormant.activeInHierarchy && bossDormant) {
 				Shigellang_Dormant.SetActive (true);
