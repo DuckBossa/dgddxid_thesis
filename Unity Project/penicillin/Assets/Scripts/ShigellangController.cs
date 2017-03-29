@@ -8,10 +8,6 @@ using GLOBAL;
 public class ShigellangController : MonoBehaviour,IDamage {
 
     public static event Action Dead;
-
-
-
-    public Canvas hud, pause, loadout, gameover, controls, gamewon;
     public Collider2D collisionBox;
 
     public LayerMask mask_map;
