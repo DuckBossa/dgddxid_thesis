@@ -37,6 +37,7 @@ public class TileDeconstructionConstruction : MonoBehaviour {
             }
             else {
                 Up();
+                timer = 0;
             }
         }
     }
