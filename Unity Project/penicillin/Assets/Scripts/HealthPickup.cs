@@ -19,6 +19,7 @@ public class HealthPickup : MonoBehaviour {
         if (col.gameObject.name == "Penny") {
             player.GetComponent<PlayerHealth>().GainHealth();
             mgr.GetComponent<StomachLevel_Global>().acidCycleCounter = 0;
+            mgr.GetComponent<StomachLevel_Global>().hptimer = 0;
             this.gameObject.SetActive(false);
             indicator.gameObject.SetActive(false);
         }

@@ -32,6 +32,7 @@ public class StomachLevel_Global : MonoBehaviour {
         rlicon; // rlab icon
     public GameObject[] spawnWaveLVLS;
     public int acidCycleCounter;
+    public float hptimer;
     bool bossFight;
     bool bossDormant;
 
@@ -74,8 +75,8 @@ public class StomachLevel_Global : MonoBehaviour {
         cur_msg = 0;
 
         ///// Debug
-        //waveCounter = 3;
-        //kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
+        waveCounter = 3;
+        kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
 
         msgs = new string[] {
             //introductory message
@@ -163,9 +164,7 @@ public class StomachLevel_Global : MonoBehaviour {
 
         if(cur_msg == 13) { // boss warning done
             Dialogue();
-            Debug.Log("tangina");
             Time.timeScale = 1;
-            Debug.Log("naman oh");
         }
 
         if (cur_msg == 24 || cur_msg == 17) {// win or lose, go to main menu
@@ -211,6 +210,7 @@ public class StomachLevel_Global : MonoBehaviour {
         /* Update Timers */
         globalTime += Time.deltaTime;
         if (dialogues.activeInHierarchy) dialogueDelay += Time.unscaledDeltaTime;
+        if (bossFight) hptimer += Time.deltaTime;
 
         /* Dialogues */
         /// Wave 1
@@ -232,7 +232,7 @@ public class StomachLevel_Global : MonoBehaviour {
 
         /* Health Pickup Management */
         // Once the acid rises and subsides acidCyclesPerHealthPickup times, spawn the health pickup if it hasn't spawned yet
-        if (acidCycleCounter == GAME.acidCyclesPerHealthPickup && !healthPickup.activeInHierarchy) {
+        if ((hptimer > 10 || acidCycleCounter == GAME.acidCyclesPerHealthPickup) && !healthPickup.activeInHierarchy) {
             /* Health Pickup */
             healthPickup.SetActive(true);
             healthPickup.transform.position = health[(int)UnityEngine.Random.Range(0, health.Length)].transform.position;
@@ -250,6 +250,7 @@ public class StomachLevel_Global : MonoBehaviour {
             // If the player fails to pick up the health thingy within its lifteime delete it from the scene
             if (hplifetime > GAME.loadoutLifetime) {
                 healthPickup.SetActive(false); /* despawn pickup */
+                hptimer = 0;
                 acidCycleCounter = 0; /* reset acid cycle counter for the next pickup */
             }
 
@@ -337,9 +338,6 @@ public class StomachLevel_Global : MonoBehaviour {
                 if (waveCounter == 3) BossDialogue(); else NextWaveStart();
             }
         }
-        else {
-            /* Spawn the health pick-up here cause it stops spawning after wave 3 */
-        }
     }
 
     public void Reset() {
@@ -388,6 +386,7 @@ public class StomachLevel_Global : MonoBehaviour {
         waveCounter++;
 		if (waveCounter > 3) {
             bossFight = true;
+            hptimer = 0;
 			//enable boss health bar, disable level timer
 			screenTimer.gameObject.SetActive (false);
             //if (enemyCountSlider.isActiveAndEnabled)
