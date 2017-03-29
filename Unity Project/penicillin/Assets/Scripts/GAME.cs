@@ -47,7 +47,7 @@ namespace GLOBAL{
         public const float FlyingShigella_projlife = 4f;
         public const float FlyingShigella_projspeed = 2f;
 
-        public const int Shigellang_Fighting_MaxHealth = 500;
+        public const int Shigellang_Fighting_MaxHealth = 400;
         public const int Shigellang_Dormant_MaxHealth = 100;
         public const float Shigellang_Dormant_TimeBetweenAttacks = 1f;
         public const float Shigellang_mvspd = 1.25f;
