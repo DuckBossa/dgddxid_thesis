@@ -3078,6 +3078,21 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: c2896759d3d39264b9c8a2fdf68d21e9,
         type: 3}
+    - target: {fileID: 95000010479039420, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000010872921086, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000011853540260, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000011446334346, guid: 94dadb65559384145ba1a11541377c42, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 94dadb65559384145ba1a11541377c42, type: 2}
@@ -7624,11 +7639,13 @@ MonoBehaviour:
   hpicon: {fileID: 693668822}
   rlarr: {fileID: 1091809547}
   rlicon: {fileID: 1072764318}
+  eggboss: {fileID: 1754147213}
   spawnWaveLVLS:
   - {fileID: 2139611260}
   - {fileID: 783457218}
   - {fileID: 1924533772}
   acidCycleCounter: 0
+  maincam: {fileID: 1802061642}
   hptimer: 0
 --- !u!114 &665904963
 MonoBehaviour:
