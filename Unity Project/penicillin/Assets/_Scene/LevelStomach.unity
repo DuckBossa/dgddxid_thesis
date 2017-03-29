@@ -8606,7 +8606,7 @@ MonoBehaviour:
   enemy: {fileID: 1000014221098054, guid: 4c92e0e833dd36d46865493d8a175bac, type: 2}
   parents_enemy: {fileID: 1701370417}
   slg: {fileID: 665904962}
-  spawnTime: 3
+  spawnTime: 5
   maxEnemies: 8
   spawnPoints:
   - {fileID: 673833029}
@@ -8634,8 +8634,8 @@ MonoBehaviour:
   enemy: {fileID: 1000010945237246, guid: a12c80ffa6f22ab46943ff1350becf63, type: 2}
   parents_enemy: {fileID: 1701370417}
   slg: {fileID: 665904962}
-  spawnTime: 2
-  maxEnemies: 20
+  spawnTime: 4
+  maxEnemies: 10
   spawnPoints:
   - {fileID: 1836749636}
   - {fileID: 60637602}
@@ -13965,7 +13965,7 @@ MonoBehaviour:
   enemy: {fileID: 1000014221098054, guid: 4c92e0e833dd36d46865493d8a175bac, type: 2}
   parents_enemy: {fileID: 1701370417}
   slg: {fileID: 665904962}
-  spawnTime: 10
+  spawnTime: 6
   maxEnemies: 6
   spawnPoints:
   - {fileID: 673833029}
@@ -13994,7 +13994,7 @@ MonoBehaviour:
   parents_enemy: {fileID: 1701370417}
   slg: {fileID: 665904962}
   spawnTime: 4
-  maxEnemies: 16
+  maxEnemies: 8
   spawnPoints:
   - {fileID: 1836749636}
   - {fileID: 60637602}
@@ -20405,8 +20405,8 @@ MonoBehaviour:
   enemy: {fileID: 1000014221098054, guid: 4c92e0e833dd36d46865493d8a175bac, type: 2}
   parents_enemy: {fileID: 1701370417}
   slg: {fileID: 665904962}
-  spawnTime: 10
-  maxEnemies: 6
+  spawnTime: 5
+  maxEnemies: 8
   spawnPoints:
   - {fileID: 673833029}
   - {fileID: 1968344519}
@@ -20434,7 +20434,7 @@ MonoBehaviour:
   parents_enemy: {fileID: 1701370417}
   slg: {fileID: 665904962}
   spawnTime: 4
-  maxEnemies: 16
+  maxEnemies: 12
   spawnPoints:
   - {fileID: 1836749636}
   - {fileID: 60637602}
@@ -22439,7 +22439,7 @@ MonoBehaviour:
   enemy: {fileID: 1000014221098054, guid: 4c92e0e833dd36d46865493d8a175bac, type: 2}
   parents_enemy: {fileID: 1701370417}
   slg: {fileID: 665904962}
-  spawnTime: 10
+  spawnTime: 5
   maxEnemies: 6
   spawnPoints:
   - {fileID: 673833029}
@@ -22468,7 +22468,7 @@ MonoBehaviour:
   parents_enemy: {fileID: 1701370417}
   slg: {fileID: 665904962}
   spawnTime: 4
-  maxEnemies: 16
+  maxEnemies: 8
   spawnPoints:
   - {fileID: 1836749636}
   - {fileID: 60637602}
