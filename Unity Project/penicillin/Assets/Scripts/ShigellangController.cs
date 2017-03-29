@@ -250,7 +250,8 @@ public class ShigellangController : MonoBehaviour,IDamage {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        other.GetComponent<PlayerHealth> ().TakeDamage ();
+        PlayerHealth ph = other.GetComponent<PlayerHealth>();
+        if(ph != null) ph.TakeDamage();
     }
 
     public void SetBottom(Collider2D tile) {
