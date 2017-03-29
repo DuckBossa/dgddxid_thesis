@@ -29,9 +29,11 @@ public class StomachLevel_Global : MonoBehaviour {
         hparr, // hp arrow
         hpicon, // hp icon
         rlarr, // rlab arrow
-        rlicon; // rlab icon
+        rlicon, // rlab icon
+        eggboss; // the dormant boss, used just for camera
     public GameObject[] spawnWaveLVLS;
     public int acidCycleCounter;
+    public Camera maincam;
     public float hptimer;
     bool bossFight;
     bool bossDormant;
@@ -75,8 +77,8 @@ public class StomachLevel_Global : MonoBehaviour {
         cur_msg = 0;
 
         ///// Debug
-        //waveCounter = 3;
-        //kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
+        waveCounter = 3;
+        kills = GAME.NUM_BACTERIA_WAVE[2] - 1;
 
         msgs = new string[] {
             //introductory message
@@ -160,6 +162,14 @@ public class StomachLevel_Global : MonoBehaviour {
                 plifetime = 0; /* set pill lifetime to 0 */
                 waspill = true; /* pill spawned */
             }
+        }
+
+        if(cur_msg == 10) {
+            bosserino = true;
+        }
+
+        if(cur_msg == 12) {
+            bosserino = false;
         }
 
         if(cur_msg == 13) { // boss warning done
@@ -283,6 +293,14 @@ public class StomachLevel_Global : MonoBehaviour {
             hpicon.SetActive(false);
         }
 
+
+        if (bosserino) {
+            maincam.transform.position = Vector3.Lerp(maincam.transform.position, new Vector3(eggboss.transform.position.x, eggboss.transform.position.y, -20), Time.unscaledDeltaTime);
+        }
+        else {
+            if(eggboss.activeInHierarchy) 
+                maincam.transform.position = Vector3.Lerp(maincam.transform.position, new Vector3(player.transform.position.x, player.transform.position.y, -20), Time.unscaledDeltaTime);
+        }
         ////////////////////////////////////////////////////////
         /* Research Lab Pill Management */
         if (!bossFight) {
