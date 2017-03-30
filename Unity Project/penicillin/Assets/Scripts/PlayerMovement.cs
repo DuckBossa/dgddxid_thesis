@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     Animator anim;
     Rigidbody2D rb;
     PlayerAttack pa;
+    PlayerHealth ph;
     int currjumps, currdash;
 	bool isWalking, isDashing, isFalling, faceRight,isJumping;
     Transform trans, groundCheckL, groundCheckR;
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         pa = GetComponent<PlayerAttack>();
+        ph = GetComponent<PlayerHealth>();
         currjumps = GAME.jumps;
         currdash = GAME.dashes;
         dir = 0;
@@ -87,7 +89,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Jump() {
-        if (!isJumping) rb.velocity += GAME.jump_velocity * Vector2.up;
+        if (!isJumping && !ph.IsOver()) rb.velocity += GAME.jump_velocity * Vector2.up;
     }
 
     public bool amDashing() {
@@ -95,7 +97,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Move(float horizontalInput) {
-		if (!isDashing && !pa.isAttack()) {
+		if (!isDashing && !pa.isAttack() && !ph.IsOver()) {
             dir = horizontalInput;
             isWalking = Mathf.Abs(dir) > 0;
             Vector2 myVel = rb.velocity;
@@ -110,7 +112,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Dash() {
-		if (!isDashing && !pa.isAttack()) {
+		if (!isDashing && !pa.isAttack() && !ph.IsOver()) {
             if (currdash > 0) {
                 rb.AddForce(new Vector2((faceRight ? 1 : -1) * GAME.dash_force, 0), ForceMode2D.Impulse);
                 currdash--;

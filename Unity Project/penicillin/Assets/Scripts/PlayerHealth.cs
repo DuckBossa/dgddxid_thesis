@@ -112,6 +112,9 @@ public class PlayerHealth : MonoBehaviour {
         
     }
 
+    public bool IsOver() {
+        return isDead || isWon;
+    }
 
     void PostGameDeath() {
 		anim.updateMode = AnimatorUpdateMode.UnscaledTime;

@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
     Animator anim;
 	PlayerMovement pm;
 	Rigidbody2D rb;
+    PlayerHealth ph;
     public Sprite[] weapsp;
     public Image resistanceDisplay;
     public GameObject atkb; /* atk button */
@@ -19,6 +20,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
 
     void Awake() {
 		pm = GetComponent<PlayerMovement> ();
+        ph = GetComponent<PlayerHealth>();
 		rb = GetComponent<Rigidbody2D> ();
         hasAmmo = true;
 		attackCalled = false;
@@ -80,7 +82,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
             anim.SetInteger("whichWeapon", whichWeapon);
             anim.SetInteger("weapLevel", weapLevel[whichWeapon]);
 
-            if (!pm.isDash() && !isAttacking) {
+            if (!pm.isDash() && !isAttacking && !ph.IsOver()) {
                 if (!pm.isJump() && !pm.isFall())
                     rb.velocity = new Vector2(0, rb.velocity.y);
                 isAttacking = true;
@@ -92,7 +94,7 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
         attackCalled = false;
     }
 	public void SwitchWeapon() {
-		if (!isAttacking) {
+		if (!isAttacking && !ph.IsOver()) {
             do {
                 whichWeapon = (whichWeapon + 1) % GAME.num_weapons;
             } while (weapLevel[whichWeapon] == -1);
