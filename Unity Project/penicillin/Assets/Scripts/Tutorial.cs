@@ -149,6 +149,7 @@ public class Tutorial : MonoBehaviour {
         }
 
         if (!cp4 && checkpoint) { //
+            player.gameObject.GetComponent<PlayerAttack>().ForceStopAttack();
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
@@ -158,6 +159,7 @@ public class Tutorial : MonoBehaviour {
         }
 
         if (!cp5 && checkpoint) {
+            player.gameObject.GetComponent<PlayerAttack>().ForceStopAttack();
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
@@ -168,6 +170,7 @@ public class Tutorial : MonoBehaviour {
         }
 
         if (!cp6 && checkpoint) {
+            player.gameObject.GetComponent<PlayerAttack>().ForceStopAttack();
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
@@ -178,7 +181,7 @@ public class Tutorial : MonoBehaviour {
         }
 
         if (researchDone) {
-
+            player.gameObject.GetComponent<PlayerAttack>().ForceStopAttack();
             c_controls.SetActive(false);
             text.text = messages[++cur_msg];
             dialogues.SetActive(true);
@@ -189,6 +192,7 @@ public class Tutorial : MonoBehaviour {
         }
 
         if(cur_msg == 27 && enemySpawned) {
+            player.gameObject.GetComponent<PlayerAttack>().ForceStopAttack();
             c_controls.SetActive(false);
             c_hud.SetActive(false);
             text.text = messages[++cur_msg];

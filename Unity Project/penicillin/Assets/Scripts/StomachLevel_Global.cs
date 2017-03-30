@@ -184,6 +184,7 @@ public class StomachLevel_Global : MonoBehaviour {
 
     void Dialogue() {
         // Set Penny's animation to idle
+        player.gameObject.GetComponent<PlayerAttack>().ForceStopAttack();
         Time.timeScale = 0;
         dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
         if (dialogues.activeInHierarchy) NextMessage();
