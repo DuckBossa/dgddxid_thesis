@@ -4,6 +4,9 @@ using GLOBAL;
 public class FlyingShigella : MonoBehaviour {
     public GameObject projectile;
     public Transform fireposition;
+
+    EnemyHealth eh;
+
     GameObject projectile_parent;
     Animator anim;
     bool isAttacking;
@@ -17,6 +20,7 @@ public class FlyingShigella : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+        eh = GetComponent<EnemyHealth>();
         anim = GetComponentInParent<Animator>();
         projectile_parent = GameObject.Find("Projectile Parent");
         //parent = GetComponentInParent<Transform>();
@@ -38,8 +42,11 @@ public class FlyingShigella : MonoBehaviour {
         }
         else {
             if(attackTimer >= GAME.FlyingShigella_aspd) {
-                anim.SetTrigger("Attack");
-                attackTimer = 0;
+                if (!eh.amIDead()) {
+                    anim.SetTrigger("Attack");
+                    attackTimer = 0;
+                }
+
             }
             else {
                 attackTimer += Time.deltaTime;

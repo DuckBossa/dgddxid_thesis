@@ -53,7 +53,7 @@ public class EnemyHealth : MonoBehaviour, IDamage {
             //player.GetComponent<StomachLevel_Global>().kills++;
             //GetComponent<Enemy>().enabled = false;
             
-            Destroy(gameObject, 0.8f);
+            Destroy(gameObject, 0.5f);
         }
 
     }
@@ -67,6 +67,10 @@ public class EnemyHealth : MonoBehaviour, IDamage {
         rt.transform.localRotation = DamageText.transform.localRotation;
         temp.GetComponent<Text>().text = damage;
         Destroy(temp, 1f);
+    }
+
+    public bool amIDead() {
+        return isDead;
     }
 
     public void SetManager(EnemyManager em) {
