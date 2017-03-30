@@ -87,6 +87,10 @@ public class PlayerAttack : MonoBehaviour,IPlayerDamage {
             }
         }
 	}
+
+    public void ForceStopAttack() {
+        attackCalled = false;
+    }
 	public void SwitchWeapon() {
 		if (!isAttacking) {
             do {
