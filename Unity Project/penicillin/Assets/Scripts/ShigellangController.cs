@@ -106,6 +106,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
     }
 
     void WhatDo() {
+        float dist = (new Vector2(0, player.transform.position.y) - new Vector2(0, transform.position.y)).magnitude;
         if (playerSpotted) {
             int rnglul = UnityEngine.Random.Range(0, 5);
             switch (rnglul) {
@@ -113,7 +114,6 @@ public class ShigellangController : MonoBehaviour,IDamage {
                     Idle();
                     break;
                 case 1:
-                    float dist = (new Vector2(0, player.transform.position.y) - new Vector2(0, transform.position.y)).magnitude;
                     if (dist > 1.5f)
                         ShootProjectile();
                     else
@@ -126,7 +126,15 @@ public class ShigellangController : MonoBehaviour,IDamage {
                     Walk();
                     break;
                 case 4:
-                    LeapPlatform();
+                    if(currHealth < GAME.Shigellang_Fighting_MaxHealth / 3) {
+                        LeapPlatform();
+                    }
+                    else {
+                        if (dist > 1.5f)
+                            ShootProjectile();
+                        else
+                            LeapAttack();
+                    }
                     break;
             }
 
