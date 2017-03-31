@@ -41,6 +41,8 @@ namespace GLOBAL{
 		public const int num_weapons = 3;
 		public const int weaps_max_lvl = 3;
 
+        public const float WalkingShigella_aspd = 2f;
+
         public const float FlyingShigella_aspd = 3f;
         public const float FlyingShigella_mvspd = 1f;
         public const float FlyingShigella_patrolDist = 2f;

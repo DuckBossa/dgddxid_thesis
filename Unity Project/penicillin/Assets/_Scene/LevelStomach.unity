@@ -18603,6 +18603,11 @@ Prefab:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 484267087}
+    - target: {fileID: 114000010970262670, guid: 3962b2c9ccdbfc041ab833d72d5722fe,
+        type: 2}
+      propertyPath: damageTimer
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3962b2c9ccdbfc041ab833d72d5722fe, type: 2}
   m_IsPrefabParent: 0
