@@ -18,10 +18,7 @@ public class ResitanceCalculator : Singleton<ResitanceCalculator> {
     float timer;
     
 	void Start () {
-        timer = 0;
-        for(int i = 0; i < resistance.Length; i++) {
-            ResetResitance(i);
-        }
+        ResetAll();
 	}
 
 	void Update () {
@@ -45,6 +42,13 @@ public class ResitanceCalculator : Singleton<ResitanceCalculator> {
             if(resistance[i] >= GAME.peakResist) {
                 resistance[i] = GAME.peakResist;
             }
+        }
+    }
+
+    public void ResetAll() {
+        timer = 0;
+        for (int i = 0; i < resistance.Length; i++) {
+            ResetResitance(i);
         }
     }
 
