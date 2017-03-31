@@ -106,8 +106,8 @@ public class ShigellangController : MonoBehaviour,IDamage {
     }
 
     void WhatDo() {
-        float dist = (new Vector2(0, player.transform.position.y) - new Vector2(0, transform.position.y)).magnitude;
         if (playerSpotted) {
+            float dist = (new Vector2(0, player.transform.position.y) - new Vector2(0, transform.position.y)).magnitude;
             int rnglul = UnityEngine.Random.Range(0, 5);
             switch (rnglul) {
                 case 0:
