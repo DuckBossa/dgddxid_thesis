@@ -17,10 +17,26 @@ public class PlayerMovement : MonoBehaviour {
     PlayerAttack pa;
     PlayerHealth ph;
     int currjumps, currdash;
-	bool isWalking, isDashing, isFalling, faceRight,isJumping;
+	bool isWalking, isDashing, isFalling, faceRight;
     Transform trans, groundCheckL, groundCheckR;
     float dir, dashCDTimer, dashTimer, attackTimer;
     float timer;
+    float groundTimer;
+
+    bool canJump;
+    bool isJumping;
+    public bool IsJumping {
+        get {
+            return isJumping;
+        }
+        set {
+            isJumping = value;
+            if (value == false) {
+                canJump = true;
+                groundTimer = 0;
+            }
+        }
+    }
 
     void Start() {
         anim = GetComponent<Animator>();
@@ -32,9 +48,10 @@ public class PlayerMovement : MonoBehaviour {
         dir = 0;
         dashCDTimer = 0;
         dashTimer = 0;
+        groundTimer = 0; ;
         isWalking = false;
         isDashing = false;
-        isJumping = false;
+        IsJumping = false;
         isDashing = false;
         faceRight = true;
         trans = this.transform;
@@ -44,6 +61,9 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update() {
         timer += Time.deltaTime;
+        if(groundTimer < GAME.player_ground_jump_time) {
+            groundTimer += Time.deltaTime;
+        }
         if (currdash < GAME.dashes) {
             dashCDTimer += Time.deltaTime;
             dashCooldown.fillAmount = 1f - (dashCDTimer / (float)GAME.dash_cooldown);
@@ -71,7 +91,7 @@ public class PlayerMovement : MonoBehaviour {
         Move(hInput);
 
         //jump
-        isJumping = !(Physics2D.Linecast(new Vector3(groundCheckL.position.x, groundCheckL.position.y + .1f, groundCheckL.position.z), groundCheckL.position, playerMask) || 
+        IsJumping = !(Physics2D.Linecast(new Vector3(groundCheckL.position.x, groundCheckL.position.y + .1f, groundCheckL.position.z), groundCheckL.position, playerMask) || 
                       Physics2D.Linecast(new Vector3(groundCheckR.position.x, groundCheckR.position.y + .1f, groundCheckR.position.z), groundCheckR.position, playerMask));
         Debug.DrawLine(new Vector3(groundCheckL.position.x, groundCheckL.position.y + .1f, groundCheckL.position.z), groundCheckL.position);
         Debug.DrawLine(new Vector3(groundCheckR.position.x, groundCheckR.position.y + .1f, groundCheckR.position.z), groundCheckR.position);
@@ -83,13 +103,13 @@ public class PlayerMovement : MonoBehaviour {
         isWalking = Mathf.Abs(dir) > 0 && !isDashing;
         anim.SetFloat("Direction", faceRight ? 1f : 0f);
         anim.SetBool("isWalking", isWalking);
-        anim.SetBool("isJumping", isJumping);
+        anim.SetBool("isJumping", IsJumping);
         anim.SetBool("isDashing", isDashing);
         anim.SetBool("isFalling", isFalling);
     }
 
     public void Jump() {
-        if (!isJumping && !ph.IsOver()) rb.velocity += GAME.jump_velocity * Vector2.up;
+        if (!IsJumping && !ph.IsOver() && groundTimer < GAME.player_ground_jump_time) rb.velocity += GAME.jump_velocity * Vector2.up;
     }
 
     public bool amDashing() {
@@ -112,7 +132,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Dash() {
-		if (!isDashing && !pa.isAttack() && !ph.IsOver()) {
+		if (!isDashing && !pa.isAttack() && !ph.IsOver() ) {
             if (currdash > 0) {
                 rb.AddForce(new Vector2((faceRight ? 1 : -1) * GAME.dash_force, 0), ForceMode2D.Impulse);
                 currdash--;
@@ -136,7 +156,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public bool isJump(){
-		return isJumping;
+		return IsJumping;
 	}
 	public bool isDash(){
 		return isDashing;
