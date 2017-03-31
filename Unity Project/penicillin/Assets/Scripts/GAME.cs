@@ -79,7 +79,7 @@ namespace GLOBAL{
                                                          {10,20,30}};
 
         public const int LevelStomach_WAVECOUNTER = 3;
-        public static readonly float[] RESISTANCE_TICK = {0.2f,0.1f, 0.1f};
+        public static readonly float[] RESISTANCE_TICK = {0.125f,0.125f, 0.125f};
         public const float resitanceTickTimer = 30f;
         public const float peakResist = 0.85f;
 
