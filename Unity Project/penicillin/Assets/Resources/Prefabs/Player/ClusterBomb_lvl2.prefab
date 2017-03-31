@@ -23,8 +23,8 @@ GameObject:
   - 95: {fileID: 95000014238334890}
   - 58: {fileID: 58000010710335490}
   - 50: {fileID: 50000012062888412}
-  - 114: {fileID: 114000012307701256}
   - 114: {fileID: 114000011965311460}
+  - 114: {fileID: 114000010806456082}
   m_Layer: 16
   m_Name: ClusterBomb_lvl2
   m_TagString: Untagged
@@ -93,6 +93,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010806456082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010439481120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb6f68ece7ae4026946141f41e9ef84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011965311460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,17 +113,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ebaa564479f543b4a7c240a78a2d2f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114000012307701256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010439481120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 518fa125c79eede4cad35b493b976c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212000012361544488

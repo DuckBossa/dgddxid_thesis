@@ -26,7 +26,7 @@ namespace GLOBAL{
         public const float playerdagger_speed = 4.5f;
         public const float player_ground_jump_time = 0.1f;
 
-		public const float playerclusterbomb_lifetime = 8f;
+		public const float playerclusterbomb_lifetime = 2.5f;
         public const float playerclusterbomb_aspd = 1f;
         public const float playerclusterbomb_speed = 3f;
         public const float playersword_aspd = 1f;

@@ -3,7 +3,7 @@ using System.Collections;
 using GLOBAL;
 
 public class MoveDir : MonoBehaviour {
-  
+  	
     Rigidbody2D rb2d;
     float currtime;
 	float lifeTime;
