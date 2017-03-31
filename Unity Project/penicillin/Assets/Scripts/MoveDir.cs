@@ -13,14 +13,14 @@ public class MoveDir : MonoBehaviour {
 	}
 		
 	public void Update(){
-		/*
+		
 		if (currtime < lifeTime) {
 			currtime += Time.deltaTime;
 		} 
 		else {
 			Destroy (gameObject);
 		}
-		*/
+
 	}
 
 

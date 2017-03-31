@@ -80,6 +80,7 @@ public class FlyingShigella : MonoBehaviour {
     void Attack() {
         GameObject temp = Instantiate(projectile, fireposition.position, Quaternion.identity) as GameObject;
 		temp.GetComponent<MoveDir>().setDir(attackDir * GAME.FlyingShigella_projspeed);
+		temp.GetComponent<MoveDir> ().setLifeTime (GAME.FlyingShigella_projlife);
         temp.transform.parent = projectile_parent.transform;
     }
 }
