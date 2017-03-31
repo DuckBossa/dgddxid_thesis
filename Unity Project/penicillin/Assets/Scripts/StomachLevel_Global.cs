@@ -369,6 +369,7 @@ public class StomachLevel_Global : MonoBehaviour {
         pill.SetActive(false);
         enemyCountSlider.value = 0;
         enemyCountSlider.maxValue = GAME.NUM_BACTERIA_WAVE[0];
+        ResitanceCalculator.Instance.ResetAll();
         screenTimer.color = defaultColor;
     }
 
