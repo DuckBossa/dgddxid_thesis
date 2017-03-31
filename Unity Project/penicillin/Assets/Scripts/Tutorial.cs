@@ -64,18 +64,18 @@ public class Tutorial : MonoBehaviour {
             "Humans have been abusing antibiotics for a long time now, taking them even when unnecessary, or not finishing their prescribed dosages.",
             "This caused bacteria to evolve and strengthen rapidly to the point where current Antibiotic research cannot keep up.",
             "We need all the help we can get, and I'm glad we have you on our side!",
-            "Let's begin with the basics. That's me at the center of the screen. You can control me using the left and right arrows on the bottom left of the screen",
+            "Let's begin with the basics. That's me at the center of the screen. You can control me using the left and right arrows on the bottom left of the screen.",
             //5-9
             "Proceed to the first checkpoint to get started.",
             "", 
-            "Great! You can fall off of platforms or jump onto higher ones with your jump ability on the bottom right of the screen. Try getting to the next checkpoint.",
+            "Great! You can fall off platforms or jump onto higher ones with your jump ability on the bottom right of the screen. Try getting to the next checkpoint.",
             "",
             "That other checkpoint is too far to reach with a single jump. Use your dash ability to leap further.",
             //10-14
             "",
-            "You can chain up to three dashes at a time. Just remember that dashing takes some time to regenerate.",
+            "You can chain up to three dashes at a time. Just remember that dashing takes some time to regenerate. You are invulnerable for the duration of the dash!",
             "You will have to attack enemy bacteria pretty soon. For that, use the buttons above your jump and dash ability.",
-            "Tapping these buttons attack nearby enemies or change the current weapon in-use. The switch weapon button also shows the current weapon's efficacy.",
+            "Tapping these buttons attack nearby enemies or change the current weapon in-use. The attack button also shows the current weapon's efficacy.",
             "",
             //15-19
             "At the bottom middle of your screen is the minimap. This will show you all of the things currently active on the level, as well as your current location.",

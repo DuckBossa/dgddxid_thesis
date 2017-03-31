@@ -96,7 +96,7 @@ public class StomachLevel_Global : MonoBehaviour {
             "",
 
             //after finishing wave 3 ...... 10
-            "Oh no... Is that what I think it is?",
+            "The acid seems to have stopped rising... \nOh no! Is that what I think it is?",
             "It's Shigellang: The Indifferent! You have to help me stop him before he takes over our host!",
             "Quick, break its outer shell and defeat it once and for all! That'll surely end the Shigella infestation!",
             "",
@@ -296,11 +296,11 @@ public class StomachLevel_Global : MonoBehaviour {
 
 
         if (bosserino) {
-            maincam.transform.position = Vector3.Lerp(maincam.transform.position, new Vector3(eggboss.transform.position.x, eggboss.transform.position.y, -20), Time.unscaledDeltaTime);
+            maincam.transform.position = Vector3.Lerp(maincam.transform.position, new Vector3(eggboss.transform.position.x, eggboss.transform.position.y, -20), 10*Time.unscaledDeltaTime);
         }
         else {
             if(eggboss.activeInHierarchy) 
-                maincam.transform.position = Vector3.Lerp(maincam.transform.position, new Vector3(player.transform.position.x, player.transform.position.y, -20), Time.unscaledDeltaTime);
+                maincam.transform.position = Vector3.Lerp(maincam.transform.position, new Vector3(player.transform.position.x, player.transform.position.y, -20), 10*Time.unscaledDeltaTime);
         }
         ////////////////////////////////////////////////////////
         /* Research Lab Pill Management */
