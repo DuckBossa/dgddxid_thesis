@@ -44,7 +44,8 @@ public class Tutorial_Pause : MonoBehaviour {
     }
 
     public void RestartLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Load_Tutorial");
     }
 
     public void MainMenuPrompt() {
@@ -54,6 +55,6 @@ public class Tutorial_Pause : MonoBehaviour {
     }
 
     public void GoToMainMenu() {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Load_MainMenu");
     }
 }

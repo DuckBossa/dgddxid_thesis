@@ -19,7 +19,7 @@ public class MainMenuController : MonoBehaviour {
     }
 
     public void StartGame() {
-        StartCoroutine(Load("LevelStomach"));
+        StartCoroutine(Load("Load_LevelStomach"));
     }
 
     IEnumerator Load(string level) { //need this so the audio plays completely before loading scene
@@ -40,7 +40,7 @@ public class MainMenuController : MonoBehaviour {
     }
 
     public void Tutorial() {
-        StartCoroutine(Load("Tutorial"));
+        StartCoroutine(Load("Load_Tutorial"));
     }
 
     public void Credits() {

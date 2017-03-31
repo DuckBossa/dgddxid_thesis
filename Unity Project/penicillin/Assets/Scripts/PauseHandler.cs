@@ -5,14 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseHandler : MonoBehaviour {
     public Transform pauseCanvas;
-    public Transform audioToggle;
     public Transform quitPrompt;
     public Transform pauseMenu;
     public Transform restartPrompt;
     public Transform mainMenuPrompt;
     AudioSource buttonSound;
     public Camera mainCam;
-    bool soundOn = true;
 
 	void Start () {
         buttonSound = gameObject.GetComponent<AudioSource>();
@@ -36,12 +34,6 @@ public class PauseHandler : MonoBehaviour {
         }
     }
 
-    public void ToggleAudio() {
-        soundOn = !soundOn;
-        audioToggle.GetComponent<Text>().text = soundOn ? "Sound: On" : "Sound: Off";
-        buttonSound.Play();
-    }
-
     public void QuitPrompt() {
         buttonSound.Play();
         quitPrompt.gameObject.SetActive(quitPrompt.gameObject.activeInHierarchy ? false : true);
@@ -60,7 +52,8 @@ public class PauseHandler : MonoBehaviour {
 
     public void RestartLevel() {
         buttonSound.Play();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Load_LevelStomach");
     }
 
     public void MainMenuPrompt() {
@@ -71,6 +64,6 @@ public class PauseHandler : MonoBehaviour {
 
     public void GoToMainMenu() {
         buttonSound.Play();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Load_MainMenu");
     }
 }
