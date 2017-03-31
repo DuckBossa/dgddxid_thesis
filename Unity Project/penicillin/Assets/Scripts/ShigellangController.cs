@@ -97,7 +97,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
         else if (isLeaping) {
             rb.position = Vector2.Lerp(transform.position, pos_leap, GAME.Shigellang_LeapSpeed * Time.deltaTime);
             float mag = (new Vector2(pos_leap.x, pos_leap.y) - rb.position).magnitude;
-            if (mag < 0.25f) {
+            if (mag < 0.20f) {
                 StopLeap();
             }
         }
@@ -224,6 +224,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
         rb.isKinematic = false;
         collisionBox.gameObject.SetActive(true);
         anim.SetTrigger("landing");
+        rb.position = pos_leap;
         Idle();
     }
 
