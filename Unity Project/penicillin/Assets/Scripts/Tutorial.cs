@@ -289,7 +289,7 @@ public class Tutorial : MonoBehaviour {
         }
 
 		if (cur_msg == 34) {
-			SceneManager.LoadScene ("MainMenu");
+			SceneManager.LoadScene ("Load_MainMenu");
 		}
     }
 

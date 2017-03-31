@@ -178,7 +178,7 @@ public class StomachLevel_Global : MonoBehaviour {
         }
 
         if (cur_msg == 24 || cur_msg == 17) {// win or lose, go to main menu
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Load_MainMenu");
         }
     }
 
