@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using GLOBAL;
 
 public class Load_MainMenu : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    public Text msg;
+    void Start() {
+        msg.text = GAME.messages[Random.Range(0, GAME.messages.Length - 1)];
         SceneManager.LoadScene("MainMenu");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
 }

@@ -89,6 +89,19 @@ namespace GLOBAL{
 
         public static readonly int[] NUM_BACTERIA_WAVE = { 20, 30, 40 };
         public const int PillPickupTimeLimit = 20; // in seconds
+        public static string[] messages = new string[] {
+            "NEVER self-medicate! Consult with a physician before taking antibiotics.",
+            "If you miss your scheduled antibiotic dosage, reset your succeeding intake intervals from the time you took your late dosage.",
+            "Always finish taking your prescribed medicines! Not finishing your medication will lead to further complications.",
+            "Research for newer and stronger antibiotics is incredibly expensive.",
+            "Some of the most common antibiotics are Amoxicillin, Ciprofloxacin, and Penicillin.",
+            "Acquiring antibiotics without a prescription is against the law.",
+            "Believe it or not, common colds don't require antibiotics. In fact, antibiotics do nothing to cure common colds.",
+            "Some antibiotics kill bacteria (bactericidal) while others prevent multiplication (bacteriostatic).",
+            "The very first antibiotics came from molds and were used by the Chinese in 1000 BC.",
+            "Before the discovery of Teixobactin in 2015, the last antibiotic discovery made was back in 1987.",
+            "Many antibiotics come from molds. This is how Alexander Fleming discovered Penicillin!"
+        };
     }
 
 
