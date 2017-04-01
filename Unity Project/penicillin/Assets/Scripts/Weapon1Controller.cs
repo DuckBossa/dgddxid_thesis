@@ -25,10 +25,8 @@ public class Weapon1Controller : MonoBehaviour {
     public void CheckAvailability(int rp) {
 
     }
-
     void Start() {
         smgr = lvlmgr.GetComponent<ResearchPointsManager>();
-        //Debug.Log(smgr.gameObject.name);
         wps = new Image[3]; //store the buttons, pls don't mess with the arrangement of the buttons in the editor
         for (int i = 0; i < wps.Length; i++) {
             wps[i] = content.GetChild(i).gameObject.GetComponent<Image>();
@@ -40,15 +38,12 @@ public class Weapon1Controller : MonoBehaviour {
         newpos = content.position;
         col = this.GetComponent<CanvasRenderer>();
         lvl = 0;
-
-        if (weapType == 1) {
-            SubtleUpgrade();
-            rlab.gameObject.SetActive(false);
-        }
+        SubtleUpgrade();
     }
 
-    
     void Update() {
+
+
         if(lvl == 3) { //if level = 3 just dim everything then disable
             col.SetAlpha(Mathf.Lerp(col.GetAlpha(), 0, 10 * Time.unscaledDeltaTime));
             content.gameObject.SetActive(false);

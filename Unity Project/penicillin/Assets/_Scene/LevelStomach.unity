@@ -7293,6 +7293,7 @@ MonoBehaviour:
   - {fileID: 2072534964}
   - {fileID: 1616223235}
   player: {fileID: 1923575163}
+  rlab: {fileID: 2111289499}
   pill: {fileID: 603513570}
   loadoutIndicator: {fileID: 1416124335}
   Shigellang_Dormant: {fileID: 1754147213}
@@ -20168,6 +20169,11 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2111289499 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012999677508, guid: 94dadb65559384145ba1a11541377c42,
+    type: 2}
+  m_PrefabInternal: {fileID: 197763807}
 --- !u!1 &2111295449
 GameObject:
   m_ObjectHideFlags: 0

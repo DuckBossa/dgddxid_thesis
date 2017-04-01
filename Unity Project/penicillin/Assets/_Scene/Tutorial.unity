@@ -3232,7 +3232,6 @@ MonoBehaviour:
   screenTimer: {fileID: 1212435778}
   timeSlider: {fileID: 1291979077}
   player: {fileID: 1437413550}
-  c_loadout: {fileID: 206231696}
   c_controls: {fileID: 97892124}
   c_pause: {fileID: 682360093}
   c_hud: {fileID: 1934038031}
@@ -3241,6 +3240,7 @@ MonoBehaviour:
   t_loadoutMarker: {fileID: 1841229395}
   enemy: {fileID: 105363127}
   rpoints: {fileID: 321514792}
+  rlab: {fileID: 206231696}
   minimap: {fileID: 321514796}
   checkpoint: 0
   researchDone: 0

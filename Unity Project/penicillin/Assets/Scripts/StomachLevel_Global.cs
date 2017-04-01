@@ -15,6 +15,7 @@ public class StomachLevel_Global : MonoBehaviour {
     public Transform[] health;
     public Transform player;
     public GameObject
+        rlab, // rlab
         pill, // rlab pickup
         loadoutIndicator, // rlab red circle thing
         Shigellang_Dormant, // pink egg
@@ -184,12 +185,14 @@ public class StomachLevel_Global : MonoBehaviour {
 
     void Dialogue() {
         // Set Penny's animation to idle
+        rlab.SetActive(false); // whatever always set it to false
         player.gameObject.GetComponent<PlayerAttack>().ForceStopAttack();
         Time.timeScale = 0;
         dialogues.SetActive(dialogues.activeInHierarchy ? false : true);
         if (dialogues.activeInHierarchy) NextMessage();
         c_hud.SetActive(dialogues.activeInHierarchy ? false : true);
         c_controls.SetActive(dialogues.activeInHierarchy ? false : true);
+
         int bleh = waveCounter == 4 ? 3 : waveCounter;
         for(int i = 0; i < bleh; i++) {
             spawnWaveLVLS[i].SetActive(spawnWaveLVLS[i].activeInHierarchy ? false : true);

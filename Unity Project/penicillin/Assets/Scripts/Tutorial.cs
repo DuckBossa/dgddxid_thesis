@@ -12,7 +12,7 @@ public class Tutorial : MonoBehaviour {
     public Slider timeSlider;
     public static float globalTime;
     public Transform player;
-    public GameObject c_loadout, c_controls, c_pause, c_hud, dialogues, t_loadoutTrigger, t_loadoutMarker, enemy, rpoints;
+    public GameObject c_controls, c_pause, c_hud, dialogues, t_loadoutTrigger, t_loadoutMarker, enemy, rpoints, rlab;
     public Camera minimap;
     public bool checkpoint, researchDone, enemySpawned;
 

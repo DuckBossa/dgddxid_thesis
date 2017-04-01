@@ -74,9 +74,9 @@ namespace GLOBAL{
 
 
 
-		public static readonly int[,] RP_UPGRADE = {{50,150,200},
+		public static readonly int[,] RP_UPGRADE = {{0,150,200},
 													{0,150,200},
-													{50,150,200}};
+													{0,150,200}};
 
 		public static readonly int[,] WEAP_DAMAGE = new int[,]{ {15,30,60},
 													     {3,6,12},
