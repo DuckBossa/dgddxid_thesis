@@ -1584,7 +1584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseCanvas: {fileID: 117729158}
-  audioToggle: {fileID: 0}
   quitPrompt: {fileID: 1472459400}
   pauseMenu: {fileID: 814602735}
   restartPrompt: {fileID: 2130761161}

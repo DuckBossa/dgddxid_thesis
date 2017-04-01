@@ -66,7 +66,9 @@ public class Shigellang_Dormant : MonoBehaviour, IDamage {
             else if (health <= 0) {
                 //play awakening animation
                 //reconfigure slider
+                bossIcon.rectTransform.sizeDelta = new Vector2(awake.rect.width/2, awake.rect.height/2);
                 bossIcon.sprite = awake;
+                bossIcon.transform.position = new Vector3(bossIcon.transform.position.x, bossIcon.transform.position.y - awake.rect.height / 10, bossIcon.transform.position.z);
                 healthSlider.maxValue = GAME.Shigellang_Fighting_MaxHealth;
                 healthSlider.value = healthSlider.maxValue;
                 healthSlider.minValue = 0;
