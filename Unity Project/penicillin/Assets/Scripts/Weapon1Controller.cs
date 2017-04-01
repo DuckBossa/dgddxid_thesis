@@ -9,7 +9,7 @@ public class Weapon1Controller : MonoBehaviour {
     public Image lv3;
 	public PlayerAttack pa;
     public int weapType;
-    public GameObject lvlmgr;
+    public GameObject lvlmgr, rlabDisabler;
 
     private Image[] wps;
     private int cur;
@@ -42,8 +42,6 @@ public class Weapon1Controller : MonoBehaviour {
     }
 
     void Update() {
-
-
         if(lvl == 3) { //if level = 3 just dim everything then disable
             col.SetAlpha(Mathf.Lerp(col.GetAlpha(), 0, 10 * Time.unscaledDeltaTime));
             content.gameObject.SetActive(false);
@@ -66,6 +64,7 @@ public class Weapon1Controller : MonoBehaviour {
         content.position = new Vector2(content.position.x, content.position.y - distBetButtons);
         wlv1.GetChild(0).GetComponent<Image>().enabled = false;
         smgr.rpcurrent -= GAME.RP_UPGRADE[weapType, pa.GetWeapLevel(weapType) < 0 ? 0 : pa.GetWeapLevel(weapType)];
+        rlabDisabler.GetComponent<RlabDisabler>().AddCount();
     }
 
     public void Upgrade() {

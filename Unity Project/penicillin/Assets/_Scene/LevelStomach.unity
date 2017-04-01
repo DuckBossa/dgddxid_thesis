@@ -3018,6 +3018,21 @@ Prefab:
       propertyPath: m_UpdateMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011371947500, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: rlabDisabler
+      value: 
+      objectReference: {fileID: 1157763738}
+    - target: {fileID: 114000011830700158, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: rlabDisabler
+      value: 
+      objectReference: {fileID: 1157763738}
+    - target: {fileID: 114000012218929480, guid: 94dadb65559384145ba1a11541377c42,
+        type: 2}
+      propertyPath: rlabDisabler
+      value: 
+      objectReference: {fileID: 1157763738}
     m_RemovedComponents:
     - {fileID: 114000011446334346, guid: 94dadb65559384145ba1a11541377c42, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 94dadb65559384145ba1a11541377c42, type: 2}
@@ -11850,6 +11865,47 @@ MonoBehaviour:
   - {fileID: 745742294}
   - {fileID: 841791140}
   animbackGO: {fileID: 463637468}
+--- !u!1 &1157763738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1157763740}
+  - 114: {fileID: 1157763739}
+  m_Layer: 0
+  m_Name: RlabDisabler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1157763739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1157763738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925b2a26664985848ba7ceceaecdf8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rlab: {fileID: 2111289499}
+--- !u!4 &1157763740
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1157763738}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0006, y: -0.0072, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
 --- !u!1 &1159757806
 GameObject:
   m_ObjectHideFlags: 0

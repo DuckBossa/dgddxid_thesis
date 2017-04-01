@@ -106,6 +106,7 @@ public class Tutorial : MonoBehaviour {
 
         text = dialogues.transform.GetChild(4).gameObject.GetComponent<Text>();
         text.text = messages[cur_msg];
+        ResitanceCalculator.Instance.ResetAll();
     }
 	
     void OnEnable() {
