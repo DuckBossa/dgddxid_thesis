@@ -48,6 +48,7 @@ public class StomachLevel_Global : MonoBehaviour {
     private bool face;
 
     void Start() {
+        ResitanceCalculator.Instance.ResetAll();
         enemyCountSlider.value = 0;
         waveCounter = 1;
         spawnWaveLVLS[waveCounter - 1].SetActive(true);
