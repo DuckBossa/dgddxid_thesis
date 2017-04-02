@@ -56,17 +56,18 @@ namespace GLOBAL{
         public const float Shigellang_Dormant_TimeBetweenAttacks = 1f;
         public const float Shigellang_mvspd = 1.25f;
         public const float Shigellang_walkdist = 2f;
+        public const float Shigellang_PlayerSpottedMax = 2f;
         public const float Shigellang_LeapCD = 2f;
         public const float Shigellang_TimeIdleRange = 0.75f;
         public const float Shigellang_LeapAttackCD = 5f;
         public const float Shigellang_ProjectileCD = 4f;
         public const float Shigellang_ProjectileLife = 5f;
         public const float Shigellang_ProjectileSpeed = 1.5f;
-        public const float Shigellang_RadarPlayer = 5f;
-        public const float Shigellang_RadarMap = 15f;
+        public const float Shigellang_RadarPlayer = 12f;
+        public const float Shigellang_RadarMap = 18f;
 		public const float Shigellang_LeapSpeed = 2.5f;
 		public const float Shigellang_JumpForce = 15f;
-		public const float Shigellang_DMGTimer = 1.5f;
+		public const float Shigellang_DMGTimer = 0.75f;
         public const float Shigellang_AngleProjectile = 15f;
     	
 		public const string PLAYER_PREFS_RP = "PlayerResearchPoints";

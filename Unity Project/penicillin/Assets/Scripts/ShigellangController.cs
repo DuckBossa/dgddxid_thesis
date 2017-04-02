@@ -24,6 +24,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
     float idleTimer;
     float distTraveled;
     float idleTimerMax;
+    float playerSpottedTimer;
     Rigidbody2D rb;
     Animator anim;
     Vector2 dirWalk;
@@ -51,6 +52,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
         isLeapUp = false;
         isLeapAttacking = false;
         anim.SetBool("isMidair", false);
+        playerSpottedTimer = 0;
         idleTimerMax = UnityEngine.Random.Range(0.5f, GAME.Shigellang_TimeIdleRange);
         projectile_parent = GameObject.Find("Projectile Parent");
         currHealth = GAME.Shigellang_Fighting_MaxHealth;
@@ -64,6 +66,9 @@ public class ShigellangController : MonoBehaviour,IDamage {
 		if (damageTimer < GAME.Shigellang_DMGTimer) {
 			damageTimer += Time.deltaTime;
 		}
+        if(playerSpotted && playerSpottedTimer < GAME.Shigellang_PlayerSpottedMax) {
+            playerSpottedTimer += Time.deltaTime;
+        }
         anim.SetFloat("Direction", dirWalk.x > 0 ? 1f : 0f);
        
         anim.SetBool("isWalking", isWalking);
@@ -101,8 +106,7 @@ public class ShigellangController : MonoBehaviour,IDamage {
                 StopLeap();
             }
         }
-        else if (isLeapAttacking) {
-        }
+
     }
 
     void WhatDo() {
@@ -126,7 +130,8 @@ public class ShigellangController : MonoBehaviour,IDamage {
                     Walk();
                     break;
                 case 4:
-                    if(currHealth < GAME.Shigellang_Fighting_MaxHealth / 3) {
+                    if(currHealth < GAME.Shigellang_Fighting_MaxHealth / 2  || playerSpottedTimer >= GAME.Shigellang_PlayerSpottedMax) {
+                        playerSpottedTimer = 0;
                         LeapPlatform();
                     }
                     else {
