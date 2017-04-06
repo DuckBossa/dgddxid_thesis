@@ -61,7 +61,7 @@ namespace GLOBAL{
         public const float Shigellang_TimeIdleRange = 0.75f;
         public const float Shigellang_LeapAttackCD = 5f;
         public const float Shigellang_ProjectileCD = 4f;
-        public const float Shigellang_ProjectileLife = 5f;
+        public const float Shigellang_ProjectileLife = 12f;
         public const float Shigellang_ProjectileSpeed = 1.5f;
         public const float Shigellang_RadarPlayer = 12f;
         public const float Shigellang_RadarMap = 18f;
@@ -69,6 +69,7 @@ namespace GLOBAL{
 		public const float Shigellang_JumpForce = 15f;
 		public const float Shigellang_DMGTimer = 0.75f;
         public const float Shigellang_AngleProjectile = 15f;
+
     	
 		public const string PLAYER_PREFS_RP = "PlayerResearchPoints";
 		public const string PLAYER_PREFS_WEAPLEVEL = "WeaponLVL";

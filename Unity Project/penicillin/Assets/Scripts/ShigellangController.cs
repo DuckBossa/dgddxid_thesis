@@ -100,9 +100,10 @@ public class ShigellangController : MonoBehaviour,IDamage {
             }
         }
         else if (isLeaping) {
-            rb.position = Vector2.Lerp(transform.position, pos_leap, GAME.Shigellang_LeapSpeed * Time.deltaTime);
+            Debug.DrawRay(pos_leap, Vector3.up);
+            rb.position = Vector2.Lerp(rb.position, pos_leap, GAME.Shigellang_LeapSpeed * Time.deltaTime);
             float mag = (new Vector2(pos_leap.x, pos_leap.y) - rb.position).magnitude;
-            if (mag < 0.20f) {
+            if (mag < 0.55f) {
                 StopLeap();
             }
         }
