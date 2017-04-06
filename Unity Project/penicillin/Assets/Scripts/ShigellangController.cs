@@ -263,6 +263,10 @@ public class ShigellangController : MonoBehaviour,IDamage {
         temp2.transform.parent = projectile_parent.transform;
         temp3.GetComponent<MoveDir>().setDir(RotateVectBy(-15f, Target).normalized);
         temp3.transform.parent = projectile_parent.transform;
+
+        temp.GetComponent<MoveDir>().setLifeTime(GAME.Shigellang_ProjectileLife);
+        temp2.GetComponent<MoveDir>().setLifeTime(GAME.Shigellang_ProjectileLife);
+        temp3.GetComponent<MoveDir>().setLifeTime(GAME.Shigellang_ProjectileLife);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
